@@ -1,7 +1,15 @@
-﻿# Node
+# Node
 node_modules/
 .pnpm-store/
 .pnpm-state/
+
+# IDE
+.vscode/
+.idea/
+jsconfig.json
+
+# Wix
+.wix/
 
 # Logs
 npm-debug.log*

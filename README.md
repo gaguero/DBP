@@ -1,4 +1,4 @@
-﻿# Dolphin Blue Paradise Website Redesign
+# Dolphin Blue Paradise Website Redesign
 
 ## Project Overview
 - Build a new, visually refined website for Dolphin Blue Paradise using content from the scraped legacy Wix site.
@@ -97,3 +97,26 @@
 4. Audit imagery for quality and aspect ratio; plan CDN migration and alt text.
 5. Establish bilingual content process (translation management, routing of inquiries by language).
 6. Validate travel logistics, pricing references, and donation list with the Dolphin Blue Paradise team before publishing.
+
+## Wix CLI Reference
+
+This repository was originally generated with Wix's Git Integration & Wix CLI tooling, so you can still use those commands to collaborate with the live Wix site when needed.
+
+### Prerequisites
+- Git
+- Node 14.8 or later
+- npm, pnpm, or yarn
+- SSH key configured with GitHub
+- `@wix/cli` installed globally (`pnpm add -g @wix/cli` or `npm install -g @wix/cli`)
+
+### Helpful Commands
+1. Clone the repo and `cd` into it.
+2. Install dependencies with `pnpm install`.
+3. Start the Local Editor with `wix dev` to preview and test changes.
+4. Run `wix sync-types` after installing new packages.
+5. Publish or manage the site via the Wix CLI as described in the Wix documentation.
+
+For complete documentation see:
+- [Setting up Git Integration & Wix CLI](https://support.wix.com/en/article/velo-setting-up-git-integration-wix-cli-beta)
+- [Working with the Local Editor](https://support.wix.com/en/article/velo-working-with-the-local-editor-beta)
+- [Understanding the Wix repo structure](https://support.wix.com/en/article/velo-understanding-your-sites-github-repository-beta)
