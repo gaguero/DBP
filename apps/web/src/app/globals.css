@@ -440,3 +440,204 @@ main {
     height: 180px;
   }
 }
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 18px rgba(27, 35, 48, 0.05);
+}
+
+.site-header__top {
+  border-bottom: 1px solid rgba(27, 35, 48, 0.08);
+  font-size: 0.75rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.site-header__top-inner {
+  width: min(1180px, 100%);
+  margin-inline: auto;
+  padding-inline: clamp(1.5rem, 5vw, 3rem);
+  display: flex;
+  justify-content: flex-end;
+  gap: 2rem;
+  padding-block: 0.75rem;
+}
+
+.site-header__top-inner a {
+  color: var(--color-navy);
+  font-weight: 600;
+  letter-spacing: normal;
+}
+
+.site-header__main {
+  width: min(1180px, 100%);
+  margin-inline: auto;
+  padding-inline: clamp(1.5rem, 5vw, 3rem);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: clamp(1rem, 4vw, 3rem);
+  padding-block: clamp(1.5rem, 4vw, 2.75rem);
+}
+
+.site-header__brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.site-header__logo {
+  font-family: var(--font-display), serif;
+  font-size: clamp(1.5rem, 3vw, 1.9rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-navy);
+}
+
+.site-header__toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(27, 35, 48, 0.16);
+  color: var(--color-navy);
+  background: transparent;
+  cursor: pointer;
+}
+
+.site-header__toggle {
+  display: none;
+}
+
+.site-header__nav {
+  display: flex;
+  justify-content: center;
+  gap: clamp(1rem, 3vw, 2.2rem);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.site-header__link {
+  position: relative;
+  padding-bottom: 0.35rem;
+  transition: color 150ms ease;
+}
+
+.site-header__link:hover,
+.site-header__link--active {
+  color: var(--color-ocean);
+}
+
+.site-header__link--active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--color-gold);
+}
+
+.site-header__link--lang {
+  color: var(--color-navy);
+}
+
+.site-header__cta {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.site-header__mobile {
+  display: none;
+  background: var(--color-cloud);
+  padding-inline: clamp(1.5rem, 5vw, 3rem);
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(27, 35, 48, 0.08);
+  flex-direction: column;
+  gap: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.site-header__mobile-link {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(27, 35, 48, 0.08);
+}
+
+.site-header__mobile-link:last-child {
+  border-bottom: none;
+}
+
+.site-header__mobile-link--active {
+  color: var(--color-ocean);
+}
+
+@media (max-width: 992px) {
+  .site-header__main {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "brand cta";
+  }
+
+  .site-header__nav,
+  .site-header__cta {
+    display: none;
+  }
+
+  .site-header__brand {
+    justify-content: space-between;
+  }
+
+  .site-header__toggle {
+    display: inline-flex;
+  }
+
+  .site-header__mobile {
+    display: flex;
+  }
+}
+
+@media (max-width: 600px) {
+  .site-header__top-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+
+.home-hero__content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 5vw, 3rem);
+}
+
+.home-hero__card {
+  margin-inline: auto;
+  max-width: clamp(20rem, 60vw, 34rem);
+}
+
+.home-hero__lede {
+  font-family: var(--font-display), serif;
+  font-size: 1.15rem;
+  color: var(--color-navy);
+  margin-bottom: 0.75rem;
+}
+
+.home-hero__text {
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}

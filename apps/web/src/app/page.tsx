@@ -4,10 +4,10 @@ import { Button } from "@/components/button";
 import { Card } from "@/components/card";
 import { activities } from "@/content/data";
 
-const heroParagraphs = [
+const heroHeadline = "Dolphin Blue Paradise is here.";
+const heroBody = [
   "Discovering a travel destination that truly aligns with your values can be challenging.",
   "You need a place that combines comfort, unique and personalized experiences, and sustainability without compromising your ethical and environmental values.",
-  "Dolphin Blue Paradise is here.",
 ];
 
 const legacyIntro =
@@ -93,27 +93,26 @@ export default function Home() {
           className="object-cover"
         />
         <div className="home-hero__overlay" />
-        <div className="home-container home-hero__content">
-          <div className="home-hero__card">
-            <p className="home-hero__eyebrow">Paradise between the jungle &amp; the sea</p>
-            <h1 className="home-hero__title">A Personalized Eco-Luxury Escape</h1>
-            <div className="home-hero__body">
-              {heroParagraphs.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
-            </div>
-            <div className="home-hero__actions">
-              <Button href="#booking" trackingEvent="cta_plan_escape" trackingData={{ section: "hero" }}>
-                Plan Your Escape
-              </Button>
-              <Button
-                href="/experiences"
-                variant="secondary"
-                trackingEvent="cta_explore_experiences"
-                trackingData={{ section: "hero" }}
-              >
-                Explore Experiences
-              </Button>
+        <div className="home-hero__content">
+          <div className="home-container">
+            <div className="home-hero__card">
+              <p className="home-hero__eyebrow">Paradise between the jungle &amp; the sea</p>
+              <h1 className="home-hero__title">{heroHeadline}</h1>
+              <p className="home-hero__lede">{heroBody[0]}</p>
+              <p className="home-hero__text">{heroBody[1]}</p>
+              <div className="home-hero__actions">
+                <Button href="#booking" trackingEvent="cta_plan_escape" trackingData={{ section: "hero" }}>
+                  Plan Your Escape
+                </Button>
+                <Button
+                  href="/experiences"
+                  variant="secondary"
+                  trackingEvent="cta_explore_experiences"
+                  trackingData={{ section: "hero" }}
+                >
+                  Explore Experiences
+                </Button>
+              </div>
             </div>
           </div>
         </div>
