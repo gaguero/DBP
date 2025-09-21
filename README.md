@@ -87,7 +87,7 @@
 - Extracted text (`*.txt` files) contains encoding artifacts (smart quotes, emojis, special icons); normalize copy during content editing.
 
 ## Media Library
-- 75 unique remote assets hosted on static.wixstatic.com (hero imagery, galleries, icons, scanned menus, brochures).
+- 75 unique remote assets hosted on static.wixstatic.com (hero imagery, galleries, icons, scanned menus, brochures).ds
 - Use the `media-gallery.html` template to preview all assets; download and host via the new stack before launch.
 
 ## Recommended Next Steps
