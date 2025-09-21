@@ -1,4 +1,4 @@
-﻿@import "tailwindcss";
+@import "tailwindcss";
 
 :root {
   --color-ocean: #0e8ba8;
@@ -137,7 +137,11 @@ main {
   padding: 2rem;
 }
 
-.font-display {\n  font-family: var(--font-display), serif;\n}\n\n@media (max-width: 768px) {
+.font-display {
+  font-family: var(--font-display), serif;
+}
+
+@media (max-width: 768px) {
   .container {
     padding-inline: 1.25rem;
   }
@@ -158,3 +162,4 @@ main {
   white-space: nowrap;
   border: 0;
 }
+

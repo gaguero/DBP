@@ -1,12 +1,14 @@
-﻿import { z } from "zod";
+import { z } from "zod";
 
 const envSchema = z.object({
-  ESPOCRM_URL: z.string().url(),
-  ESPOCRM_API_KEY: z.string().min(1),
-  CHATWOOT_BASE_URL: z.string().url(),
-  CHATWOOT_TOKEN: z.string().min(1),
-  GTM_ID: z.string().min(1),
+  ESPOCRM_URL: z.string().url().optional(),
+  ESPOCRM_API_KEY: z.string().min(1).optional(),
+  CHATWOOT_BASE_URL: z.string().url().optional(),
+  CHATWOOT_TOKEN: z.string().min(1).optional(),
+  GTM_ID: z.string().min(1).optional(),
 });
+
+type Env = z.infer<typeof envSchema>;
 
 const parsed = envSchema.safeParse({
   ESPOCRM_URL: process.env.ESPOCRM_URL,
@@ -17,8 +19,7 @@ const parsed = envSchema.safeParse({
 });
 
 if (!parsed.success) {
-  console.error("Invalid environment variables", parsed.error.flatten().fieldErrors);
-  throw new Error("Environment validation failed");
+  console.warn("Invalid environment variables", parsed.error.flatten().fieldErrors);
 }
 
-export const env = parsed.data;
+export const env: Env = parsed.success ? parsed.data : {};

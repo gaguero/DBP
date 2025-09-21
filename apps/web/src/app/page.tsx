@@ -1,34 +1,33 @@
-﻿import Image from "next/image";
-import Link from "next/link";
+import Image from "next/image";
 import { BookingWidgetPlaceholder } from "@/components/booking-widget-placeholder";
 import { Button } from "@/components/button";
 import { Card } from "@/components/card";
-import { trackEvent } from "@/lib/analytics";
+import { TrackedLink } from "@/components/tracked-link";
 
 const valuePillars = [
   {
     title: "Eco-Luxury Living",
     description:
       "Off-grid suites with sea views, artisanal finishes, and thoughtful amenities for restorative stays.",
-    icon: "♢",
+    icon: "?",
   },
   {
     title: "Curated Experiences",
     description:
       "Private dolphin encounters, jungle hikes with our naturalist, and bespoke island excursions.",
-    icon: "✦",
+    icon: "?",
   },
   {
     title: "Farm-to-Table Dining",
     description:
       "Seasonal tasting menus inspired by our tropical garden, paired with signature cocktails from Blo Bar.",
-    icon: "✽",
+    icon: "?",
   },
   {
     title: "Community Impact",
     description:
       "Your stay supports indigenous communities through healthcare, education, and conservation initiatives.",
-    icon: "✺",
+    icon: "?",
   },
 ];
 
@@ -120,14 +119,15 @@ export default function Home() {
               <div className="space-y-4 bg-white p-8">
                 <h3 className="section-heading text-3xl md:text-[2.5rem]">{highlight.title}</h3>
                 <p className="text-muted">{highlight.description}</p>
-                <Link
+                <TrackedLink
                   href={highlight.href}
-                  onClick={() => trackEvent({ event: highlight.trackingEvent, data: { section: "highlight" } })}
+                  trackingEvent={highlight.trackingEvent}
+                  trackingData={{ section: "highlight" }}
                   className="inline-flex items-center gap-2 font-semibold text-[var(--color-ocean)]"
                 >
                   Learn more
-                  <span aria-hidden>→</span>
-                </Link>
+                  <span aria-hidden>&gt;</span>
+                </TrackedLink>
               </div>
             </article>
           ))}

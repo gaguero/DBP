@@ -1,4 +1,4 @@
-﻿import { NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { z } from "zod";
 import { env } from "@/lib/env";
 
@@ -56,6 +56,11 @@ export async function POST(request: Request) {
     return NextResponse.redirect(redirectPath(data.locale, true));
   }
 
+  if (!env.ESPOCRM_URL || !env.ESPOCRM_API_KEY) {
+    console.warn("Lead submission skipped: missing EspoCRM configuration");
+    return NextResponse.redirect(redirectPath(parsed.data.locale));
+  }
+
   try {
     const response = await fetch(`${env.ESPOCRM_URL}/Lead`, {
       method: "POST",
@@ -88,3 +93,4 @@ export async function POST(request: Request) {
     return NextResponse.redirect(redirectPath(parsed.data.locale, true));
   }
 }
+

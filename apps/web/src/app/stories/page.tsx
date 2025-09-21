@@ -1,1 +1,55 @@
-﻿import type { Metadata } from "next"; import Link from "next/link"; import Image from "next/image"; import { PageHero } from "@/components/page-hero"; import { Card } from "@/components/card";  export const metadata: Metadata = {   title: "Stories & Updates",   description: "Latest news, guest reflections, and travel inspiration from Dolphin Blue Paradise.", };  const placeholderArticles = [   {     slug: "chef-garden-menu",     title: "Seasonal Menu: Garden Harvest to Table",     excerpt: "Chef shares how the tropical garden inspires each course at Blø Bar.",     date: "Jan 8, 2025",     image: "/images/dining-overwater.jpg",   },   {     slug: "floating-doctors-collaboration",     title: "Expanding Access with Floating Doctors",     excerpt: "Volunteers recap a week of clinics and how guests can support ongoing work.",     date: "Dec 20, 2024",     image: "/images/rooms-view.jpg",   },   {     slug: "dolphin-conservation",     title: "Respectful Dolphin Encounters",     excerpt: "Our naturalist explains best practices for observing resident pods in Dolphin Bay.",     date: "Nov 30, 2024",     image: "/images/hero-bay.jpg",   }, ];  export default function StoriesPage() {   return (     <div className="space-y-24 pb-24">       <PageHero         title="Stories from Dolphin Bay"         kicker="Journal"         description="Peek behind the scenes of resort life, sustainability milestones, and guest adventures."         image="/images/rooms-view.jpg"       />        <section className="section">         <div className="container grid gap-8 md:grid-cols-3">           {placeholderArticles.map((article) => (             <Card key={article.slug} className="overflow-hidden p-0">               <Image                 src={article.image}                 alt={article.title}                 width={600}                 height={400}                 className="h-48 w-full object-cover"               />               <div className="space-y-3 p-6">                 <p className="text-xs uppercase tracking-[0.2em] text-[var(--color-text-muted)]">                   {article.date}                 </p>                 <h2 className="font-display text-xl text-[var(--color-navy)]">{article.title}</h2>                 <p className="text-sm text-muted">{article.excerpt}</p>                 <Link                   href={`/stories/${article.slug}`}                   className="inline-flex items-center gap-1 text-sm font-semibold text-[var(--color-ocean)]"                 >                   Read more                   <span aria-hidden>→</span>                 </Link>               </div>             </Card>           ))}         </div>       </section>     </div>   ); }
+import type { Metadata } from "next";
+import Link from "next/link";
+import Image from "next/image";
+import { PageHero } from "@/components/page-hero";
+import { Card } from "@/components/card";
+import { stories } from "@/content/stories";
+
+export const metadata: Metadata = {
+  title: "Stories & Updates",
+  description: "Latest news, guest reflections, and travel inspiration from Dolphin Blue Paradise.",
+};
+
+export default function StoriesPage() {
+  return (
+    <div className="space-y-24 pb-24">
+      <PageHero
+        title="Stories from Dolphin Bay"
+        kicker="Journal"
+        description="Peek behind the scenes of resort life, sustainability milestones, and guest adventures."
+        image="/images/rooms-view.jpg"
+      />
+
+      <section className="section">
+        <div className="container grid gap-8 md:grid-cols-3">
+          {stories.map((story) => (
+            <Card key={story.slug} className="overflow-hidden p-0">
+              <Image
+                src={story.image}
+                alt={story.title}
+                width={600}
+                height={400}
+                className="h-48 w-full object-cover"
+              />
+              <div className="space-y-3 p-6">
+                <p className="text-xs uppercase tracking-[0.2em] text-[var(--color-text-muted)]">
+                  {story.date}
+                </p>
+                <h2 className="font-display text-xl text-[var(--color-navy)]">{story.title}</h2>
+                <p className="text-sm text-muted">{story.excerpt}</p>
+                <Link
+                  href={`/stories/${story.slug}`}
+                  className="inline-flex items-center gap-1 text-sm font-semibold text-[var(--color-ocean)]"
+                >
+                  Read more &gt;
+                </Link>
+              </div>
+            </Card>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+}
+
+
