@@ -28,7 +28,32 @@ type LegacySource = {
 
 const CAPTURE_DATE = "2025-09-20";
 
-const legacyRoot = path.resolve(process.cwd(), "..", "..", "dolphinblueparadis-1", "d");
+const candidateRoots = (() => {
+  const roots: string[] = [];
+  const envRoot = process.env.LEGACY_CONTENT_ROOT;
+  if (envRoot) {
+    roots.push(envRoot);
+  }
+  roots.push(
+    path.resolve(process.cwd(), "dolphinblueparadis-1", "d"),
+    path.resolve(process.cwd(), "..", "dolphinblueparadis-1", "d"),
+    path.resolve(process.cwd(), "..", "..", "dolphinblueparadis-1", "d"),
+    path.resolve(process.cwd(), "..", "..", "..", "dolphinblueparadis-1", "d")
+  );
+  return roots;
+})();
+
+const legacyRoot = candidateRoots.find((candidate) => {
+  try {
+    return fs.existsSync(candidate);
+  } catch {
+    return false;
+  }
+});
+
+if (!legacyRoot) {
+  console.warn("Legacy content root not found", candidateRoots);
+}
 
 const legacySources: Record<LegacyKey, LegacySource> = {
   home: {
@@ -107,10 +132,16 @@ const legacySources: Record<LegacyKey, LegacySource> = {
 
 const cache = new Map<LegacyKey, string[]>();
 
-function ensureFileExists(filePath: string) {
-  if (!fs.existsSync(filePath)) {
-    throw new Error(`Legacy content file not found: ${filePath}`);
+function readLegacyFile(file: string) {
+  if (!legacyRoot) {
+    return null;
   }
+  const filePath = path.join(legacyRoot, file);
+  if (!fs.existsSync(filePath)) {
+    console.warn(`Legacy content file not found: ${filePath}`);
+    return null;
+  }
+  return fs.readFileSync(filePath, "utf8");
 }
 
 function normaliseParagraph(paragraph: string) {
@@ -130,10 +161,12 @@ export function getLegacyContent(key: LegacyKey) {
   }
 
   const source = legacySources[key];
-  const filePath = path.join(legacyRoot, source.file);
-  ensureFileExists(filePath);
+  const raw = readLegacyFile(source.file);
+  if (!raw) {
+    cache.set(key, []);
+    return [];
+  }
 
-  const raw = fs.readFileSync(filePath, "utf8");
   const normalised = raw.replace(/\r\n/g, "\n").replace(/\uFEFF/g, "");
 
   const paragraphs = normalised
