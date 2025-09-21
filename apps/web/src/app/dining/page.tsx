@@ -4,6 +4,7 @@ import { PageHero } from "@/components/page-hero";
 import { Card } from "@/components/card";
 import { diningHighlights } from "@/content/data";
 import { Button } from "@/components/button";
+import { LegacyContent } from "@/components/legacy-content";
 
 export const metadata: Metadata = {
   title: "Dining at Blo Bar & Restaurant",
@@ -104,6 +105,11 @@ export default function DiningPage() {
           </div>
         </div>
       </section>
+
+      <LegacyContent
+        page="dining"
+        description="Dining copy from the legacy site is included for continuity."
+      />
     </div>
   );
 }

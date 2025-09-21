@@ -3,6 +3,7 @@ import { PageHero } from "@/components/page-hero";
 import { Card } from "@/components/card";
 import { Button } from "@/components/button";
 import { impactoEs } from "@/content/data-es";
+import { LegacyContent } from "@/components/legacy-content";
 
 export const metadata: Metadata = {
   title: "Impacto y sostenibilidad",
@@ -76,6 +77,11 @@ export default function ImpactoPage() {
           </Card>
         </div>
       </section>
+
+      <LegacyContent
+        page="es_impacto"
+        description="Contenido de impacto legado preservado aqui."
+      />
     </div>
   );
 }

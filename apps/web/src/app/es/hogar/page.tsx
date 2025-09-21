@@ -4,6 +4,7 @@ import { BookingWidgetPlaceholder } from "@/components/booking-widget-placeholde
 import { Button } from "@/components/button";
 import { Card } from "@/components/card";
 import { TrackedLink } from "@/components/tracked-link";
+import { LegacyContent } from "@/components/legacy-content";
 
 const pilares = [
   {
@@ -127,6 +128,11 @@ export default function HogarPage() {
       </section>
 
       <BookingWidgetPlaceholder />
+
+      <LegacyContent
+        page="es_hogar"
+        description="Texto original del sitio legado disponible abajo."
+      />
     </div>
   );
 }

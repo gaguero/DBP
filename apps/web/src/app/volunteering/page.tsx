@@ -1,1 +1,67 @@
-﻿import type { Metadata } from "next"; import { PageHero } from "@/components/page-hero"; import { Card } from "@/components/card"; import { donationWishList } from "@/content/data"; import { Button } from "@/components/button";  export const metadata: Metadata = {   title: "Volunteering & Community Support",   description:     "Partner with Dolphin Blue Paradise to support indigenous communities through healthcare, education, and sustainable projects.", };  export default function VolunteeringPage() {   return (     <div className="space-y-24 pb-24">       <PageHero         title="Support Indigenous Communities in Dolphin Bay"         kicker="Community"         description="We collaborate with Floating Doctors and local leaders to expand access to healthcare, education, and infrastructure. Guests can donate supplies, volunteer time, or sponsor scholarships."         image="/images/rooms-view.jpg"       />        <section className="section">         <div className="container grid gap-10 md:grid-cols-[1.1fr_0.9fr] md:items-start">           <div className="space-y-6">             <h2 className="font-display text-3xl text-[var(--color-navy)]">Volunteer Pathways</h2>             <div className="space-y-4 text-muted">               <p>                 Floating Doctors run mobile clinics throughout the archipelago, and we coordinate transportation                 and lodging for medical volunteers. Hospitality, education, and sustainability projects are                 available year-round.               </p>               <p>                 Let us know your skills and availability, and we&apos;ll connect you with opportunities that align with                 community priorities.               </p>             </div>             <Button href="mailto:contact@dolphinblueparadise.com">Discuss Volunteering</Button>           </div>           <Card className="space-y-3">             <h3 className="text-sm uppercase tracking-[0.3em] text-[var(--color-gold)]">Scholarship Fund</h3>             <p className="text-sm text-muted">               Sponsor vocational training for team members or their children in healthcare and hospitality. Annual               contributions begin at $1,500 and cover tuition, materials, and mentorship.             </p>             <Button href="/contact" variant="secondary" className="w-full">               Request Sponsorship Packet             </Button>           </Card>         </div>       </section>        <section className="section bg-[var(--color-sand)]">         <div className="container space-y-6">           <h2 className="font-display text-3xl text-[var(--color-navy)]">Donation Wishlist</h2>           <p className="text-muted">             Please pack donations in collapsible bags; we coordinate distribution with community leaders in Aldana,             Bocastorito, Tierra Oscura, and Buena Esperanza.           </p>           <div className="grid gap-4 md:grid-cols-2">             {donationWishList.map((item) => (               <Card key={item} className="text-sm text-muted">                 {item}               </Card>             ))}           </div>         </div>       </section>     </div>   ); }
+import type { Metadata } from "next";
+import { PageHero } from "@/components/page-hero";
+import { Card } from "@/components/card";
+import { donationWishList } from "@/content/data";
+import { Button } from "@/components/button";
+import { LegacyContent } from "@/components/legacy-content";
+
+export const metadata: Metadata = {
+  title: "Volunteering & Community",
+  description:
+    "Learn how Dolphin Blue Paradise partners with local communities and how you can support during your stay.",
+};
+
+export default function VolunteeringPage() {
+  return (
+    <div className="space-y-24 pb-24">
+      <PageHero
+        title="Support the Communities of Dolphin Bay"
+        kicker="Volunteering"
+        description="From supply drives to on-the-ground medical support, we collaborate with local partners to create lasting impact."
+        image="/images/rooms-view.jpg"
+      />
+
+      <section className="section">
+        <div className="container grid gap-10 md:grid-cols-[1.2fr_0.8fr]">
+          <div className="space-y-5">
+            <h2 className="font-display text-3xl text-[var(--color-navy)]">How Guests Can Help</h2>
+            <p className="text-muted">
+              Floating Doctors and neighboring villages rely on volunteer energy and essential supplies. We collect donations onsite,
+              coordinate drop-offs, and can arrange introductions if you wish to lend a hand during your stay.
+            </p>
+            <Card className="space-y-3 bg-[var(--color-sand)] p-6">
+              <h3 className="text-sm uppercase tracking-[0.3em] text-[var(--color-gold)]">Most Requested Items</h3>
+              <ul className="space-y-2 text-sm text-muted">
+                {donationWishList.map((item) => (
+                  <li key={item} className="flex items-start gap-2">
+                    <span aria-hidden className="mt-1 text-[var(--color-gold)]">-</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </Card>
+          </div>
+
+          <Card className="space-y-3 p-6">
+            <h3 className="text-sm uppercase tracking-[0.3em] text-[var(--color-gold)]">Coordinate Before Arrival</h3>
+            <p className="text-sm text-muted">
+              Email our concierge with the dates of your visit and how you&apos;d like to contribute. We&apos;ll liaise with community leaders
+              to align on schedules, transportation, and priority needs.
+            </p>
+            <Button href="mailto:contact@dolphinblueparadise.com" className="w-full">
+              Email Concierge
+            </Button>
+            <Button href="https://wa.me/50763460605" variant="secondary" className="w-full">
+              WhatsApp Concierge
+            </Button>
+          </Card>
+        </div>
+      </section>
+
+      <LegacyContent
+        page="volunteering"
+        description="Legacy volunteer program details are preserved below."
+      />
+    </div>
+  );
+}

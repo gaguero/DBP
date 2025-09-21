@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
 import { Card } from "@/components/card";
 import { Button } from "@/components/button";
+import { LegacyContent } from "@/components/legacy-content";
 
 export const metadata: Metadata = {
   title: "Restaurante Blo Bar",
@@ -102,6 +103,11 @@ export default function RestaurantePage() {
           </div>
         </div>
       </section>
+
+      <LegacyContent
+        page="es_restaurante"
+        description="Contenido gastronomico original del sitio legado se conserva aqui."
+      />
     </div>
   );
 }

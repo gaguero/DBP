@@ -4,6 +4,7 @@ import { PageHero } from "@/components/page-hero";
 import { Card } from "@/components/card";
 import { Button } from "@/components/button";
 import { contactoEs } from "@/content/data-es";
+import { LegacyContent } from "@/components/legacy-content";
 
 export const metadata: Metadata = {
   title: "Contacto",
@@ -156,6 +157,11 @@ export default function ContactoPage({ searchParams }: { searchParams?: Record<s
           </Card>
         </div>
       </section>
+
+      <LegacyContent
+        page="es_contacto"
+        description="Instrucciones de reserva heredadas del sitio original."
+      />
     </div>
   );
 }

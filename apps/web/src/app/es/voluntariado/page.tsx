@@ -3,6 +3,7 @@ import { PageHero } from "@/components/page-hero";
 import { Card } from "@/components/card";
 import { Button } from "@/components/button";
 import { donacionesEs } from "@/content/data-es";
+import { LegacyContent } from "@/components/legacy-content";
 
 export const metadata: Metadata = {
   title: "Voluntariado y comunidad",
@@ -61,6 +62,11 @@ export default function VoluntariadoPage() {
           </div>
         </div>
       </section>
+
+      <LegacyContent
+        page="es_voluntariado"
+        description="Informacion de voluntariado del sitio anterior se mantiene abajo."
+      />
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { PageHero } from "@/components/page-hero";
 import { Card } from "@/components/card";
 import { Button } from "@/components/button";
 import { habitaciones } from "@/content/data-es";
+import { LegacyContent } from "@/components/legacy-content";
 
 export const metadata: Metadata = {
   title: "Habitaciones y suites",
@@ -66,6 +67,11 @@ export default function HabitacionesPage() {
           ))}
         </div>
       </section>
+
+      <LegacyContent
+        page="es_habitaciones"
+        description="Descripcion heredada de habitaciones preservada abajo."
+      />
     </div>
   );
 }

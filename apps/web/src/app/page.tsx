@@ -3,6 +3,7 @@ import { BookingWidgetPlaceholder } from "@/components/booking-widget-placeholde
 import { Button } from "@/components/button";
 import { Card } from "@/components/card";
 import { TrackedLink } from "@/components/tracked-link";
+import { LegacyContent } from "@/components/legacy-content";
 
 const valuePillars = [
   {
@@ -68,15 +69,11 @@ export default function Home() {
             A personalized eco-luxury escape in Dolphin Bay, Panama
           </h1>
           <p className="max-w-2xl text-lg text-white/80">
-            Discover an off-grid sanctuary powered by the sun, nourished by our gardens, and crafted by hosts who
-            anticipate every detail of your journey.
+            Discover an off-grid sanctuary powered by the sun, nourished by our gardens, and crafted by hosts who anticipate
+            every detail of your journey.
           </p>
           <div className="flex flex-wrap gap-3">
-            <Button
-              href="#booking"
-              trackingEvent="cta_plan_escape"
-              trackingData={{ section: "hero" }}
-            >
+            <Button href="#booking" trackingEvent="cta_plan_escape" trackingData={{ section: "hero" }}>
               Plan Your Escape
             </Button>
             <Button
@@ -135,6 +132,11 @@ export default function Home() {
       </section>
 
       <BookingWidgetPlaceholder />
+
+      <LegacyContent
+        page="home"
+        description="Full legacy copy is archived below for content parity."
+      />
     </div>
   );
 }

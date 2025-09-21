@@ -4,6 +4,7 @@ import { PageHero } from "@/components/page-hero";
 import { Card } from "@/components/card";
 import { activities } from "@/content/data";
 import { Button } from "@/components/button";
+import { LegacyContent } from "@/components/legacy-content";
 
 export const metadata: Metadata = {
   title: "Experiences & Excursions",
@@ -113,6 +114,11 @@ export default function ExperiencesPage() {
           </Card>
         </div>
       </section>
+
+      <LegacyContent
+        page="experiences"
+        description="Legacy activity descriptions remain available below while we refine the new layout."
+      />
     </div>
   );
 }

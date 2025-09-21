@@ -3,6 +3,7 @@ import { PageHero } from "@/components/page-hero";
 import { Card } from "@/components/card";
 import { Button } from "@/components/button";
 import { rutasEs, faqsEs } from "@/content/data-es";
+import { LegacyContent } from "@/components/legacy-content";
 
 export const metadata: Metadata = {
   title: "Planifica tu viaje",
@@ -64,6 +65,11 @@ export default function PlanificaPage() {
           </Card>
         </div>
       </section>
+
+      <LegacyContent
+        page="es_plan"
+        description="Guia de viaje heredada incluida a continuacion."
+      />
     </div>
   );
 }

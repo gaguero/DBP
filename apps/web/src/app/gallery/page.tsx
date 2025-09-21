@@ -1,1 +1,65 @@
-﻿import type { Metadata } from "next"; import Image from "next/image"; import { PageHero } from "@/components/page-hero"; import { galleryFilters } from "@/content/data";  const galleryItems = [   { src: "/images/hero-bay.jpg", alt: "Aerial view of Dolphin Bay", category: "Nature" },   { src: "/images/rooms-view.jpg", alt: "Sea view cabana terrace", category: "Rooms" },   { src: "/images/dining-overwater.jpg", alt: "Overwater dining deck", category: "Dining" },   { src: "/images/rooms-view.jpg", alt: "Family jungle room interior", category: "Rooms" },   { src: "/images/dining-overwater.jpg", alt: "Chef plating seasonal dish", category: "Dining" },   { src: "/images/hero-bay.jpg", alt: "Guests kayaking at sunrise", category: "Experiences" }, ];  export const metadata: Metadata = {   title: "Gallery",   description: "Browse highlights from Dolphin Blue Paradise—from sea-view suites to curated adventures.", };  export default function GalleryPage() {   return (     <div className="space-y-24 pb-24">       <PageHero         title="Scenes from Dolphin Blue Paradise"         kicker="Gallery"         description="Preview the spaces and experiences waiting in Dolphin Bay. Full-resolution assets will be available in the media library delivered to the design team."         image="/images/hero-bay.jpg"       />        <section className="section">         <div className="container space-y-6">           <div className="flex flex-wrap gap-3 text-xs uppercase tracking-[0.3em] text-[var(--color-text-muted)]">             {galleryFilters.map((filter) => (               <span key={filter} className="rounded-full border border-[var(--color-text-muted)] px-4 py-2">                 {filter}               </span>             ))}           </div>           <div className="grid gap-4 md:grid-cols-3">             {galleryItems.map((item, index) => (               <figure key={index} className="overflow-hidden rounded-3xl shadow-soft">                 <Image src={item.src} alt={item.alt} width={800} height={600} className="h-60 w-full object-cover" />                 <figcaption className="bg-white px-4 py-3 text-xs uppercase tracking-[0.2em] text-[var(--color-text-muted)]">                   {item.category}                 </figcaption>               </figure>             ))}           </div>         </div>       </section>     </div>   ); }
+import type { Metadata } from "next";
+import Image from "next/image";
+import { PageHero } from "@/components/page-hero";
+import { LegacyContent } from "@/components/legacy-content";
+import { galleryFilters } from "@/content/data";
+
+const galleryItems = [
+  { src: "/images/hero-bay.jpg", alt: "Aerial view of Dolphin Bay", category: "Nature" },
+  { src: "/images/rooms-view.jpg", alt: "Sea view cabana terrace", category: "Rooms" },
+  { src: "/images/dining-overwater.jpg", alt: "Overwater dining deck", category: "Dining" },
+  { src: "/images/rooms-view.jpg", alt: "Family jungle room interior", category: "Rooms" },
+  { src: "/images/dining-overwater.jpg", alt: "Chef plating seasonal dish", category: "Dining" },
+  { src: "/images/hero-bay.jpg", alt: "Guests kayaking at sunrise", category: "Experiences" },
+];
+
+export const metadata: Metadata = {
+  title: "Gallery",
+  description: "Browse highlights from Dolphin Blue Paradise-from sea-view suites to curated adventures.",
+};
+
+export default function GalleryPage() {
+  return (
+    <div className="space-y-24 pb-24">
+      <PageHero
+        title="Scenes from Dolphin Blue Paradise"
+        kicker="Gallery"
+        description="Preview the spaces and experiences waiting in Dolphin Bay. Full-resolution assets will be available in the media library delivered to the design team."
+        image="/images/hero-bay.jpg"
+      />
+
+      <section className="section">
+        <div className="container space-y-6">
+          <div className="flex flex-wrap gap-3 text-xs uppercase tracking-[0.3em] text-[var(--color-text-muted)]">
+            {galleryFilters.map((filter) => (
+              <span key={filter} className="rounded-full border border-[var(--color-text-muted)] px-4 py-2">
+                {filter}
+              </span>
+            ))}
+          </div>
+          <div className="grid gap-4 md:grid-cols-3">
+            {galleryItems.map((item, index) => (
+              <figure key={index} className="overflow-hidden rounded-3xl shadow-soft">
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  width={800}
+                  height={600}
+                  className="h-60 w-full object-cover"
+                />
+                <figcaption className="bg-white px-4 py-3 text-xs uppercase tracking-[0.2em] text-[var(--color-text-muted)]">
+                  {item.category}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <LegacyContent
+        page="facilities"
+        description="Legacy facilities content is available below so no details are lost during the redesign."
+      />
+    </div>
+  );
+}

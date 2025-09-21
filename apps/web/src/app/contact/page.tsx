@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
 import { Card } from "@/components/card";
 import { Button } from "@/components/button";
+import { LegacyContent } from "@/components/legacy-content";
 
 export const metadata: Metadata = {
   title: "Contact & Book",
@@ -160,6 +161,11 @@ export default function ContactPage({ searchParams }: { searchParams?: Record<st
           </Card>
         </div>
       </section>
+
+      <LegacyContent
+        page="contact"
+        description="Legacy reservation instructions are retained here for reference."
+      />
     </div>
   );
 }

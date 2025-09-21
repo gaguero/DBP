@@ -5,6 +5,7 @@ import { Card } from "@/components/card";
 import { Button } from "@/components/button";
 import { experienciasEs } from "@/content/data-es";
 import { activities } from "@/content/data";
+import { LegacyContent } from "@/components/legacy-content";
 
 export const metadata: Metadata = {
   title: "Experiencias",
@@ -111,6 +112,11 @@ export default function ExperienciasEsPage() {
           </Card>
         </div>
       </section>
+
+      <LegacyContent
+        page="es_experiencias"
+        description="Folleto de actividades heredado disponible para referencia."
+      />
     </div>
   );
 }
