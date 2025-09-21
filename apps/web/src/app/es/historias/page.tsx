@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+ï»¿import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
@@ -37,7 +37,7 @@ export default function HistoriasPage() {
   return (
     <div className="space-y-24 pb-24">
       <PageHero
-        title="Historias desde Bahía Delfines"
+        title="Historias desde BahÃ­a Delfines"
         kicker="Journal"
         description="Descubre lo que sucede en el resort, nuestros proyectos con la comunidad y consejos de viaje."
         image="/images/rooms-view.jpg"
@@ -54,7 +54,7 @@ export default function HistoriasPage() {
                 <p className="text-sm text-muted">{articulo.resumen}</p>
                 <Link href={`/es/historias/${articulo.slug}`} className="inline-flex items-center gap-1 text-sm font-semibold text-[var(--color-ocean)]">
                   Leer mas
-                  <span aria-hidden>→</span>
+                  <span aria-hidden>â†'</span>
                 </Link>
               </div>
             </Card>

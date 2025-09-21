@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+ï»¿import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -60,7 +60,7 @@ export default async function ExperienciaDetalle({ params }: ExperienciaEsProps)
             <ul className="space-y-3 text-muted">
               {(expEn.highlights ?? []).map((detalle) => (
                 <li key={detalle} className="flex items-start gap-2">
-                  <span aria-hidden className="mt-1 text-[var(--color-gold)]">•</span>
+                  <span aria-hidden className="mt-1 text-[var(--color-gold)]">â€¢</span>
                   <span>{detalle}</span>
                 </li>
               ))}
@@ -79,7 +79,7 @@ export default async function ExperienciaDetalle({ params }: ExperienciaEsProps)
               Podemos organizar traslados privados, refrigerios y fotografias. Indica tus horarios y preferencias para ajustar la experiencia a tu ritmo.
             </p>
             <Link href="/es/planifica-tu-viaje" className="button-secondary">
-              Detalles logísticos
+              Detalles logÃ­sticos
             </Link>
           </aside>
         </div>

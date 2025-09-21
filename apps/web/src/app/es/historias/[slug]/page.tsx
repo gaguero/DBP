@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+ï»¿import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -20,8 +20,8 @@ const historias = {
     imagen: "/images/rooms-view.jpg",
     parrafos: [
       "Esta temporada recibimos medicos y enfermeras voluntarios que navegaron a Aldana y Tierra Oscura para ofrecer consultas. En cinco dias se atendieron 320 pacientes.",
-      "Los huespedes donaron insumos medicos y acompañaron operaciones para conocer la realidad sanitaria local. Parte de cada reserva financia combustible y logistica.",
-      "¿Quieres sumarte a la proxima mision? Contacta al concierge para recibir agenda, lista de empaque y requisitos."],
+      "Los huespedes donaron insumos medicos y acompaÃ±aron operaciones para conocer la realidad sanitaria local. Parte de cada reserva financia combustible y logistica.",
+      "Â¿Quieres sumarte a la proxima mision? Contacta al concierge para recibir agenda, lista de empaque y requisitos."],
   },
   "delfines-respeto": {
     titulo: "Encuentros responsables con delfines",
