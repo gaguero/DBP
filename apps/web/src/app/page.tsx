@@ -193,7 +193,7 @@ export default function Home() {
       <section className="section bg-[var(--color-sand)]">
         <div className="container space-y-6">
           <blockquote className="rounded-3xl bg-white/80 p-8 text-lg italic text-[var(--color-navy)] shadow-soft">
-            "{testimonial.quote}"
+            <p>{testimonial.quote}</p>
           </blockquote>
           <p className="text-sm uppercase tracking-[0.3em] text-[var(--color-gold)]">{testimonial.author}</p>
         </div>
@@ -209,3 +209,4 @@ export default function Home() {
     </div>
   );
 }
+

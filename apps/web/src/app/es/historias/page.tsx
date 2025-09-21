@@ -1,4 +1,4 @@
-ï»¿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
@@ -54,7 +54,7 @@ export default function HistoriasPage() {
                 <p className="text-sm text-muted">{articulo.resumen}</p>
                 <Link href={`/es/historias/${articulo.slug}`} className="inline-flex items-center gap-1 text-sm font-semibold text-[var(--color-ocean)]">
                   Leer mas
-                  <span aria-hidden>â†'</span>
+                  <span aria-hidden>&gt;</span>
                 </Link>
               </div>
             </Card>

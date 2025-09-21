@@ -61,8 +61,8 @@ export default function DiningPage() {
 
       <section className="section">
         <div className="container space-y-4">
-          <Card className="space-y-3 bg-white/80 p-8 text-lg italic text-[var(--color-navy)] shadow-soft">
-            "{testimonial}"
+          <Card className="space-y-3 bg-white/80 p-8 text-lg text-[var(--color-navy)] shadow-soft">
+            <blockquote className="italic">{testimonial}</blockquote>
           </Card>
         </div>
       </section>

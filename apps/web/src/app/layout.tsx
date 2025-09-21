@@ -1,4 +1,4 @@
-ï»¿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { Playfair_Display, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
@@ -19,7 +19,7 @@ const sourceSans = Source_Sans_3({
 
 export const metadata: Metadata = {
   title: {
-    default: "Dolphin Blue Paradise â€" Eco Luxury Resort in Panama",
+    default: "Dolphin Blue Paradise - Eco Luxury Resort in Panama",
     template: "%s | Dolphin Blue Paradise",
   },
   description:
@@ -43,4 +43,4 @@ export default function RootLayout({
       </body>
     </html>
   );
-}
+}

@@ -1,4 +1,4 @@
-ï»¿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { Playfair_Display, Source_Sans_3 } from "next/font/google";
 import "../globals.css";
 import { SiteHeaderEs } from "@/components/site-header-es";
