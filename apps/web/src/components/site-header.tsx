@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Button } from "@/components/button";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -13,7 +13,6 @@ const navLinks = [
   { href: "/sustainability", label: "Impact" },
   { href: "/plan-your-journey", label: "Plan" },
   { href: "/stories", label: "Stories" },
-  { href: "/contact", label: "Contact" },
 ];
 
 function toSpanishPath(pathname: string | null) {
@@ -48,34 +47,43 @@ export function SiteHeader() {
 
   return (
     <header className="site-header">
-      <div className="site-header__top">
-        <div className="site-header__top-inner">
-          <span>Call / WhatsApp: <a href="tel:+50763460605">+507 6346 0605</a></span>
-          <span>Email: <a href="mailto:contact@dolphinblueparadise.com">contact@dolphinblueparadise.com</a></span>
-        </div>
-      </div>
       <div className="site-header__main">
-        <div className="site-header__brand">
-          <Link href="/" className="site-header__logo">
-            Dolphin Blue Paradise
-          </Link>
-          <button
-            type="button"
-            aria-expanded={open}
-            aria-controls="main-navigation"
-            className="site-header__toggle"
-            onClick={() => setOpen((prev) => !prev)}
-          >
-            <span className="sr-only">Toggle navigation</span>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
-              {open ? (
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5" />
-              )}
-            </svg>
-          </button>
-        </div>
+        <Link href="/" className="site-header__logo-link">
+          <Image
+            src="/images/DBP_logo_round_only_dolphin-removebg-preview.png"
+            alt="Dolphin Blue Paradise"
+            width={44}
+            height={44}
+            className="site-header__logo-icon"
+          />
+          <div className="site-header__logo-text">
+            <div className="site-header__logo-line1">
+              <span className="site-header__logo-dolphin">DOLPHIN</span>
+            </div>
+            <div className="site-header__logo-line2">
+              <span className="site-header__logo-blue">BLUE</span>
+            </div>
+            <div className="site-header__logo-line3">
+              <span className="site-header__logo-paradise">PARADISE</span>
+            </div>
+          </div>
+        </Link>
+        <button
+          type="button"
+          aria-expanded={open}
+          aria-controls="main-navigation"
+          className="site-header__toggle"
+          onClick={() => setOpen((prev) => !prev)}
+        >
+          <span className="sr-only">Toggle navigation</span>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
+            {open ? (
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+            ) : (
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5" />
+            )}
+          </svg>
+        </button>
         <nav className="site-header__nav">
           {navLinks.map((link) => {
             const isActive = pathname === link.href || pathname?.startsWith(`${link.href}/`);
@@ -93,11 +101,6 @@ export function SiteHeader() {
             ES
           </Link>
         </nav>
-        <div className="site-header__cta">
-          <Button href="#booking" trackingEvent="cta_header_booking" trackingData={{ location: "header" }}>
-            Book Now
-          </Button>
-        </div>
       </div>
       {open ? (
         <nav id="main-navigation" className="site-header__mobile">

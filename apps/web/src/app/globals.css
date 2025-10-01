@@ -249,7 +249,7 @@ main {
   border-radius: 0;
   box-shadow: 0 0px 0px rgba(0, 0, 0, 0.15);
   width: 84%;
-  padding: clamp(1.8rem, 3.6vw, 2.7rem);
+  padding: clamp(1.2rem, 2.4vw, 0.2rem);
   text-align: center;
   position: relative;
   backdrop-filter: blur(10px);
@@ -272,6 +272,7 @@ main {
   font-size: clamp(1.2rem, 3vw, 1.8rem);
   color: var(--color-navy);
   margin-bottom: 0.7rem;
+  padding-top: 1rem;
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;

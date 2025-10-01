@@ -1,85 +1,6 @@
 import Image from "next/image";
 import { BookingWidgetPlaceholder } from "@/components/booking-widget-placeholder";
 import { Button } from "@/components/button";
-import { Card } from "@/components/card";
-import { activities } from "@/content/data";
-
-const heroHeadline = "Dolphin Blue Paradise is here.";
-const heroBody = [
-  "Discovering a travel destination that truly aligns with your values can be challenging.",
-  "You need a place that combines comfort, unique and personalized experiences, and sustainability without compromising your ethical and environmental values.",
-];
-
-const legacyIntro =
-  "We provide a fully personalized and memorable stay with farm-to-table meals, customized excursions, and a commitment to sustainability. We will address all travel details, from flights to the final boat ride. Our resort operates on green energy, uses eco-friendly materials, and sources local produce for a luxurious, environmentally responsible stay.";
-
-const locationParagraph =
-  "Dolphin Blue Paradise is a 100% off-the-grid luxury eco-resort located on Isla San Cristobal in Dolphin Bay; a hilly island with plantations, farms, and the indigenous villages of Bocastorito and Aldana.";
-
-const featureHighlights = [
-  {
-    title: "Breakfast",
-    description:
-      "Start the day with a delicious breakfast made of fresh fruit from the garden, juices, fresh eggs from Dolphin Bay, homemade bread and jams.",
-  },
-  {
-    title: "Free Wi-Fi",
-    description: "Internet is free and available around the entire property.",
-  },
-  {
-    title: "Tropical Garden",
-    description:
-      "Enjoy a beautiful walk surrounded by nature in our 5-acre garden cared for by our head gardener and nature expert, Roque.",
-  },
-  {
-    title: "Sea View",
-    description:
-      "You'll never be as close to the sea as in Dolphin Blue Paradise. Enjoy a swim in the crystal clear water and observe marine life up close.",
-  },
-];
-
-const splitHighlight = {
-  heading: "Discover our rooms with a beautiful sea view",
-  description:
-    "At Dolphin Blue Paradise all rooms come with a wardrobe and a private bathroom, plus a private terrace to enjoy the breeze and the view.",
-  cta: {
-    label: "Discover Our Rooms",
-    href: "/rooms",
-  },
-};
-
-const newsItems = [
-  {
-    title: "Dolphin Bay",
-    excerpt: "Experience the beauty of the dolphins and the calm of the bay!",
-  },
-  {
-    title: "Chocolate Farm Tour",
-    excerpt:
-      "Visit the indigenous Ngabe cacao community or kayak to our neighbors to learn how they grow, harvest, and process cacao into chocolate.",
-  },
-];
-
-const testimonial = {
-  quote:
-    "My wife and I have traveled to over 50 countries over the course of our adult lives... Dolphin Blue Paradise is one of, if not THE, most breathtaking, gorgeous, and hospitable locations we have experienced.",
-  author: "Recent Your Reviews",
-};
-
-const diaryHighlights = activities.slice(0, 4).map((activity) => ({
-  title: activity.name,
-  description: activity.summary,
-  image: activity.image,
-}));
-
-const contactInfo = [
-  "WhatsApp: +507 6346 0605",
-  "contact@dolphinblueparadise.com",
-  "Isla San Cristobal - Bahia Delfines - Bocas del Toro - Panama",
-];
-
-const disclaimer =
-  "Dolphin Blue Paradise is not liable for any guests belongings. While Dolphin Bay is one of the safest places in the world we ask all of our guests to safekeep their belongings.";
 
 export default function Home() {
   return (
@@ -177,7 +98,7 @@ export default function Home() {
                 <div className="home-carousel-content">
                   <h2 className="home-section__heading">WELCOME</h2>
                   <p className="home-section__text">Discovering a travel destination that truly aligns with your values can be challenging.</p>
-                  <p className="home-section__text">You need a place that combines comfort, unique and personalized experiences, and sustainability without compromising your ethical and environmental values…</p>
+                  <p className="home-section__text">You need a place that combines comfort, unique and personalized experiences, and sustainability without compromising your ethical and environmental valuesâ€¦</p>
                   <p className="home-section__text">Dolphin Blue Paradise is here.</p>
                   <Button href="/plan-your-journey" className="home-rooms__button">
                     Plan Your Escape
@@ -197,7 +118,7 @@ export default function Home() {
                 </div>
                 <div className="home-carousel-content">
                   <h2 className="home-section__heading">OUR SERVICE</h2>
-                  <p className="home-section__text">We provide a fully personalized and memorable stay with farm-to-table meals, customized excursions, and a commitment to sustainability. To alleviate any concerns, we will address all travel details, from flights to the final boat ride. Our resort operates on green energy, uses eco-friendly materials, and sources local produce for a luxurious, environmentally responsible stay. You'll immerse yourself in one of the world's most biodiverse and rich environments, witnessing firsthand the positive impact of your visit on the environment and local communities through our extensive sustainable practices. Our attentive service, tailored itineraries, and special dietary accommodations ensure every detail is perfectly suited to you.</p>
+                  <p className="home-section__text">We provide a fully personalized and memorable stay with farm-to-table meals, customized excursions, and a commitment to sustainability. To alleviate any concerns, we will address all travel details, from flights to the final boat ride. Our resort operates on green energy, uses eco-friendly materials, and sources local produce for a luxurious, environmentally responsible stay. You&apos;ll immerse yourself in one of the world&apos;s most biodiverse and rich environments, witnessing firsthand the positive impact of your visit on the environment and local communities through our extensive sustainable practices. Our attentive service, tailored itineraries, and special dietary accommodations ensure every detail is perfectly suited to you.</p>
                 </div>
               </div>
               
@@ -213,7 +134,7 @@ export default function Home() {
                 </div>
                 <div className="home-carousel-content">
                   <h2 className="home-section__heading">A UNIQUE LOCATION</h2>
-                  <p className="home-section__text">Dolphin Blue Paradise is a 100% off-the-grid luxury eco-resort located on Isla San Cristobal in Dolphin Bay; a hilly island with plantations, farms, and the indigenous villages of Bocastorito and Aldana. Home to the Ngabe and Guayami Tribe, the island's biodiversity includes a primary rainforest and the bay hosts about 80 bottlenose dolphins living year-round in Dolphin Bay. Its natural beauty makes it a top tour destination in Panama. Staying with us offers a unique opportunity to immerse yourself in the tranquility and cultural richness of one of Panama's most picturesque areas.</p>
+                  <p className="home-section__text">Dolphin Blue Paradise is a 100% off-the-grid luxury eco-resort located on Isla San Cristobal in Dolphin Bay; a hilly island with plantations, farms, and the indigenous villages of Bocastorito and Aldana. Home to the Ngabe and Guayami Tribe, the island&apos;s biodiversity includes a primary rainforest and the bay hosts about 80 bottlenose dolphins living year-round in Dolphin Bay. Its natural beauty makes it a top tour destination in Panama. Staying with us offers a unique opportunity to immerse yourself in the tranquility and cultural richness of one of Panama&apos;s most picturesque areas.</p>
                 </div>
               </div>
               
@@ -255,7 +176,7 @@ export default function Home() {
           </div>
           <div className="home-reviews-right">
             <div className="home-review-card">
-              <div className="home-review__quote-mark">"</div>
+              <div className="home-review__quote-mark">&quot;</div>
               <blockquote className="home-review__quote">
                 My wife and I have traveled to over 50 countries over the course of our adult lives, stayed in hotels, resorts, and destinations of all types, experienced many wonderful cultures, environments, and adventures. We can, without hesitation, confirm that Dolphin Blue Paradise is one of, if not THE, most breathtaking, gorgeous, and hospitable locations we have experienced.
               </blockquote>
@@ -306,7 +227,7 @@ export default function Home() {
               <div className="home-carousel-slide home-carousel-slide--reverse">
                 <div className="home-carousel-content">
                   <h2 className="home-section__heading">EXPERIENCES</h2>
-                  <p className="home-section__text">From dolphin watching in crystal clear waters to exploring primary rainforests, our curated experiences connect you with Panama's incredible biodiversity.</p>
+                  <p className="home-section__text">From dolphin watching in crystal clear waters to exploring primary rainforests, our curated experiences connect you with Panama&apos;s incredible biodiversity.</p>
                   <p className="home-section__text">Adventure awaits with snorkeling, surfing, kayaking, chocolate farm tours, and encounters with exotic wildlife in their natural habitat.</p>
                   <Button href="/experiences" className="home-rooms__button">
                     Explore Experiences
@@ -356,7 +277,7 @@ export default function Home() {
         <div className="home-container">
           <div className="home-testimonial-full">
             <h3 className="home-section__subheading">YOUR REVIEWS</h3>
-            <div className="home-testimonial__quote-mark">"</div>
+            <div className="home-testimonial__quote-mark">&quot;</div>
             <blockquote className="home-testimonial__quote">My wife and I have traveled to over 50 countries over the course of our adult lives, stayed in hotels, resorts, and destinations of all types, experienced many wonderful cultures, environments, and adventures. We can, without hesitation, confirm that Dolphin Blue Paradise is one of, if not THE, most breathtaking, gorgeous, and hospitable locations we have experienced. The surroundings, flora, fauna (the resident sloth!) and accommodations all fit together in a relaxing, even harmonious, manner and way of life.</blockquote>
             <div className="home-testimonial__actions">
               <Button href="#booking" className="home-rooms__button">
@@ -375,7 +296,7 @@ export default function Home() {
               <div className="home-contact__details">
                 <p className="home-contact__item">WhatsApp: +507 6346 0605</p>
                 <p className="home-contact__item">contact@dolphinblueparadise.com</p>
-                <p className="home-contact__item">Isla San Cristóbal - Bahia delfines - Bocas Del Toro - Panama</p>
+                <p className="home-contact__item">Isla San CristÃ³bal - Bahia delfines - Bocas Del Toro - Panama</p>
               </div>
             </div>
           </div>

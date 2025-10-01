@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(c:\\Users\\jovy2\\OneDrive\\Pictures\\Screenshots/**)",
+      "Read(c:\\Users\\jovy2\\Documents\\VTF\\DBPwix\\apps\\web\\public\\images/**)",
+      "WebFetch(domain:www.dolphinblueparadise.com)",
+      "Read(c:\\Users\\jovy2\\OneDrive\\Pictures\\Screenshots/**)",
+      "WebSearch",
+      "Read(c:\\Users\\jovy2\\OneDrive\\Pictures\\Screenshots/**)",
+      "Read(c:\\Users\\jovy2\\OneDrive\\Pictures\\Screenshots/**)",
+      "Read(c:\\Users\\jovy2\\OneDrive\\Pictures\\Screenshots/**)",
+      "Read(c:\\Users\\jovy2\\OneDrive\\Pictures\\Screenshots/**)",
+      "Bash(pnpm dev:*)",
+      "Read(c:\\Users\\jovy2\\OneDrive\\Pictures\\Screenshots/**)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
