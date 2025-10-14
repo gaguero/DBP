@@ -1,0 +1,34 @@
+version: "3.9"
+
+services:
+  espocrm:
+    build: .
+    ports:
+      - "8080:80"
+    environment:
+      ESPOCRM_SITE_URL: "http://localhost:8080"
+      ESPOCRM_DB_HOST: "db"
+      ESPOCRM_DB_PORT: "5432"
+      ESPOCRM_DB_NAME: "espocrm"
+      ESPOCRM_DB_USER: "espocrm"
+      ESPOCRM_DB_PASSWORD: "change_me"
+      ESPOCRM_DB_DRIVER: "pdoPgsql"
+      ESPOCRM_DEFAULT_LANGUAGE: "en_US"
+      ESPOCRM_TIMEZONE: "America/Costa_Rica"
+    volumes:
+      - espocrm-storage:/persistent
+    depends_on:
+      - db
+
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: "espocrm"
+      POSTGRES_USER: "espocrm"
+      POSTGRES_PASSWORD: "change_me"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+volumes:
+  espocrm-storage:
+  db-data:

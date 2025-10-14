@@ -1,0 +1,1 @@
+﻿import type { HTMLAttributes, ReactNode } from "react"; import clsx from "clsx";  type CardProps = {   children: ReactNode;   className?: string; } & HTMLAttributes<HTMLDivElement>;  export function Card({ children, className, ...props }: CardProps) {   return (     <div {...props} className={clsx("card", className)}>       {children}     </div>   ); }

@@ -1,0 +1,24 @@
+{
+  "name": "dolphin-blue-paradise",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Monorepo for Dolphin Blue Paradise website and supporting services",
+  "license": "UNLICENSED",
+  "packageManager": "pnpm@8.15.5",
+  "scripts": {
+    "lint": "pnpm -r lint",
+    "build": "pnpm -r build",
+    "dev": "pnpm --filter web dev",
+    "test": "pnpm -r test",
+    "format": "pnpm -r exec prettier --write \"**/*.{ts,tsx,js,jsx,md,css}\""
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "devDependencies": {
+    "@eslint/js": "^9.36.0",
+    "globals": "^16.4.0",
+    "prettier": "^3.6.2"
+  }
+}
