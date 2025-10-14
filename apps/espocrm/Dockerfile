@@ -55,6 +55,11 @@ RUN set -eux; \
     find /var/www/html -type f -exec chmod 644 {} \;; \
     chmod -R 775 /persistent/data /persistent/custom
 
+COPY docker-entrypoint.sh /usr/local/bin/espocrm-entrypoint.sh
+
+RUN chmod +x /usr/local/bin/espocrm-entrypoint.sh
+
 EXPOSE 80
 
+ENTRYPOINT ["espocrm-entrypoint.sh"]
 CMD ["apache2-foreground"]
