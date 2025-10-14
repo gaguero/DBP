@@ -27,6 +27,7 @@ This directory contains the EspoCRM source code (`./src`) together with containe
 - First-time setup can be automated with `php command.php install --db-driver=pdoPgsql ...` after the container starts, or completed through the browser installer.
 - Backups: schedule exports of the PostgreSQL database and snapshot the `/persistent` directory stored in Railway volumes or object storage.
 - The container entrypoint automatically fixes ownership/permissions for `/persistent` on every boot, so the web installer can write configuration files without manual intervention.
+- PHP runtime limits (`memory_limit`, `max_execution_time`, upload limits) are pre-tuned via `php.ini` for EspoCRM's recommended values.
 
 ## Useful Commands
 - `docker compose run --rm espocrm php command.php rebuild` - rebuilds metadata and clears caches after installing extensions.
