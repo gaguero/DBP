@@ -91,6 +91,13 @@ wix sync-types
 - **Chatwoot**: Customer chat via `ChatwootScript`
 - **Analytics**: Custom event tracking via `TrackedLink`
 
+### EspoCRM Service (`apps/espocrm/`)
+- Local run: copy `.env.example` to `.env`, then `docker compose up --build`; the installer is available at `http://localhost:8080/install`.
+- Docker image bundles EspoCRM 9.2.2, PHP 8.2, and a `/persistent` volume layout that mirrors the Railway deployment (PostgreSQL backend, cron automation, tuned `php.ini`).
+- Entry point handles permissions, installs the `* * * * *` cron job for `www-data`, and starts the cron daemon—no manual setup required after boot.
+- Website integration relies on `ESPOCRM_URL` and `ESPOCRM_API_KEY` (see `apps/web/src/lib/env.ts`). Generate keys via Espo `Administration → API Users`.
+- Production service lives on Railway using the same Dockerfile. Persistent volume is mounted at `/persistent`; backups must include `/persistent` and the managed Postgres database.
+
 ## Development Notes
 
 ### Content Updates

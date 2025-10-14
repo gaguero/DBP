@@ -3,6 +3,10 @@
 ## DBP Snapshot
 - Project codename: **DBP** (Dolphin Blue Paradise).
 
+## Internal Platforms
+- **EspoCRM (apps/espocrm/)**: copy `.env.example` to `.env`, run `docker compose up --build`, then complete the installer at `http://localhost:8080/install`. The Docker image mirrors the Railway deployment (PostgreSQL, `/persistent` volume, cron automation). Production secrets live in Railway variables; expose the public URL and API key to the web app via `ESPOCRM_URL` and `ESPOCRM_API_KEY`.
+- **Web App (apps/web/)**: Next.js frontend reads CRM env values from `apps/web/src/lib/env.ts`. Update `.env.local` accordingly before running `pnpm dev`.
+
 ## Project Overview
 - Build a new, visually refined website for Dolphin Blue Paradise using content from the scraped legacy Wix site.
 - Source snapshot (captured 2025-09-20) lives in `dolphinblueparadis-1/d/` and includes HTML, JSON, plain-text extracts, and screen captures.

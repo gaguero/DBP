@@ -26,8 +26,18 @@ This directory contains the EspoCRM source code (`./src`) together with containe
   - `ESPOCRM_SMTP_HOST`, `ESPOCRM_SMTP_PORT`, `ESPOCRM_SMTP_USER`, `ESPOCRM_SMTP_PASSWORD`, `ESPOCRM_SMTP_SECURITY`
 - First-time setup can be automated with `php command.php install --db-driver=pdoPgsql ...` after the container starts, or completed through the browser installer.
 - Backups: schedule exports of the PostgreSQL database and snapshot the `/persistent` directory stored in Railway volumes or object storage.
-- The container entrypoint automatically fixes ownership/permissions for `/persistent` on every boot, so the web installer can write configuration files without manual intervention.
+- The container entrypoint automatically fixes ownership/permissions for `/persistent` on every boot, registers the Espo cron job for the `www-data` user, and starts the cron daemon so scheduled jobs run without manual steps.
 - PHP runtime limits (`memory_limit`, `max_execution_time`, upload limits) are pre-tuned via `php.ini` for EspoCRM's recommended values.
+
+## Post-Install Checklist
+- Complete the installer wizard and sign in with the admin user defined in `.env`/Railway secrets, then change the password.
+- Confirm scheduled jobs are active under **Administration → Scheduled Jobs** (the entrypoint already installs the cron entry and starts the daemon).
+- Configure SMTP under **Administration → Email → Outbound** so notifications and automations can send mail.
+- Create an API User (or API Key) for the website integration and expose it to the web app via `ESPOCRM_API_KEY`. The public URL should be stored in `ESPOCRM_URL`.
+
+## Integration Touchpoints
+- **Website leads:** The Next.js app reads `ESPOCRM_URL` and `ESPOCRM_API_KEY` (see `apps/web/src/lib/env.ts`) to post inquiries to `/Lead`.
+- **Automations:** Additional webhooks or n8n flows can call Espo's REST API using the same key; document any new endpoints before deploying.
 
 ## Useful Commands
 - `docker compose run --rm espocrm php command.php rebuild` - rebuilds metadata and clears caches after installing extensions.

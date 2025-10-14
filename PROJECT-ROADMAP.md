@@ -64,10 +64,10 @@ project-root/
 - **Inputs needed:** DevOps constraints, budget for hosting, integration endpoints (booking widget embed, CRM, chat).
 - **Outputs:** Architecture diagram, environment plan (dev/stage/prod on Railway), infrastructure-as-code manifests, dependency list.
 
-### Stage 5 – Implementation & Integrations
+### Stage 5 - Implementation & Integrations
 - **Goals:** Build templates, components, CMS collections, and connect EspoCRM + Chatwoot + GA4.
 - **Inputs needed:** Approved designs, structured content, integration credentials, workflow definitions.
-- **Outputs:** Functional site, synchronized lead flows, multilingual chat widget, analytics dashboards, n8n automation flows.
+- **Outputs:** Functional site, synchronized lead flows, multilingual chat widget, analytics dashboards, n8n automation flows, production EspoCRM service on Railway (PostgreSQL + cron automation).
 
 ### Stage 6 – QA, Performance & Compliance
 - **Goals:** Validate functionality, responsive behavior, accessibility, SEO, performance benchmarks.
@@ -143,10 +143,10 @@ project-root/
 - **Website → Chatwoot:** Embed chat widget with initialization parameters (language, guest context). Pass CRM contact ID when known.
 - **EspoCRM ↔ Chatwoot:** Use Chatwoot webhooks to create/update leads; optionally send conversation summaries back to CRM via automation scripts.
 - **Analytics ↔ CRM:** Nightly n8n sync to push GA4 campaign data into EspoCRM for attribution dashboards.
-- **Backups:** Nightly database snapshots for EspoCRM (MariaDB) and Chatwoot (Postgres), plus storage of n8n export and CMS backups.
+- **Backups:** Nightly database snapshots for EspoCRM (PostgreSQL) and Chatwoot (Postgres), plus storage of n8n export and CMS backups.
 
 ## 6. Outstanding Information Checklist
-- Final confirmation of Railway project setup (linked GitHub repo, environment names, resource tiers).
+- ✅ Railway CRM service provisioned (EspoCRM 9.2.2 on Railway with PostgreSQL, persistent volume, cron automation).
 - Booking widget technical documentation (embed snippet, customization options, event hooks for GA4/CRM tags).
 - Consent/banner solution compatible with GA4 and Chatwoot (e.g., Cookiebot, open-source Klaro!).
 - Multilingual support plan across website, Chatwoot canned responses, and EspoCRM templates.

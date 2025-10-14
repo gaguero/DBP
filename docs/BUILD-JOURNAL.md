@@ -1,4 +1,4 @@
-﻿# Build Journal
+# Build Journal
 
 ## Phase 1 - Technical Setup
 - [x] Created monorepo directory structure (`apps`, `packages`, `infra`, `docs`).
@@ -27,5 +27,12 @@
 - [x] Spanish language routes and content localization.
 - [ ] Blog CMS integration (pending content source decision).
 
-\n## Phase 4 - Integrations\n- [x] Added serverless lead endpoint posting to EspoCRM with locale-aware redirects.\n- [x] Embedded Chatwoot widget and Google Tag Manager loader across layouts.\n- [x] Implemented reusable analytics helper and wired CTA events + lead success tracking.\n- [ ] Finalize blog/CMS selection and content pipeline.\n\n---
+## Phase 4 - Integrations
+- [x] Added serverless lead endpoint posting to EspoCRM with locale-aware redirects.
+- [x] Embedded Chatwoot widget and Google Tag Manager loader across layouts.
+- [x] Implemented reusable analytics helper and wired CTA events + lead success tracking.
+- [x] Provisioned EspoCRM 9.2.2 on Railway (PostgreSQL, persistent volume, cron automation) and completed production install.
+- [ ] Finalize blog/CMS selection and content pipeline.
+
+---
 Update this log as phases progress to maintain traceability for stakeholders and Railway deployment chores.
