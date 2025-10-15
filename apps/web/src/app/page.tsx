@@ -185,7 +185,7 @@ export default function Home() {
               <div className="home-review__author">
                 <div className="home-review__avatar">
                   <Image
-                    src="/images/guest-avatar.jpg"
+                    src="/images/guest-avatar.svg"
                     alt="Guest review"
                     width={60}
                     height={60}
@@ -260,7 +260,7 @@ export default function Home() {
           <h2 className="home-section__heading home-center">OUR LITTLE PARADISE BY THE SEA</h2>
           <div className="home-gallery__wrapper">
             <Image
-              src="/images/Hero_sea.PNG"
+              src="/images/Hero_sea.png"
               alt="Paradise by the sea"
               width={1200}
               height={600}
