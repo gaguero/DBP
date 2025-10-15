@@ -54,33 +54,58 @@ export async function POST(request: Request) {
   const normalizedPhone = parsedBody.phone ? parsedBody.phone.replace(/[^\d+]/g, "") : undefined;
   const phoneValue = normalizedPhone && normalizedPhone.length >= 5 ? normalizedPhone : undefined;
 
-  try {
-    const crmResponse = await fetch(`${env.ESPOCRM_URL}/Lead`, {
+  const basePayload: Record<string, unknown> = {
+    firstName,
+    lastName,
+    name: parsedBody.name,
+    emailAddress: parsedBody.email,
+    description: "Subscribed to newsletter via website popup",
+    source: "Web Site",
+    inquiryChannel: "Website Form",
+    consentEmail: true,
+  };
+
+  if (phoneValue) {
+    basePayload.phoneNumber = phoneValue;
+  }
+
+  async function createLead(payload: Record<string, unknown>) {
+    return fetch(`${env.ESPOCRM_URL}/Lead`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "X-Api-Key": env.ESPOCRM_API_KEY,
       },
-      body: JSON.stringify({
-        firstName,
-        lastName,
-        name: parsedBody.name,
-        emailAddress: parsedBody.email,
-        ...(phoneValue ? { phoneNumber: phoneValue } : {}),
-        description: "Subscribed to newsletter via website popup",
-        source: "Web Site",
-        inquiryChannel: "Website Form",
-        consentEmail: true,
-      }),
+      body: JSON.stringify(payload),
     });
+  }
+
+  try {
+    let crmResponse = await createLead(basePayload);
 
     if (!crmResponse.ok) {
       const errorText = await crmResponse.text();
       console.error("EspoCRM newsletter error", crmResponse.status, errorText);
-      return NextResponse.json(
-        { error: "Failed to create contact" },
-        { status: 502 },
-      );
+
+      const shouldRetryWithoutPhone =
+        crmResponse.status === 400 &&
+        phoneValue &&
+        /"field"\s*:\s*"phoneNumber"/.test(errorText);
+
+      if (shouldRetryWithoutPhone) {
+        console.warn("Retrying lead creation without phone number");
+        const { phoneNumber, ...retryPayload } = basePayload;
+        crmResponse = await createLead(retryPayload);
+      }
+
+      if (!crmResponse.ok) {
+        const retryText = await crmResponse.text();
+        console.error("EspoCRM retry failed", crmResponse.status, retryText);
+        return NextResponse.json(
+          { error: "Failed to create lead" },
+          { status: 502 },
+        );
+      }
     }
 
     return NextResponse.json({ ok: true });
