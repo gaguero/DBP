@@ -51,23 +51,11 @@ export async function POST(request: Request) {
 
   const { firstName, lastName } = splitName(parsedBody.name);
 
-  const normalizedPhone = parsedBody.phone
-    ? parsedBody.phone.replace(/[^\d+]/g, "")
-    : undefined;
-
-  const phoneField =
-    normalizedPhone && normalizedPhone.length >= 5
-      ? [
-          {
-            phoneNumber: normalizedPhone,
-            primary: true,
-            type: "Mobile",
-          },
-        ]
-      : undefined;
+  const normalizedPhone = parsedBody.phone ? parsedBody.phone.replace(/[^\d+]/g, "") : undefined;
+  const phoneValue = normalizedPhone && normalizedPhone.length >= 5 ? normalizedPhone : undefined;
 
   try {
-    const crmResponse = await fetch(`${env.ESPOCRM_URL}/Contact`, {
+    const crmResponse = await fetch(`${env.ESPOCRM_URL}/Lead`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -78,9 +66,11 @@ export async function POST(request: Request) {
         lastName,
         name: parsedBody.name,
         emailAddress: parsedBody.email,
-        ...(phoneField ? { phoneNumber: phoneField } : {}),
+        ...(phoneValue ? { phoneNumber: phoneValue } : {}),
         description: "Subscribed to newsletter via website popup",
-        emailOptIn: true,
+        source: "Web Site",
+        inquiryChannel: "Website Form",
+        consentEmail: true,
       }),
     });
 
