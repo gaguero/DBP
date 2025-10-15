@@ -1,0 +1,90 @@
+[
+    {
+        "label": "Profile",
+        "rows": [
+            [
+                {"name": "name"},
+                {"name": "accounts"}
+            ],
+            [
+                {"name": "emailAddress"},
+                {"name": "phoneNumber"}
+            ],
+            [
+                {"name": "preferredLanguage"},
+                {"name": "preferredContactWindow"}
+            ],
+            [
+                {"name": "vipTier"},
+                {"name": "loyaltyId"}
+            ],
+            [
+                {"name": "chatwootContactId"},
+                {"name": "chatwootProfileUrl"}
+            ],
+            [
+                {"name": "pbxExtension"},
+                false
+            ]
+        ]
+    },
+    {
+        "label": "Stay History",
+        "rows": [
+            [
+                {"name": "lastStayDate"},
+                {"name": "nextStayDate"}
+            ],
+            [
+                {"name": "specialOccasion"},
+                {"name": "celebrationDate"}
+            ]
+        ]
+    },
+    {
+        "label": "Preferences",
+        "rows": [
+            [
+                {"name": "marketingSegments", "fullWidth": true}
+            ],
+            [
+                {"name": "dietaryNotes", "fullWidth": true}
+            ],
+            [
+                {"name": "allergies", "fullWidth": true}
+            ],
+            [
+                {"name": "travelNotes", "fullWidth": true}
+            ]
+        ]
+    },
+    {
+        "label": "Consent",
+        "rows": [
+            [
+                {"name": "emailOptIn"},
+                {"name": "smsOptIn"}
+            ],
+            [
+                {"name": "whatsappOptIn"},
+                false
+            ]
+        ]
+    },
+    {
+        "label": "Address",
+        "rows": [
+            [
+                {"name": "address", "fullWidth": true}
+            ]
+        ]
+    },
+    {
+        "label": "Notes",
+        "rows": [
+            [
+                {"name": "description", "fullWidth": true}
+            ]
+        ]
+    }
+]

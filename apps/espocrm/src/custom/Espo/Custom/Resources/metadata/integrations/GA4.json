@@ -1,0 +1,22 @@
+{
+    "fields": {
+        "measurementId": {
+            "type": "varchar",
+            "maxLength": 32,
+            "required": true
+        },
+        "apiSecret": {
+            "type": "password",
+            "required": true
+        },
+        "propertyId": {
+            "type": "varchar",
+            "maxLength": 32,
+            "required": true
+        },
+        "eventMapping": {
+            "type": "jsonArray"
+        }
+    },
+    "allowUserAccounts": false
+}

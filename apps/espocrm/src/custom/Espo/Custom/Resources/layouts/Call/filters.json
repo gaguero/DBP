@@ -1,0 +1,16 @@
+[
+    "assignedUser",
+    "teams",
+    "dateStart",
+    "dateEnd",
+    "status",
+    "direction",
+    "callDisposition",
+    "pbxProvider",
+    "pbxAgent",
+    "pbxQueue",
+    "parent",
+    "leads",
+    "contacts",
+    "users"
+]

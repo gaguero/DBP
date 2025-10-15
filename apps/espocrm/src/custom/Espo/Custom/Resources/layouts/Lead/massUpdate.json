@@ -1,0 +1,16 @@
+[
+    "status",
+    "assignedUser",
+    "inquiryChannel",
+    "preferredLanguage",
+    "stayInterest",
+    "travelPurpose",
+    "budgetRange",
+    "deviceType",
+    "consentEmail",
+    "consentSms",
+    "consentWhatsApp",
+    "automationOptOut",
+    "chatwootInbox",
+    "teams"
+]

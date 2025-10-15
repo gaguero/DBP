@@ -1,0 +1,14 @@
+[
+    "assignedUser",
+    "teams",
+    "preferredLanguage",
+    "vipTier",
+    "marketingSegments",
+    "emailOptIn",
+    "smsOptIn",
+    "whatsappOptIn",
+    "lastStayDate",
+    "nextStayDate",
+    "createdAt",
+    "modifiedAt"
+]

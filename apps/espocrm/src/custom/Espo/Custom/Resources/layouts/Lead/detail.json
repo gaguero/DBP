@@ -1,0 +1,126 @@
+[
+    {
+        "label": "Inquiry Overview",
+        "rows": [
+            [
+                {"name": "name"},
+                {"name": "status"}
+            ],
+            [
+                {"name": "assignedUser"},
+                {"name": "inquiryChannel"}
+            ],
+            [
+                {"name": "preferredLanguage"},
+                {"name": "preferredContactWindow"}
+            ],
+            [
+                {"name": "emailAddress"},
+                {"name": "phoneNumber"}
+            ],
+            [
+                {"name": "source"},
+                {"name": "campaign"}
+            ]
+        ]
+    },
+    {
+        "label": "Stay Planning",
+        "rows": [
+            [
+                {"name": "checkInDate"},
+                {"name": "checkOutDate"}
+            ],
+            [
+                {"name": "partySize"},
+                {"name": "childCount"}
+            ],
+            [
+                {"name": "stayInterest"},
+                {"name": "travelPurpose"}
+            ],
+            [
+                {"name": "budgetRange"},
+                {"name": "deviceType"}
+            ],
+            [
+                {"name": "followUpAt"},
+                false
+            ]
+        ]
+    },
+    {
+        "label": "Source & Analytics",
+        "rows": [
+            [
+                {"name": "utmSource"},
+                {"name": "utmMedium"}
+            ],
+            [
+                {"name": "utmCampaign"},
+                {"name": "utmTerm"}
+            ],
+            [
+                {"name": "utmContent"},
+                {"name": "gaSessionNumber"}
+            ],
+            [
+                {"name": "gaClientId"},
+                {"name": "gaSessionId"}
+            ],
+            [
+                {"name": "landingPage"},
+                {"name": "referrer"}
+            ]
+        ]
+    },
+    {
+        "label": "Consent & Automation",
+        "rows": [
+            [
+                {"name": "consentEmail"},
+                {"name": "consentSms"}
+            ],
+            [
+                {"name": "consentWhatsApp"},
+                {"name": "automationOptOut"}
+            ]
+        ]
+    },
+    {
+        "label": "Omnichannel History",
+        "rows": [
+            [
+                {"name": "chatwootConversationId"},
+                {"name": "chatwootInbox"}
+            ],
+            [
+                {"name": "chatwootContactUrl"},
+                {"name": "chatwootLastSyncedAt"}
+            ],
+            [
+                {"name": "chatwootLastPreview", "fullWidth": true}
+            ],
+            [
+                {"name": "pbxExternalId"},
+                {"name": "pbxAgent"}
+            ],
+            [
+                {"name": "lastCallAt"},
+                {"name": "lastCallDisposition"}
+            ],
+            [
+                {"name": "lastCallDuration"},
+                {"name": "lastCallRecordingUrl"}
+            ]
+        ]
+    },
+    {
+        "label": "Notes",
+        "rows": [
+            [
+                {"name": "description", "fullWidth": true}
+            ]
+        ]
+    }
+]

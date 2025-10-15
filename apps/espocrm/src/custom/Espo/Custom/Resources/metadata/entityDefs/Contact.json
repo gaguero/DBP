@@ -1,0 +1,95 @@
+{
+    "fields": {
+        "preferredLanguage": {
+            "type": "enum",
+            "options": [
+                "English",
+                "Spanish",
+                "French"
+            ],
+            "default": "English",
+            "isPersonalData": true,
+            "audited": true
+        },
+        "preferredContactWindow": {
+            "type": "enum",
+            "options": [
+                "Morning (08-12)",
+                "Afternoon (12-17)",
+                "Evening (17-21)"
+            ],
+            "audited": true
+        },
+        "emailOptIn": {
+            "type": "bool",
+            "audited": true
+        },
+        "smsOptIn": {
+            "type": "bool",
+            "audited": true
+        },
+        "whatsappOptIn": {
+            "type": "bool",
+            "audited": true
+        },
+        "vipTier": {
+            "type": "enum",
+            "options": [
+                "Standard",
+                "Repeat Guest",
+                "VIP",
+                "Owner / Stakeholder"
+            ],
+            "default": "Standard",
+            "audited": true
+        },
+        "marketingSegments": {
+            "type": "multiEnum",
+            "options": [
+                "Eco Traveler",
+                "Adventure Seeker",
+                "Wellness",
+                "Family",
+                "Remote Worker",
+                "Volunteer"
+            ]
+        },
+        "dietaryNotes": {
+            "type": "text"
+        },
+        "allergies": {
+            "type": "text"
+        },
+        "specialOccasion": {
+            "type": "varchar",
+            "maxLength": 120
+        },
+        "celebrationDate": {
+            "type": "date"
+        },
+        "lastStayDate": {
+            "type": "date"
+        },
+        "nextStayDate": {
+            "type": "date"
+        },
+        "loyaltyId": {
+            "type": "varchar",
+            "maxLength": 64
+        },
+        "chatwootContactId": {
+            "type": "varchar",
+            "maxLength": 64
+        },
+        "chatwootProfileUrl": {
+            "type": "url"
+        },
+        "pbxExtension": {
+            "type": "varchar",
+            "maxLength": 12
+        },
+        "travelNotes": {
+            "type": "text"
+        }
+    }
+}

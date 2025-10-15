@@ -1,0 +1,32 @@
+{
+    "fields": {
+        "host": {
+            "type": "url",
+            "required": true
+        },
+        "apiKey": {
+            "type": "password",
+            "required": true
+        },
+        "webhookSecret": {
+            "type": "password",
+            "required": true
+        },
+        "extensionPrefix": {
+            "type": "varchar",
+            "maxLength": 16
+        },
+        "queueRouting": {
+            "type": "jsonArray"
+        },
+        "recordingBucket": {
+            "type": "enum",
+            "options": [
+                "Railway Volume",
+                "S3 Compatible",
+                "3CX Hosted"
+            ]
+        }
+    },
+    "allowUserAccounts": false
+}

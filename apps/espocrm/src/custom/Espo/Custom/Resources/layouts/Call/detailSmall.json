@@ -1,0 +1,38 @@
+[
+    {
+        "label": "Llamada",
+        "rows": [
+            [
+                {"name": "name"},
+                {"name": "parent"}
+            ],
+            [
+                {"name": "status"},
+                {"name": "direction"}
+            ],
+            [
+                {"name": "dateStart"},
+                {"name": "dateEnd"}
+            ],
+            [
+                {"name": "duration"},
+                {"name": "callDisposition"}
+            ],
+            [
+                {"name": "pbxProvider"},
+                {"name": "pbxExternalId"}
+            ],
+            [
+                {"name": "pbxAgent"},
+                {"name": "recordingUrl"}
+            ],
+            [
+                {"name": "callCost"},
+                false
+            ],
+            [
+                {"name": "callSummary", "fullWidth": true}
+            ]
+        ]
+    }
+]

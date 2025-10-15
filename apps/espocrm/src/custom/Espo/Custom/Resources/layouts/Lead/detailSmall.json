@@ -1,0 +1,110 @@
+[
+    {
+        "label": "Inquiry Overview",
+        "rows": [
+            [
+                {"name": "name"},
+                {"name": "status"}
+            ],
+            [
+                {"name": "assignedUser"},
+                {"name": "inquiryChannel"}
+            ],
+            [
+                {"name": "preferredLanguage"},
+                {"name": "preferredContactWindow"}
+            ],
+            [
+                {"name": "emailAddress"},
+                {"name": "phoneNumber"}
+            ]
+        ]
+    },
+    {
+        "label": "Stay Details",
+        "rows": [
+            [
+                {"name": "checkInDate"},
+                {"name": "checkOutDate"}
+            ],
+            [
+                {"name": "partySize"},
+                {"name": "childCount"}
+            ],
+            [
+                {"name": "stayInterest", "fullWidth": true}
+            ],
+            [
+                {"name": "travelPurpose", "fullWidth": true}
+            ],
+            [
+                {"name": "budgetRange"},
+                {"name": "deviceType"}
+            ]
+        ]
+    },
+    {
+        "label": "Tracking",
+        "rows": [
+            [
+                {"name": "utmSource"},
+                {"name": "utmMedium"}
+            ],
+            [
+                {"name": "utmCampaign"},
+                {"name": "utmTerm"}
+            ],
+            [
+                {"name": "gaClientId"},
+                {"name": "gaSessionId"}
+            ],
+            [
+                {"name": "landingPage", "fullWidth": true}
+            ],
+            [
+                {"name": "referrer", "fullWidth": true}
+            ]
+        ]
+    },
+    {
+        "label": "Consent",
+        "rows": [
+            [
+                {"name": "consentEmail"},
+                {"name": "consentSms"}
+            ],
+            [
+                {"name": "consentWhatsApp"},
+                {"name": "automationOptOut"}
+            ]
+        ]
+    },
+    {
+        "label": "Channels",
+        "rows": [
+            [
+                {"name": "chatwootConversationId"},
+                {"name": "chatwootInbox"}
+            ],
+            [
+                {"name": "chatwootLastPreview", "fullWidth": true}
+            ],
+            [
+                {"name": "lastCallAt"},
+                {"name": "lastCallDisposition"}
+            ],
+            [
+                {"name": "lastCallDuration"},
+                {"name": "lastCallRecordingUrl"}
+            ]
+        ]
+    },
+    {
+        "label": "Notes",
+        "rows": [
+            [
+                {"name": "description", "fullWidth": true}
+            ]
+        ]
+    }
+]

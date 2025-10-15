@@ -1,0 +1,45 @@
+[
+    {
+        "label": "Call Summary",
+        "rows": [
+            [
+                {"name": "name"},
+                {"name": "parent"}
+            ],
+            [
+                {"name": "status"},
+                {"name": "direction"}
+            ],
+            [
+                {"name": "dateStart"},
+                {"name": "dateEnd"}
+            ],
+            [
+                {"name": "duration"},
+                {"name": "callDisposition"}
+            ],
+            [
+                {"name": "pbxProvider"},
+                {"name": "pbxExternalId"}
+            ],
+            [
+                {"name": "pbxQueue"},
+                {"name": "pbxAgent"}
+            ],
+            [
+                {"name": "recordingUrl"},
+                {"name": "recordingStorage"}
+            ],
+            [
+                {"name": "callCost"},
+                false
+            ],
+            [
+                {"name": "description", "fullWidth": true}
+            ],
+            [
+                {"name": "callSummary", "fullWidth": true}
+            ]
+        ]
+    }
+]

@@ -1,0 +1,6 @@
+[
+    {"name": "name", "link": "true"},
+    {"name": "status"},
+    {"name": "inquiryChannel"},
+    {"name": "checkInDate"}
+]

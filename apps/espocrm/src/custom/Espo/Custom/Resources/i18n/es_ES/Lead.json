@@ -1,0 +1,114 @@
+{
+    "fields": {
+        "preferredLanguage": "Idioma preferido",
+        "preferredContactWindow": "Horario de contacto preferido",
+        "checkInDate": "Check-in deseado",
+        "checkOutDate": "Check-out deseado",
+        "partySize": "Número de huéspedes",
+        "childCount": "Niños",
+        "stayInterest": "Intereses de la estancia",
+        "travelPurpose": "Motivo del viaje",
+        "budgetRange": "Presupuesto por noche",
+        "inquiryChannel": "Canal de ingreso",
+        "deviceType": "Tipo de dispositivo",
+        "utmSource": "UTM Source",
+        "utmMedium": "UTM Medium",
+        "utmCampaign": "UTM Campaign",
+        "utmTerm": "UTM Term",
+        "utmContent": "UTM Content",
+        "gaClientId": "ID de cliente GA",
+        "gaSessionId": "ID de sesión GA",
+        "gaSessionNumber": "Número de sesión GA",
+        "landingPage": "URL de aterrizaje",
+        "referrer": "Referencia",
+        "consentEmail": "Consentimiento email",
+        "consentSms": "Consentimiento SMS",
+        "consentWhatsApp": "Consentimiento WhatsApp",
+        "automationOptOut": "Excluir de automatizaciones",
+        "chatwootConversationId": "ID de conversación Chatwoot",
+        "chatwootInbox": "Bandeja de Chatwoot",
+        "chatwootContactUrl": "URL de contacto Chatwoot",
+        "chatwootLastSyncedAt": "Sincronizado con Chatwoot",
+        "chatwootLastPreview": "Resumen de chat",
+        "lastCallAt": "Última llamada",
+        "lastCallDuration": "Duración última llamada (seg)",
+        "lastCallRecordingUrl": "URL grabación última llamada",
+        "lastCallDisposition": "Resultado última llamada",
+        "pbxExternalId": "ID PBX",
+        "pbxAgent": "Agente PBX",
+        "followUpAt": "Próximo seguimiento"
+    },
+    "options": {
+        "status": {
+            "New Inquiry": "Nueva consulta",
+            "Qualified": "Calificado",
+            "Proposal Sent": "Propuesta enviada",
+            "Tentative Booking": "Reserva tentativa",
+            "Converted": "Convertido",
+            "Lost/Unresponsive": "Perdido / sin respuesta"
+        },
+        "preferredLanguage": {
+            "English": "Inglés",
+            "Spanish": "Español",
+            "French": "Francés"
+        },
+        "preferredContactWindow": {
+            "Morning (08-12)": "Mañana (08-12)",
+            "Afternoon (12-17)": "Tarde (12-17)",
+            "Evening (17-21)": "Noche (17-21)"
+        },
+        "stayInterest": {
+            "Oceanfront Suite": "Suite frente al mar",
+            "Jungle Lodge": "Lodge en la selva",
+            "Overwater Villa": "Villa sobre el agua",
+            "Dining Experiences": "Experiencias gastronómicas",
+            "Wellness & Spa": "Bienestar y spa",
+            "Water Sports": "Deportes acuáticos",
+            "Conservation Volunteering": "Voluntariado ambiental",
+            "Group Retreat": "Retiro grupal"
+        },
+        "travelPurpose": {
+            "Adventure": "Aventura",
+            "Family Vacation": "Vacaciones familiares",
+            "Romance / Honeymoon": "Romance / luna de miel",
+            "Remote Work": "Trabajo remoto",
+            "Wellness Reset": "Bienestar",
+            "Community Service": "Servicio comunitario"
+        },
+        "budgetRange": {
+            "Under $250": "Menos de $250",
+            "$250 - $399": "$250 - $399",
+            "$400 - $549": "$400 - $549",
+            "$550+": "$550+"
+        },
+        "inquiryChannel": {
+            "Website Form": "Formulario web",
+            "Chatwoot": "Chatwoot",
+            "WhatsApp": "WhatsApp",
+            "Phone (3CX)": "Teléfono (3CX)",
+            "Email": "Email",
+            "Referral": "Referencia",
+            "Walk-in": "Visita en sitio",
+            "OTA": "OTA"
+        },
+        "deviceType": {
+            "Desktop": "Desktop",
+            "Mobile": "Móvil",
+            "Tablet": "Tableta"
+        },
+        "chatwootInbox": {
+            "Reservations": "Reservas",
+            "Concierge": "Concierge",
+            "WhatsApp": "WhatsApp",
+            "Email": "Email",
+            "Instagram": "Instagram"
+        },
+        "lastCallDisposition": {
+            "Connected": "Conectada",
+            "No Answer": "Sin respuesta",
+            "Voicemail": "Buzón de voz",
+            "Call Back Scheduled": "Retorno programado",
+            "Wrong Number": "Número incorrecto"
+        }
+    }
+}

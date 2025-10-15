@@ -1,0 +1,32 @@
+{
+    "fields": {
+        "pbxProvider": "PBX Provider",
+        "pbxExternalId": "PBX Call ID",
+        "pbxQueue": "PBX Queue",
+        "pbxAgent": "PBX Agent",
+        "recordingUrl": "Recording URL",
+        "recordingStorage": "Recording Storage",
+        "callCost": "Call Cost",
+        "callDisposition": "Call Disposition",
+        "callSummary": "Call Summary"
+    },
+    "options": {
+        "pbxProvider": {
+            "3CX": "3CX",
+            "WhatsApp": "WhatsApp",
+            "Other": "Other"
+        },
+        "recordingStorage": {
+            "Railway Volume": "Railway Volume",
+            "S3 Compatible": "S3 Compatible",
+            "3CX Cloud": "3CX Cloud"
+        },
+        "callDisposition": {
+            "Connected": "Connected",
+            "No Answer": "No Answer",
+            "Voicemail": "Voicemail",
+            "Follow-up Needed": "Follow-up Needed",
+            "Escalated": "Escalated"
+        }
+    }
+}

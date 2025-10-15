@@ -1,0 +1,65 @@
+[
+    {
+        "label": "Perfil",
+        "rows": [
+            [
+                {"name": "name"},
+                {"name": "accounts"}
+            ],
+            [
+                {"name": "emailAddress"},
+                {"name": "phoneNumber"}
+            ],
+            [
+                {"name": "preferredLanguage"},
+                {"name": "preferredContactWindow"}
+            ],
+            [
+                {"name": "vipTier"},
+                {"name": "loyaltyId"}
+            ],
+            [
+                {"name": "chatwootContactId"},
+                {"name": "pbxExtension"}
+            ]
+        ]
+    },
+    {
+        "label": "Preferencias",
+        "rows": [
+            [
+                {"name": "marketingSegments", "fullWidth": true}
+            ],
+            [
+                {"name": "dietaryNotes", "fullWidth": true}
+            ],
+            [
+                {"name": "allergies", "fullWidth": true}
+            ],
+            [
+                {"name": "travelNotes", "fullWidth": true}
+            ]
+        ]
+    },
+    {
+        "label": "Consentimientos",
+        "rows": [
+            [
+                {"name": "emailOptIn"},
+                {"name": "smsOptIn"}
+            ],
+            [
+                {"name": "whatsappOptIn"},
+                false
+            ]
+        ]
+    },
+    {
+        "label": "Notas",
+        "rows": [
+            [
+                {"name": "description", "fullWidth": true}
+            ]
+        ]
+    }
+]

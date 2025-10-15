@@ -1,0 +1,31 @@
+{
+    "fields": {
+        "baseUrl": {
+            "type": "url",
+            "required": true
+        },
+        "accountId": {
+            "type": "int",
+            "required": true
+        },
+        "apiToken": {
+            "type": "password",
+            "required": true
+        },
+        "webhookToken": {
+            "type": "password",
+            "required": true
+        },
+        "defaultInboxId": {
+            "type": "int",
+            "required": true
+        },
+        "languageRouting": {
+            "type": "jsonArray"
+        },
+        "outOfHoursTemplate": {
+            "type": "wysiwyg"
+        }
+    },
+    "allowUserAccounts": false
+}

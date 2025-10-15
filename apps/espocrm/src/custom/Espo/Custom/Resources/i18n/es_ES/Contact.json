@@ -1,0 +1,48 @@
+{
+    "fields": {
+        "preferredLanguage": "Idioma preferido",
+        "preferredContactWindow": "Horario de contacto preferido",
+        "emailOptIn": "Acepta email",
+        "smsOptIn": "Acepta SMS",
+        "whatsappOptIn": "Acepta WhatsApp",
+        "vipTier": "Nivel VIP",
+        "marketingSegments": "Segmentos",
+        "dietaryNotes": "Notas alimenticias",
+        "allergies": "Alergias",
+        "specialOccasion": "Ocasión especial",
+        "celebrationDate": "Fecha de celebración",
+        "lastStayDate": "Última estancia",
+        "nextStayDate": "Próxima estancia",
+        "loyaltyId": "ID fidelidad",
+        "chatwootContactId": "ID contacto Chatwoot",
+        "chatwootProfileUrl": "URL perfil Chatwoot",
+        "pbxExtension": "Extensión PBX",
+        "travelNotes": "Notas de viaje"
+    },
+    "options": {
+        "preferredLanguage": {
+            "English": "Inglés",
+            "Spanish": "Español",
+            "French": "Francés"
+        },
+        "preferredContactWindow": {
+            "Morning (08-12)": "Mañana (08-12)",
+            "Afternoon (12-17)": "Tarde (12-17)",
+            "Evening (17-21)": "Noche (17-21)"
+        },
+        "vipTier": {
+            "Standard": "Estándar",
+            "Repeat Guest": "Huésped frecuente",
+            "VIP": "VIP",
+            "Owner / Stakeholder": "Propietario / aliado"
+        },
+        "marketingSegments": {
+            "Eco Traveler": "Viajero eco",
+            "Adventure Seeker": "Buscador de aventura",
+            "Wellness": "Bienestar",
+            "Family": "Familia",
+            "Remote Worker": "Trabajador remoto",
+            "Volunteer": "Voluntario"
+        }
+    }
+}

@@ -1,0 +1,10 @@
+[
+    {"name": "name", "link": true, "width": 20},
+    {"name": "parent", "width": 18},
+    {"name": "status", "width": 10},
+    {"name": "callDisposition", "width": 14},
+    {"name": "pbxProvider", "width": 10},
+    {"name": "pbxAgent", "width": 15},
+    {"name": "dateStart", "width": 13},
+    {"name": "assignedUser", "width": 12}
+]

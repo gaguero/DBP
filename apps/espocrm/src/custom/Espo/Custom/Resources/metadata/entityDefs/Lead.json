@@ -1,0 +1,242 @@
+{
+    "fields": {
+        "status": {
+            "options": [
+                "New Inquiry",
+                "Qualified",
+                "Proposal Sent",
+                "Tentative Booking",
+                "Converted",
+                "Lost/Unresponsive"
+            ],
+            "default": "New Inquiry",
+            "style": {
+                "New Inquiry": "info",
+                "Qualified": "primary",
+                "Proposal Sent": "warning",
+                "Tentative Booking": "info",
+                "Converted": "success",
+                "Lost/Unresponsive": "danger"
+            },
+            "displayAsLabel": true,
+            "labelType": "state",
+            "audited": true,
+            "notActualOptions": [
+                "Converted",
+                "Lost/Unresponsive"
+            ]
+        },
+        "preferredLanguage": {
+            "type": "enum",
+            "options": [
+                "English",
+                "Spanish",
+                "French"
+            ],
+            "default": "English",
+            "audited": true,
+            "isPersonalData": true
+        },
+        "preferredContactWindow": {
+            "type": "enum",
+            "options": [
+                "Morning (08-12)",
+                "Afternoon (12-17)",
+                "Evening (17-21)"
+            ],
+            "audited": true
+        },
+        "checkInDate": {
+            "type": "date",
+            "audited": true
+        },
+        "checkOutDate": {
+            "type": "date",
+            "audited": true
+        },
+        "partySize": {
+            "type": "int",
+            "min": 1,
+            "max": 30,
+            "default": 2,
+            "audited": true
+        },
+        "childCount": {
+            "type": "int",
+            "min": 0,
+            "max": 30,
+            "default": 0,
+            "audited": true
+        },
+        "stayInterest": {
+            "type": "multiEnum",
+            "options": [
+                "Oceanfront Suite",
+                "Jungle Lodge",
+                "Overwater Villa",
+                "Dining Experiences",
+                "Wellness & Spa",
+                "Water Sports",
+                "Conservation Volunteering",
+                "Group Retreat"
+            ],
+            "audited": true
+        },
+        "travelPurpose": {
+            "type": "multiEnum",
+            "options": [
+                "Adventure",
+                "Family Vacation",
+                "Romance / Honeymoon",
+                "Remote Work",
+                "Wellness Reset",
+                "Community Service"
+            ],
+            "audited": true
+        },
+        "budgetRange": {
+            "type": "enum",
+            "options": [
+                "Under $250",
+                "$250 - $399",
+                "$400 - $549",
+                "$550+"
+            ],
+            "audited": true
+        },
+        "inquiryChannel": {
+            "type": "enum",
+            "options": [
+                "Website Form",
+                "Chatwoot",
+                "WhatsApp",
+                "Phone (3CX)",
+                "Email",
+                "Referral",
+                "Walk-in",
+                "OTA"
+            ],
+            "audited": true
+        },
+        "deviceType": {
+            "type": "enum",
+            "options": [
+                "Desktop",
+                "Mobile",
+                "Tablet"
+            ],
+            "audited": true
+        },
+        "utmSource": {
+            "type": "varchar",
+            "maxLength": 255
+        },
+        "utmMedium": {
+            "type": "varchar",
+            "maxLength": 255
+        },
+        "utmCampaign": {
+            "type": "varchar",
+            "maxLength": 255
+        },
+        "utmTerm": {
+            "type": "varchar",
+            "maxLength": 255
+        },
+        "utmContent": {
+            "type": "varchar",
+            "maxLength": 255
+        },
+        "gaClientId": {
+            "type": "varchar",
+            "maxLength": 64
+        },
+        "gaSessionId": {
+            "type": "varchar",
+            "maxLength": 64
+        },
+        "gaSessionNumber": {
+            "type": "int",
+            "min": 0,
+            "max": 1000
+        },
+        "landingPage": {
+            "type": "url"
+        },
+        "referrer": {
+            "type": "varchar",
+            "maxLength": 255
+        },
+        "consentEmail": {
+            "type": "bool",
+            "audited": true
+        },
+        "consentSms": {
+            "type": "bool",
+            "audited": true
+        },
+        "consentWhatsApp": {
+            "type": "bool",
+            "audited": true
+        },
+        "automationOptOut": {
+            "type": "bool",
+            "audited": true
+        },
+        "chatwootConversationId": {
+            "type": "varchar",
+            "maxLength": 64
+        },
+        "chatwootInbox": {
+            "type": "enum",
+            "options": [
+                "Reservations",
+                "Concierge",
+                "WhatsApp",
+                "Email",
+                "Instagram"
+            ]
+        },
+        "chatwootContactUrl": {
+            "type": "url"
+        },
+        "chatwootLastSyncedAt": {
+            "type": "datetime"
+        },
+        "chatwootLastPreview": {
+            "type": "text"
+        },
+        "lastCallAt": {
+            "type": "datetime"
+        },
+        "lastCallDuration": {
+            "type": "int",
+            "min": 0,
+            "max": 28800
+        },
+        "lastCallRecordingUrl": {
+            "type": "url"
+        },
+        "lastCallDisposition": {
+            "type": "enum",
+            "options": [
+                "Connected",
+                "No Answer",
+                "Voicemail",
+                "Call Back Scheduled",
+                "Wrong Number"
+            ]
+        },
+        "pbxExternalId": {
+            "type": "varchar",
+            "maxLength": 64
+        },
+        "pbxAgent": {
+            "type": "varchar",
+            "maxLength": 120
+        },
+        "followUpAt": {
+            "type": "datetime"
+        }
+    }
+}

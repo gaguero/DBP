@@ -1,0 +1,26 @@
+{
+    "fields": {
+        "baseUrl": "URL base",
+        "accountId": "ID de cuenta",
+        "apiToken": "Token API",
+        "webhookToken": "Token webhook",
+        "defaultInboxId": "Inbox predeterminada",
+        "languageRouting": "Enrutamiento por idioma (JSON)",
+        "outOfHoursTemplate": "Mensaje fuera de horario",
+        "host": "URL host",
+        "apiKey": "API Key",
+        "webhookSecret": "Secreto webhook",
+        "extensionPrefix": "Prefijo de extensión",
+        "queueRouting": "Enrutamiento de colas (JSON)",
+        "recordingBucket": "Almacenamiento de grabaciones",
+        "measurementId": "Measurement ID",
+        "apiSecret": "API Secret",
+        "propertyId": "Property ID",
+        "eventMapping": "Mapeo de eventos (JSON)"
+    },
+    "titles": {
+        "Chatwoot": "Chatwoot",
+        "PBX3cx": "PBX 3CX",
+        "GA4": "Google Analytics 4"
+    }
+}

@@ -1,0 +1,11 @@
+[
+    {"name": "name", "link": "true", "width": 22},
+    {"name": "status", "width": 12},
+    {"name": "inquiryChannel", "width": 14},
+    {"name": "preferredLanguage", "width": 10},
+    {"name": "checkInDate", "width": 11},
+    {"name": "partySize", "width": 8},
+    {"name": "stayInterest", "width": 18, "notSortable": true},
+    {"name": "assignedUser", "width": 15},
+    {"name": "followUpAt", "width": 14}
+]

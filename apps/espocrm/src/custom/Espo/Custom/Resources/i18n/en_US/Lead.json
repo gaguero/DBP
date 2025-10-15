@@ -1,0 +1,118 @@
+{
+    "fields": {
+        "preferredLanguage": "Preferred Language",
+        "preferredContactWindow": "Preferred Contact Window",
+        "checkInDate": "Desired Check-In",
+        "checkOutDate": "Desired Check-Out",
+        "partySize": "Party Size",
+        "childCount": "Children",
+        "stayInterest": "Stay Interests",
+        "travelPurpose": "Travel Purpose",
+        "budgetRange": "Budget Range (per night)",
+        "inquiryChannel": "Inquiry Channel",
+        "deviceType": "Device Type",
+        "utmSource": "UTM Source",
+        "utmMedium": "UTM Medium",
+        "utmCampaign": "UTM Campaign",
+        "utmTerm": "UTM Term",
+        "utmContent": "UTM Content",
+        "gaClientId": "GA Client ID",
+        "gaSessionId": "GA Session ID",
+        "gaSessionNumber": "GA Session Number",
+        "landingPage": "Landing Page URL",
+        "referrer": "Referrer",
+        "consentEmail": "Email Consent",
+        "consentSms": "SMS Consent",
+        "consentWhatsApp": "WhatsApp Consent",
+        "automationOptOut": "Automation Suppressed",
+        "chatwootConversationId": "Chatwoot Conversation ID",
+        "chatwootInbox": "Chatwoot Inbox",
+        "chatwootContactUrl": "Chatwoot Contact URL",
+        "chatwootLastSyncedAt": "Chatwoot Synced At",
+        "chatwootLastPreview": "Last Chat Summary",
+        "lastCallAt": "Last Call At",
+        "lastCallDuration": "Last Call Duration (sec)",
+        "lastCallRecordingUrl": "Last Call Recording URL",
+        "lastCallDisposition": "Last Call Disposition",
+        "pbxExternalId": "PBX Call ID",
+        "pbxAgent": "PBX Agent",
+        "followUpAt": "Next Follow-Up"
+    },
+    "options": {
+        "status": {
+            "New Inquiry": "New Inquiry",
+            "Qualified": "Qualified",
+            "Proposal Sent": "Proposal Sent",
+            "Tentative Booking": "Tentative Booking",
+            "Converted": "Converted",
+            "Lost/Unresponsive": "Lost / Unresponsive"
+        },
+        "preferredLanguage": {
+            "English": "English",
+            "Spanish": "Spanish",
+            "French": "French"
+        },
+        "preferredContactWindow": {
+            "Morning (08-12)": "Morning (08-12)",
+            "Afternoon (12-17)": "Afternoon (12-17)",
+            "Evening (17-21)": "Evening (17-21)"
+        },
+        "stayInterest": {
+            "Oceanfront Suite": "Oceanfront Suite",
+            "Jungle Lodge": "Jungle Lodge",
+            "Overwater Villa": "Overwater Villa",
+            "Dining Experiences": "Dining Experiences",
+            "Wellness & Spa": "Wellness & Spa",
+            "Water Sports": "Water Sports",
+            "Conservation Volunteering": "Conservation Volunteering",
+            "Group Retreat": "Group Retreat"
+        },
+        "travelPurpose": {
+            "Adventure": "Adventure",
+            "Family Vacation": "Family Vacation",
+            "Romance / Honeymoon": "Romance / Honeymoon",
+            "Remote Work": "Remote Work",
+            "Wellness Reset": "Wellness Reset",
+            "Community Service": "Community Service"
+        },
+        "budgetRange": {
+            "Under $250": "Under $250",
+            "$250 - $399": "$250 - $399",
+            "$400 - $549": "$400 - $549",
+            "$550+": "$550+"
+        },
+        "inquiryChannel": {
+            "Website Form": "Website Form",
+            "Chatwoot": "Chatwoot",
+            "WhatsApp": "WhatsApp",
+            "Phone (3CX)": "Phone (3CX)",
+            "Email": "Email",
+            "Referral": "Referral",
+            "Walk-in": "Walk-in",
+            "OTA": "OTA"
+        },
+        "deviceType": {
+            "Desktop": "Desktop",
+            "Mobile": "Mobile",
+            "Tablet": "Tablet"
+        },
+        "chatwootInbox": {
+            "Reservations": "Reservations",
+            "Concierge": "Concierge",
+            "WhatsApp": "WhatsApp",
+            "Email": "Email",
+            "Instagram": "Instagram"
+        },
+        "lastCallDisposition": {
+            "Connected": "Connected",
+            "No Answer": "No Answer",
+            "Voicemail": "Voicemail",
+            "Call Back Scheduled": "Call Back Scheduled",
+            "Wrong Number": "Wrong Number"
+        }
+    },
+    "presetFilters": {
+        "actual": "Open",
+        "converted": "Converted"
+    }
+}

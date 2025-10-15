@@ -1,0 +1,54 @@
+{
+    "fields": {
+        "pbxProvider": {
+            "type": "enum",
+            "options": [
+                "3CX",
+                "WhatsApp",
+                "Other"
+            ]
+        },
+        "pbxExternalId": {
+            "type": "varchar",
+            "maxLength": 128,
+            "index": true
+        },
+        "pbxQueue": {
+            "type": "varchar",
+            "maxLength": 64
+        },
+        "pbxAgent": {
+            "type": "varchar",
+            "maxLength": 120
+        },
+        "recordingUrl": {
+            "type": "url"
+        },
+        "recordingStorage": {
+            "type": "enum",
+            "options": [
+                "Railway Volume",
+                "S3 Compatible",
+                "3CX Cloud"
+            ]
+        },
+        "callCost": {
+            "type": "currency",
+            "min": 0
+        },
+        "callDisposition": {
+            "type": "enum",
+            "options": [
+                "Connected",
+                "No Answer",
+                "Voicemail",
+                "Follow-up Needed",
+                "Escalated"
+            ],
+            "displayAsLabel": true
+        },
+        "callSummary": {
+            "type": "text"
+        }
+    }
+}

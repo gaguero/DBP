@@ -1,0 +1,9 @@
+[
+    {"name": "name", "link": "true", "width": 25},
+    {"name": "vipTier", "width": 10},
+    {"name": "preferredLanguage", "width": 10},
+    {"name": "emailAddress", "width": 20},
+    {"name": "marketingSegments", "width": 20, "notSortable": true},
+    {"name": "lastStayDate", "width": 10},
+    {"name": "assignedUser", "width": 15}
+]
