@@ -1,10 +1,12 @@
 import Image from "next/image";
 import { BookingWidgetPlaceholder } from "@/components/booking-widget-placeholder";
 import { Button } from "@/components/button";
+import { NewsletterPopup } from "@/components/newsletter-popup";
 
 export default function Home() {
   return (
     <div className="home-page">
+      <NewsletterPopup />
       <section className="home-hero">
         <div className="home-hero__container">
           <div className="home-hero__image-wrapper">
