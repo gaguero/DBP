@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dolphin Blue Paradise · Presenter Script</title>
+  <style>
+    body {
+      font-family: "Segoe UI", "Roboto", Arial, sans-serif;
+      margin: 0;
+      padding: clamp(2rem, 5vw, 4rem);
+      background: #f5fbff;
+      color: #0b1f2a;
+      line-height: 1.5;
+    }
+    h1 {
+      margin-top: 0;
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      letter-spacing: -0.01em;
+    }
+    section {
+      background: #ffffff;
+      padding: clamp(1.5rem, 3vw, 2.6rem);
+      border-radius: 20px;
+      box-shadow: 0 18px 44px rgba(6, 44, 62, 0.12);
+      margin-bottom: clamp(1.5rem, 4vw, 3rem);
+    }
+    h2 {
+      margin-top: 0;
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+    }
+    .meta {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: rgba(11, 31, 42, 0.6);
+    }
+    ul {
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+    li {
+      margin-bottom: 0.4rem;
+    }
+    .mini-glossary {
+      margin-top: 1.2rem;
+      padding: 1rem 1.2rem;
+      border-radius: 16px;
+      background: rgba(0, 156, 170, 0.08);
+    }
+    .mini-glossary strong {
+      display: block;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: rgba(11, 31, 42, 0.7);
+      margin-bottom: 0.6rem;
+    }
+    .mini-glossary dl {
+      margin: 0;
+      display: grid;
+      gap: 0.8rem;
+    }
+    .mini-glossary dt {
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+    .mini-glossary dd {
+      margin: 0.2rem 0 0 0;
+      color: rgba(11, 31, 42, 0.7);
+    }
+    .glossary dl {
+      margin: 0;
+      display: grid;
+      gap: 1.2rem;
+    }
+    .glossary dt {
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .glossary dd {
+      margin: 0.35rem 0 0 0;
+      color: rgba(11, 31, 42, 0.7);
+    }
+  </style>
+</head>
+<body>
+  <h1>Dolphin Blue Paradise · Presenter Script</h1>
+
+  <section>
+    <div class="meta">Slide 1 · Speaker: Gerson</div>
+    <h2>Opening</h2>
+    <p>“Welcome everyone. Today we’ll walk through how we plan to relaunch Dolphin Blue Paradise with a strategy that puts direct demand back in your hands. I’ll outline the research approach, the build stack, the communications layer, and the launch plan so you can see exactly how the team and our AI tools will collaborate at each stage.”</p>
+    <div class="mini-glossary">
+      <strong>Glossary</strong>
+      <dl>
+        <div>
+        <dt>Direct Demand</dt>
+        <dd>Bookings captured through owned channels such as the website, CRM, or WhatsApp without third parties.</dd>
+      </div>
+      <div>
+        <dt>Human + AI Collaboration</dt>
+        <dd>Combined work between The Crafted Hospitality team and artificial intelligence tools to accelerate analysis and execution.</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <div class="meta">Slide 2 · Speaker: Kelly</div>
+    <h2>Target Intent</h2>
+    <p>“We begin by mapping traveller intent. Our initial focus will stay on the PTY and SJO hubs, targeting feeder cities like Miami, New York, Toronto, Mexico City, and Bogotá. We’ll shape the plan around three guest types—adventure couples, eco-minded families, and remote professionals looking for nature. Surf season, the balance between dry and green months, and key festivities will guide when each story goes live. To build that picture we’ll draw from Google Trends, flight-route data, and OTA search share so every keyword cluster is grounded in demand signals.”</p>
+    <div class="mini-glossary">
+      <strong>Glossary</strong>
+      <dl>
+        <div>
+        <dt>Traveller Intent</dt>
+        <dd>The needs or questions travellers express in searches and pre-booking inquiries.</dd>
+        </div>
+        <div>
+        <dt>Surf Season</dt>
+        <dd>The period of the year with the best waves in Bocas del Toro, useful for surf-focused campaigns.</dd>
+        </div>
+        <div>
+        <dt>OTA</dt>
+        <dd>Online Travel Agency such as Booking.com or Expedia.</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <div class="meta">Slide 3 · Speaker: Gerson</div>
+    <h2>SERP Intelligence</h2>
+    <p>“Next, we’ll set up the automated SERP intelligence. Using Google Custom Search and Search Console APIs, we’ll keep pulling the top five results for every keyword cluster we care about. For each page we capture metadata, headings, schema, media, and conversion moments so we know what best-in-class looks like. Properties like Bambuda, Sol Bungalows, and Nayara will serve as our reference set and help translate the insights into the standards we need to meet or exceed.”</p>
+    <div class="mini-glossary">
+      <strong>Glossary</strong>
+      <dl>
+        <div>
+        <dt>SERP</dt>
+        <dd>Search Engine Results Page; the list Google returns for a search query.</dd>
+        </div>
+        <div>
+        <dt>Google Custom Search API</dt>
+        <dd>Google interface that lets us query search results programmatically.</dd>
+        </div>
+        <div>
+        <dt>Schema</dt>
+        <dd>Structured markup that helps search engines understand page content.</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <div class="meta">Slide 4 · Speaker: Kelly</div>
+    <h2>Notebook LM Blueprint</h2>
+    <p>“After that, we’ll feed Notebook LM with those SERP exports, the competitor pages, and the current Wix content so the AI can highlight tone, storytelling structure, schema usage, and copy gaps. The goal is to come out with an SEO- and AI-ready sitemap, supporting copy briefs, and an asset checklist before design work begins. I’d like to pencil in a joint review for the week of October twenty-eighth so we can align on those recommendations together.”</p>
+    <div class="mini-glossary">
+      <strong>Glossary</strong>
+      <dl>
+        <div>
+        <dt>Notebook LM</dt>
+        <dd>Google tool that analyses documents and produces AI-generated summaries or insights.</dd>
+        </div>
+        <div>
+        <dt>Sitemap</dt>
+        <dd>Organised structure of the pages and sections planned for the new website.</dd>
+        </div>
+        <div>
+        <dt>Copy Brief</dt>
+        <dd>Guidance that defines tone, objectives, and key messages before writing content.</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <div class="meta">Slide 5 · Speaker: Gerson</div>
+    <h2>Implementation Stack</h2>
+    <p>“With the plan defined, we’ll stand everything up inside Railway. That lets us run the Next and Remix site, the supporting APIs, and our services side by side without juggling vendors. Deployments stay simple, pages load quickly, and backups run in the background. EspoCRM, the invoice agent, and our automations sit in that same controlled space so the data stays yours, while single sign-on keeps access friendly for the team and partners.”</p>
+    <div class="mini-glossary">
+      <strong>Glossary</strong>
+      <dl>
+        <div>
+        <dt>Railway</dt>
+        <dd>Cloud platform hosting the site, APIs, and supporting services.</dd>
+        </div>
+        <div>
+        <dt>Next / Remix</dt>
+        <dd>Modern web frameworks used to build the new site.</dd>
+        </div>
+        <div>
+        <dt>Single Sign-On</dt>
+        <dd>One-login method that grants access to multiple tools.</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <div class="meta">Slide 6 · Speaker: Gerson</div>
+    <h2>Capture · Nurture · Convert</h2>
+    <p>“On the live site, we’ll layer in dynamic CTAs, journey-aware pop-ups, and itinerary builders so every visit has a path to conversion. The handoff between people and AI is planned up front: our team covers live responses from nine to six Panama time, then automations keep conversations moving after hours. Every touchpoint drops into EspoCRM with the campaign tags, device info, and stay interests we need to keep the follow-up personal.”</p>
+    <div class="mini-glossary">
+      <strong>Glossary</strong>
+      <dl>
+        <div>
+        <dt>CTA</dt>
+        <dd>Call to Action; element that prompts a user to take an action such as booking or requesting information.</dd>
+        </div>
+        <div>
+        <dt>Automations</dt>
+        <dd>Automated message or task flows that keep contact with prospects outside live hours.</dd>
+        </div>
+        <div>
+        <dt>UTM</dt>
+        <dd>Tracking parameters added to URLs to identify the campaign or channel that drove a visit.</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <div class="meta">Slide 7 · Speaker: Kelly</div>
+    <h2>Communications Layer</h2>
+    <p>“The communications layer will run on 3CX. We’ll provision a US number and a Panama number with up to ten extensions at no licence cost, then point phone, WhatsApp, and click-to-call into that hub so guests always reach a teammate. Call logs and recordings will sync back to EspoCRM automatically, making sure every conversation adds to the guest profile.”</p>
+    <div class="mini-glossary">
+      <strong>Glossary</strong>
+      <dl>
+        <div>
+        <dt>3CX</dt>
+        <dd>Cloud-based IP telephony platform for managing numbers, extensions, and call routing.</dd>
+        </div>
+        <div>
+        <dt>Click-to-Call</dt>
+        <dd>Site button or link that starts a phone call from the user’s browser or mobile.</dd>
+        </div>
+        <div>
+        <dt>Extension</dt>
+        <dd>Internal line inside the phone system assigned to an agent or team.</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <div class="meta">Slide 8 · Speaker: Gerson</div>
+    <h2>Timeline</h2>
+    <p>“Here’s how we’ll sequence the work. Research runs from October twenty-fifth to November first. Development takes us through November tenth, and testing plus documentation carry us from November tenth to the fourteenth. We go live on November fifteenth. We’ll keep that cadence by sharing imagery early, turning copy approvals quickly, and setting up the PBX configuration before QA week.”</p>
+    <div class="mini-glossary">
+      <strong>Glossary</strong>
+      <dl>
+        <div>
+        <dt>QA</dt>
+        <dd>Quality Assurance; testing process that ensures everything works before launch.</dd>
+        </div>
+        <div>
+        <dt>PBX</dt>
+        <dd>Private Branch Exchange; system managing internal and external calls for an organisation.</dd>
+        </div>
+        <div>
+        <dt>Cadence</dt>
+        <dd>Planned rhythm or sequence of activities within the project.</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <div class="meta">Slide 9 · Speaker: Kelly</div>
+    <h2>Kickoff Requirements</h2>
+    <p>“To kick off, we’ll need a project email, your media library, and any samples that capture the brand voice. We’ll also confirm the priority keywords and align on consolidating the stack on Railway and EspoCRM. If you have design references, send them our way so the creative direction lands fast. Then let’s lock the Notebook LM insight review for the week of October twenty-first—we’ll arrive with the sitemap draft and content plan ready for feedback.”</p>
+    <div class="mini-glossary">
+      <strong>Glossary</strong>
+      <dl>
+        <div>
+        <dt>Media Library</dt>
+        <dd>Folder or repository storing photos, videos, and other visual assets.</dd>
+        </div>
+        <div>
+        <dt>Keyword Priorities</dt>
+        <dd>List of search terms considered most important for ranking the brand.</dd>
+        </div>
+        <div>
+        <dt>Design References</dt>
+        <dd>Visual examples that help define the desired style for the new site.</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="glossary">
+    <div class="meta">Glossary</div>
+    <h2>Key Terms</h2>
+    <dl>
+      <div>
+        <dt>Railway</dt>
+        <dd>Cloud platform we use to host the website, APIs, and supporting services with simple deployments.</dd>
+      </div>
+      <div>
+        <dt>Next / Remix</dt>
+        <dd>Modern web frameworks powering the new marketing site experience.</dd>
+      </div>
+      <div>
+        <dt>EspoCRM</dt>
+        <dd>Customer relationship platform capturing leads, conversations, and booking stages.</dd>
+      </div>
+      <div>
+        <dt>Notebook LM</dt>
+        <dd>Google’s AI research tool that analyses uploaded sources and surfaces actionable insights.</dd>
+      </div>
+      <div>
+        <dt>CTA</dt>
+        <dd>Call-to-action elements such as buttons, pop-ups, or forms designed to drive conversions.</dd>
+      </div>
+      <div>
+        <dt>UTM</dt>
+        <dd>Tracking parameters added to URLs that identify the source, medium, and campaign for traffic.</dd>
+      </div>
+      <div>
+        <dt>3CX</dt>
+        <dd>Phone system that manages numbers, extensions, and call routing across devices.</dd>
+      </div>
+      <div>
+        <dt>Single Sign-On (SSO)</dt>
+        <dd>Log-in approach that lets team members access multiple tools with one secure identity.</dd>
+      </div>
+    </dl>
+  </section>
+</body>
+</html>
