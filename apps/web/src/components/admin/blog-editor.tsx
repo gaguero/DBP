@@ -1,9 +1,5 @@
 "use client";
 
-import { useEditor, EditorContent } from "@tiptap/react";
-import StarterKit from "@tiptap/starter-kit";
-import Image from "@tiptap/extension-image";
-import Placeholder from "@tiptap/extension-placeholder";
 import { ContentBlock } from "@/types/content-blocks";
 import { useState } from "react";
 

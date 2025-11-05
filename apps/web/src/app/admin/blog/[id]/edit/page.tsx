@@ -29,13 +29,6 @@ export default function EditBlogPostPage({ params }: EditBlogPostPageProps) {
     resolver: zodResolver(blogPostSchema),
   });
 
-  useEffect(() => {
-    params.then((p) => {
-      setId(p.id);
-      fetchPost(p.id);
-    });
-  }, [params]);
-
   const fetchPost = async (postId: string) => {
     try {
       const response = await fetch(`/api/admin/blog/${postId}`);
@@ -56,7 +49,7 @@ export default function EditBlogPostPage({ params }: EditBlogPostPageProps) {
         published: post.published,
       });
       setContentBlocks(post.contentBlocks || []);
-    } catch (err) {
+    } catch {
       setError("Failed to load post");
     } finally {
       setFetching(false);

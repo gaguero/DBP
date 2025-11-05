@@ -37,8 +37,9 @@ export async function GET(
         "Cache-Control": "public, s-maxage=60, stale-while-revalidate=300",
       },
     });
-  } catch (error: any) {
-    return NextResponse.json({ error: error.message || "Failed to fetch post" }, { status: 500 });
+  } catch (error) {
+    const message = error && typeof error === "object" && "message" in error ? String(error.message) : "Failed to fetch post";
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }
 

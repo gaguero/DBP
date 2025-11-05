@@ -20,7 +20,7 @@ export async function GET(
     }
 
     return NextResponse.json(post);
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 }
@@ -54,14 +54,15 @@ export async function PUT(
     });
 
     return NextResponse.json(post);
-  } catch (error: any) {
-    if (error.code === "P2025") {
+  } catch (error) {
+    if (error && typeof error === "object" && "code" in error && error.code === "P2025") {
       return NextResponse.json({ error: "Post not found" }, { status: 404 });
     }
-    if (error.name === "ZodError") {
-      return NextResponse.json({ error: error.errors }, { status: 400 });
+    if (error && typeof error === "object" && "name" in error && error.name === "ZodError") {
+      return NextResponse.json({ error: (error as { errors: unknown }).errors }, { status: 400 });
     }
-    return NextResponse.json({ error: error.message || "Failed to update post" }, { status: 500 });
+    const message = error && typeof error === "object" && "message" in error ? String(error.message) : "Failed to update post";
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }
 
@@ -78,8 +79,8 @@ export async function DELETE(
     });
 
     return NextResponse.json({ success: true });
-  } catch (error: any) {
-    if (error.code === "P2025") {
+  } catch (error) {
+    if (error && typeof error === "object" && "code" in error && error.code === "P2025") {
       return NextResponse.json({ error: "Post not found" }, { status: 404 });
     }
     return NextResponse.json({ error: "Failed to delete post" }, { status: 500 });

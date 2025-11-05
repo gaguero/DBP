@@ -11,7 +11,7 @@ export async function GET(request: NextRequest) {
     const locale = searchParams.get("locale");
     const published = searchParams.get("published");
 
-    const where: any = {};
+    const where: { locale?: string; published?: boolean } = {};
     if (locale) where.locale = locale;
     if (published !== null) where.published = published === "true";
 
@@ -21,7 +21,7 @@ export async function GET(request: NextRequest) {
     });
 
     return NextResponse.json(posts);
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 }
@@ -50,11 +50,12 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json(post, { status: 201 });
-  } catch (error: any) {
-    if (error.name === "ZodError") {
-      return NextResponse.json({ error: error.errors }, { status: 400 });
+  } catch (error) {
+    if (error && typeof error === "object" && "name" in error && error.name === "ZodError") {
+      return NextResponse.json({ error: (error as { errors: unknown }).errors }, { status: 400 });
     }
-    return NextResponse.json({ error: error.message || "Failed to create post" }, { status: 500 });
+    const message = error && typeof error === "object" && "message" in error ? String(error.message) : "Failed to create post";
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }
 

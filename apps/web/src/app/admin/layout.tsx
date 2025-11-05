@@ -1,5 +1,6 @@
 import { requireAuth } from "@/lib/auth-utils";
 import { ReactNode } from "react";
+import Link from "next/link";
 
 export default async function AdminLayout({ children }: { children: ReactNode }) {
   const session = await requireAuth();
@@ -14,28 +15,30 @@ export default async function AdminLayout({ children }: { children: ReactNode })
                 <h1 className="text-xl font-bold text-gray-900">Blog Admin</h1>
               </div>
               <div className="ml-6 flex space-x-8">
-                <a
+                <Link
                   href="/admin/blog"
                   className="inline-flex items-center border-b-2 border-blue-500 px-1 pt-1 text-sm font-medium text-gray-900"
                 >
                   Posts
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/admin/blog/new"
                   className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
                 >
                   New Post
-                </a>
+                </Link>
               </div>
             </div>
             <div className="flex items-center">
               <span className="text-sm text-gray-700">{session.user?.email}</span>
-              <a
-                href="/api/auth/signout"
-                className="ml-4 rounded-md bg-gray-100 px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200"
-              >
-                Sign out
-              </a>
+              <form action="/api/auth/signout" method="POST">
+                <button
+                  type="submit"
+                  className="ml-4 rounded-md bg-gray-100 px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200"
+                >
+                  Sign out
+                </button>
+              </form>
             </div>
           </div>
         </div>

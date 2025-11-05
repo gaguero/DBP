@@ -42,7 +42,7 @@ export default async function StoriesPage() {
               <p>No stories available at the moment.</p>
             </div>
           ) : (
-            posts.map((post: any) => (
+            posts.map((post: { slug: string; title: string; excerpt: string; date: string; image?: string; featuredImage?: string }) => (
               <Card key={post.slug} className="overflow-hidden p-0">
                 <Image
                   src={post.image || post.featuredImage || "/images/rooms-view.jpg"}
