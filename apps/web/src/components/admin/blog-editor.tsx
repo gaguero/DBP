@@ -36,7 +36,7 @@ export function BlogEditor({ contentBlocks, onChange }: BlogEditorProps) {
   const updateBlock = (id: string, updates: Partial<ContentBlock>) => {
     const updatedBlocks = blocks.map((block) =>
       block.id === id ? { ...block, ...updates } : block
-    );
+    ) as ContentBlock[];
     setBlocks(updatedBlocks);
     onChange(updatedBlocks);
   };
