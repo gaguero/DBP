@@ -1,3 +1,4 @@
+import React from "react";
 import { ContentBlock } from "@/types/content-blocks";
 import Image from "next/image";
 
