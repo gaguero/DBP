@@ -27,7 +27,7 @@ function BlockRenderer({ block }: { block: ContentBlock }) {
       );
 
     case "heading":
-      const HeadingTag = `h${block.level}` as keyof JSX.IntrinsicElements;
+      const HeadingTag = `h${block.level}` as "h1" | "h2" | "h3";
       const headingClasses = {
         1: "text-4xl md:text-5xl",
         2: "text-3xl md:text-4xl",
