@@ -3,6 +3,7 @@ import { requireAuth } from "@/lib/auth-utils";
 import { db } from "@/lib/db";
 import { blogPostSchema } from "@/lib/validations/blog";
 import { Prisma } from "@prisma/client";
+import { ZodError } from "zod";
 
 export async function GET(
   request: NextRequest,
@@ -69,8 +70,8 @@ export async function PUT(
     if (error && typeof error === "object" && "code" in error && error.code === "P2025") {
       return NextResponse.json({ error: "Post not found" }, { status: 404 });
     }
-    if (error && typeof error === "object" && "name" in error && error.name === "ZodError") {
-      return NextResponse.json({ error: (error as { errors: unknown }).errors }, { status: 400 });
+    if (error instanceof ZodError) {
+      return NextResponse.json({ error: error.errors }, { status: 400 });
     }
     const message = error && typeof error === "object" && "message" in error ? String(error.message) : "Failed to update post";
     return NextResponse.json({ error: message }, { status: 500 });

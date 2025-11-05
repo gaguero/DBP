@@ -96,6 +96,7 @@ export async function POST(request: Request) {
 
       if (shouldRetryWithoutPhone) {
         console.warn("Retrying lead creation without phone number");
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { phoneNumber: _phoneNumber, ...retryPayload } = basePayload;
         crmResponse = await createLead(retryPayload);
       }
