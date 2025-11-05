@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import React from "react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -29,7 +30,7 @@ export default function EditBlogPostPage({ params }: EditBlogPostPageProps) {
     resolver: zodResolver(blogPostSchema),
   });
 
-  const fetchPost = async (postId: string) => {
+  const fetchPost = React.useCallback(async (postId: string) => {
     try {
       const response = await fetch(`/api/admin/blog/${postId}`);
       if (!response.ok) {
@@ -54,7 +55,14 @@ export default function EditBlogPostPage({ params }: EditBlogPostPageProps) {
     } finally {
       setFetching(false);
     }
-  };
+  }, [reset]);
+
+  React.useEffect(() => {
+    params.then((p) => {
+      setId(p.id);
+      fetchPost(p.id);
+    });
+  }, [params, fetchPost]);
 
   const onSubmit = async (data: BlogPostInput) => {
     if (contentBlocks.length === 0) {
