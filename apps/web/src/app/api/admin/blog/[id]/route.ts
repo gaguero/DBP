@@ -48,8 +48,18 @@ export async function PUT(
     const post = await db.blogPost.update({
       where: { id },
       data: {
-        ...validated,
+        slug: validated.slug,
+        title: validated.title,
+        excerpt: validated.excerpt,
         date: validated.date || new Date(),
+        image: validated.image,
+        featuredImage: validated.featuredImage,
+        author: validated.author,
+        category: validated.category,
+        readingTime: validated.readingTime,
+        locale: validated.locale,
+        published: validated.published,
+        contentBlocks: validated.contentBlocks as any,
       },
     });
 

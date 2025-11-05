@@ -51,9 +51,9 @@ export async function POST(request: Request) {
 
   const { firstName, lastName } = splitName(parsedBody.name);
 
-  // Normalize phone if provided
-  const normalizedPhone = parsedBody.phone ? parsedBody.phone.replace(/[^\d+]/g, "") : undefined;
-  const phoneValue = normalizedPhone && normalizedPhone.length >= 5 ? normalizedPhone : undefined;
+  // Normalize phone if provided - kept for future use if needed
+  const phoneValue = parsedBody.phone ? parsedBody.phone.replace(/[^\d+]/g, "") : undefined;
+  const validPhoneValue = phoneValue && phoneValue.length >= 5 ? phoneValue : undefined;
 
   const basePayload: Record<string, unknown> = {
     firstName,
