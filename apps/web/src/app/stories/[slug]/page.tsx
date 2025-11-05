@@ -3,58 +3,75 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Card } from "@/components/card";
 import { PageHero } from "@/components/page-hero";
-import { stories } from "@/content/stories";
+import { BlogPostRenderer } from "@/components/blog-post-renderer";
 
-type StoryParams = {
-  params: { slug: string };
-};
-
-const storyIndex = new Map(stories.map((story) => [story.slug, story]));
-
-export function generateStaticParams() {
-  return stories.map((story) => ({ slug: story.slug }));
+interface StoryParams {
+  params: Promise<{ slug: string }>;
 }
 
-export function generateMetadata({ params }: StoryParams): Metadata {
-  const story = storyIndex.get(params.slug);
+async function getPost(slug: string) {
+  try {
+    const res = await fetch(`${process.env.NEXTAUTH_URL || "http://localhost:3000"}/api/blog/${slug}`, {
+      cache: "no-store",
+    });
+    if (!res.ok) {
+      return null;
+    }
+    return await res.json();
+  } catch {
+    return null;
+  }
+}
 
-  if (!story) {
+export async function generateStaticParams() {
+  // Return empty array for dynamic generation
+  // In production, you might want to fetch all slugs here
+  return [];
+}
+
+export async function generateMetadata({ params }: StoryParams): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await getPost(slug);
+
+  if (!post) {
     return { title: "Story Not Found" };
   }
 
   return {
-    title: `${story.title} | Dolphin Blue Paradise`,
-    description: story.excerpt,
-  } satisfies Metadata;
+    title: `${post.title} | Dolphin Blue Paradise`,
+    description: post.excerpt,
+  };
 }
 
-export default function StoryDetailPage({ params }: StoryParams) {
-  const story = storyIndex.get(params.slug);
+export default async function StoryDetailPage({ params }: StoryParams) {
+  const { slug } = await params;
+  const post = await getPost(slug);
 
-  if (!story) {
+  if (!post) {
     notFound();
   }
 
   return (
     <div className="space-y-24 pb-24">
       <PageHero
-        title={story.title}
-        kicker={story.category}
-        description={story.excerpt}
-        image={story.image}
+        title={post.title}
+        kicker={post.category}
+        description={post.excerpt}
+        image={post.image || post.featuredImage || "/images/rooms-view.jpg"}
       />
 
       <section className="section">
         <div className="container grid gap-12 lg:grid-cols-[1.2fr_0.8fr]">
           <article className="space-y-6 text-base leading-7 text-[var(--color-text-primary)]">
             <p className="text-sm uppercase tracking-[0.2em] text-[var(--color-text-muted)]">
-              {story.date}  /  {story.author}  /  {story.readingTime}
+              {new Date(post.date).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+              })}{" "}
+              / {post.author} / {post.readingTime}
             </p>
-            {story.content.map((paragraph) => (
-              <p key={paragraph} className="text-muted">
-                {paragraph}
-              </p>
-            ))}
+            <BlogPostRenderer blocks={post.contentBlocks || []} />
           </article>
 
           <aside className="space-y-6">
