@@ -71,7 +71,7 @@ export async function PUT(
       return NextResponse.json({ error: "Post not found" }, { status: 404 });
     }
     if (error instanceof ZodError) {
-      return NextResponse.json({ error: error.errors }, { status: 400 });
+      return NextResponse.json({ error: error.issues }, { status: 400 });
     }
     const message = error && typeof error === "object" && "message" in error ? String(error.message) : "Failed to update post";
     return NextResponse.json({ error: message }, { status: 500 });
