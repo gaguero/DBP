@@ -76,7 +76,7 @@ export async function POST(request: Request) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "X-Api-Key": env.ESPOCRM_API_KEY,
+        "X-Api-Key": env.ESPOCRM_API_KEY || "",
       },
       body: JSON.stringify(payload),
     });
