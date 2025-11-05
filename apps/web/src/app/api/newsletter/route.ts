@@ -96,7 +96,7 @@ export async function POST(request: Request) {
 
       if (shouldRetryWithoutPhone) {
         console.warn("Retrying lead creation without phone number");
-        const { phoneNumber, ...retryPayload } = basePayload;
+        const { phoneNumber: _phoneNumber, ...retryPayload } = basePayload;
         crmResponse = await createLead(retryPayload);
       }
 
