@@ -3,6 +3,7 @@ import { requireAuth } from "@/lib/auth-utils";
 import { db } from "@/lib/db";
 import { blogPostSchema } from "@/lib/validations/blog";
 import { Prisma } from "@prisma/client";
+import { ZodError } from "zod";
 
 export async function GET(request: NextRequest) {
   try {
@@ -62,8 +63,8 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(post, { status: 201 });
   } catch (error) {
-    if (error && typeof error === "object" && "name" in error && error.name === "ZodError") {
-      return NextResponse.json({ error: (error as { errors: unknown }).errors }, { status: 400 });
+    if (error instanceof ZodError) {
+      return NextResponse.json({ error: error.issues }, { status: 400 });
     }
     const message = error && typeof error === "object" && "message" in error ? String(error.message) : "Failed to create post";
     return NextResponse.json({ error: message }, { status: 500 });
