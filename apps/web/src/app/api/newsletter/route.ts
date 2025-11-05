@@ -60,6 +60,7 @@ export async function POST(request: Request) {
     lastName,
     name: parsedBody.name,
     emailAddress: parsedBody.email,
+    phoneNumber: validPhoneValue,
     description: "Subscribed to newsletter via website popup",
     source: "Web Site",
     inquiryChannel: "Website Form",
