@@ -1,129 +1,401 @@
-# Dolphin Blue Paradise Website Redesign
+# Dolphin Blue Paradise Website
 
-## DBP Snapshot
-- Project codename: **DBP** (Dolphin Blue Paradise).
+> Eco-luxury resort website built with Next.js, EspoCRM, and modern web technologies
 
-## Internal Platforms
-- **EspoCRM (apps/espocrm/)**: copy `.env.example` to `.env`, run `docker compose up --build`, then complete the installer at `http://localhost:8080/install`. The Docker image mirrors the Railway deployment (PostgreSQL, `/persistent` volume, cron automation). Production secrets live in Railway variables; expose the public URL and API key to the web app via `ESPOCRM_URL` and `ESPOCRM_API_KEY`.
-- **Web App (apps/web/)**: Next.js frontend reads CRM env values from `apps/web/src/lib/env.ts`. Update `.env.local` accordingly before running `pnpm dev`.
+![Next.js](https://img.shields.io/badge/Next.js-15.5.3-black)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
+![Tailwind](https://img.shields.io/badge/Tailwind-4-38bdf8)
+![Railway](https://img.shields.io/badge/Deployed%20on-Railway-purple)
 
-## Project Overview
-- Build a new, visually refined website for Dolphin Blue Paradise using content from the scraped legacy Wix site.
-- Source snapshot (captured 2025-09-20) lives in `dolphinblueparadis-1/d/` and includes HTML, JSON, plain-text extracts, and screen captures.
-- Deliverable: consolidated content inventory and media references to guide upcoming UX, design, copy editing, and localization work.
-- Languages: English primary with Spanish mirrors (`hogar`, `habitaciones`, `instalaciones`, `menus`, `spanish-activity-brochure`).
+## 🏝️ About the Project
 
-## Experience Goals & Constraints
-- Preserve core messaging around eco-luxury, personalization, sustainability, and community impact.
-- Modernize hierarchy and visual storytelling while improving accessibility (legible typography, alt text, encoded characters).
-- Centralize booking funnels (Book Now CTA, WhatsApp, email) and clarify travel logistics.
-- Highlight differentiators: off-grid operations, farm-to-table dining, curated excursions, partnerships with local communities.
+Dolphin Blue Paradise is a boutique eco-luxury resort website serving a 4-room off-grid resort in Isla San Cristóbal, Bocas del Toro, Panama. This project delivers a modern, bilingual (EN/ES) web presence with integrated CRM, chat, and marketing automation.
 
-## Content Inventory
-### Global Site Elements
-- Navigation: Home, Rooms, Restaurant, Activities, Facilities, Your Impact, Book Now, language toggle (EN/ES).
-- Primary CTAs: Book Now, Plan Your Escape, Stay With Us, Discover Our Rooms, Experience Paradise.
-- Contact: WhatsApp +507 6346 0605, contact@dolphinblueparadise.com, Isla San Cristobal, Bahia Delfines, Bocas del Toro, Panama.
-- Legal & footer: 2021 by Agrum'ent Y?S (likely needs correction), liability note reminding guests to safeguard belongings.
-- Repeated components: quick contact form (name/email/message), hero/carousel galleries, social icon placeholders.
+**Key Features:**
+- 🌍 Fully bilingual (English/Spanish)
+- 🔐 Admin panel with authentication
+- 📝 Rich content management (blog system)
+- 💬 Live chat integration (Chatwoot)
+- 📊 CRM integration (EspoCRM)
+- 📈 Analytics (Google Tag Manager)
+- ♻️ Sustainable, off-grid resort showcase
 
-### Home (`www.dolphinblueparadise.com-home.html`)
-- Hero messaging: "Paradise Between the Jungle & the Sea" and "A Personalized Eco-Luxury Escape."
-- Value proposition: concierge support from flights to boat transfer, custom itineraries, green energy, local sourcing, dietary accommodations.
-- Location story: off-grid eco-resort on Isla San Cristobal with rainforest, Ngabe and Guayami communities, and 80 resident dolphins.
-- Supporting sections: Stay With Us, A Unique Location, Our Promise, Guest Reviews (one long-form testimonial).
-- Amenities teased: breakfast service, free Wi-Fi, tropical garden tours, sea access, rainforest hikes guided by Roque, Blø Bar & Restaurant.
-- Activities teaser list: Dolphin Bay, Snorkeling, Excursions & Tours, Waterski/Wakeboard, Chocolate Farm Tour, Stand Up Paddle, Surfing (Nov-April seasonality), Kayak, Monkey Island, Fishing, Massages.
-- Disclaimer: resort not liable for guest belongings; reminder to secure valuables.
-
-### Rooms (`www.dolphinblueparadise.com-rooms.html`)
-- General: sea-view accommodations include robes, swim towels, refillable toiletries, daily purified rainwater deliveries.
-- Premium Deluxe Sea View Cabana: California king with organic mattress, private bathroom, large terrace with loungers and desk, sea view, electricity/fan, Wi-Fi, breakfast, approx. 33 m², up to 2 guests.
-- Sea View Cabanas (renovated Feb 2024): king bed, private terrace and bathroom, electricity/fan, Wi-Fi, breakfast, approx. 20 m², up to 2 guests.
-- Dolphin View Room: king bed, desk, private bathroom, large sea-view terrace, electricity/fan, Wi-Fi, breakfast, approx. 30 m², up to 2 guests.
-- Family Jungle Room: king bed plus twin day bed, bath with tub and shower, terrace with jungle and sea views, Wi-Fi, breakfast, 60+ m², sleeps up to 3.
-- Each room block links to "Book Your Room."
-
-### Restaurant (`www.dolphinblueparadise.com-restaurant.html`)
-- Concept: Blø Bar over-water dining, homegrown and locally sourced organic ingredients with European-fusion menus.
-- Service times: breakfast 8:00-9:30, lunch 12:00-14:30, dinner 19:00-21:30 (set three-course menu); Blø Bar provides all-day snacks and cocktails.
-- Sustainability: garden produce, reduced food waste, every dish prepared fresh.
-- Social proof: testimonial highlighting cocktails, locally caught fish, fresh juices and desserts.
-- Reservations: WhatsApp/email in advance (48 hours notice for meals); locals and non-guests welcome.
-
-### Facilities (`www.dolphinblueparadise.com-facilities.html`)
-- Overview: private balconies/patios, sunbeds, hammocks, swim platform, marine life viewing (starfish, sea urchins).
-- Swimming & Sunbathing: relaxation spaces around the platform and hammocks.
-- Tropical Garden: guided by gardener Roque; fruit list (mango, banana, pineapple, lime, passion fruit, rambutan, starfruit, guava, mangosteen, water apple, soursop, mandarins, coconut, plantains) plus herbs/vegetables (ginger, turmeric, lettuce, spinach, cilantro, lemongrass, tomatoes, peppers).
-- Salon Azul: newly renovated indoor lounge for reading, meditation, board games, yoga; adjacent outdoor workout area with weights, dumbbells, fitness ball, yoga mats.
-
-### Travel Logistics (`www.dolphinblueparadise.com-finding-dbp.html`)
-- Resort location: northeastern Dolphin Bay, Bocas del Toro archipelago, Panama.
-- Assistance: team can coordinate flights, drivers, and boat transfers; contact via email or WhatsApp.
-- From Panama City: domestic flights (Air Panama or Fly Trip) PTY > PAC > BOC with 3-hour buffer or overnight in Casco Viejo; preferred hotel Central Hotel; private charter planes from $1680 each way for up to 3 passengers.
-- Overland from Panama: private car service (7-10 hours) or rental car to Tierra Oscura for boat pickup; bus (Tranceibosa) from Albrook terminal with taxi to Terpel Gas Station for 40-minute boat ride; reminder to dress warm for bus AC.
-- From Costa Rica: Sansa Air flights (Tue/Thu/Sun) from SJO or Caribe Shuttle buses (10 hours from San José, 5 hours from Puerto Viejo) to Almirante, then boat transfer.
-- From David/Bouquete: private car (3-4 hours) or bus combinations to Tierra Oscura for boat pickup; instructions to alert staff when reaching Rambala.
-- Transfer policy: complimentary Bocas Town/Airport transfers for 4+ night stays; $90 round trip for shorter stays; scheduled pickups at 12:30 and 17:00; $50 fee for off-schedule pickups; Almirante transfer $105 for two; Tierra Oscura parking donations $5/night.
-
-### Your Impact (`www.dolphinblueparadise.com-your-impact.html`)
-- Guest promise: luxury experience aligned with sustainability and mindful travel values.
-- Eco practices: 100% solar power, rainwater collection/purification, garden-to-table sourcing by Roque, composting food scraps, reusable amenities, essential-oil pest control guidance (repellent, window closure at dusk, mosquito nets).
-
-### Volunteering & Community (`www.dolphinblueparadise.com-volunteering-in-an-indigenous-village.html`)
-- Partnership: volunteers support Floating Doctors delivering healthcare to nearby indigenous villages.
-- Donation wish list: clothing, shoes, books, school supplies, solar chargers, toiletries, rainwater systems, mosquito nets, laptops, water treatment systems, life vests, sports equipment, headlamps/bike lights.
-- Encourages medical volunteering via floatingdoctors.com; resort can organize visits.
-- Education: scholarship program for staff or their children pursuing healthcare/hospitality training; contact for sponsorships.
-
-### Menus (`www.dolphinblueparadise.com-menus.html`)
-- Gallery of menu card images (lunch and other meals); no text capture. Requires transcription for accessibility and SEO.
-
-### Activity Brochures (`www.dolphinblueparadise.com-activity-brochure.html` and variants)
-- Primarily image-based brochures labeled "short or half day tours." Plan to recreate tour details (title, duration, inclusions, pricing cues) in structured text.
-
-### Reservation (`www.dolphinblueparadise.com-reservation.html`)
-- Placeholder reiterating "Our Rooms" plus contact details; integrate with final booking mechanism or replace with embedded form.
-
-### Spanish Pages
-- `www.dolphinblueparadise.com-hogar.html`, `-habitaciones.html`, `-instalaciones.html`, `-menus.html`, `-spanish-activity-brochure.html` mirror English content for ES audience.
-- Determine localization workflow (single CMS entries with translations vs. separate page variants).
-
-### Duplicates & Artifacts
-- `copy-of-home` and `copy-of-activity-brochure` duplicates of English pages; treat as archival references only.
-- Extracted text (`*.txt` files) contains encoding artifacts (smart quotes, emojis, special icons); normalize copy during content editing.
-
-## Media Library
-- 75 unique remote assets hosted on static.wixstatic.com (hero imagery, galleries, icons, scanned menus, brochures).ds
-- Use the `media-gallery.html` template to preview all assets; download and host via the new stack before launch.
-
-## Recommended Next Steps
-1. Clean and proofread all copy (resolve encoding glitches, confirm measurements, update legal attributions).
-2. Expand activity and menu descriptions into accessible text; pair with booking CTAs or inquiry forms.
-3. Define booking flow (embedded engine vs. external link) and unify CTAs across pages.
-4. Audit imagery for quality and aspect ratio; plan CDN migration and alt text.
-5. Establish bilingual content process (translation management, routing of inquiries by language).
-6. Validate travel logistics, pricing references, and donation list with the Dolphin Blue Paradise team before publishing.
-
-## Wix CLI Reference
-
-This repository was originally generated with Wix's Git Integration & Wix CLI tooling, so you can still use those commands to collaborate with the live Wix site when needed.
+## 🚀 Quick Start
 
 ### Prerequisites
+- Node.js 18+ (22.21.1 recommended)
+- pnpm 8+
+- PostgreSQL (or Railway database)
 - Git
-- Node 14.8 or later
-- npm, pnpm, or yarn
-- SSH key configured with GitHub
-- `@wix/cli` installed globally (`pnpm add -g @wix/cli` or `npm install -g @wix/cli`)
 
-### Helpful Commands
-1. Clone the repo and `cd` into it.
-2. Install dependencies with `pnpm install`.
-3. Start the Local Editor with `wix dev` to preview and test changes.
-4. Run `wix sync-types` after installing new packages.
-5. Publish or manage the site via the Wix CLI as described in the Wix documentation.
+### Installation
 
-For complete documentation see:
-- [Setting up Git Integration & Wix CLI](https://support.wix.com/en/article/velo-setting-up-git-integration-wix-cli-beta)
-- [Working with the Local Editor](https://support.wix.com/en/article/velo-working-with-the-local-editor-beta)
-- [Understanding the Wix repo structure](https://support.wix.com/en/article/velo-understanding-your-sites-github-repository-beta)
+```bash
+# Clone the repository
+git clone https://github.com/gaguero/DBP.git
+cd DBPwix
+
+# Install dependencies
+pnpm install
+
+# Set up environment variables
+cd apps/web
+cp .env.example .env.local
+# Edit .env.local with your database URL and secrets
+
+# Initialize database
+pnpm db:push
+
+# Run development server
+pnpm dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) to see the result.
+
+### First Time Setup
+
+```bash
+# Create admin user (optional, auto-creates on Railway)
+pnpm -F web db:setup
+```
+
+Default admin credentials (set via environment variables):
+- Email: Value of `ADMIN_EMAIL`
+- Password: Value of `ADMIN_PASSWORD`
+
+## 📁 Project Structure
+
+```
+DBPwix/
+├── apps/
+│   ├── web/                     # Next.js application (main app)
+│   │   ├── prisma/              # Database schema
+│   │   ├── public/              # Static assets
+│   │   ├── src/
+│   │   │   ├── app/            # Next.js App Router pages
+│   │   │   │   ├── (public pages)/  # Homepage, Rooms, Dining, etc.
+│   │   │   │   ├── es/         # Spanish versions
+│   │   │   │   ├── admin/      # Admin panel
+│   │   │   │   └── api/        # API routes
+│   │   │   ├── components/     # React components
+│   │   │   ├── content/        # Static content data
+│   │   │   ├── lib/           # Utilities, auth, database
+│   │   │   ├── types/         # TypeScript definitions
+│   │   │   └── middleware.ts   # Auth middleware
+│   │   └── scripts/           # Utility scripts
+│   └── espocrm/               # EspoCRM deployment config
+├── docs/                      # Project documentation
+│   ├── BUILD-JOURNAL.md       # Development history
+│   └── espocrm-config-plan.md # CRM configuration
+├── memory/                    # Context for AI assistants
+│   ├── product_context.md     # Business & product info
+│   ├── active_context.md      # Current technical state
+│   ├── progress.md            # Milestone tracking
+│   └── tasks.md               # Active tasks
+├── rules/                     # Cursor IDE AI rules
+│   ├── init.md               # Project initialization
+│   ├── guide.md              # Development guidelines
+│   ├── plan.md               # Planning process
+│   ├── build.md              # Build process
+│   └── review.md             # Review checklist
+├── infra/                    # Infrastructure configs
+├── STYLEGUIDE.md             # UI/UX design system
+├── SITEMAP.md                # Site architecture
+└── PROJECT-ROADMAP.md        # Strategic roadmap
+```
+
+## 🛠️ Technology Stack
+
+### Frontend
+- **Framework:** Next.js 15.5.3 (App Router, React Server Components)
+- **Language:** TypeScript 5 (strict mode)
+- **Styling:** Tailwind CSS 4
+- **Components:** Custom UI components following brand guidelines
+- **Forms:** React Hook Form + Zod validation
+- **Rich Text:** TipTap editor (admin panel)
+
+### Backend
+- **Runtime:** Node.js 22.21.1
+- **Database:** PostgreSQL 
+- **ORM:** Prisma 6.19.0
+- **Authentication:** NextAuth.js v5 (beta.25)
+- **API:** Next.js API routes (REST)
+- **Password Security:** bcryptjs
+
+### Marketing & CRM
+- **CRM:** EspoCRM (self-hosted on Railway)
+- **Live Chat:** Chatwoot (planned deployment)
+- **Analytics:** Google Analytics 4 via GTM
+- **Email Marketing:** EspoCRM campaigns
+- **Lead Capture:** Forms → EspoCRM API
+
+### Infrastructure
+- **Hosting:** Railway (web app + PostgreSQL)
+- **Deployments:** Auto-deploy from GitHub main branch
+- **CI/CD:** Railway + GitHub integration
+- **Package Manager:** pnpm workspaces
+- **Monorepo:** Multi-app workspace structure
+
+## 📖 Key Documentation
+
+### For Developers
+- **[Product Context](memory/product_context.md)** - Business model, audiences, value proposition, CRM ecosystem
+- **[Active Context](memory/active_context.md)** - Current technical state, recent changes, known issues
+- **[Style Guide](STYLEGUIDE.md)** - UI/UX guidelines, components, branding
+- **[Sitemap](SITEMAP.md)** - Site architecture and page blueprints
+- **[Roadmap](PROJECT-ROADMAP.md)** - Strategic plan and delivery stages
+
+### For AI Assistants
+- **[Memory Bank](memory/)** - Complete project context
+- **[Cursor Rules](rules/)** - Development guidelines and standards
+
+### Technical Docs
+- **[Build Journal](docs/BUILD-JOURNAL.md)** - Historical decisions
+- **[EspoCRM Config](docs/espocrm-config-plan.md)** - CRM setup details
+
+## 🌐 Features
+
+### Public Website
+- ✅ Bilingual (English `/` + Spanish `/es/`)
+- ✅ Responsive design (desktop/tablet/mobile)
+- ✅ Homepage with hero and value pillars
+- ✅ Rooms showcase (4 accommodation types)
+- ✅ Dining (Blø Bar & Restaurant)
+- ✅ Experiences (activities and excursions)
+- ✅ Sustainability practices
+- ✅ Travel logistics guide
+- ✅ Volunteering opportunities
+- ✅ Contact forms → EspoCRM
+- ✅ Newsletter popup → EspoCRM
+- ✅ Gallery
+- ✅ Dynamic stories pages
+
+### Admin Panel (`/admin`)
+- ✅ Secure authentication
+- ✅ Blog management system
+  - Rich content editor (TipTap)
+  - Flexible content blocks
+  - Draft/published workflow
+  - Bilingual support
+  - Category tagging
+- ⏳ Public blog pages (to be rebuilt)
+
+### Integrations
+- ✅ EspoCRM lead capture
+- ✅ Google Tag Manager
+- ✅ Chatwoot chat widget (ready, needs credentials)
+- ⏳ Booking engine (planned)
+- ⏳ Payment gateway (planned)
+
+## 🔧 Development
+
+### Available Scripts
+
+```bash
+# Development
+pnpm dev                    # Start dev server (all apps)
+pnpm -F web dev            # Start web app only
+
+# Database
+pnpm -F web db:generate    # Generate Prisma client
+pnpm -F web db:push        # Push schema to database
+pnpm -F web db:migrate     # Run migrations
+pnpm -F web db:setup       # Create admin user
+
+# Build & Deploy
+pnpm -F web build          # Build for production
+pnpm -F web start          # Start production server
+
+# Code Quality
+pnpm -F web lint           # Run ESLint
+```
+
+### Environment Variables
+
+Create `apps/web/.env.local`:
+
+```bash
+# Database
+DATABASE_URL="postgresql://user:password@localhost:5432/dbp"
+
+# Authentication
+NEXTAUTH_URL="http://localhost:3000"
+NEXTAUTH_SECRET="your-secret-key-here"
+
+# Admin User (created automatically)
+ADMIN_EMAIL="admin@donboscoperu.org"
+ADMIN_PASSWORD="your-secure-password"
+
+# Optional: EspoCRM Integration
+ESPOCRM_URL="https://your-crm.com/api/v1"
+ESPOCRM_API_KEY="your-api-key"
+
+# Optional: Chatwoot
+CHATWOOT_BASE_URL="https://your-chat.com"
+CHATWOOT_TOKEN="your-token"
+
+# Optional: Analytics
+GTM_ID="GTM-XXXXXXX"
+```
+
+### Database Schema
+
+Key models:
+- **User** - Admin authentication
+- **BlogPost** - Blog content with rich blocks (JSON)
+
+See `apps/web/prisma/schema.prisma` for full schema.
+
+## 🚢 Deployment
+
+### Railway (Current)
+
+**Auto-deployment:**
+1. Push to `main` branch
+2. Railway detects changes
+3. Builds and deploys automatically
+4. Runs database migrations
+5. Creates admin user if needed
+
+**Manual deployment:**
+```bash
+railway up
+```
+
+### Environment Setup (Railway)
+Configure these variables in Railway dashboard:
+
+**Required:**
+- `DATABASE_URL` - `${{Postgres.DATABASE_URL}}`
+- `NEXTAUTH_URL` - `https://${{RAILWAY_PUBLIC_DOMAIN}}`
+- `NEXTAUTH_SECRET` - Generate with `openssl rand -base64 32`
+- `ADMIN_EMAIL` - Your admin email
+- `ADMIN_PASSWORD` - Secure password
+
+**Optional:**
+- `ESPOCRM_URL`, `ESPOCRM_API_KEY`
+- `CHATWOOT_BASE_URL`, `CHATWOOT_TOKEN`
+- `GTM_ID`
+
+## 🎨 Style Guide
+
+The project follows a comprehensive design system documented in [STYLEGUIDE.md](STYLEGUIDE.md).
+
+### Brand Colors
+- **Primary Ocean:** `#0E8BA8` - CTAs, links
+- **Deep Navy:** `#1B2330` - Text, headers
+- **Warm Sand:** `#F5EDE3` - Backgrounds
+- **Golden Accent:** `#C7A46B` - Highlights
+- **Coral Highlight:** `#D8684B` - Secondary CTAs
+
+### Typography
+- **Display:** Playfair Display
+- **Headings:** Playfair Display
+- **Body:** Source Sans Pro / Lato
+
+## 🤝 Contributing
+
+### Branch Strategy
+- `main` - Production-ready code
+- `feat/*` - New features
+- `fix/*` - Bug fixes
+- `docs/*` - Documentation
+
+### Development Guidelines
+1. Follow the style guide
+2. Write TypeScript (strict mode)
+3. Test responsive layouts
+4. Maintain bilingual parity (EN/ES)
+5. Document complex logic
+6. Update memory bank for significant changes
+
+### For New Developers
+See [Product Context](memory/product_context.md) and [Active Context](memory/active_context.md) for complete project understanding.
+
+## 📊 CRM & Marketing
+
+### Lead Flow
+```
+Website Form → API Route → EspoCRM Lead → Sales Pipeline
+Newsletter → API Route → EspoCRM Contact → Email Campaigns
+Chat → Chatwoot → Webhook → EspoCRM Activity
+```
+
+### EspoCRM Pipeline Stages
+1. New Inquiry
+2. Qualified
+3. Proposal Sent
+4. Tentative Booking
+5. Converted (Booked)
+6. Lost/Unresponsive
+
+### Data Captured
+- Name (split: first/last)
+- Email, Phone
+- Language preference (EN/ES)
+- Travel dates, party size
+- Interests (rooms, activities, etc.)
+- Source/campaign tracking
+
+## 🔐 Security
+
+- ✅ NextAuth session management
+- ✅ Password hashing (bcryptjs, 10 rounds)
+- ✅ Environment variable protection
+- ✅ API route authentication
+- ✅ CSRF protection (Next.js default)
+- ⏳ Rate limiting (to implement)
+- ⏳ Input sanitization review
+
+## 📈 Analytics & Tracking
+
+### Implemented
+- Google Tag Manager container
+- Page view tracking
+- Form submission events (foundation)
+
+### To Configure
+- Conversion goals
+- Event tracking (CTAs, chat, newsletter)
+- E-commerce tracking (when booking system added)
+- Campaign attribution
+
+## 🐛 Known Issues
+
+### High Priority
+- Blog public pages removed (intentional, will rebuild)
+- No automated booking system
+- Mobile optimization incomplete
+
+### Medium Priority
+- SEO meta tags need review
+- Image optimization needed
+- Accessibility audit pending
+
+See [Active Context](memory/active_context.md) for complete issue list.
+
+## 📝 License
+
+Proprietary - © 2025 Dolphin Blue Paradise. All rights reserved.
+
+## 📞 Contact
+
+- **Website:** [dolphinblueparadise.com](https://dolphinblueparadise.com)
+- **Email:** contact@dolphinblueparadise.com
+- **WhatsApp:** +507 6346 0605
+- **Location:** Isla San Cristóbal, Bocas del Toro, Panama
+
+---
+
+## 🙏 Acknowledgments
+
+- **Resort Team:** For authentic content and insights
+- **Guests:** For testimonials and feedback
+- **Community Partners:** Floating Doctors and local communities
+- **Tech Stack:** Next.js, Prisma, Railway, EspoCRM teams
+
+---
+
+**Built with ❤️ for sustainable, eco-luxury travel**
+
+Last updated: November 6, 2025
