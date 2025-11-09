@@ -146,6 +146,11 @@ DBPwix/
 - WhatsApp/email links
 - Location information
 
+✅ **Form Testing** (/form_testing)
+- News and Offers form testing
+- Get Personalized Assistance form testing
+- Testing checklist and instructions
+
 ✅ **Gallery**
 - Photo collection
 - Activity-focused
@@ -182,7 +187,8 @@ DBPwix/
 
 ### API Routes
 ✅ **/api/newsletter** - Newsletter signup → EspoCRM
-✅ **/api/lead** - Contact form → EspoCRM  
+✅ **/api/lead** - Contact form → EspoCRM (supports News and Offers + Get Personalized Assistance)
+✅ **/api/ga4-event** - GA4 event handler for behavioral tracking
 ✅ **/api/admin/blog** - Blog CRUD operations (auth required)
 ✅ **/api/blog** - Public blog data (ready, no public pages yet)
 ✅ **/api/auth/[...nextauth]** - Authentication handlers
@@ -194,6 +200,10 @@ DBPwix/
 - Contact management
 - REST API connectivity
 - Error handling and retry logic
+- ✅ Drip campaign automation (News and Offers + Get Personalized Assistance)
+- ✅ Lead scoring system (demographic + behavioral + engagement)
+- ✅ GA4 behavioral tracking integration
+- ✅ Mobile app access for concierge team
 
 ✅ **Google Tag Manager**
 - Container loaded via `gtm.tsx` component
@@ -335,8 +345,10 @@ pnpm -F web start
 1. Booking engine integration
 2. Payment gateway
 3. Automated availability calendar
-4. Email campaign templates
-5. Advanced analytics dashboards
+4. ✅ Email campaign templates (Drip campaigns implemented)
+5. ✅ Advanced analytics dashboards (GA4 + Lead Scoring)
+6. ✅ Lead scoring system (implemented)
+7. ✅ Mobile app setup (EspoCRM mobile app)
 
 ### Long Term (2026)
 1. Multi-currency support
@@ -426,6 +438,35 @@ pnpm -F web start
 
 ---
 
-**Last Updated:** November 6, 2025 16:00  
-**Current Sprint:** Cleanup & documentation for new developer  
-**Next Milestone:** Sitemap implementation kickoff
+**Last Updated:** November 6, 2025 20:00  
+**Current Sprint:** Drip Campaign Implementation + Lead Scoring + GA4 Integration  
+**Next Milestone:** Complete EspoCRM configuration and testing
+
+## Recent Implementation: Drip Campaigns System
+
+### Completed (November 6, 2025)
+- ✅ Complete implementation plan for drip campaigns
+- ✅ Lead scoring system design (demographic + behavioral + engagement)
+- ✅ GA4 integration architecture for behavioral tracking
+- ✅ Mobile app setup instructions
+- ✅ 7 complete email templates (6 drip + 1 manual)
+- ✅ Frontend form testing page (/form_testing)
+- ✅ API endpoint updates for dual form support
+- ✅ n8n workflow designs for GA4 → EspoCRM
+- ✅ GTM tracking scripts for form views, CTA clicks, engagement
+
+### Pending Configuration (Manual Steps Required)
+- ⏳ EspoCRM custom fields creation
+- ⏳ BPM workflows configuration
+- ⏳ Email templates upload to EspoCRM
+- ⏳ Target Lists creation
+- ⏳ SMTP configuration
+- ⏳ Lead scoring workflows setup
+- ⏳ n8n workflow deployment
+- ⏳ Mobile app setup for concierge team
+
+### Documentation Created
+- `docs/complete-implementation-guide.md` - Full implementation guide with all details
+- `docs/ga4-integration-scripts.md` - GA4 scripts and n8n workflows
+- `docs/implementation-plan-drip-campaigns.md` - Original implementation plan
+- `docs/espocrm-drip-campaign-setup.md` - Updated with 2-form approach

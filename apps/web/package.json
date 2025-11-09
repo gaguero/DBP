@@ -10,7 +10,11 @@
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
     "db:push": "prisma db push",
-    "db:migrate-posts": "tsx scripts/migrate-posts.ts"
+    "db:migrate-posts": "tsx scripts/migrate-posts.ts",
+    "espocrm:setup": "node ../../scripts/espocrm/setup-all.js",
+    "espocrm:fields": "node ../../scripts/espocrm/create-fields.js",
+    "espocrm:target-lists": "node ../../scripts/espocrm/create-target-lists.js",
+    "espocrm:templates": "node ../../scripts/espocrm/create-email-templates.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
