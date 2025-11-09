@@ -457,7 +457,7 @@ pnpm -F web start
 
 ### Pending Configuration (Manual Steps Required)
 - ⏳ EspoCRM custom fields creation
-- ⏳ BPM workflows configuration
+- ⏳ BPM workflows configuration (OR custom workflow system implementation)
 - ⏳ Email templates upload to EspoCRM
 - ⏳ Target Lists creation
 - ⏳ SMTP configuration
@@ -470,3 +470,125 @@ pnpm -F web start
 - `docs/ga4-integration-scripts.md` - GA4 scripts and n8n workflows
 - `docs/implementation-plan-drip-campaigns.md` - Original implementation plan
 - `docs/espocrm-drip-campaign-setup.md` - Updated with 2-form approach
+
+---
+
+## MAJOR NEW PROJECT: Custom Workflow System for EspoCRM
+
+### Context
+**Problem:** EspoCRM's native workflows require paid "Advanced Pack". We need a powerful, easy-to-use workflow system similar to HubSpot, directly integrated into EspoCRM.
+
+**Decision:** Build custom EspoCRM extension/module with graphical interface (React Flow) and full workflow capabilities.
+
+**Status:** Specification complete, implementation planning ready
+
+### Research Completed (November 2025)
+
+#### Phase 1: Alternative Solutions Research
+- ✅ Researched free alternatives (Node.js scripts, n8n, webhooks, PHP extensions)
+- ✅ Documented in `docs/workflows-free-alternatives-research.md`
+- ✅ User requested native EspoCRM solution instead
+
+#### Phase 2: HubSpot Workflow Analysis
+- ✅ Analyzed HubSpot workflow features comprehensively
+- ✅ Documented all triggers, conditions, actions, delays, branching
+- ✅ Identified enrollment management, logging, monitoring needs
+
+#### Phase 3: EspoCRM Codebase Investigation
+- ✅ Explored EspoCRM HookManager system (`apps/espocrm/src/application/Espo/Core/HookManager.php`)
+- ✅ Investigated JobScheduler and JobManager (`apps/espocrm/src/application/Espo/Core/Job/`)
+- ✅ Reviewed entity definition structure
+- ✅ Understood extension/module architecture
+- ✅ Confirmed feasibility of custom implementation
+
+#### Phase 4: Complete Specification
+- ✅ Created comprehensive specification (`docs/workflows-complete-specification.md`)
+- ✅ Defined all entities (Workflow, WorkflowExecution, WorkflowLog)
+- ✅ Specified all triggers (Record, Behavior, Time, Enrollment)
+- ✅ Specified all conditions (operators, logic, special conditions)
+- ✅ Specified all actions (Email, Record, List, Assignment, Task, Workflow, Delay, Branching, Custom Code)
+- ✅ Designed React Flow graphical interface
+- ✅ Designed execution engine architecture
+
+### Key Technical Findings
+
+#### EspoCRM Integration Points
+1. **Hook System:** 
+   - HookManager automatically discovers hooks in `Hooks/{EntityType}/` folders
+   - Hooks implement `beforeSave()`, `afterSave()`, `afterRemove()` methods
+   - Perfect for triggering workflows on record events
+
+2. **Job System:**
+   - JobScheduler creates scheduled jobs with `scheduledAt` timestamp
+   - JobManager processes jobs from queues (Q0, Q1, E0, etc.)
+   - Perfect for delayed workflow execution
+
+3. **Entity System:**
+   - Custom entities defined in `metadata/entityDefs/{EntityType}.json`
+   - EntityManager handles CRUD operations
+   - Can create Workflow, WorkflowExecution, WorkflowLog entities
+
+4. **API System:**
+   - Controllers automatically generate REST API endpoints
+   - Services contain business logic
+   - Can create workflow management API
+
+#### Frontend Integration Strategy
+- **Challenge:** EspoCRM uses Backbone.js/RequireJS, we want React Flow
+- **Solution:** Embed React Flow app in iframe within EspoCRM custom module
+- **Communication:** postMessage API between iframe and EspoCRM
+- **Benefits:** Modern UX, minimal EspoCRM core changes
+
+### Architecture Overview
+
+#### Backend Components
+- **WorkflowEngine:** Parses definitions, executes workflows
+- **WorkflowScheduler:** Handles delays and scheduled execution
+- **WorkflowParser:** Validates and parses workflow JSON
+- **Hooks:** Trigger workflows on EspoCRM events
+- **Jobs:** Execute scheduled workflow steps
+- **Actions:** Implement all workflow actions (Send Email, Update Record, etc.)
+
+#### Frontend Components
+- **React Flow Editor:** Graphical workflow builder
+- **Node Types:** Trigger, Action, Condition, Delay, Branch, Code
+- **Features:** Drag & drop, zoom & pan, undo/redo, validation, testing
+- **Integration:** Embedded in EspoCRM via iframe
+
+#### Data Model
+- **Workflow Entity:** Stores workflow definitions (JSON)
+- **WorkflowExecution Entity:** Tracks individual workflow runs
+- **WorkflowLog Entity:** Detailed execution logs
+
+### Implementation Status
+
+#### Completed
+- ✅ Complete specification document
+- ✅ Technical feasibility confirmed
+- ✅ Architecture designed
+- ✅ Integration points identified
+
+#### Next Steps (Ready for Implementation Planning)
+1. Create detailed implementation plan
+2. Set up development environment
+3. Create entity definitions
+4. Implement WorkflowEngine core
+5. Implement hooks integration
+6. Implement job scheduling
+7. Build React Flow frontend
+8. Integrate frontend with EspoCRM
+9. Testing and refinement
+
+### Documentation Created
+- `docs/workflows-complete-specification.md` - Complete specification (705 lines)
+- `docs/workflows-free-alternatives-research.md` - Initial research on alternatives
+- `docs/CREAR-WORKFLOWS-BPM.md` - Manual BPM workflow guide (for reference)
+- `memory/system_patterns.md` - Architecture and system patterns
+- `memory/tech_context.md` - Technical details and implementation notes
+
+### Key Decisions
+1. **React Flow over native builder:** Better UX, faster development
+2. **JSON storage:** Flexible, easy to version
+3. **EspoCRM JobScheduler:** Native integration, reliable
+4. **EspoCRM HookManager:** Native integration, automatic discovery
+5. **Custom module:** Maintainable, upgradeable, follows best practices
