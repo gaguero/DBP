@@ -1,0 +1,14 @@
+{
+  "name": "Workflows",
+  "version": "1.0.0",
+  "description": "Custom workflow system for EspoCRM with graphical interface (React Flow)",
+  "author": "Dolphin Blue Paradise",
+  "acceptableVersions": [
+    ">=9.2.0"
+  ],
+  "php": [
+    ">=8.1.0"
+  ],
+  "skipBackup": false
+}
+

@@ -1,0 +1,41 @@
+{
+  "labels": {
+    "Create Workflow": "Create Workflow",
+    "Workflows": "Workflows",
+    "Workflow": "Workflow",
+    "Workflow Execution": "Workflow Execution",
+    "Workflow Executions": "Workflow Executions",
+    "Workflow Log": "Workflow Log",
+    "Workflow Logs": "Workflow Logs"
+  },
+  "fields": {
+    "name": "Name",
+    "description": "Description",
+    "status": "Status",
+    "entityType": "Entity Type",
+    "triggerType": "Trigger Type",
+    "definition": "Definition",
+    "isActive": "Is Active"
+  },
+  "options": {
+    "status": {
+      "draft": "Draft",
+      "active": "Active",
+      "paused": "Paused",
+      "archived": "Archived"
+    },
+    "triggerType": {
+      "Record Created": "Record Created",
+      "Record Updated": "Record Updated",
+      "Record Deleted": "Record Deleted",
+      "Property Changed": "Property Changed",
+      "Form Submission": "Form Submission",
+      "Email Opened": "Email Opened",
+      "Email Clicked": "Email Clicked",
+      "Specific Date/Time": "Specific Date/Time",
+      "Relative Date": "Relative Date",
+      "Recurring Schedule": "Recurring Schedule"
+    }
+  }
+}
+
