@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { env } from "@/lib/env";
 
 /**
  * API Route para recibir eventos de GA4 y enviarlos a Measurement Protocol

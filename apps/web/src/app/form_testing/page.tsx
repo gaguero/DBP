@@ -336,9 +336,9 @@ export default function FormTestingPage() {
                   <ul className="space-y-1 text-muted">
                     <li>☐ Form submits successfully</li>
                     <li>☐ Lead created in EspoCRM</li>
-                    <li>☐ formSource = "News and Offers Form"</li>
-                    <li>☐ dripCampaignType = "News and Offers"</li>
-                    <li>☐ dripCampaignStatus = "Active (Email 1)"</li>
+                    <li>☐ formSource = &quot;News and Offers Form&quot;</li>
+                    <li>☐ dripCampaignType = &quot;News and Offers&quot;</li>
+                    <li>☐ dripCampaignStatus = &quot;Active (Email 1)&quot;</li>
                     <li>☐ Email 1 sent automatically</li>
                     <li>☐ Agent assigned correctly</li>
                     <li>☐ Target List updated</li>
@@ -349,9 +349,9 @@ export default function FormTestingPage() {
                   <ul className="space-y-1 text-muted">
                     <li>☐ Form submits successfully</li>
                     <li>☐ Lead created in EspoCRM</li>
-                    <li>☐ formSource = "Get Personalized Assistance Form"</li>
-                    <li>☐ dripCampaignType = "Get Personalized Assistance"</li>
-                    <li>☐ dripCampaignStatus = "Waiting for Manual Email 1"</li>
+                    <li>☐ formSource = &quot;Get Personalized Assistance Form&quot;</li>
+                    <li>☐ dripCampaignType = &quot;Get Personalized Assistance&quot;</li>
+                    <li>☐ dripCampaignStatus = &quot;Waiting for Manual Email 1&quot;</li>
                     <li>☐ NO email sent automatically</li>
                     <li>☐ Task created for agent</li>
                     <li>☐ Agent assigned correctly</li>
