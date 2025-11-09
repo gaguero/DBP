@@ -1,0 +1,109 @@
+{
+    "fields": {
+        "name": {
+            "type": "varchar",
+            "required": true,
+            "maxLength": 255
+        },
+        "description": {
+            "type": "text"
+        },
+        "status": {
+            "type": "enum",
+            "options": ["draft", "active", "paused", "archived"],
+            "default": "draft",
+            "style": {
+                "active": "success",
+                "paused": "warning",
+                "archived": "info",
+                "draft": "default"
+            },
+            "audited": true
+        },
+        "entityType": {
+            "type": "enum",
+            "options": ["Lead", "Contact", "Account", "Opportunity", "Case", "Task"],
+            "required": true,
+            "audited": true
+        },
+        "triggerType": {
+            "type": "enum",
+            "options": [
+                "Record Created",
+                "Record Updated",
+                "Record Deleted",
+                "Property Changed",
+                "Form Submission",
+                "Email Opened",
+                "Email Clicked",
+                "Email Bounced",
+                "Email Replied",
+                "Specific Date/Time",
+                "Relative Date",
+                "Recurring Schedule",
+                "Contact Enrolled",
+                "Contact Unenrolled"
+            ],
+            "required": true
+        },
+        "definition": {
+            "type": "jsonObject",
+            "required": true,
+            "view": "views/workflows/fields/definition"
+        },
+        "isActive": {
+            "type": "bool",
+            "default": false,
+            "audited": true
+        },
+        "createdAt": {
+            "type": "datetime",
+            "readOnly": true
+        },
+        "modifiedAt": {
+            "type": "datetime",
+            "readOnly": true
+        },
+        "createdBy": {
+            "type": "link",
+            "readOnly": true
+        },
+        "modifiedBy": {
+            "type": "link",
+            "readOnly": true
+        }
+    },
+    "links": {
+        "createdBy": {
+            "type": "belongsTo",
+            "entity": "User"
+        },
+        "modifiedBy": {
+            "type": "belongsTo",
+            "entity": "User"
+        },
+        "executions": {
+            "type": "hasMany",
+            "entity": "WorkflowExecution",
+            "foreign": "workflow"
+        },
+        "logs": {
+            "type": "hasMany",
+            "entity": "WorkflowLog",
+            "foreign": "workflow"
+        }
+    },
+    "collection": {
+        "orderBy": "name",
+        "order": "asc"
+    },
+    "indexes": {
+        "statusEntityType": {
+            "columns": ["status", "entityType", "isActive"]
+        },
+        "triggerType": {
+            "columns": ["triggerType", "isActive"]
+        }
+    }
+}
+

@@ -331,18 +331,32 @@ apps/espocrm/
 ## Next Steps
 
 1. ✅ Complete specification (done)
-2. ⏳ Create detailed implementation plan
-3. ⏳ Set up development environment
-4. ⏳ Create entity definitions
-5. ⏳ Implement WorkflowEngine core
-6. ⏳ Implement hooks integration
-7. ⏳ Implement job scheduling
-8. ⏳ Build React Flow frontend
-9. ⏳ Integrate frontend with EspoCRM
-10. ⏳ Testing and refinement
+2. ✅ **Create detailed implementation plan (done)**
+3. ⏳ Set up development environment (Phase 1)
+4. ⏳ Create entity definitions (Phase 2)
+5. ⏳ Implement WorkflowEngine core (Phase 2)
+6. ⏳ Implement hooks integration (Phase 3)
+7. ⏳ Implement job scheduling (Phase 2)
+8. ⏳ Build React Flow frontend (Phase 4)
+9. ⏳ Integrate frontend with EspoCRM (Phase 5)
+10. ⏳ Testing and refinement (Phase 6)
+
+## Implementation Plan Summary
+
+**Status:** Plan approved and ready for implementation  
+**Timeline:** 12-16 weeks (3-4 months)  
+**Documentation:** `docs/workflows-implementation-plan.md`
+
+**Phases:**
+1. **Phase 1:** Setup y Preparación (1 semana)
+2. **Phase 2:** Backend Core - Entidades y Motor (4-5 semanas)
+3. **Phase 3:** Triggers y Acciones (3-4 semanas)
+4. **Phase 4:** Frontend React Flow (3-4 semanas)
+5. **Phase 5:** Integración y Refinamiento (1-2 semanas)
+6. **Phase 6:** Testing, Documentación y Deployment (1 semana)
 
 ---
 
 **Last Updated:** November 2025  
-**Status:** Specification complete, ready for implementation planning
+**Status:** Implementation plan complete, ready to start Phase 1
 

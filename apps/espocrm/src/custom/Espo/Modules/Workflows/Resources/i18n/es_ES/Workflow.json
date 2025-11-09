@@ -15,7 +15,28 @@
     "entityType": "Tipo de Entidad",
     "triggerType": "Tipo de Trigger",
     "definition": "Definición",
-    "isActive": "Está Activo"
+    "isActive": "Está Activo",
+    "workflow": "Workflow",
+    "workflowName": "Nombre del Workflow",
+    "targetEntityType": "Tipo de Entidad Objetivo",
+    "targetEntityId": "ID de Entidad Objetivo",
+    "currentNodeId": "ID del Nodo Actual",
+    "inputData": "Datos de Entrada",
+    "outputData": "Datos de Salida",
+    "errorMessage": "Mensaje de Error",
+    "scheduledAt": "Programado Para",
+    "startedAt": "Iniciado En",
+    "completedAt": "Completado En",
+    "retryCount": "Contador de Reintentos",
+    "execution": "Ejecución",
+    "executionStatus": "Estado de Ejecución",
+    "nodeId": "ID del Nodo",
+    "action": "Acción",
+    "message": "Mensaje",
+    "data": "Datos",
+    "executedAt": "Ejecutado En",
+    "executions": "Ejecuciones",
+    "logs": "Logs"
   },
   "options": {
     "status": {
@@ -32,9 +53,25 @@
       "Form Submission": "Envío de Formulario",
       "Email Opened": "Email Abierto",
       "Email Clicked": "Email Clicked",
+      "Email Bounced": "Email Rebotado",
+      "Email Replied": "Email Respondido",
       "Specific Date/Time": "Fecha/Hora Específica",
       "Relative Date": "Fecha Relativa",
-      "Recurring Schedule": "Programación Recurrente"
+      "Recurring Schedule": "Programación Recurrente",
+      "Contact Enrolled": "Contacto Inscrito",
+      "Contact Unenrolled": "Contacto Desinscrito"
+    },
+    "executionStatus": {
+      "scheduled": "Programado",
+      "running": "Ejecutando",
+      "completed": "Completado",
+      "failed": "Fallido",
+      "cancelled": "Cancelado"
+    },
+    "logStatus": {
+      "success": "Éxito",
+      "error": "Error",
+      "skipped": "Omitido"
     }
   }
 }

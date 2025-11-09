@@ -23,6 +23,15 @@ Use this as the single source of truth for outstanding work. Keep entries lightw
 | S5-002 | Wire EspoCRM lead pipeline + Chatwoot widget | pending | eng | Reuse env vars; ensure localization + consent compliance |
 | S5-003 | Configure 3CX PBX + integrate click-to-call | pending | ops | Uses requirements from presentation slide 7 |
 | S5-004 | QA + launch runbook | pending | eng | Includes WCAG sweep, performance budget, analytics validation |
+| WF-001 | Custom Workflow System - Implementation Planning | pending | eng | Create detailed implementation plan based on complete specification |
+| WF-002 | Custom Workflow System - Entity Definitions | pending | eng | Create Workflow, WorkflowExecution, WorkflowLog entity definitions |
+| WF-003 | Custom Workflow System - WorkflowEngine Core | pending | eng | Implement core execution engine (parser, executor, scheduler) |
+| WF-004 | Custom Workflow System - Hooks Integration | pending | eng | Create hooks to trigger workflows on EspoCRM events |
+| WF-005 | Custom Workflow System - Job Scheduling | pending | eng | Integrate with EspoCRM JobScheduler for delayed execution |
+| WF-006 | Custom Workflow System - React Flow Frontend | pending | eng | Build graphical workflow editor with React Flow |
+| WF-007 | Custom Workflow System - Frontend Integration | pending | eng | Embed React Flow app in EspoCRM via iframe |
+| WF-008 | Custom Workflow System - Action Implementations | pending | eng | Implement all workflow actions (Email, Record, List, etc.) |
+| WF-009 | Custom Workflow System - Testing & Refinement | pending | eng | Test workflows, fix bugs, optimize performance |
 
 ## Guidelines
 - Append new rows instead of rewriting history; mark `Status` as `pending`, `in-progress`, `blocked`, or `done`.

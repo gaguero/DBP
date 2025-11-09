@@ -1,0 +1,7 @@
+{
+    "recordViews": {
+        "list": "views/workflow-logs/record/list",
+        "detail": "views/workflow-logs/record/detail"
+    }
+}
+
