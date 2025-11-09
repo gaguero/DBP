@@ -59,7 +59,8 @@ class FieldManager
      */
     protected function checkControllerAccess(): void
     {
-        if (!$this->user->isAdmin()) {
+        // Permitir admins y usuarios API (asumiendo que el API key tiene permisos correctos)
+        if (!$this->user->isAdmin() && !$this->user->isApi()) {
             throw new Forbidden();
         }
     }
