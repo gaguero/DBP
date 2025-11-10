@@ -1,7 +1,11 @@
 {
     "recordViews": {
         "list": "views/workflows/record/list",
-        "detail": "views/workflows/record/detail"
+        "detail": "views/workflows/record/detail",
+        "edit": "views/workflows/workflow-editor"
+    },
+    "views": {
+        "edit": "Workflows:Views.WorkflowEditor"
     },
     "relationshipPanels": {
         "executions": {
