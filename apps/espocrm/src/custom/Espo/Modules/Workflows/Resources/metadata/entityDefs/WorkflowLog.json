@@ -1,0 +1,84 @@
+{
+    "fields": {
+        "execution": {
+            "type": "link",
+            "required": true
+        },
+        "executionStatus": {
+            "type": "foreign",
+            "link": "execution",
+            "field": "status"
+        },
+        "workflow": {
+            "type": "link",
+            "required": true
+        },
+        "workflowName": {
+            "type": "foreign",
+            "link": "workflow",
+            "field": "name"
+        },
+        "nodeId": {
+            "type": "varchar",
+            "required": true,
+            "maxLength": 255
+        },
+        "action": {
+            "type": "varchar",
+            "required": true,
+            "maxLength": 100
+        },
+        "status": {
+            "type": "enum",
+            "options": ["success", "error", "skipped"],
+            "default": "success",
+            "style": {
+                "success": "success",
+                "error": "danger",
+                "skipped": "info"
+            }
+        },
+        "message": {
+            "type": "text"
+        },
+        "data": {
+            "type": "jsonObject"
+        },
+        "executedAt": {
+            "type": "datetime",
+            "required": true,
+            "hasSeconds": true
+        },
+        "createdAt": {
+            "type": "datetime",
+            "readOnly": true,
+            "hasSeconds": true
+        }
+    },
+    "links": {
+        "execution": {
+            "type": "belongsTo",
+            "entity": "WorkflowExecution"
+        },
+        "workflow": {
+            "type": "belongsTo",
+            "entity": "Workflow"
+        }
+    },
+    "collection": {
+        "orderBy": "executedAt",
+        "order": "desc"
+    },
+    "indexes": {
+        "executionNode": {
+            "columns": ["executionId", "nodeId"]
+        },
+        "workflowExecution": {
+            "columns": ["workflowId", "executionId"]
+        },
+        "executedAt": {
+            "columns": ["executedAt"]
+        }
+    }
+}
+

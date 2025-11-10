@@ -1,0 +1,12 @@
+{
+    "recordViews": {
+        "list": "views/workflow-executions/record/list",
+        "detail": "views/workflow-executions/record/detail"
+    },
+    "relationshipPanels": {
+        "logs": {
+            "view": "views/workflow-executions/record/panels/logs"
+        }
+    }
+}
+

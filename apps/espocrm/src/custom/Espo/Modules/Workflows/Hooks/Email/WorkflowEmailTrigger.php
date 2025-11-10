@@ -27,15 +27,15 @@
  * these Appropriate Legal Notices must retain the display of the "EspoCRM" word.
  ************************************************************************/
 
-namespace Espo\Modules\Workflows\Hooks\Common;
+namespace Espo\Modules\Workflows\Hooks\Email;
 
 use Espo\Modules\Workflows\Services\TriggerManager;
 use Espo\ORM\Entity;
 
 /**
- * Hook to trigger workflows on entity events
+ * Hook to trigger workflows on email events
  */
-class WorkflowTrigger
+class WorkflowEmailTrigger
 {
     private TriggerManager $triggerManager;
     
@@ -45,44 +45,17 @@ class WorkflowTrigger
     }
     
     /**
-     * Trigger workflows after entity is saved
+     * Trigger workflows when email is opened
      */
     public function afterSave(Entity $entity, array $options): void
     {
-        // Skip if workflow is disabled
-        if (isset($options['skipWorkflow']) && $options['skipWorkflow']) {
-            return;
+        if ($entity->get('opened')) {
+            $this->triggerManager->triggerEmailEvent('opened', $entity);
         }
         
-        $isNew = $entity->isNew();
-        
-        if ($isNew) {
-            $this->triggerManager->triggerRecordCreated($entity);
-        } else {
-            $this->triggerManager->triggerRecordUpdated($entity);
-            
-            // Check for property changes
-            $changedAttributes = $entity->getAttributeList();
-            foreach ($changedAttributes as $attribute) {
-                if ($entity->isAttributeChanged($attribute)) {
-                    $oldValue = $entity->getFetched($attribute);
-                    $newValue = $entity->get($attribute);
-                    $this->triggerManager->triggerPropertyChanged($entity, $attribute, $oldValue, $newValue);
-                }
-            }
+        if ($entity->get('replied')) {
+            $this->triggerManager->triggerEmailEvent('replied', $entity);
         }
-    }
-    
-    /**
-     * Trigger workflows after entity is deleted
-     */
-    public function afterRemove(Entity $entity, array $options): void
-    {
-        if (isset($options['skipWorkflow']) && $options['skipWorkflow']) {
-            return;
-        }
-        
-        $this->triggerManager->triggerRecordDeleted($entity);
     }
 }
 

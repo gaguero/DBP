@@ -27,15 +27,15 @@
  * these Appropriate Legal Notices must retain the display of the "EspoCRM" word.
  ************************************************************************/
 
-namespace Espo\Modules\Workflows\Hooks\Common;
+namespace Espo\Modules\Workflows\Hooks\Workflow;
 
 use Espo\Modules\Workflows\Services\TriggerManager;
 use Espo\ORM\Entity;
 
 /**
- * Hook to trigger workflows on entity events
+ * Hook to schedule time-based triggers when workflow is activated
  */
-class WorkflowTrigger
+class ScheduleTimeTriggers
 {
     private TriggerManager $triggerManager;
     
@@ -45,44 +45,21 @@ class WorkflowTrigger
     }
     
     /**
-     * Trigger workflows after entity is saved
+     * Schedule time-based triggers when workflow is saved
      */
     public function afterSave(Entity $entity, array $options): void
     {
-        // Skip if workflow is disabled
-        if (isset($options['skipWorkflow']) && $options['skipWorkflow']) {
+        // Only schedule if workflow is active
+        if (!$entity->get('isActive') || $entity->get('status') !== 'active') {
             return;
         }
         
-        $isNew = $entity->isNew();
+        $triggerType = $entity->get('triggerType');
         
-        if ($isNew) {
-            $this->triggerManager->triggerRecordCreated($entity);
-        } else {
-            $this->triggerManager->triggerRecordUpdated($entity);
-            
-            // Check for property changes
-            $changedAttributes = $entity->getAttributeList();
-            foreach ($changedAttributes as $attribute) {
-                if ($entity->isAttributeChanged($attribute)) {
-                    $oldValue = $entity->getFetched($attribute);
-                    $newValue = $entity->get($attribute);
-                    $this->triggerManager->triggerPropertyChanged($entity, $attribute, $oldValue, $newValue);
-                }
-            }
+        // Schedule time-based triggers
+        if (in_array($triggerType, ['Specific Date/Time', 'Recurring Schedule'])) {
+            $this->triggerManager->scheduleTimeBasedTriggers($entity);
         }
-    }
-    
-    /**
-     * Trigger workflows after entity is deleted
-     */
-    public function afterRemove(Entity $entity, array $options): void
-    {
-        if (isset($options['skipWorkflow']) && $options['skipWorkflow']) {
-            return;
-        }
-        
-        $this->triggerManager->triggerRecordDeleted($entity);
     }
 }
 
