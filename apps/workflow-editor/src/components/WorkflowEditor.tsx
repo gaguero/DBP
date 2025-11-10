@@ -2,11 +2,12 @@
  * Main Workflow Editor Component
  */
 
-import { useCallback, useMemo } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { ReactFlowProvider } from 'reactflow';
 import { useWorkflowEditor } from '../hooks/useWorkflowEditor';
 import { NodePalette, PropertiesPanel } from './panels';
 import { WorkflowCanvas } from './WorkflowCanvas';
+import { TestMode } from './TestMode';
 import { generateNodeId, getNewNodePosition, getNodeErrors, getNodeWarnings } from '../utils';
 import type { WorkflowDefinition, WorkflowNode } from '../types';
 
@@ -17,6 +18,8 @@ interface WorkflowEditorProps {
 }
 
 function WorkflowEditorInner({ definition, onSave, onLoad }: WorkflowEditorProps) {
+  const [showTestMode, setShowTestMode] = useState(false);
+  
   const {
     nodes,
     edges,
@@ -121,29 +124,59 @@ function WorkflowEditorInner({ definition, onSave, onLoad }: WorkflowEditorProps
   }, [nodes, setNodes]);
 
   return (
-    <div style={{ display: 'flex', width: '100vw', height: '100vh' }}>
-      <NodePalette onNodeSelect={handleNodeSelect} />
-      <WorkflowCanvas
-        nodes={enhancedNodes}
-        edges={edges}
-        onNodesChange={onNodesChange}
-        onEdgesChange={onEdgesChange}
-        onConnect={onConnect}
-        onDragOver={onDragOver}
-        onDrop={onDrop}
-        errors={errors}
-        onSave={handleSave}
-        onLoad={handleLoad}
-        onUndo={undo}
-        onRedo={redo}
-        canUndo={canUndo}
-        canRedo={canRedo}
-      />
-      <PropertiesPanel
-        selectedNode={selectedNode}
-        onUpdateNode={updateNode}
-      />
-    </div>
+    <>
+      <div style={{ display: 'flex', width: '100vw', height: '100vh' }}>
+        <NodePalette onNodeSelect={handleNodeSelect} />
+        <WorkflowCanvas
+          nodes={enhancedNodes}
+          edges={edges}
+          onNodesChange={onNodesChange}
+          onEdgesChange={onEdgesChange}
+          onConnect={onConnect}
+          onDragOver={onDragOver}
+          onDrop={onDrop}
+          errors={errors}
+          onSave={handleSave}
+          onLoad={handleLoad}
+          onUndo={undo}
+          onRedo={redo}
+          canUndo={canUndo}
+          canRedo={canRedo}
+        />
+        <PropertiesPanel
+          selectedNode={selectedNode}
+          onUpdateNode={updateNode}
+        />
+      </div>
+      {showTestMode && (
+        <TestMode
+          workflowDefinition={getDefinition()}
+          onClose={() => setShowTestMode(false)}
+        />
+      )}
+      {!showTestMode && (
+        <button
+          onClick={() => setShowTestMode(true)}
+          style={{
+            position: 'fixed',
+            bottom: '20px',
+            right: '20px',
+            padding: '12px 20px',
+            background: '#10b981',
+            color: 'white',
+            border: 'none',
+            borderRadius: '8px',
+            cursor: 'pointer',
+            fontSize: '14px',
+            fontWeight: '500',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+            zIndex: 1000,
+          }}
+        >
+          🧪 Test Mode
+        </button>
+      )}
+    </>
   );
 }
 

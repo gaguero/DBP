@@ -1,0 +1,297 @@
+/**
+ * Test Mode Styles
+ */
+
+.test-mode-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.test-mode-panel {
+  background: white;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 1200px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.test-mode-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.test-mode-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #6b7280;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.close-button:hover {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.test-mode-content {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  flex: 1;
+}
+
+.test-mode-controls {
+  padding: 20px;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  gap: 20px;
+}
+
+.test-data-section {
+  flex: 1;
+}
+
+.test-data-section h4 {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.test-data-input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  resize: vertical;
+}
+
+.test-data-input:disabled {
+  background: #f3f4f6;
+  cursor: not-allowed;
+}
+
+.test-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 200px;
+}
+
+.test-actions label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-primary {
+  background: #3b82f6;
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #2563eb;
+}
+
+.btn-primary:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: #e5e7eb;
+}
+
+.btn-secondary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.test-logs-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.test-logs-section h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.logs-container {
+  flex: 1;
+  overflow-y: auto;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  padding: 12px;
+  background: #f9fafb;
+}
+
+.no-logs {
+  text-align: center;
+  color: #9ca3af;
+  padding: 40px;
+  font-size: 14px;
+}
+
+.log-entry {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 8px;
+  margin-bottom: 4px;
+  border-radius: 4px;
+  background: white;
+  border-left: 3px solid #d1d5db;
+}
+
+.log-entry.log-started {
+  border-left-color: #3b82f6;
+}
+
+.log-entry.log-completed {
+  border-left-color: #10b981;
+}
+
+.log-entry.log-skipped {
+  border-left-color: #f59e0b;
+}
+
+.log-entry.log-error {
+  border-left-color: #ef4444;
+  background: #fef2f2;
+}
+
+.log-time {
+  font-size: 11px;
+  color: #6b7280;
+  font-family: 'Courier New', monospace;
+  min-width: 80px;
+}
+
+.log-badge {
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  min-width: 60px;
+  text-align: center;
+}
+
+.log-badge-trigger {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.log-badge-action {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.log-badge-condition {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.log-badge-delay {
+  background: #fed7aa;
+  color: #9a3412;
+}
+
+.log-badge-code {
+  background: #e9d5ff;
+  color: #6b21a8;
+}
+
+.log-badge-error {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.log-badge-system {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.log-message {
+  flex: 1;
+  font-size: 13px;
+  color: #374151;
+}
+
+.log-details {
+  font-size: 11px;
+  color: #6b7280;
+}
+
+.log-details summary {
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+.log-details pre {
+  margin: 4px 0 0 0;
+  padding: 8px;
+  background: #f9fafb;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
