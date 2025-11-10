@@ -41,10 +41,10 @@ export default function ExperiencesPage() {
                     <h3 className="font-display text-xl text-white mb-1">{activity.name}</h3>
                     <div className="flex items-center gap-3 text-sm text-white/90">
                       <span>{activity.duration}</span>
-                      {activity.difficulty && (
+                      {"difficulty" in activity && typeof (activity as Record<string, unknown>).difficulty === "string" && (
                         <>
                           <span>•</span>
-                          <span>{activity.difficulty}</span>
+                          <span>{(activity as Record<string, unknown>).difficulty as string}</span>
                         </>
                       )}
                     </div>

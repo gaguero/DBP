@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/page-hero";
 import { Button } from "@/components/button";
-import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "About Dolphin Blue Paradise",

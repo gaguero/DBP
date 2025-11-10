@@ -4,7 +4,6 @@ import { Card } from "@/components/card";
 import { Button } from "@/components/button";
 import { BookingWidgetPlaceholder } from "@/components/booking-widget-placeholder";
 import { travelRoutes, faqs } from "@/content/data";
-import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Contact Dolphin Blue Paradise",

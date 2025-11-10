@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/page-hero";
 import { Button } from "@/components/button";
 import { Card } from "@/components/card";
-import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Sustainability & Our Impact",

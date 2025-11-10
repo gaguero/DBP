@@ -73,10 +73,10 @@ export default function ExperienceDetailPage({ params }: ExperienceParams) {
                   <dt className="font-semibold text-[var(--color-navy)] min-w-[100px]">Duration:</dt>
                   <dd className="text-[var(--color-text-muted)]">{activity.duration}</dd>
                 </div>
-                {activity.difficulty && (
+                {"difficulty" in activity && typeof (activity as Record<string, unknown>).difficulty === "string" && (
                   <div className="flex items-start gap-4">
                     <dt className="font-semibold text-[var(--color-navy)] min-w-[100px]">Difficulty:</dt>
-                    <dd className="text-[var(--color-text-muted)]">{activity.difficulty}</dd>
+                    <dd className="text-[var(--color-text-muted)]">{(activity as Record<string, unknown>).difficulty as string}</dd>
                   </div>
                 )}
                 <div className="flex items-start gap-4">
@@ -85,17 +85,19 @@ export default function ExperienceDetailPage({ params }: ExperienceParams) {
                 </div>
               </dl>
 
-              <div className="pt-6 border-t border-black/10">
-                <h3 className="font-display text-xl text-[var(--color-navy)] mb-4">What&apos;s Included</h3>
-                <ul className="space-y-2">
-                  {activity.included?.map((item, idx) => (
-                    <li key={idx} className="text-sm text-[var(--color-text-muted)] flex items-start gap-2">
-                      <span className="text-[var(--color-gold)] mt-1">✓</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              {"included" in activity && Array.isArray((activity as Record<string, unknown>).included) && ((activity as Record<string, unknown>).included as unknown[]).length > 0 && (
+                <div className="pt-6 border-t border-black/10">
+                  <h3 className="font-display text-xl text-[var(--color-navy)] mb-4">What&apos;s Included</h3>
+                  <ul className="space-y-2">
+                    {((activity as Record<string, unknown>).included as string[]).map((item, idx) => (
+                      <li key={idx} className="text-sm text-[var(--color-text-muted)] flex items-start gap-2">
+                        <span className="text-[var(--color-gold)] mt-1">✓</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
 
               <div className="pt-6 border-t border-black/10">
                 <h3 className="font-display text-xl text-[var(--color-navy)] mb-4">Highlights</h3>
