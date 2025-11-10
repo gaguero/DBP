@@ -10,9 +10,14 @@
     ">=8.1.0"
   ],
   "skipBackup": false,
+  "copy": [
+    {
+      "from": "custom",
+      "to": "custom"
+    }
+  ],
   "scripts": {
-    "install": "Espo\\Modules\\Workflows\\Install\\Install",
-    "uninstall": "Espo\\Modules\\Workflows\\Install\\Uninstall"
+    "afterInstall": "AfterInstall",
+    "afterUninstall": "AfterUninstall"
   }
 }
-
