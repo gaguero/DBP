@@ -43,13 +43,15 @@ RUN set -eux; \
 COPY src/ /var/www/html/
 
 RUN set -eux; \
+    php bin/command extension/pack Workflows; \
+    WORKFLOW_PKG=$(ls data/cache/application/extensions/Workflows*.zip | head -n 1); \
+    php bin/command extension/install "$WORKFLOW_PKG" --force; \
+    rm -f "$WORKFLOW_PKG"; \
     mkdir -p /persistent/data /persistent/custom; \
     if [ -z "$(ls -A /persistent/data)" ]; then cp -a data/. /persistent/data/; fi; \
     if [ -z "$(ls -A /persistent/custom)" ]; then cp -a custom/. /persistent/custom/; fi; \
-    mkdir -p /persistent/custom/Espo/Modules; \
-    if [ -d "custom/Espo/Modules/Workflows" ]; then cp -a custom/Espo/Modules/Workflows /persistent/custom/Espo/Modules/; fi; \
     mkdir -p /tmp/workflows-module; \
-    if [ -d "custom/Espo/Modules/Workflows" ]; then cp -a custom/Espo/Modules/Workflows /tmp/workflows-module/; fi; \
+    cp -a custom/Espo/Modules/Workflows /tmp/workflows-module/; \
     rm -rf data custom; \
     ln -s /persistent/data data; \
     ln -s /persistent/custom custom

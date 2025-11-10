@@ -9,6 +9,10 @@
   "php": [
     ">=8.1.0"
   ],
-  "skipBackup": false
+  "skipBackup": false,
+  "scripts": {
+    "install": "Espo\\Modules\\Workflows\\Install\\Install",
+    "uninstall": "Espo\\Modules\\Workflows\\Install\\Uninstall"
+  }
 }
 
