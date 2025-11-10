@@ -1,5 +1,8 @@
 {
   "order": 30,
-  "description": "Custom workflow system with React Flow graphical interface"
+  "description": "Custom workflow system with React Flow graphical interface",
+  "stylesheets": [
+    "client/modules/workflows/res/css/workflow-editor.css"
+  ]
 }
 
