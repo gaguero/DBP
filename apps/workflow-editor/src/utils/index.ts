@@ -2,7 +2,7 @@
  * Utility functions for workflow editor
  */
 
-import type { WorkflowNode, WorkflowEdge, WorkflowDefinition } from '../types';
+import type { WorkflowNode, WorkflowDefinition } from '../types';
 
 /**
  * Generate unique node ID

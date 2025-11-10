@@ -33,23 +33,41 @@ export function useWorkflowEditor(initialDefinition?: WorkflowDefinition) {
 
   const onNodesChange: OnNodesChange = useCallback((changes) => {
     setNodes((nds) => {
-      const updated = [...nds];
+      // Apply changes using React Flow's applyNodeChanges helper would be better
+      // For now, we'll handle basic changes manually
+      let updated = [...nds];
+      
       changes.forEach((change) => {
         if (change.type === 'select') {
           if (change.selected) {
             const node = updated.find(n => n.id === change.id);
             setSelectedNode(node || null);
-          } else {
+          } else if (change.id === selectedNode?.id) {
             setSelectedNode(null);
           }
+        } else if (change.type === 'remove') {
+          updated = updated.filter(n => n.id !== change.id);
+          if (change.id === selectedNode?.id) {
+            setSelectedNode(null);
+          }
+        } else if (change.type === 'position' && change.position) {
+          updated = updated.map(n => 
+            n.id === change.id ? { ...n, position: change.position! } : n
+          );
+        } else if (change.type === 'dimensions' && change.dimensions) {
+          updated = updated.map(n => 
+            n.id === change.id ? { ...n, ...change } : n
+          );
         }
       });
+      
       return updated;
     });
-  }, []);
+  }, [selectedNode]);
 
-  const onEdgesChange: OnEdgesChange = useCallback((changes) => {
-    setEdges((eds) => [...eds]);
+  const onEdgesChange: OnEdgesChange = useCallback(() => {
+    // Edge changes are handled by React Flow internally
+    // We just need to provide the callback
   }, []);
 
   const onConnect: OnConnect = useCallback((connection) => {

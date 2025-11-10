@@ -3,7 +3,7 @@
  */
 
 import axios from 'axios';
-import type { Workflow, WorkflowDefinition } from '../types';
+import type { Workflow } from '../types';
 
 export class EspoCRMAPI {
   private baseURL: string;
