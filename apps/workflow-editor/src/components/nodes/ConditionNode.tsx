@@ -6,9 +6,32 @@
 import { Handle, Position, type NodeProps } from 'reactflow';
 import './NodeStyles.css';
 
-export function ConditionNode({ data, selected }: NodeProps) {
+interface ConditionNodeProps extends NodeProps {
+  data: {
+    label?: string;
+    condition?: any;
+    hasError?: boolean;
+    hasWarning?: boolean;
+    errorCount?: number;
+    warningCount?: number;
+  };
+}
+
+export function ConditionNode({ data, selected }: ConditionNodeProps) {
+  const nodeClass = `condition-node ${selected ? 'selected' : ''} ${data.hasError ? 'node-error' : ''} ${data.hasWarning && !data.hasError ? 'node-warning' : ''}`;
+  
   return (
-    <div className={`condition-node ${selected ? 'selected' : ''}`}>
+    <div className={nodeClass}>
+      {data.hasError && (
+        <div className="node-error-indicator" title={`${data.errorCount} error(s)`}>
+          !
+        </div>
+      )}
+      {data.hasWarning && !data.hasError && (
+        <div className="node-warning-indicator" title={`${data.warningCount} warning(s)`}>
+          ⚠
+        </div>
+      )}
       <Handle type="target" position={Position.Top} />
       <div className="node-header">
         <span className="node-icon">❓</span>

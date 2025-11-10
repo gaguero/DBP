@@ -2,20 +2,12 @@
  * Main Workflow Editor Component
  */
 
-import { useCallback, useRef } from 'react';
-import ReactFlow, {
-  Background,
-  Controls,
-  MiniMap,
-  Panel,
-  ReactFlowProvider,
-  useReactFlow,
-} from 'reactflow';
-import 'reactflow/dist/style.css';
+import { useCallback, useMemo } from 'react';
+import { ReactFlowProvider } from 'reactflow';
 import { useWorkflowEditor } from '../hooks/useWorkflowEditor';
-import { nodeTypes } from './nodes';
 import { NodePalette, PropertiesPanel } from './panels';
-import { generateNodeId, getNewNodePosition } from '../utils';
+import { WorkflowCanvas } from './WorkflowCanvas';
+import { generateNodeId, getNewNodePosition, getNodeErrors, getNodeWarnings } from '../utils';
 import type { WorkflowDefinition, WorkflowNode } from '../types';
 
 interface WorkflowEditorProps {
@@ -25,13 +17,12 @@ interface WorkflowEditorProps {
 }
 
 function WorkflowEditorInner({ definition, onSave, onLoad }: WorkflowEditorProps) {
-  const reactFlowWrapper = useRef<HTMLDivElement>(null);
-  const { project } = useReactFlow();
   const {
     nodes,
     edges,
     selectedNode,
     errors,
+    validation,
     onNodesChange,
     onEdgesChange,
     onConnect,
@@ -39,6 +30,25 @@ function WorkflowEditorInner({ definition, onSave, onLoad }: WorkflowEditorProps
     setNodes,
     updateNode,
   } = useWorkflowEditor(definition);
+
+  // Enhance nodes with validation errors/warnings
+  const enhancedNodes = useMemo(() => {
+    return nodes.map(node => {
+      const nodeErrors = getNodeErrors(node.id, validation);
+      const nodeWarnings = getNodeWarnings(node.id, validation);
+      
+      return {
+        ...node,
+        data: {
+          ...node.data,
+          hasError: nodeErrors.length > 0,
+          hasWarning: nodeWarnings.length > 0,
+          errorCount: nodeErrors.length,
+          warningCount: nodeWarnings.length,
+        },
+      };
+    });
+  }, [nodes, validation]);
 
   const handleSave = useCallback(() => {
     const workflowDefinition = getDefinition();
@@ -68,15 +78,16 @@ function WorkflowEditorInner({ definition, onSave, onLoad }: WorkflowEditorProps
 
       const nodeType = event.dataTransfer.getData('application/reactflow') as WorkflowNode['type'];
 
-      if (!nodeType || !reactFlowWrapper.current) {
+      if (!nodeType) {
         return;
       }
 
-      const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
-      const position = project({
+      // Get position from React Flow
+      const reactFlowBounds = (event.currentTarget as HTMLElement).getBoundingClientRect();
+      const position = {
         x: event.clientX - reactFlowBounds.left,
         y: event.clientY - reactFlowBounds.top,
-      });
+      };
 
       const newNode: WorkflowNode = {
         id: generateNodeId(nodeType),
@@ -89,7 +100,7 @@ function WorkflowEditorInner({ definition, onSave, onLoad }: WorkflowEditorProps
 
       setNodes((nds) => [...nds, newNode as any]);
     },
-    [project, setNodes]
+    [setNodes]
   );
 
   const handleNodeSelect = useCallback((nodeType: WorkflowNode['type']) => {
@@ -108,40 +119,18 @@ function WorkflowEditorInner({ definition, onSave, onLoad }: WorkflowEditorProps
   return (
     <div style={{ display: 'flex', width: '100vw', height: '100vh' }}>
       <NodePalette onNodeSelect={handleNodeSelect} />
-      <div ref={reactFlowWrapper} style={{ flex: 1 }}>
-        <ReactFlow
-          nodes={nodes}
-          edges={edges}
-          nodeTypes={nodeTypes}
-          onNodesChange={onNodesChange}
-          onEdgesChange={onEdgesChange}
-          onConnect={onConnect}
-          onDragOver={onDragOver}
-          onDrop={onDrop}
-          fitView
-        >
-          <Background />
-          <Controls />
-          <MiniMap />
-          <Panel position="top-left">
-            <div style={{ background: 'white', padding: '10px', borderRadius: '5px' }}>
-              <h3>Workflow Editor</h3>
-              <button onClick={handleSave}>Save</button>
-              {onLoad && <button onClick={handleLoad} style={{ marginLeft: '8px' }}>Load</button>}
-              {errors.length > 0 && (
-                <div style={{ color: 'red', marginTop: '10px' }}>
-                  <strong>Errors:</strong>
-                  <ul>
-                    {errors.map((error, idx) => (
-                      <li key={idx}>{error}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </div>
-          </Panel>
-        </ReactFlow>
-      </div>
+      <WorkflowCanvas
+        nodes={enhancedNodes}
+        edges={edges}
+        onNodesChange={onNodesChange}
+        onEdgesChange={onEdgesChange}
+        onConnect={onConnect}
+        onDragOver={onDragOver}
+        onDrop={onDrop}
+        errors={errors}
+        onSave={handleSave}
+        onLoad={handleLoad}
+      />
       <PropertiesPanel
         selectedNode={selectedNode}
         onUpdateNode={updateNode}

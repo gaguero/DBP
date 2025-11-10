@@ -3,6 +3,8 @@
  */
 
 import type { WorkflowNode, WorkflowDefinition } from '../types';
+export { validateWorkflowAdvanced, getNodeErrors, getNodeWarnings } from './validation';
+export type { ValidationError, ValidationResult } from './validation';
 
 /**
  * Generate unique node ID
@@ -19,7 +21,7 @@ export function generateEdgeId(source: string, target: string): string {
 }
 
 /**
- * Validate workflow definition
+ * Validate workflow definition (basic)
  */
 export function validateWorkflow(definition: WorkflowDefinition): { valid: boolean; errors: string[] } {
   const errors: string[] = [];

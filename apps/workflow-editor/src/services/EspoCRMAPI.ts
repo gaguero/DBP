@@ -86,7 +86,16 @@ export class EspoCRMAPI {
    */
   async createWorkflow(workflow: Partial<Workflow>): Promise<Workflow> {
     const headers = await this.getHeaders();
-    const response = await axios.post(`${this.baseURL}/api/v1/Workflow`, workflow, { headers });
+    
+    // Convert definition to JSON string if it's an object
+    const workflowData = {
+      ...workflow,
+      definition: typeof workflow.definition === 'object'
+        ? JSON.stringify(workflow.definition)
+        : workflow.definition,
+    };
+    
+    const response = await axios.post(`${this.baseURL}/api/v1/Workflow`, workflowData, { headers });
     return response.data;
   }
 
@@ -95,7 +104,16 @@ export class EspoCRMAPI {
    */
   async updateWorkflow(id: string, workflow: Partial<Workflow>): Promise<Workflow> {
     const headers = await this.getHeaders();
-    const response = await axios.put(`${this.baseURL}/api/v1/Workflow/${id}`, workflow, { headers });
+    
+    // Convert definition to JSON string if it's an object
+    const workflowData = {
+      ...workflow,
+      definition: workflow.definition && typeof workflow.definition === 'object'
+        ? JSON.stringify(workflow.definition)
+        : workflow.definition,
+    };
+    
+    const response = await axios.put(`${this.baseURL}/api/v1/Workflow/${id}`, workflowData, { headers });
     return response.data;
   }
 
@@ -127,4 +145,3 @@ export class EspoCRMAPI {
 }
 
 export const api = new EspoCRMAPI();
-

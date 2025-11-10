@@ -5,13 +5,15 @@
 import { useState, useCallback, useEffect } from 'react';
 import type { Node, Edge, OnNodesChange, OnEdgesChange, OnConnect } from 'reactflow';
 import type { WorkflowDefinition, WorkflowNode, WorkflowEdge } from '../types';
-import { generateNodeId, generateEdgeId, validateWorkflow } from '../utils';
+import { generateNodeId, generateEdgeId, validateWorkflowAdvanced } from '../utils';
+import type { ValidationResult } from '../utils';
 
 export function useWorkflowEditor(initialDefinition?: WorkflowDefinition) {
   const [nodes, setNodes] = useState<Node[]>([]);
   const [edges, setEdges] = useState<Edge[]>([]);
   const [selectedNode, setSelectedNode] = useState<Node | null>(null);
   const [errors, setErrors] = useState<string[]>([]);
+  const [validation, setValidation] = useState<ValidationResult>({ valid: true, errors: [], warnings: [] });
 
   // Initialize from definition
   useEffect(() => {
@@ -21,14 +23,18 @@ export function useWorkflowEditor(initialDefinition?: WorkflowDefinition) {
     }
   }, [initialDefinition]);
 
-  // Validate workflow
+  // Validate workflow with advanced validation
   useEffect(() => {
     const definition: WorkflowDefinition = {
       nodes: nodes as WorkflowNode[],
       edges: edges as WorkflowEdge[]
     };
-    const validation = validateWorkflow(definition);
-    setErrors(validation.errors);
+    const validationResult = validateWorkflowAdvanced(definition);
+    setValidation(validationResult);
+    
+    // Convert validation errors to simple string array for backward compatibility
+    const errorMessages = validationResult.errors.map((e: { message: string }) => e.message);
+    setErrors(errorMessages);
   }, [nodes, edges]);
 
   const onNodesChange: OnNodesChange = useCallback((changes) => {
@@ -65,9 +71,20 @@ export function useWorkflowEditor(initialDefinition?: WorkflowDefinition) {
     });
   }, [selectedNode]);
 
-  const onEdgesChange: OnEdgesChange = useCallback(() => {
-    // Edge changes are handled by React Flow internally
-    // We just need to provide the callback
+  const onEdgesChange: OnEdgesChange = useCallback((changes) => {
+    setEdges((eds) => {
+      let updated = [...eds];
+      
+      changes.forEach((change) => {
+        if (change.type === 'remove') {
+          updated = updated.filter(e => e.id !== change.id);
+        } else if (change.type === 'select') {
+          // Handle edge selection if needed
+        }
+      });
+      
+      return updated;
+    });
   }, []);
 
   const onConnect: OnConnect = useCallback((connection) => {
@@ -129,6 +146,7 @@ export function useWorkflowEditor(initialDefinition?: WorkflowDefinition) {
     edges,
     selectedNode,
     errors,
+    validation,
     onNodesChange,
     onEdgesChange,
     onConnect,
