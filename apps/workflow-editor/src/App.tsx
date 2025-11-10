@@ -52,6 +52,22 @@ function App() {
         const definition = typeof workflow.definition === 'string'
           ? parseWorkflowJSON(workflow.definition)
           : workflow.definition;
+        
+        // Sync workflow-level triggerType/entityType to trigger node if missing
+        const triggerNode = definition.nodes.find(node => node.type === 'trigger');
+        if (triggerNode && workflow.triggerType && !triggerNode.data?.triggerType) {
+          triggerNode.data = {
+            ...triggerNode.data,
+            triggerType: workflow.triggerType,
+          };
+        }
+        if (triggerNode && workflow.entityType && !triggerNode.data?.entityType) {
+          triggerNode.data = {
+            ...triggerNode.data,
+            entityType: workflow.entityType,
+          };
+        }
+        
         setWorkflowDefinition(definition);
       }
     } catch (error) {
@@ -60,6 +76,11 @@ function App() {
   };
 
   const handleSave = useCallback(async (definition: WorkflowDefinition) => {
+    // Extract triggerType and entityType from trigger node
+    const triggerNode = definition.nodes.find(node => node.type === 'trigger');
+    const triggerType = triggerNode?.data?.triggerType || 'Record Created';
+    const entityType = triggerNode?.data?.entityType || 'Lead';
+    
     if (!workflowId) {
       // Create new workflow
       try {
@@ -71,8 +92,8 @@ function App() {
           definition: definition,
           status: 'draft',
           isActive: false,
-          entityType: 'Lead', // Default, should be configurable
-          triggerType: 'Record Created', // Default, should be from definition
+          entityType: entityType,
+          triggerType: triggerType,
         };
 
         const created = await api.createWorkflow(workflowData);
@@ -99,6 +120,8 @@ function App() {
         
         const workflowData: Partial<Workflow> = {
           definition: definition,
+          entityType: entityType,
+          triggerType: triggerType,
         };
 
         await api.updateWorkflow(workflowId, workflowData);
