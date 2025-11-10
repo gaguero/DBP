@@ -2,13 +2,14 @@
  * Main Workflow Editor Component
  */
 
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useMemo, useState, useEffect } from 'react';
 import { ReactFlowProvider } from 'reactflow';
 import { useWorkflowEditor } from '../hooks/useWorkflowEditor';
 import { NodePalette, PropertiesPanel } from './panels';
 import { WorkflowCanvas } from './WorkflowCanvas';
 import { TestMode } from './TestMode';
 import { generateNodeId, getNewNodePosition, getNodeErrors, getNodeWarnings } from '../utils';
+import { api } from '../services/EspoCRMAPI';
 import type { WorkflowDefinition, WorkflowNode } from '../types';
 
 interface WorkflowEditorProps {
@@ -19,6 +20,8 @@ interface WorkflowEditorProps {
 
 function WorkflowEditorInner({ definition, onSave, onLoad }: WorkflowEditorProps) {
   const [showTestMode, setShowTestMode] = useState(false);
+  const [entityTypes, setEntityTypes] = useState<string[]>([]);
+  const [entityFields, setEntityFields] = useState<Record<string, Record<string, any>>>({});
   
   const {
     nodes,
@@ -37,6 +40,49 @@ function WorkflowEditorInner({ definition, onSave, onLoad }: WorkflowEditorProps
     canUndo,
     canRedo,
   } = useWorkflowEditor(definition);
+
+  // Load entity types on mount
+  useEffect(() => {
+    api.getEntityTypes().then(types => {
+      setEntityTypes(types);
+    }).catch(err => {
+      console.error('Failed to load entity types:', err);
+    });
+  }, []);
+
+  // Load entity fields when entityType changes in trigger/action nodes
+  useEffect(() => {
+    const loadEntityFields = async () => {
+      const entityTypesToLoad = new Set<string>();
+      
+      // Collect entity types from trigger and action nodes
+      nodes.forEach(node => {
+        if (node.type === 'trigger' && node.data?.entityType) {
+          entityTypesToLoad.add(node.data.entityType);
+        }
+        if (node.type === 'action' && node.data?.entityType) {
+          entityTypesToLoad.add(node.data.entityType);
+        }
+      });
+      
+      // Load fields for each entity type
+      for (const entityType of entityTypesToLoad) {
+        if (!entityFields[entityType]) {
+          try {
+            const fields = await api.getEntityFields(entityType);
+            setEntityFields(prev => ({
+              ...prev,
+              [entityType]: fields,
+            }));
+          } catch (err) {
+            console.error(`Failed to load fields for ${entityType}:`, err);
+          }
+        }
+      }
+    };
+    
+    loadEntityFields();
+  }, [nodes, entityFields]);
 
   // Enhance nodes with validation errors/warnings
   const enhancedNodes = useMemo(() => {
@@ -143,10 +189,12 @@ function WorkflowEditorInner({ definition, onSave, onLoad }: WorkflowEditorProps
           canUndo={canUndo}
           canRedo={canRedo}
         />
-        <PropertiesPanel
-          selectedNode={selectedNode}
-          onUpdateNode={updateNode}
-        />
+              <PropertiesPanel
+                selectedNode={selectedNode}
+                onUpdateNode={updateNode}
+                entityTypes={entityTypes}
+                entityFields={entityFields}
+              />
       </div>
       {showTestMode && (
         <TestMode
