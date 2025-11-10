@@ -47,6 +47,8 @@ RUN set -eux; \
     if [ -z "$(ls -A /persistent/custom)" ]; then cp -a custom/. /persistent/custom/; fi; \
     mkdir -p /persistent/custom/Espo/Modules; \
     if [ -d "custom/Espo/Modules/Workflows" ]; then cp -a custom/Espo/Modules/Workflows /persistent/custom/Espo/Modules/; fi; \
+    mkdir -p /tmp/workflows-module; \
+    if [ -d "custom/Espo/Modules/Workflows" ]; then cp -a custom/Espo/Modules/Workflows /tmp/workflows-module/; fi; \
     rm -rf data custom; \
     ln -s /persistent/data data; \
     ln -s /persistent/custom custom
