@@ -19,7 +19,8 @@ RUN set -eux; \
         libpq-dev \
         libxml2-dev \
         libzip-dev \
-        unzip; \
+        unzip \
+        rsync; \
     docker-php-ext-configure gd --with-freetype --with-jpeg; \
     docker-php-ext-install -j"$(nproc)" \
         bcmath \
