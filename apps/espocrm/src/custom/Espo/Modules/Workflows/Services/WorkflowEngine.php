@@ -42,15 +42,21 @@ class WorkflowEngine
     private EntityManager $entityManager;
     private WorkflowParser $parser;
     private WorkflowScheduler $scheduler;
+    private ConditionEvaluator $conditionEvaluator;
+    private WorkflowActionFactory $actionFactory;
     
     public function __construct(
         EntityManager $entityManager,
         WorkflowParser $parser,
-        WorkflowScheduler $scheduler
+        WorkflowScheduler $scheduler,
+        ConditionEvaluator $conditionEvaluator,
+        WorkflowActionFactory $actionFactory
     ) {
         $this->entityManager = $entityManager;
         $this->parser = $parser;
         $this->scheduler = $scheduler;
+        $this->conditionEvaluator = $conditionEvaluator;
+        $this->actionFactory = $actionFactory;
     }
     
     /**
@@ -100,6 +106,11 @@ class WorkflowEngine
         
         // Get next nodes
         $nextNodes = $this->parser->getNextNodes($graph, $currentNodeId);
+        
+        // Handle condition nodes - determine which path to follow
+        if ($graph[$currentNodeId]['node']['type'] === 'condition') {
+            $nextNodes = $this->evaluateConditionPath($execution, $graph, $currentNodeId);
+        }
         
         if (empty($nextNodes)) {
             // No more nodes, workflow completed
@@ -174,11 +185,13 @@ class WorkflowEngine
                     break;
                     
                 case 'action':
-                    $this->executeAction($execution, $node);
+                    $this->executeAction($execution, $graph, $nodeId);
                     break;
                     
                 case 'condition':
-                    $this->executeCondition($execution, $node);
+                    // Condition evaluation is handled in evaluateConditionPath
+                    // This is just for logging
+                    $this->executeCondition($execution, $graph, $nodeId);
                     break;
                     
                 case 'delay':
@@ -209,32 +222,127 @@ class WorkflowEngine
      * Execute an action node
      *
      * @param Entity $execution
-     * @param array $node
+     * @param array $graph
+     * @param string $nodeId
      */
-    private function executeAction(Entity $execution, array $node): void
+    private function executeAction(Entity $execution, array $graph, string $nodeId): void
     {
+        $node = $graph[$nodeId]['node'];
         $actionType = $node['data']['actionType'] ?? null;
         
         if (!$actionType) {
             throw new Error("Action node missing actionType");
         }
         
-        // Action execution will be implemented in Phase 3
-        // For now, just log
-        $this->createLog($execution, $node['id'], 'action', 'success', "Action {$actionType} executed");
+        // Get target entity
+        $targetEntityType = $execution->get('targetEntityType');
+        $targetEntityId = $execution->get('targetEntityId');
+        
+        if (!$targetEntityType || !$targetEntityId) {
+            throw new Error("Execution missing targetEntityType or targetEntityId");
+        }
+        
+        $targetEntity = $this->entityManager->getEntity($targetEntityType, $targetEntityId);
+        
+        if (!$targetEntity) {
+            throw new Error("Target entity not found: {$targetEntityType}#{$targetEntityId}");
+        }
+        
+        // Create and execute action
+        $action = $this->actionFactory->create($actionType);
+        $actionData = $node['data'] ?? [];
+        
+        try {
+            $result = $action->execute($targetEntity, $actionData, $execution);
+            
+            // Store result in execution outputData
+            $outputData = $execution->get('outputData') ?? [];
+            $outputData[$nodeId] = $result;
+            $execution->set('outputData', $outputData);
+            
+            $this->createLog($execution, $nodeId, 'action', 'success', "Action {$actionType} executed successfully");
+        } catch (\Exception $e) {
+            $this->createLog($execution, $nodeId, 'action', 'error', "Action {$actionType} failed: " . $e->getMessage());
+            throw $e;
+        }
     }
     
     /**
-     * Execute a condition node
+     * Execute a condition node and determine which path to follow
      *
      * @param Entity $execution
-     * @param array $node
+     * @param array $graph
+     * @param string $nodeId
+     * @return array Array of next node IDs to follow
      */
-    private function executeCondition(Entity $execution, array $node): void
+    private function evaluateConditionPath(Entity $execution, array $graph, string $nodeId): array
     {
-        // Condition evaluation will be implemented in Phase 3
-        // For now, just log
-        $this->createLog($execution, $node['id'], 'condition', 'success', "Condition evaluated");
+        $node = $graph[$nodeId]['node'];
+        $condition = $node['data']['condition'] ?? null;
+        
+        if (!$condition) {
+            throw new Error("Condition node missing condition data");
+        }
+        
+        // Get target entity
+        $targetEntityType = $execution->get('targetEntityType');
+        $targetEntityId = $execution->get('targetEntityId');
+        
+        if (!$targetEntityType || !$targetEntityId) {
+            throw new Error("Execution missing targetEntityType or targetEntityId");
+        }
+        
+        $targetEntity = $this->entityManager->getEntity($targetEntityType, $targetEntityId);
+        
+        if (!$targetEntity) {
+            throw new Error("Target entity not found: {$targetEntityType}#{$targetEntityId}");
+        }
+        
+        // Evaluate condition
+        $result = $this->conditionEvaluator->evaluate($targetEntity, $condition);
+        
+        $this->createLog(
+            $execution,
+            $nodeId,
+            'condition',
+            $result ? 'success' : 'skipped',
+            "Condition evaluated: " . ($result ? 'true' : 'false')
+        );
+        
+        // Determine which edge to follow based on condition result
+        $outgoingEdges = $graph[$nodeId]['outgoing'] ?? [];
+        $nextNodes = [];
+        
+        foreach ($outgoingEdges as $edge) {
+            $edgeCondition = $edge['condition'] ?? null;
+            $targetHandle = $edge['targetHandle'] ?? null;
+            
+            // If edge has condition "true" or "false", check it
+            if ($edgeCondition === 'true' && $result) {
+                $nextNodes[] = $edge['target'];
+            } elseif ($edgeCondition === 'false' && !$result) {
+                $nextNodes[] = $edge['target'];
+            } elseif ($edgeCondition === null) {
+                // No condition means always follow (fallback)
+                $nextNodes[] = $edge['target'];
+            }
+        }
+        
+        return $nextNodes;
+    }
+    
+    /**
+     * Execute a condition node (legacy method, kept for compatibility)
+     *
+     * @param Entity $execution
+     * @param array $graph
+     * @param string $nodeId
+     */
+    private function executeCondition(Entity $execution, array $graph, string $nodeId): void
+    {
+        // Condition evaluation is handled in evaluateConditionPath
+        // This method is called from executeNode but condition logic is in evaluateConditionPath
+        $this->createLog($execution, $nodeId, 'condition', 'success', "Condition node processed");
     }
     
     /**
