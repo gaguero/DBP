@@ -37,5 +37,54 @@ class Workflow extends Record
     {
         return $this->user->isAdmin();
     }
+    
+    /**
+     * Get workflow statistics
+     * GET /api/v1/Workflow/{id}/statistics
+     */
+    public function actionStatistics($params, $data, $request)
+    {
+        $id = $params['id'] ?? null;
+        if (!$id) {
+            throw new \Espo\Core\Exceptions\BadRequest("Workflow ID required");
+        }
+        
+        $workflow = $this->getRecordService()->getEntity($id);
+        if (!$workflow) {
+            throw new \Espo\Core\Exceptions\NotFound("Workflow not found");
+        }
+        
+        // Get execution statistics
+        $executionRepository = $this->getEntityManager()->getRepository('WorkflowExecution');
+        
+        $totalExecutions = $executionRepository->count([
+            'workflowId' => $id
+        ]);
+        
+        $successfulExecutions = $executionRepository->count([
+            'workflowId' => $id,
+            'status' => 'completed'
+        ]);
+        
+        $failedExecutions = $executionRepository->count([
+            'workflowId' => $id,
+            'status' => 'failed'
+        ]);
+        
+        $lastExecution = $executionRepository->find([
+            'whereClause' => [
+                'workflowId' => $id
+            ],
+            'orderBy' => [['createdAt', 'DESC']],
+            'limit' => 1
+        ]);
+        
+        return [
+            'totalExecutions' => $totalExecutions,
+            'successfulExecutions' => $successfulExecutions,
+            'failedExecutions' => $failedExecutions,
+            'lastExecutionAt' => $lastExecution ? $lastExecution->get('createdAt') : null
+        ];
+    }
 }
 

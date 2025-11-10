@@ -6,7 +6,23 @@
     "Workflow Execution": "Workflow Execution",
     "Workflow Executions": "Workflow Executions",
     "Workflow Log": "Workflow Log",
-    "Workflow Logs": "Workflow Logs"
+    "Workflow Logs": "Workflow Logs",
+    "Edit": "Edit",
+    "Activate": "Activate",
+    "Pause": "Pause",
+    "Statistics": "Statistics",
+    "Recent Logs": "Recent Logs",
+    "Total Executions": "Total Executions",
+    "Successful": "Successful",
+    "Failed": "Failed",
+    "Last Execution": "Last Execution"
+  },
+  "messages": {
+    "Workflow activated": "Workflow activated successfully",
+    "Workflow paused": "Workflow paused successfully",
+    "Workflow duplicated": "Workflow duplicated successfully",
+    "Error saving workflow": "Error saving workflow",
+    "Error duplicating workflow": "Error duplicating workflow"
   },
   "fields": {
     "name": "Name",
