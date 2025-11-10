@@ -14,25 +14,19 @@ if [ ! -L /var/www/html/custom ]; then
   ln -s /persistent/custom /var/www/html/custom
 fi
 
-# Copy Workflows module from build to persistent volume if it exists in the build
-# This ensures the module is always available even if the persistent volume already has content
+copy_workflows_module() {
+  local source_dir="$1"
+  echo "Syncing Workflows module from ${source_dir} to persistent volume..."
+  mkdir -p /persistent/custom/Espo/Modules
+  rsync -a --delete "${source_dir}/" /persistent/custom/Espo/Modules/Workflows/
+  echo "Workflows module synced successfully from ${source_dir}"
+}
+
+# Copy Workflows module from build cache or application directory to persistent volume
 if [ -d "/tmp/workflows-module/Workflows" ]; then
-  # Source is in /tmp/workflows-module (saved during Docker build)
-  SOURCE_DIR="/tmp/workflows-module/Workflows"
-  echo "Copying Workflows module from build cache to persistent volume..."
-  mkdir -p /persistent/custom/Espo/Modules
-  # Remove existing and copy fresh to ensure we have the latest version
-  rm -rf /persistent/custom/Espo/Modules/Workflows
-  cp -a "$SOURCE_DIR" /persistent/custom/Espo/Modules/
-  echo "Workflows module copied successfully from build cache"
+  copy_workflows_module "/tmp/workflows-module/Workflows"
 elif [ -d "/var/www/html/application/Espo/Modules/Workflows" ]; then
-  # Fallback: Source is in application/Espo/Modules/Workflows (from COPY src/)
-  SOURCE_DIR="/var/www/html/application/Espo/Modules/Workflows"
-  echo "Copying Workflows module from application directory to persistent volume..."
-  mkdir -p /persistent/custom/Espo/Modules
-  rm -rf /persistent/custom/Espo/Modules/Workflows
-  cp -a "$SOURCE_DIR" /persistent/custom/Espo/Modules/
-  echo "Workflows module copied successfully from application directory"
+  copy_workflows_module "/var/www/html/application/Espo/Modules/Workflows"
 fi
 
 chown -R www-data:www-data /persistent
@@ -46,5 +40,10 @@ crontab -u www-data -l 2>/dev/null | grep -F "$CRON_CMD" >/dev/null || \
 
 # Start cron daemon in background so scheduled jobs run.
 service cron start
+
+# Clear cache and rebuild EspoCRM metadata so the latest module is always active
+rm -rf /var/www/html/cache/*
+php /var/www/html/clear_cache.php || echo "clear_cache.php failed; continuing"
+php /var/www/html/rebuild.php --skip-db-check || echo "rebuild.php failed; continuing"
 
 exec "$@"
