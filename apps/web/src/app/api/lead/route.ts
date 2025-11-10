@@ -89,14 +89,16 @@ export async function POST(request: Request) {
   const formSource = determineFormSource(parsed.data.formType, hasDates, hasMessage);
 
   // Build payload for EspoCRM
+  // Note: EspoCRM automatically adds "c" prefix to custom field names
+  // So we send "formSource" and EspoCRM stores it as "cFormSource"
   const payload: Record<string, unknown> = {
     name: parsed.data.name,
     emailAddress: parsed.data.email,
     phoneNumber: parsed.data.phone,
     preferredLanguage: parsed.data.language,
     leadSource: "Website",
-    formSource: formSource,
-    formSubmissionDate: new Date().toISOString(),
+    formSource: formSource, // EspoCRM will store as cFormSource
+    formSubmissionDate: new Date().toISOString(), // EspoCRM will store as cFormSubmissionDate
     interestsWeb: parsed.data.interests,
     consentMarketing: parsed.data.consent === "on" || parsed.data.consent === "true",
   };

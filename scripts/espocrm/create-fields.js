@@ -230,7 +230,7 @@ const fields = [
 
 async function checkFieldExists(fieldName) {
   try {
-    const response = await fetch(`${ESPOCRM_URL}/Metadata/fields/Lead/${fieldName}`, {
+    const response = await fetch(`${ESPOCRM_URL}/Admin/fieldManager/Lead/${fieldName}`, {
       method: 'GET',
       headers: {
         'X-Api-Key': ESPOCRM_API_KEY,
@@ -280,7 +280,7 @@ async function createField(field) {
   }
 
   try {
-    const response = await fetch(`${ESPOCRM_URL}/Metadata/fields/Lead`, {
+    const response = await fetch(`${ESPOCRM_URL}/Admin/fieldManager/Lead`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -290,8 +290,17 @@ async function createField(field) {
     });
 
     if (!response.ok) {
+      // Si el campo ya existe (409 Conflict), considerarlo como éxito
+      if (response.status === 409) {
+        console.log(`⏭️  Campo "${field.name}" ya existe (con prefijo "c"), saltando...`);
+        return true;
+      }
+      
       const errorText = await response.text();
-      console.error(`❌ Error creando campo "${field.name}":`, errorText);
+      console.error(`❌ Error creando campo "${field.name}":`);
+      console.error(`   Status: ${response.status} ${response.statusText}`);
+      console.error(`   Response: ${errorText}`);
+      console.error(`   Payload: ${JSON.stringify(payload, null, 2)}`);
       return false;
     }
 
