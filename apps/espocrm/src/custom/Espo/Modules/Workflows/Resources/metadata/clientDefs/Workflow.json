@@ -1,9 +1,9 @@
 {
     "controller": "controllers/record",
     "recordViews": {
-        "list": "Workflows:workflow/record/list",
-        "detail": "Workflows:workflow/record/detail",
-        "edit": "Workflows:workflow-editor"
+        "list": "views/workflows/workflow/record/list",
+        "detail": "views/workflows/workflow/record/detail",
+        "edit": "views/workflows/workflow-editor"
     },
     "views": {
         "list": "Workflows:Views.Workflow.Record.List",
@@ -24,10 +24,10 @@
     },
     "relationshipPanels": {
         "executions": {
-            "view": "Workflows:workflow/record/panels/executions"
+            "view": "views/workflows/workflow/record/panels/executions"
         },
         "logs": {
-            "view": "Workflows:workflow/record/panels/logs"
+            "view": "views/workflows/workflow/record/panels/logs"
         }
     },
     "color": "#6c757d",
