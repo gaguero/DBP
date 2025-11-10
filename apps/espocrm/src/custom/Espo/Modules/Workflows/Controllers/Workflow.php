@@ -30,6 +30,7 @@
 namespace Espo\Modules\Workflows\Controllers;
 
 use Espo\Core\Controllers\Record;
+use Espo\Core\Api\Request;
 
 class Workflow extends Record
 {
@@ -42,9 +43,9 @@ class Workflow extends Record
      * Get workflow statistics
      * GET /api/v1/Workflow/{id}/statistics
      */
-    public function actionStatistics($params, $data, $request)
+    public function getActionStatistics(Request $request): array
     {
-        $id = $params['id'] ?? null;
+        $id = $request->getRouteParam('id');
         if (!$id) {
             throw new \Espo\Core\Exceptions\BadRequest("Workflow ID required");
         }
