@@ -3,7 +3,7 @@
  * List view for workflow execution logs
  */
 
-Espo.define('views/workflow-logs/record/list', 'Views.Record.List', function (Dep) {
+Espo.define('Workflows:Views.WorkflowLog.Record.List', 'Views.Record.List', function (Dep) {
     return Dep.extend({
         getHeader: function () {
             return [

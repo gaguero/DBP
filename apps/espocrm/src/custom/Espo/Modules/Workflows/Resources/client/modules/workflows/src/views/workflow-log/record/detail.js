@@ -3,7 +3,7 @@
  * Detail view for workflow execution log entries
  */
 
-Espo.define('views/workflow-logs/record/detail', 'Views.Record.Detail', function (Dep) {
+Espo.define('Workflows:Views.WorkflowLog.Record.Detail', 'Views.Record.Detail', function (Dep) {
     return Dep.extend({
         setup: function () {
             Dep.prototype.setup.call(this);
