@@ -14,7 +14,7 @@ import ReactFlow, {
 import 'reactflow/dist/style.css';
 import { useWorkflowEditor } from '../hooks/useWorkflowEditor';
 import { nodeTypes } from './nodes';
-import { NodePalette } from './panels';
+import { NodePalette, PropertiesPanel } from './panels';
 import { generateNodeId, getNewNodePosition } from '../utils';
 import type { WorkflowDefinition, WorkflowNode } from '../types';
 
@@ -35,9 +35,9 @@ function WorkflowEditorInner({ definition, onSave, onLoad }: WorkflowEditorProps
     onNodesChange,
     onEdgesChange,
     onConnect,
-    deleteNode,
     getDefinition,
     setNodes,
+    updateNode,
   } = useWorkflowEditor(definition);
 
   const handleSave = useCallback(() => {
@@ -140,18 +140,12 @@ function WorkflowEditorInner({ definition, onSave, onLoad }: WorkflowEditorProps
               )}
             </div>
           </Panel>
-          {selectedNode && (
-            <Panel position="top-right">
-              <div style={{ background: 'white', padding: '10px', borderRadius: '5px', minWidth: '300px' }}>
-                <h4>Node Properties</h4>
-                <p><strong>ID:</strong> {selectedNode.id}</p>
-                <p><strong>Type:</strong> {selectedNode.type}</p>
-                <button onClick={() => deleteNode(selectedNode.id)}>Delete Node</button>
-              </div>
-            </Panel>
-          )}
         </ReactFlow>
       </div>
+      <PropertiesPanel
+        selectedNode={selectedNode}
+        onUpdateNode={updateNode}
+      />
     </div>
   );
 }
