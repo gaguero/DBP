@@ -3,7 +3,7 @@
  * Separated canvas component for better organization
  */
 
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import ReactFlow, {
   Background,
   Controls,
@@ -29,6 +29,10 @@ interface WorkflowCanvasProps {
   errors?: string[];
   onSave?: () => void;
   onLoad?: () => Promise<void>;
+  onUndo?: () => void;
+  onRedo?: () => void;
+  canUndo?: boolean;
+  canRedo?: boolean;
 }
 
 export function WorkflowCanvas({
@@ -42,8 +46,37 @@ export function WorkflowCanvas({
   errors = [],
   onSave,
   onLoad,
+  onUndo,
+  onRedo,
+  canUndo = false,
+  canRedo = false,
 }: WorkflowCanvasProps) {
   const reactFlowWrapper = useRef<HTMLDivElement>(null);
+
+  // Keyboard shortcuts for undo/redo
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      // Ctrl+Z or Cmd+Z for undo
+      if ((event.ctrlKey || event.metaKey) && event.key === 'z' && !event.shiftKey) {
+        event.preventDefault();
+        if (onUndo && canUndo) {
+          onUndo();
+        }
+      }
+      // Ctrl+Y or Cmd+Shift+Z for redo
+      if ((event.ctrlKey || event.metaKey) && (event.key === 'y' || (event.key === 'z' && event.shiftKey))) {
+        event.preventDefault();
+        if (onRedo && canRedo) {
+          onRedo();
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [onUndo, onRedo, canUndo, canRedo]);
 
   return (
     <div ref={reactFlowWrapper} style={{ flex: 1, position: 'relative' }}>
@@ -66,7 +99,7 @@ export function WorkflowCanvas({
         <Panel position="top-left">
           <div style={{ background: 'white', padding: '10px', borderRadius: '5px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>
             <h3 style={{ margin: '0 0 10px 0', fontSize: '16px' }}>Workflow Editor</h3>
-            <div style={{ display: 'flex', gap: '8px' }}>
+            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
               {onSave && (
                 <button
                   onClick={onSave}
@@ -97,6 +130,44 @@ export function WorkflowCanvas({
                   }}
                 >
                   Load
+                </button>
+              )}
+              {onUndo && (
+                <button
+                  onClick={onUndo}
+                  disabled={!canUndo}
+                  title="Undo (Ctrl+Z)"
+                  style={{
+                    padding: '6px 12px',
+                    background: canUndo ? '#10b981' : '#9ca3af',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '4px',
+                    cursor: canUndo ? 'pointer' : 'not-allowed',
+                    fontSize: '14px',
+                    opacity: canUndo ? 1 : 0.5,
+                  }}
+                >
+                  ↶ Undo
+                </button>
+              )}
+              {onRedo && (
+                <button
+                  onClick={onRedo}
+                  disabled={!canRedo}
+                  title="Redo (Ctrl+Y)"
+                  style={{
+                    padding: '6px 12px',
+                    background: canRedo ? '#10b981' : '#9ca3af',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '4px',
+                    cursor: canRedo ? 'pointer' : 'not-allowed',
+                    fontSize: '14px',
+                    opacity: canRedo ? 1 : 0.5,
+                  }}
+                >
+                  ↷ Redo
                 </button>
               )}
             </div>

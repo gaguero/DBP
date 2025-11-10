@@ -2,11 +2,12 @@
  * Custom hooks for workflow editor
  */
 
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import type { Node, Edge, OnNodesChange, OnEdgesChange, OnConnect } from 'reactflow';
 import type { WorkflowDefinition, WorkflowNode, WorkflowEdge } from '../types';
 import { generateNodeId, generateEdgeId, validateWorkflowAdvanced } from '../utils';
 import type { ValidationResult } from '../utils';
+import { useUndoRedo } from './useUndoRedo';
 
 export function useWorkflowEditor(initialDefinition?: WorkflowDefinition) {
   const [nodes, setNodes] = useState<Node[]>([]);
@@ -14,28 +15,65 @@ export function useWorkflowEditor(initialDefinition?: WorkflowDefinition) {
   const [selectedNode, setSelectedNode] = useState<Node | null>(null);
   const [errors, setErrors] = useState<string[]>([]);
   const [validation, setValidation] = useState<ValidationResult>({ valid: true, errors: [], warnings: [] });
+  const lastChangeRef = useRef<{ nodes: Node[]; edges: Edge[] } | null>(null);
+  const changeTimeoutRef = useRef<number | null>(null);
+
+  // Initialize undo/redo
+  const {
+    pushToHistory,
+    undo: undoHistory,
+    redo: redoHistory,
+    canUndo,
+    canRedo,
+    resetHistory,
+  } = useUndoRedo(initialDefinition);
 
   // Initialize from definition
   useEffect(() => {
     if (initialDefinition) {
       setNodes(initialDefinition.nodes as Node[]);
       setEdges(initialDefinition.edges as Edge[]);
+      resetHistory(initialDefinition);
     }
-  }, [initialDefinition]);
+  }, [initialDefinition, resetHistory]);
 
-  // Validate workflow with advanced validation
+  // Track changes and add to history (debounced)
   useEffect(() => {
-    const definition: WorkflowDefinition = {
-      nodes: nodes as WorkflowNode[],
-      edges: edges as WorkflowEdge[]
+    // Clear previous timeout
+    if (changeTimeoutRef.current) {
+      window.clearTimeout(changeTimeoutRef.current);
+    }
+
+    // Don't track if this is the initial load
+    if (nodes.length === 0 && edges.length === 0) {
+      return;
+    }
+
+    // Debounce history updates (wait 500ms after last change)
+    changeTimeoutRef.current = window.setTimeout(() => {
+      const definition: WorkflowDefinition = {
+        nodes: nodes as WorkflowNode[],
+        edges: edges as WorkflowEdge[],
+      };
+      
+      // Only add to history if something actually changed
+      const currentState = JSON.stringify({ nodes, edges });
+      const lastState = lastChangeRef.current
+        ? JSON.stringify({ nodes: lastChangeRef.current.nodes, edges: lastChangeRef.current.edges })
+        : null;
+
+      if (currentState !== lastState) {
+        pushToHistory(definition);
+        lastChangeRef.current = { nodes: [...nodes], edges: [...edges] };
+      }
+    }, 500);
+
+    return () => {
+      if (changeTimeoutRef.current) {
+        window.clearTimeout(changeTimeoutRef.current);
+      }
     };
-    const validationResult = validateWorkflowAdvanced(definition);
-    setValidation(validationResult);
-    
-    // Convert validation errors to simple string array for backward compatibility
-    const errorMessages = validationResult.errors.map((e: { message: string }) => e.message);
-    setErrors(errorMessages);
-  }, [nodes, edges]);
+  }, [nodes, edges, pushToHistory]);
 
   const onNodesChange: OnNodesChange = useCallback((changes) => {
     setNodes((nds) => {
@@ -134,6 +172,44 @@ export function useWorkflowEditor(initialDefinition?: WorkflowDefinition) {
     );
   }, []);
 
+  // Validate workflow with advanced validation
+  useEffect(() => {
+    const definition: WorkflowDefinition = {
+      nodes: nodes as WorkflowNode[],
+      edges: edges as WorkflowEdge[]
+    };
+    const validationResult = validateWorkflowAdvanced(definition);
+    setValidation(validationResult);
+    
+    // Convert validation errors to simple string array for backward compatibility
+    const errorMessages = validationResult.errors.map((e: { message: string }) => e.message);
+    setErrors(errorMessages);
+  }, [nodes, edges]);
+
+  /**
+   * Undo last change
+   */
+  const undo = useCallback(() => {
+    const previousState = undoHistory();
+    if (previousState) {
+      setNodes(previousState.nodes as Node[]);
+      setEdges(previousState.edges as Edge[]);
+      lastChangeRef.current = { nodes: [...previousState.nodes as Node[]], edges: [...previousState.edges as Edge[]] };
+    }
+  }, [undoHistory]);
+
+  /**
+   * Redo last undone change
+   */
+  const redo = useCallback(() => {
+    const nextState = redoHistory();
+    if (nextState) {
+      setNodes(nextState.nodes as Node[]);
+      setEdges(nextState.edges as Edge[]);
+      lastChangeRef.current = { nodes: [...nextState.nodes as Node[]], edges: [...nextState.edges as Edge[]] };
+    }
+  }, [redoHistory]);
+
   const getDefinition = useCallback((): WorkflowDefinition => {
     return {
       nodes: nodes as WorkflowNode[],
@@ -156,6 +232,9 @@ export function useWorkflowEditor(initialDefinition?: WorkflowDefinition) {
     getDefinition,
     setNodes,
     setEdges,
+    undo,
+    redo,
+    canUndo,
+    canRedo,
   };
 }
-

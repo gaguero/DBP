@@ -29,6 +29,10 @@ function WorkflowEditorInner({ definition, onSave, onLoad }: WorkflowEditorProps
     getDefinition,
     setNodes,
     updateNode,
+    undo,
+    redo,
+    canUndo,
+    canRedo,
   } = useWorkflowEditor(definition);
 
   // Enhance nodes with validation errors/warnings
@@ -130,6 +134,10 @@ function WorkflowEditorInner({ definition, onSave, onLoad }: WorkflowEditorProps
         errors={errors}
         onSave={handleSave}
         onLoad={handleLoad}
+        onUndo={undo}
+        onRedo={redo}
+        canUndo={canUndo}
+        canRedo={canRedo}
       />
       <PropertiesPanel
         selectedNode={selectedNode}
