@@ -11,6 +11,7 @@ import ReactFlow, {
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import { useWorkflowEditor } from '../hooks/useWorkflowEditor';
+import { nodeTypes } from './nodes';
 import type { WorkflowDefinition } from '../types';
 
 interface WorkflowEditorProps {
@@ -54,6 +55,7 @@ export function WorkflowEditor({ definition, onSave, onLoad }: WorkflowEditorPro
       <ReactFlow
         nodes={nodes}
         edges={edges}
+        nodeTypes={nodeTypes}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
