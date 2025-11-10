@@ -1,12 +1,12 @@
 {
     "controller": "controllers/record",
     "recordViews": {
-        "list": "views/workflow-executions/record/list",
-        "detail": "views/workflow-executions/record/detail"
+        "list": "views/record/list",
+        "detail": "views/record/detail"
     },
     "relationshipPanels": {
         "logs": {
-            "view": "views/workflow-executions/record/panels/logs"
+            "view": "views/record/panels/relationship"
         }
     }
 }
