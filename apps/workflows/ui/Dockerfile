@@ -2,16 +2,14 @@ FROM node:18-alpine AS builder
 
 WORKDIR /app
 
-# Copy package files
+# Copy package manifest (lock file is optional)
 COPY package.json pnpm-lock.yaml* ./
-COPY ../../pnpm-workspace.yaml ../../
-COPY ../../package.json ../../
 
 # Install pnpm
 RUN npm install -g pnpm@8.15.5
 
 # Install dependencies
-RUN pnpm install --frozen-lockfile
+RUN pnpm install
 
 # Copy source
 COPY . .
