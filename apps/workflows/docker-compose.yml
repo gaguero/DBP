@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: workflows_user
+      POSTGRES_PASSWORD: workflows_pass
+      POSTGRES_DB: workflows_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgresql://workflows_user:workflows_pass@postgres:5432/workflows_db
+      REDIS_URL: redis://redis:6379
+      JWT_SECRET: dev-jwt-secret-change-in-production
+      ENCRYPTION_KEY: dev-32-char-encryption-key!!
+      WEBHOOK_SECRET: dev-webhook-secret
+      CORS_ORIGIN: http://localhost:5173
+    depends_on:
+      - postgres
+      - redis
+
+  workers:
+    build:
+      context: ./workers
+      dockerfile: Dockerfile
+    environment:
+      DATABASE_URL: postgresql://workflows_user:workflows_pass@postgres:5432/workflows_db
+      REDIS_URL: redis://redis:6379
+    depends_on:
+      - postgres
+      - redis
+
+  ui:
+    build:
+      context: ./ui
+      dockerfile: Dockerfile
+    ports:
+      - "5173:80"
+    environment:
+      VITE_API_URL: http://localhost:3000
+    depends_on:
+      - api
+
+volumes:
+  postgres_data:
+
