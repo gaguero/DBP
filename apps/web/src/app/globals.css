@@ -123,7 +123,8 @@ main {
 }
 
 .container {
-  width: min(1120px, 100%);
+  width: 100%;
+  max-width: calc(1180px + (100vw - 1180px) / 2);
   margin-inline: auto;
   padding-inline: clamp(1.5rem, 5vw, 5rem);
 }
@@ -254,6 +255,7 @@ p {
 
 .font-display {
   font-family: var(--font-display), serif;
+  font-weight: 300;
 }
 
 @media (max-width: 768px) {
@@ -285,7 +287,8 @@ p {
 }
 
 .home-container {
-  width: min(1180px, 100%);
+  width: 100%;
+  max-width: calc(1180px + (100vw - 1180px) / 2);
   margin-inline: auto;
   padding-inline: clamp(1.5rem, 5vw, 3rem);
 }
@@ -304,12 +307,16 @@ p {
   font-size: clamp(2rem, 4vw, 3rem);
   color: var(--color-navy);
   margin-bottom: 1.5rem;
+  font-weight: 300;
+  text-transform: uppercase;
 }
 
 .home-section__subheading {
   font-family: var(--font-display), serif;
   font-size: clamp(1.5rem, 3vw, 2rem);
   color: var(--color-navy);
+  font-weight: 300;
+  text-transform: uppercase;
 }
 
 .home-section__text {
@@ -323,7 +330,8 @@ p {
 }
 
 .home-hero__container {
-  width: min(1180px, 100%);
+  width: 100%;
+  max-width: calc(1180px + (100vw - 1180px) / 2);
   margin-inline: auto;
   padding-inline: clamp(1.5rem, 5vw, 3rem);
   position: relative;
@@ -573,7 +581,8 @@ p {
   font-size: 1rem;
   color: var(--color-navy);
   margin-bottom: 0.75rem;
-  font-weight: 600;
+  font-weight: 300;
+  text-transform: uppercase;
 }
 
 .home-amenity__text {
@@ -1011,7 +1020,8 @@ p {
 
 
 .site-header__main {
-  width: min(1180px, 100%);
+  width: 100%;
+  max-width: calc(1180px + (100vw - 1180px) / 2);
   margin-inline: auto;
   padding-inline: clamp(1.5rem, 5vw, 3rem);
   display: flex;
@@ -1197,7 +1207,8 @@ p {
 }
 
 .home-carousel .home-container {
-  width: min(1180px, 100%);
+  width: 100%;
+  max-width: calc(1180px + (100vw - 1180px) / 2);
   margin-inline: auto;
   padding-inline: 0;
   position: relative;
@@ -1315,7 +1326,8 @@ p {
 }
 
 .home-reviews-container {
-  width: min(1180px, 100%);
+  width: 100%;
+  max-width: calc(1180px + (100vw - 1180px) / 2);
   margin-inline: auto;
   display: flex;
   min-height: 400px;
@@ -1405,7 +1417,8 @@ p {
 }
 
 .home-carousel-secondary .home-container {
-  width: min(1180px, 100%);
+  width: 100%;
+  max-width: calc(1180px + (100vw - 1180px) / 2);
   margin-inline: auto;
   padding-inline: 0;
   position: relative;

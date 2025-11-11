@@ -36,7 +36,7 @@ export default function DiningPage() {
       <section className="section">
         <div className="container max-w-4xl">
           <div className="prose prose-lg mx-auto">
-            <h2 className="font-display text-4xl text-[var(--color-navy)] mb-6">Chef Philosophy</h2>
+            <h2 className="font-display text-4xl text-[var(--color-navy)] mb-6 uppercase font-light">CHEF PHILOSOPHY</h2>
             <p className="text-lg text-[var(--color-text-primary)] mb-4">
               At Dolphin Blue Paradise, we prepare delicious homemade food sourced locally. Sustainability guides every plate: 
               we cook each dish fresh, minimize food waste, and partner with farmers and fishers across Dolphin Bay.
@@ -53,12 +53,12 @@ export default function DiningPage() {
       {/* Menus & Schedule */}
       <section className="section bg-[var(--color-sand)]">
         <div className="container">
-          <h2 className="font-display text-4xl text-[var(--color-navy)] mb-8 text-center">Menus & Schedule</h2>
+          <h2 className="font-display text-4xl text-[var(--color-navy)] mb-8 text-center uppercase font-light">MENUS & SCHEDULE</h2>
           <div className="grid gap-6 md:grid-cols-2 max-w-4xl mx-auto">
             {schedule.map((item) => (
               <Card key={item.meal} className="p-6">
                 <div className="flex items-start justify-between mb-2">
-                  <h3 className="font-display text-2xl text-[var(--color-navy)]">{item.meal}</h3>
+                  <h3 className="font-display text-2xl text-[var(--color-navy)] uppercase font-light">{item.meal.toUpperCase()}</h3>
                   <span className="text-sm font-semibold text-[var(--color-gold)] uppercase tracking-wider">
                     {item.time}
                   </span>
@@ -88,7 +88,7 @@ export default function DiningPage() {
       {/* Locals Dining Policy */}
       <section className="section bg-[var(--color-sand)]">
         <div className="container max-w-4xl">
-          <h2 className="font-display text-4xl text-[var(--color-navy)] mb-6 text-center">Dining Reservations</h2>
+          <h2 className="font-display text-4xl text-[var(--color-navy)] mb-6 text-center uppercase font-light">DINING RESERVATIONS</h2>
           <div className="prose prose-lg mx-auto">
             <p className="text-lg text-[var(--color-text-primary)] mb-4">
               <strong>Locals and non-hotel guests are always welcome!</strong> We&apos;d love to have you join us for a drink 

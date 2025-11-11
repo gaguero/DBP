@@ -278,7 +278,7 @@ export default function Home() {
       <section className="home-section home-testimonial-section">
         <div className="home-container">
           <div className="home-testimonial-full">
-            <h3 className="home-section__subheading">YOUR REVIEWS</h3>
+              <h3 className="home-section__subheading uppercase">YOUR REVIEWS</h3>
             <div className="home-testimonial__quote-mark">&quot;</div>
             <blockquote className="home-testimonial__quote">My wife and I have traveled to over 50 countries over the course of our adult lives, stayed in hotels, resorts, and destinations of all types, experienced many wonderful cultures, environments, and adventures. We can, without hesitation, confirm that Dolphin Blue Paradise is one of, if not THE, most breathtaking, gorgeous, and hospitable locations we have experienced. The surroundings, flora, fauna (the resident sloth!) and accommodations all fit together in a relaxing, even harmonious, manner and way of life.</blockquote>
             <div className="home-testimonial__actions">
@@ -294,7 +294,7 @@ export default function Home() {
         <div className="home-container">
           <div className="home-contact">
             <div className="home-contact__info">
-              <h3 className="home-section__subheading">Contact us</h3>
+              <h3 className="home-section__subheading uppercase">CONTACT US</h3>
               <div className="home-contact__details">
                 <p className="home-contact__item">WhatsApp: +507 6346 0605</p>
                 <p className="home-contact__item">contact@dolphinblueparadise.com</p>

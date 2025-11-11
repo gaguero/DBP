@@ -29,10 +29,10 @@ export default function SustainabilityPage() {
       {/* Off-Grid Infrastructure */}
       <section className="section">
         <div className="container max-w-4xl">
-          <h2 className="font-display text-4xl text-[var(--color-navy)] mb-6">Off-Grid Infrastructure</h2>
+          <h2 className="font-display text-4xl text-[var(--color-navy)] mb-6 uppercase font-light">OFF-GRID INFRASTRUCTURE</h2>
           <div className="grid md:grid-cols-2 gap-8 mb-8">
             <div>
-              <h3 className="font-display text-2xl text-[var(--color-navy)] mb-4">Solar System</h3>
+              <h3 className="font-display text-2xl text-[var(--color-navy)] mb-4 uppercase font-light">SOLAR SYSTEM</h3>
               <p className="text-[var(--color-text-primary)] mb-4">
                 Our resort operates entirely on solar energy with advanced battery storage systems. We monitor energy 
                 consumption in real-time to minimize our footprint while maintaining luxury comfort standards.
@@ -53,7 +53,7 @@ export default function SustainabilityPage() {
               </ul>
             </div>
             <div>
-              <h3 className="font-display text-2xl text-[var(--color-navy)] mb-4">Water Systems</h3>
+              <h3 className="font-display text-2xl text-[var(--color-navy)] mb-4 uppercase font-light">WATER SYSTEMS</h3>
               <p className="text-[var(--color-text-primary)] mb-4">
                 Closed-loop rainwater collection and purification provide all drinking water and daily use throughout 
                 the resort. We minimize water waste through efficient fixtures and greywater recycling.
@@ -80,10 +80,10 @@ export default function SustainabilityPage() {
       {/* Sustainable Food Cycle */}
       <section className="section bg-[var(--color-sand)]">
         <div className="container max-w-4xl">
-          <h2 className="font-display text-4xl text-[var(--color-navy)] mb-6">Sustainable Food Cycle</h2>
+          <h2 className="font-display text-4xl text-[var(--color-navy)] mb-6 uppercase font-light">SUSTAINABLE FOOD CYCLE</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div>
-              <h3 className="font-display text-2xl text-[var(--color-navy)] mb-4">Farm-to-Table</h3>
+              <h3 className="font-display text-2xl text-[var(--color-navy)] mb-4 uppercase font-light">FARM-TO-TABLE</h3>
               <p className="text-[var(--color-text-primary)] mb-4">
                 Our 5-acre tropical garden, tended by head gardener Roque, provides 95% of our produce. We source 
                 additional ingredients from local Ngäbe-Buglé farmers and sustainable fishers in Dolphin Bay.
@@ -104,7 +104,7 @@ export default function SustainabilityPage() {
               </ul>
             </div>
             <div>
-              <h3 className="font-display text-2xl text-[var(--color-navy)] mb-4">Composting & Waste Reduction</h3>
+              <h3 className="font-display text-2xl text-[var(--color-navy)] mb-4 uppercase font-light">COMPOSTING & WASTE REDUCTION</h3>
               <p className="text-[var(--color-text-primary)] mb-4">
                 All kitchen scraps are composted and returned to our gardens. We&apos;ve eliminated single-use plastics 
                 and replaced them with refillable amenities and reusable materials.
@@ -131,10 +131,10 @@ export default function SustainabilityPage() {
       {/* Community Programs */}
       <section className="section">
         <div className="container max-w-4xl">
-          <h2 className="font-display text-4xl text-[var(--color-navy)] mb-6">Community Programs</h2>
+          <h2 className="font-display text-4xl text-[var(--color-navy)] mb-6 uppercase font-light">COMMUNITY PROGRAMS</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div>
-              <h3 className="font-display text-2xl text-[var(--color-navy)] mb-4">Ngäbe-Buglé Collaboration</h3>
+              <h3 className="font-display text-2xl text-[var(--color-navy)] mb-4 uppercase font-light">NGÄBE-BUGLÉ COLLABORATION</h3>
               <p className="text-[var(--color-text-primary)] mb-4">
                 We partner deeply with local Ngäbe-Buglé communities through cultural tours, cacao sourcing, 
                 employment opportunities, and support for education and health initiatives.
@@ -155,7 +155,7 @@ export default function SustainabilityPage() {
               </ul>
             </div>
             <div>
-              <h3 className="font-display text-2xl text-[var(--color-navy)] mb-4">Youth Programs</h3>
+              <h3 className="font-display text-2xl text-[var(--color-navy)] mb-4 uppercase font-light">YOUTH PROGRAMS</h3>
               <p className="text-[var(--color-text-primary)] mb-4">
                 We support education initiatives, provide scholarships, and create opportunities for local youth 
                 to learn about sustainable tourism and conservation.
@@ -187,10 +187,10 @@ export default function SustainabilityPage() {
       {/* Biodiversity Protection */}
       <section className="section bg-[var(--color-sand)]">
         <div className="container max-w-4xl">
-          <h2 className="font-display text-4xl text-[var(--color-navy)] mb-6">Biodiversity Protection</h2>
+          <h2 className="font-display text-4xl text-[var(--color-navy)] mb-6 uppercase font-light">BIODIVERSITY PROTECTION</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div>
-              <h3 className="font-display text-2xl text-[var(--color-navy)] mb-4">Dolphin Monitoring</h3>
+              <h3 className="font-display text-2xl text-[var(--color-navy)] mb-4 uppercase font-light">DOLPHIN MONITORING</h3>
               <p className="text-[var(--color-text-primary)] mb-4">
                 We work with marine biologists to monitor the resident bottlenose dolphin pod in Dolphin Bay. 
                 Our eco-friendly observation practices ensure minimal disturbance to these intelligent mammals.
@@ -211,7 +211,7 @@ export default function SustainabilityPage() {
               </ul>
             </div>
             <div>
-              <h3 className="font-display text-2xl text-[var(--color-navy)] mb-4">Reforestation & Habitat Protection</h3>
+              <h3 className="font-display text-2xl text-[var(--color-navy)] mb-4 uppercase font-light">REFORESTATION & HABITAT PROTECTION</h3>
               <p className="text-[var(--color-text-primary)] mb-4">
                 We protect and restore primary rainforest on our property, creating corridors for wildlife and 
                 maintaining the incredible biodiversity that makes Dolphin Bay special.
@@ -247,7 +247,7 @@ export default function SustainabilityPage() {
       {/* Impact Metrics */}
       <section className="section">
         <div className="container max-w-4xl">
-          <h2 className="font-display text-4xl text-[var(--color-navy)] mb-8 text-center">Impact Metrics</h2>
+          <h2 className="font-display text-4xl text-[var(--color-navy)] mb-8 text-center uppercase font-light">IMPACT METRICS</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
             <div className="text-center">
               <div className="text-5xl font-bold text-[var(--color-ocean)] mb-2">{impactMetrics.solarCapacity}</div>

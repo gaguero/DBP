@@ -38,7 +38,7 @@ export default function ExperiencesPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                   <div className="absolute bottom-4 left-4 right-4">
-                    <h3 className="font-display text-xl text-white mb-1">{activity.name}</h3>
+                    <h3 className="font-display text-xl text-white mb-1 uppercase font-light">{activity.name.toUpperCase()}</h3>
                     <div className="flex items-center gap-3 text-sm text-white/90">
                       <span>{activity.duration}</span>
                       {"difficulty" in activity && typeof (activity as Record<string, unknown>).difficulty === "string" && (
@@ -65,8 +65,8 @@ export default function ExperiencesPage() {
       {/* CTA Section */}
       <section className="section bg-[var(--color-sand)]">
         <div className="container max-w-4xl text-center">
-          <h2 className="font-display text-4xl text-[var(--color-navy)] mb-6">
-            Request Custom Itinerary
+          <h2 className="font-display text-4xl text-[var(--color-navy)] mb-6 uppercase font-light">
+            REQUEST CUSTOM ITINERARY
           </h2>
           <p className="text-lg text-[var(--color-text-primary)] mb-8">
             Share your travel dates, group size, and interests so our concierge can tailor experiences for your stay. 
