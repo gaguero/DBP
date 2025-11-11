@@ -1,0 +1,28 @@
+[
+    {
+        "name": "name",
+        "link": true,
+        "width": "30"
+    },
+    {
+        "name": "status",
+        "width": "12"
+    },
+    {
+        "name": "entityType",
+        "width": "15"
+    },
+    {
+        "name": "triggerType",
+        "width": "18"
+    },
+    {
+        "name": "isActive",
+        "width": "10"
+    },
+    {
+        "name": "modifiedAt",
+        "width": "15"
+    }
+]
+

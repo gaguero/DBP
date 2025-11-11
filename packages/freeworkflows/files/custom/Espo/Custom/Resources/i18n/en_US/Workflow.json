@@ -1,0 +1,94 @@
+{
+  "labels": {
+    "Create Workflow": "Create Workflow",
+    "Workflows": "Workflows",
+    "Workflow": "Workflow",
+    "Workflow Execution": "Workflow Execution",
+    "Workflow Executions": "Workflow Executions",
+    "Workflow Log": "Workflow Log",
+    "Workflow Logs": "Workflow Logs",
+    "Edit": "Edit",
+    "Activate": "Activate",
+    "Pause": "Pause",
+    "Statistics": "Statistics",
+    "Recent Logs": "Recent Logs",
+    "Total Executions": "Total Executions",
+    "Successful": "Successful",
+    "Failed": "Failed",
+    "Last Execution": "Last Execution"
+  },
+  "messages": {
+    "Workflow activated": "Workflow activated successfully",
+    "Workflow paused": "Workflow paused successfully",
+    "Workflow duplicated": "Workflow duplicated successfully",
+    "Error saving workflow": "Error saving workflow",
+    "Error duplicating workflow": "Error duplicating workflow"
+  },
+  "fields": {
+    "name": "Name",
+    "description": "Description",
+    "status": "Status",
+    "entityType": "Entity Type",
+    "triggerType": "Trigger Type",
+    "definition": "Definition",
+    "isActive": "Is Active",
+    "workflow": "Workflow",
+    "workflowName": "Workflow Name",
+    "targetEntityType": "Target Entity Type",
+    "targetEntityId": "Target Entity ID",
+    "currentNodeId": "Current Node ID",
+    "inputData": "Input Data",
+    "outputData": "Output Data",
+    "errorMessage": "Error Message",
+    "scheduledAt": "Scheduled At",
+    "startedAt": "Started At",
+    "completedAt": "Completed At",
+    "retryCount": "Retry Count",
+    "execution": "Execution",
+    "executionStatus": "Execution Status",
+    "nodeId": "Node ID",
+    "action": "Action",
+    "message": "Message",
+    "data": "Data",
+    "executedAt": "Executed At",
+    "executions": "Executions",
+    "logs": "Logs"
+  },
+  "options": {
+    "status": {
+      "draft": "Draft",
+      "active": "Active",
+      "paused": "Paused",
+      "archived": "Archived"
+    },
+    "triggerType": {
+      "Record Created": "Record Created",
+      "Record Updated": "Record Updated",
+      "Record Deleted": "Record Deleted",
+      "Property Changed": "Property Changed",
+      "Form Submission": "Form Submission",
+      "Email Opened": "Email Opened",
+      "Email Clicked": "Email Clicked",
+      "Email Bounced": "Email Bounced",
+      "Email Replied": "Email Replied",
+      "Specific Date/Time": "Specific Date/Time",
+      "Relative Date": "Relative Date",
+      "Recurring Schedule": "Recurring Schedule",
+      "Contact Enrolled": "Contact Enrolled",
+      "Contact Unenrolled": "Contact Unenrolled"
+    },
+    "executionStatus": {
+      "scheduled": "Scheduled",
+      "running": "Running",
+      "completed": "Completed",
+      "failed": "Failed",
+      "cancelled": "Cancelled"
+    },
+    "logStatus": {
+      "success": "Success",
+      "error": "Error",
+      "skipped": "Skipped"
+    }
+  }
+}
+

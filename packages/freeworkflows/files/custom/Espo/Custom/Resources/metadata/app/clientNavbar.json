@@ -1,0 +1,12 @@
+{
+    "menuItems": {
+        "workflows": {
+            "order": 100,
+            "groupIndex": 0,
+            "link": "#Workflow",
+            "labelTranslation": "Workflow.labels.Workflows",
+            "iconClass": "fas fa-project-diagram"
+        }
+    }
+}
+

@@ -1,0 +1,102 @@
+{
+    "fields": {
+        "workflow": {
+            "type": "link",
+            "required": true
+        },
+        "workflowName": {
+            "type": "foreign",
+            "link": "workflow",
+            "field": "name"
+        },
+        "targetEntityType": {
+            "type": "varchar",
+            "required": true,
+            "maxLength": 100
+        },
+        "targetEntityId": {
+            "type": "varchar",
+            "required": true,
+            "maxLength": 48
+        },
+        "status": {
+            "type": "enum",
+            "options": ["scheduled", "running", "completed", "failed", "cancelled"],
+            "default": "scheduled",
+            "style": {
+                "completed": "success",
+                "failed": "danger",
+                "running": "warning",
+                "scheduled": "info",
+                "cancelled": "default"
+            },
+            "audited": true
+        },
+        "currentNodeId": {
+            "type": "varchar",
+            "maxLength": 255
+        },
+        "inputData": {
+            "type": "jsonObject"
+        },
+        "outputData": {
+            "type": "jsonObject"
+        },
+        "errorMessage": {
+            "type": "text"
+        },
+        "scheduledAt": {
+            "type": "datetime",
+            "hasSeconds": true
+        },
+        "startedAt": {
+            "type": "datetime",
+            "hasSeconds": true
+        },
+        "completedAt": {
+            "type": "datetime",
+            "hasSeconds": true
+        },
+        "retryCount": {
+            "type": "int",
+            "default": 0
+        },
+        "createdAt": {
+            "type": "datetime",
+            "readOnly": true,
+            "hasSeconds": true
+        },
+        "modifiedAt": {
+            "type": "datetime",
+            "readOnly": true,
+            "hasSeconds": true
+        }
+    },
+    "links": {
+        "workflow": {
+            "type": "belongsTo",
+            "entity": "Workflow"
+        },
+        "logs": {
+            "type": "hasMany",
+            "entity": "WorkflowLog",
+            "foreign": "execution"
+        }
+    },
+    "collection": {
+        "orderBy": "createdAt",
+        "order": "desc"
+    },
+    "indexes": {
+        "workflowStatus": {
+            "columns": ["workflowId", "status"]
+        },
+        "targetEntity": {
+            "columns": ["targetEntityType", "targetEntityId"]
+        },
+        "scheduledAt": {
+            "columns": ["status", "scheduledAt"]
+        }
+    }
+}
+

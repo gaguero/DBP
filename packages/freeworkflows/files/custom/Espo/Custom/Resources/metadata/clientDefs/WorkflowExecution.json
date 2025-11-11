@@ -1,0 +1,13 @@
+{
+    "controller": "workflows:controllers/workflow-execution",
+    "recordViews": {
+        "list": "views/record/list",
+        "detail": "views/record/detail"
+    },
+    "relationshipPanels": {
+        "logs": {
+            "view": "views/record/panels/relationship"
+        }
+    }
+}
+

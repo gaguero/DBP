@@ -1,0 +1,94 @@
+{
+  "labels": {
+    "Create Workflow": "Crear Workflow",
+    "Workflows": "Workflows",
+    "Workflow": "Workflow",
+    "Workflow Execution": "Ejecución de Workflow",
+    "Workflow Executions": "Ejecuciones de Workflow",
+    "Workflow Log": "Log de Workflow",
+    "Workflow Logs": "Logs de Workflow",
+    "Edit": "Editar",
+    "Activate": "Activar",
+    "Pause": "Pausar",
+    "Statistics": "Estadísticas",
+    "Recent Logs": "Logs Recientes",
+    "Total Executions": "Total de Ejecuciones",
+    "Successful": "Exitosas",
+    "Failed": "Fallidas",
+    "Last Execution": "Última Ejecución"
+  },
+  "messages": {
+    "Workflow activated": "Flujo de trabajo activado exitosamente",
+    "Workflow paused": "Flujo de trabajo pausado exitosamente",
+    "Workflow duplicated": "Flujo de trabajo duplicado exitosamente",
+    "Error saving workflow": "Error al guardar flujo de trabajo",
+    "Error duplicating workflow": "Error al duplicar flujo de trabajo"
+  },
+  "fields": {
+    "name": "Nombre",
+    "description": "Descripción",
+    "status": "Estado",
+    "entityType": "Tipo de Entidad",
+    "triggerType": "Tipo de Trigger",
+    "definition": "Definición",
+    "isActive": "Está Activo",
+    "workflow": "Workflow",
+    "workflowName": "Nombre del Workflow",
+    "targetEntityType": "Tipo de Entidad Objetivo",
+    "targetEntityId": "ID de Entidad Objetivo",
+    "currentNodeId": "ID del Nodo Actual",
+    "inputData": "Datos de Entrada",
+    "outputData": "Datos de Salida",
+    "errorMessage": "Mensaje de Error",
+    "scheduledAt": "Programado Para",
+    "startedAt": "Iniciado En",
+    "completedAt": "Completado En",
+    "retryCount": "Contador de Reintentos",
+    "execution": "Ejecución",
+    "executionStatus": "Estado de Ejecución",
+    "nodeId": "ID del Nodo",
+    "action": "Acción",
+    "message": "Mensaje",
+    "data": "Datos",
+    "executedAt": "Ejecutado En",
+    "executions": "Ejecuciones",
+    "logs": "Logs"
+  },
+  "options": {
+    "status": {
+      "draft": "Borrador",
+      "active": "Activo",
+      "paused": "Pausado",
+      "archived": "Archivado"
+    },
+    "triggerType": {
+      "Record Created": "Registro Creado",
+      "Record Updated": "Registro Actualizado",
+      "Record Deleted": "Registro Eliminado",
+      "Property Changed": "Propiedad Cambiada",
+      "Form Submission": "Envío de Formulario",
+      "Email Opened": "Email Abierto",
+      "Email Clicked": "Email Clicked",
+      "Email Bounced": "Email Rebotado",
+      "Email Replied": "Email Respondido",
+      "Specific Date/Time": "Fecha/Hora Específica",
+      "Relative Date": "Fecha Relativa",
+      "Recurring Schedule": "Programación Recurrente",
+      "Contact Enrolled": "Contacto Inscrito",
+      "Contact Unenrolled": "Contacto Desinscrito"
+    },
+    "executionStatus": {
+      "scheduled": "Programado",
+      "running": "Ejecutando",
+      "completed": "Completado",
+      "failed": "Fallido",
+      "cancelled": "Cancelado"
+    },
+    "logStatus": {
+      "success": "Éxito",
+      "error": "Error",
+      "skipped": "Omitido"
+    }
+  }
+}
+

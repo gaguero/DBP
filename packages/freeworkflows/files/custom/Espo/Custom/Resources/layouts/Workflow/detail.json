@@ -1,0 +1,41 @@
+[
+    {
+        "rows": [
+            [
+                {
+                    "name": "name"
+                },
+                {
+                    "name": "status"
+                }
+            ],
+            [
+                {
+                    "name": "entityType"
+                },
+                {
+                    "name": "triggerType"
+                }
+            ],
+            [
+                {
+                    "name": "isActive"
+                },
+                false
+            ],
+            [
+                {
+                    "name": "description",
+                    "span": 2
+                }
+            ],
+            [
+                {
+                    "name": "definition",
+                    "span": 2
+                }
+            ]
+        ]
+    }
+]
+

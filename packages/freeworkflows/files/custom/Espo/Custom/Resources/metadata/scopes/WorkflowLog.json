@@ -1,0 +1,12 @@
+{
+    "entity": true,
+    "layouts": true,
+    "tab": true,
+    "acl": true,
+    "customizable": false,
+    "stream": false,
+    "activityStatusList": [],
+    "historyStatusList": [],
+    "type": "Base"
+}
+

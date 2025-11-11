@@ -1,0 +1,12 @@
+{
+    "controller": "workflows:controllers/workflow-log",
+    "views": {
+        "list": "workflows:views/workflow-log/record/list",
+        "detail": "workflows:views/workflow-log/record/detail"
+    },
+    "recordViews": {
+        "list": "workflows:views/workflow-log/record/list",
+        "detail": "workflows:views/workflow-log/record/detail"
+    }
+}
+

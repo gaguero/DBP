@@ -1,0 +1,38 @@
+{
+    "controller": "workflows:controllers/workflow",
+    "views": {
+        "list": "workflows:views/workflow/record/list",
+        "detail": "workflows:views/workflow/record/detail",
+        "edit": "workflows:views/workflow-editor/workflow-editor"
+    },
+    "recordViews": {
+        "list": "workflows:views/workflow/record/list",
+        "detail": "workflows:views/workflow/record/detail"
+    },
+    "modalViews": {
+        "detail": "workflows:views/workflow/record/detail"
+    },
+    "rowActionDefs": {
+        "toggleActive": {
+            "labelTranslation": "Workflow.actions.toggleActive",
+            "handler": "workflows:handlers/workflow/toggle-active-row-action",
+            "groupIndex": 1
+        },
+        "editWorkflow": {
+            "labelTranslation": "Edit",
+            "handler": "workflows:handlers/workflow/edit-workflow-row-action",
+            "groupIndex": 2
+        }
+    },
+    "relationshipPanels": {
+        "executions": {
+            "view": "workflows:views/workflow/record/panels/executions"
+        },
+        "logs": {
+            "view": "workflows:views/workflow/record/panels/logs"
+        }
+    },
+    "color": "#6c757d",
+    "iconClass": "fas fa-project-diagram"
+}
+
