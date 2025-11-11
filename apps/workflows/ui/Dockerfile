@@ -17,6 +17,11 @@ COPY . .
 # Build
 RUN pnpm build
 
+# Verify build output
+RUN ls -la /app/dist || (echo "ERROR: dist directory not found" && exit 1)
+RUN test -f /app/dist/index.html || (echo "ERROR: index.html not found" && exit 1)
+RUN echo "Build verification: $(find /app/dist -type f | wc -l) files generated"
+
 # Production image
 FROM nginx:alpine
 
