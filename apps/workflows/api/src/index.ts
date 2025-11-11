@@ -16,7 +16,7 @@ const pool = new Pool({
 app.use(express.json());
 
 // Health check con verificación de DB
-app.get('/health', async (req: Request, res: Response) => {
+app.get('/health', async (_req: Request, res: Response) => {
   try {
     await pool.query('SELECT 1');
     res.json({ 
@@ -36,7 +36,7 @@ app.get('/health', async (req: Request, res: Response) => {
 });
 
 // API Routes (placeholder - se implementarán en siguientes fases)
-app.get('/api/v1', (req: Request, res: Response) => {
+app.get('/api/v1', (_req: Request, res: Response) => {
   res.json({ 
     message: 'Workflows API v1',
     version: '0.1.0',

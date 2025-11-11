@@ -6,9 +6,9 @@ dotenv.config();
 
 const redis = new Redis(process.env.REDIS_URL || 'redis://localhost:6379');
 
-// Queue: workflow:execute
+// Queue: workflow-execute
 const executeWorker = new Worker(
-  'workflow:execute',
+  'workflow-execute',
   async (job) => {
     console.log(`[Worker] Processing workflow execution: ${job.id}`);
     // TODO: Implementar lógica de ejecución en Fase 2
@@ -22,9 +22,9 @@ const executeWorker = new Worker(
   }
 );
 
-// Queue: workflow:schedule
+// Queue: workflow-schedule
 const scheduleWorker = new Worker(
-  'workflow:schedule',
+  'workflow-schedule',
   async (job) => {
     console.log(`[Worker] Processing scheduled workflow: ${job.id}`);
     // TODO: Implementar lógica de programación en Fase 2
@@ -36,9 +36,9 @@ const scheduleWorker = new Worker(
   }
 );
 
-// Queue: workflow:webhooks
+// Queue: workflow-webhooks
 const webhookWorker = new Worker(
-  'workflow:webhooks',
+  'workflow-webhooks',
   async (job) => {
     console.log(`[Worker] Processing webhook event: ${job.id}`);
     // TODO: Implementar procesamiento de webhooks en Fase 2
@@ -51,7 +51,7 @@ const webhookWorker = new Worker(
 );
 
 console.log('🚀 Workflow Workers started');
-console.log('📋 Queues: workflow:execute, workflow:schedule, workflow:webhooks');
+console.log('📋 Queues: workflow-execute, workflow-schedule, workflow-webhooks');
 
 // Graceful shutdown
 process.on('SIGTERM', async () => {
