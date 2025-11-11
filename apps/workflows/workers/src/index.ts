@@ -4,7 +4,10 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const redis = new Redis(process.env.REDIS_URL || 'redis://localhost:6379');
+// BullMQ requires maxRetriesPerRequest to be null
+const redis = new Redis(process.env.REDIS_URL || 'redis://localhost:6379', {
+  maxRetriesPerRequest: null,
+});
 
 // Queue: workflow-execute
 const executeWorker = new Worker(
