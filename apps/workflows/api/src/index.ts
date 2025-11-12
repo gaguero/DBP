@@ -1,18 +1,19 @@
 import express, { Request, Response } from 'express';
-import { Pool } from 'pg';
+import cors from 'cors';
 import dotenv from 'dotenv';
+import { pool } from './utils/db.js';
+import authRoutes from './routes/auth.routes.js';
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Database connection
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL
-});
-
 // Middleware
+app.use(cors({
+  origin: process.env.CORS_ORIGIN || '*',
+  credentials: true,
+}));
 app.use(express.json());
 
 // Health check con verificación de DB
@@ -35,7 +36,7 @@ app.get('/health', async (_req: Request, res: Response) => {
   }
 });
 
-// API Routes (placeholder - se implementarán en siguientes fases)
+// API Routes
 app.get('/api/v1', (_req: Request, res: Response) => {
   res.json({ 
     message: 'Workflows API v1',
@@ -50,6 +51,9 @@ app.get('/api/v1', (_req: Request, res: Response) => {
     }
   });
 });
+
+// Auth routes
+app.use('/api/v1/auth', authRoutes);
 
 // Start server
 app.listen(PORT, () => {
