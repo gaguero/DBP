@@ -2,19 +2,22 @@ FROM node:18-alpine AS builder
 
 WORKDIR /app
 
-# Copy package manifest (lock file is optional)
-COPY package.json pnpm-lock.yaml* ./
+# Copy workspace manifests
+COPY pnpm-workspace.yaml package.json pnpm-lock.yaml* ./
 
 # Install pnpm
 RUN npm install -g pnpm@8.15.5
 
-# Install dependencies
+# Copy workspace packages needed for install
+COPY apps/workflows/ui ./apps/workflows/ui
+COPY apps/workflows/shared ./apps/workflows/shared
+COPY apps/workflows/api ./apps/workflows/api
+
+# Install dependencies scoped to UI
 RUN pnpm install
 
-# Copy source
-COPY . .
-
 # Build
+WORKDIR /app/apps/workflows/ui
 RUN pnpm build
 
 # Verify build output
@@ -26,7 +29,7 @@ RUN echo "Build verification: $(find /app/dist -type f | wc -l) files generated"
 FROM nginx:alpine
 
 # Copy built files
-COPY --from=builder /app/dist /usr/share/nginx/html
+COPY --from=builder /app/apps/workflows/ui/dist /usr/share/nginx/html
 
 # Copy nginx config
 COPY nginx.conf /etc/nginx/conf.d/default.conf
