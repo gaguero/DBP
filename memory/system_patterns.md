@@ -1,5 +1,17 @@
 # System Patterns & Architecture
 
+## External Workflows App Architecture (2025-11-12)
+- **Servicios:** `apps/workflows/api` (Express + TypeScript), `apps/workflows/workers` (BullMQ), `apps/workflows/ui` (React + Vite), `apps/workflows/shared`.
+- **Persistencia:** PostgreSQL (`workflow_*` tablas) + Redis (colas `workflow-execute`, `workflow-schedule`, `workflow-webhooks`).
+- **Integración con EspoCRM:** 
+  - REST API de EspoCRM consumida mediante `EspoClient` (pendiente de finalizar para acciones update/create/sendEmail).
+  - Webhooks desde EspoCRM planificados para Fase 2; manual execution usa API `POST /workflows/:id/execute`.
+- **Seguridad:** JWT (api), AES-256-GCM para credenciales de integración. Roles `admin|editor|viewer`.
+- **Estado actual:** CRUD de workflows/integraciones listo; ejecución manual y motor en curso.
+- **Documentación viva:** `apps/workflows/STATUS.md`, `apps/workflows/PROGRESS.md`, `docs/workflows-external-app-plan.md`.
+
+> Nota: Las secciones siguientes documentan la arquitectura previa (extensión interna en EspoCRM). Se mantienen como referencia histórica hasta completar la migración total al enfoque externo.
+
 ## EspoCRM Workflow System Architecture
 
 ### Overview
@@ -359,4 +371,8 @@ apps/espocrm/
 
 **Last Updated:** November 2025  
 **Status:** Implementation plan complete, ready to start Phase 1
+
+
+
+
 

@@ -1,0 +1,22 @@
+[
+    {
+        "name": "number"
+    },
+    {
+        "name": "name",
+        "link": true
+    },
+    {
+        "name": "status"
+    },
+    {
+        "name": "address"
+    },
+    {
+        "name": "contact"
+    },
+    {
+        "name": "typeOfLocation",
+        "notSortable": true
+    }
+]

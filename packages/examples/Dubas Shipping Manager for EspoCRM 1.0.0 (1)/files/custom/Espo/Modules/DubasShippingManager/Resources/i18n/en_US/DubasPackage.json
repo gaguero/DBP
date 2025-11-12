@@ -1,0 +1,45 @@
+{
+    "fields": {
+        "parcel": "Parcel",
+        "weight": "Weight",
+        "width": "Width",
+        "height": "Height",
+        "lenght": "Lenght",
+        "name": "Package number",
+        "value": "Value",
+        "pickupDate": "Pickup date",
+        "deliveryDate": "Delivery date",
+        "valueCurrency": "Value (Currency)",
+        "valueConverted": "Value (Converted)",
+        "description": "Description of content",
+        "referenceNumber": "Reference number",
+        "type": "Type",
+        "status": "Status"
+    },
+    "links": {
+        "parcel": "Parcel"
+    },
+    "labels": {
+        "Create DubasPackage": "Create Package"
+    },
+    "options": {
+        "status": {
+            "New": "New",
+            "Package accepted": "Package accepted",
+            "Collected": "Collected",
+            "Shipped": "Shipped",
+            "In transit": "In transit",
+            "Arrived at destination": "Arrived at destination",
+            "Out for delivery": "Out for delivery",
+            "Ready to Pickup": "Ready to Pickup",
+            "Delivered": "Delivered",
+            "Unsuccessful delivery attempt": "Unsuccessful delivery attempt",
+            "Returned to sender": "Returned to sender"
+        },
+        "type": {
+            "package": "Package",
+            "dox": "Dox",
+            "pallet": "Pallet"
+        }
+    }
+}

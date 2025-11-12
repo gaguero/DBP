@@ -2,6 +2,26 @@
 
 ## Technology Stack
 
+-### External Workflows App (2025-11-12)
+- **Backend API:** Node.js 20 + Express, TypeScript, JWT (`jsonwebtoken`), bcrypt, Zod, Axios para EspoCRM.
+- **Workers:** BullMQ + ioredis, colas `workflow-execute`, `workflow-schedule`, `workflow-webhooks`.
+- **Shared:** Paquete `@dbp/workflows-shared` con tipos, colas BullMQ, cliente EspoCRM, cifrado AES-256-GCM y helpers de ejecución.
+- **Frontend:** React 18, Vite, Tailwind CSS, editor React Flow, React Query, Zustand, React Router.
+- **Infraestructura:** Railway (servicios separados por subcarpeta), Dockerfiles ajustados para build en contexto local, pnpm como package manager.
+- **Base de datos:** PostgreSQL (migración `001_initial_schema.sql`) y cifrado AES-256-GCM para API keys.
+- **Integración:** REST API + webhooks planificados; ejecución manual desde API/UI, `EspoClient` centralizado para acciones CRUD/email.
+- **Estado:** CRUD + ejecución manual + logs disponibles; UI React Flow funcional (crear/editar/guardar workflows) y dashboard de ejecuciones (filtros + logs). Pendiente webhooks y pruebas E2E en Railway.
+- **Backend API:** Node.js 20 + Express, TypeScript, JWT (`jsonwebtoken`), bcrypt, Zod, Axios para EspoCRM.
+- **Workers:** BullMQ + ioredis, colas `workflow-execute`, `workflow-schedule`, `workflow-webhooks`.
+- **Shared:** Paquete `@dbp/workflows-shared` con tipos, colas BullMQ, cliente EspoCRM, cifrado AES-256-GCM y esquemas de validación.
+- **Frontend:** React 18, Vite, Tailwind CSS, futuro editor con React Flow.
+- **Infraestructura:** Railway (servicios separados por subcarpeta), Dockerfiles ajustados para build en contexto local, pnpm como package manager.
+- **Base de datos:** PostgreSQL (migración `001_initial_schema.sql`) y cifrado AES-256-GCM para API keys.
+- **Integración:** Planificada vía REST API y webhooks de EspoCRM; cliente `EspoClient` consolidará operaciones CRUD y envío de correos.
+- **Estado:** CRUD de workflows/integraciones y autenticación disponibles; ejecución manual + logs operativos (`POST /workflows/:id/execute`, worker con nodos básicos, endpoints `/executions`+`/logs`); UI React Flow y nodos avanzados pendientes (ver `apps/workflows/STATUS.md`).
+
+> Las secciones posteriores conservan detalles del diseño previo basado en extensión nativa de EspoCRM y siguen como referencia histórica.
+
 ### Backend (EspoCRM)
 - **Language:** PHP 8.1+
 - **Framework:** EspoCRM 9.2+ (custom MVC framework)
@@ -361,4 +381,8 @@ CREATE TABLE workflow_log (
 
 **Last Updated:** November 2025  
 **Status:** Technical research complete, ready for implementation
+
+
+
+
 

@@ -1,0 +1,32 @@
+[
+    {
+        "rows": [
+            [
+                {
+                    "name": "name"
+                },
+                {
+                    "name": "typeOfLocation"
+                }
+            ],
+            [
+                {
+                    "name": "account"
+                },
+                {
+                    "name": "contact"
+                }
+            ],
+            [
+                {
+                    "name": "address"
+                },
+                {
+                    "name": "instructions"
+                }
+            ]
+        ],
+        "style": "default",
+        "label": "Overview"
+    }
+]

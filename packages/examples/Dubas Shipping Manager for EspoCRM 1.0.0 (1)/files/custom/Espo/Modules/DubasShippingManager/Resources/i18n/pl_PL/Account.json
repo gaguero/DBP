@@ -1,0 +1,14 @@
+{
+    "fields": {
+        "DubasLocations": "Lokalizacje",
+        "dubasParcels": "Dostawy",
+        "sentParcels": "Wysłane dostawy",
+        "receivedParcels": "Otrzymane dostawy"
+    },
+    "links": {
+        "DubasLocations": "Lokalizacje",
+        "dubasParcels": "Dostawy",
+        "sentParcels": "Wysłane dostawy",
+        "receivedParcels": "Otrzymane dostawy"
+    }
+}

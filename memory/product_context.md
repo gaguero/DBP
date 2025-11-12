@@ -9,6 +9,7 @@
 - **Codename:** DBP
 - **Location:** Isla San Cristóbal, Bahia Delfines, Bocas del Toro, Panama
 - **Contact:** contact@dolphinblueparadise.com, WhatsApp +507 6346 0605
+- **Automatización CRM:** Nueva aplicación externa de workflows (ver `docs/workflows-external-app-plan.md`) reemplaza la extensión interna; API/Workers/UI viven en `apps/workflows/`.
 
 ## Business Model
 

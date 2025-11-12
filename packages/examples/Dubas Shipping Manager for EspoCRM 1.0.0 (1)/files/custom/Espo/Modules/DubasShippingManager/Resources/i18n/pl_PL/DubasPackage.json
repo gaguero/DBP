@@ -1,0 +1,44 @@
+{
+    "fields": {
+        "parcel": "Dostawa",
+        "weight": "Waga",
+        "width": "Szerokość",
+        "height": "Wysokość",
+        "lenght": "Długość",
+        "name": "Numer przesyłki",
+        "value": "Wartość",
+        "pickupDate": "Data odbioru",
+        "deliveryDate": "Data dostawy",
+        "valueCurrency": "Value (Currency)",
+        "valueConverted": "Value (Converted)",
+        "description": "Opis zawartości",
+        "referenceNumber": "Numer referencyjny",
+        "type": "Typ",
+        "status": "Status"
+    },
+    "links": {
+        "parcel": "Dostawa"
+    },
+    "labels": {
+        "Create DubasPackage": "Utwórz paczkę"
+    },
+    "options": {
+        "status": {
+            "New": "Nowa paczka",
+            "Package accepted": "Paczka zaakceptowana",
+            "Collected": "Odebrano paczkę",
+            "In transit": "W trasie",
+            "Arrived at destination": "Dostarczono do miejsca przeznaczenia",
+            "Out for delivery": "Wydano do doręczenia",
+            "Ready to Pickup": "Oczekuje na odbiór w punkcie odbioru",
+            "Delivered": "Doręczono",
+            "Unsuccessful delivery attempt": "Nieudana próba doręczenia",
+            "Returned to sender": "Zwrócono do nadawcy"
+        },
+        "type": {
+            "package": "Paczka",
+            "dox": "Koperta",
+            "pallet": "Paleta"
+        }
+    }
+}

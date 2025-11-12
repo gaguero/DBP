@@ -1,0 +1,12 @@
+{
+    "fields": {
+        "sentParcels": "Sent parcels",
+        "receivedParcels": "Received Parcels",
+        "DubasLocations": "Parcel Locations"
+    },
+    "links": {
+        "sentParcels": "Sent parcels",
+        "receivedParcels": "Received Parcels",
+        "DubasLocations": "Parcel Locations"
+    }
+}

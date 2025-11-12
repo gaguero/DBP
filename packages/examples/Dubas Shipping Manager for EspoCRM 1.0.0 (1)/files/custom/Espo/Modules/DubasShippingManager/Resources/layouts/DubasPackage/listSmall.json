@@ -1,0 +1,24 @@
+[
+    {
+        "name": "name",
+        "link": true
+    },
+    {
+        "name": "status"
+    },
+    {
+        "name": "type"
+    },
+    {
+        "name": "weight"
+    },
+    {
+        "name": "lenght"
+    },
+    {
+        "name": "height"
+    },
+    {
+        "name": "width"
+    }
+]

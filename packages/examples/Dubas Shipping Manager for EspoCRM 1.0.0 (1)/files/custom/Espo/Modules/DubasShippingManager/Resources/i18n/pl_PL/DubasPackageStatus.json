@@ -1,0 +1,26 @@
+{
+    "fields": {
+        "packages": "Paczki",
+        "name": "Status"
+    },
+    "links": {
+        "packages": "Paczki"
+    },
+    "labels": {
+        "Create DubasPackageStatus": "Dodaj Status Paczki"
+    },
+    "options": {
+        "name": {
+            "New": "Nowa paczka",
+            "Package accepted": "Paczka zaakceptowana",
+            "Collected": "Odebrano paczkę",
+            "In transit": "W trasie",
+            "Arrived at destination": "Dostarczono do miejsca przeznaczenia",
+            "Out for delivery": "Wydano do doręczenia",
+            "Ready to Pickup": "Oczekuje na odbiór w punkcie odbioru",
+            "Delivered": "Doręczono",
+            "Unsuccessful delivery attempt": "Nieudana próba doręczenia",
+            "Returned to sender": "Zwrócono do nadawcy"
+        }
+    }
+}

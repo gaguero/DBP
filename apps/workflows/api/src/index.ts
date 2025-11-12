@@ -5,6 +5,7 @@ import { pool } from './utils/db.js';
 import authRoutes from './routes/auth.routes.js';
 import integrationsRoutes from './routes/integrations.routes.js';
 import workflowsRoutes from './routes/workflows.routes.js';
+import executionsRoutes from './routes/executions.routes.js';
 
 dotenv.config();
 
@@ -62,6 +63,9 @@ app.use('/api/v1/integrations', integrationsRoutes);
 
 // Workflows routes
 app.use('/api/v1/workflows', workflowsRoutes);
+
+// Executions routes
+app.use('/api/v1/executions', executionsRoutes);
 
 // Start server
 app.listen(PORT, () => {

@@ -67,7 +67,8 @@
 
 ## 10. Roadmap de Implementación
 1. **Fase 0**: Configuración de repos, entornos Railway, wireframes, user stories.
-2. **Fase 1 (MVP)**: Auth, integraciones, CRUD de workflows, ejecución manual.
+2. **Fase 1 (MVP)**: Auth, integraciones, CRUD de workflows, ejecución manual.  
+   _Estado 12/11/2025_: CRUD y endpoints base listos; ejecución manual en desarrollo. Evidencia: `apps/workflows/STATUS.md`, `apps/workflows/PROGRESS.md`, `apps/workflows/TESTING.md`.
 3. **Fase 2**: Editor React Flow, motor completo, Webhooks integrados.
 4. **Fase 3**: Acciones avanzadas, analíticas, paneles de monitoreo.
 5. **Fase 4**: Seguridad, roles, documentación, QA y pruebas E2E.
@@ -77,4 +78,5 @@
 - Crear wireframes detallados del editor y dashboard.
 - Redactar user stories y criterios de aceptación por módulo.
 - Preparar scripts de despliegue inicial (Railway + Docker Compose).
+- Sincronizar avances en `apps/workflows/STATUS.md` y `apps/workflows/PROGRESS.md` para trazar evolución.
 - Agendar sesión de revisión con el equipo para validar Alcance y Roadmap.

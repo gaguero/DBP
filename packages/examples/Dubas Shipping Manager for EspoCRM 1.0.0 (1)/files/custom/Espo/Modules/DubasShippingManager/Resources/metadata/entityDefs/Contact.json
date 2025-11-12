@@ -1,0 +1,51 @@
+{
+    "fields": {
+        "sentParcels": {
+            "type": "linkMultiple",
+            "layoutDetailDisabled": true,
+            "layoutMassUpdateDisabled": true,
+            "noLoad": true,
+            "importDisabled": true,
+            "isCustom": true
+        },
+        "receivedParcels": {
+            "type": "linkMultiple",
+            "layoutDetailDisabled": true,
+            "layoutMassUpdateDisabled": true,
+            "noLoad": true,
+            "importDisabled": true,
+            "isCustom": true
+        },
+        "DubasLocations": {
+            "type": "linkMultiple",
+            "layoutDetailDisabled": true,
+            "layoutMassUpdateDisabled": true,
+            "noLoad": true,
+            "importDisabled": true,
+            "isCustom": true
+        }
+    },
+    "links": {
+        "sentParcels": {
+            "type": "hasMany",
+            "foreign": "senderContact",
+            "entity": "DubasParcel",
+            "audited": false,
+            "isCustom": true
+        },
+        "receivedParcels": {
+            "type": "hasMany",
+            "foreign": "recipientContact",
+            "entity": "DubasParcel",
+            "audited": false,
+            "isCustom": true
+        },
+        "DubasLocations": {
+            "type": "hasMany",
+            "foreign": "contact",
+            "entity": "DubasLocation",
+            "audited": false,
+            "isCustom": true
+        }
+    }
+}

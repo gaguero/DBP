@@ -182,3 +182,7 @@ Si prefieres mantener un solo template por ahora:
 
 El campo `preferredLanguage` en Lead debe estar configurado cuando se crea el lead desde el formulario. Verifica que tu API `/api/lead` esté enviando este campo correctamente.
 
+
+
+
+

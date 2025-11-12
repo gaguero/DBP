@@ -1,0 +1,45 @@
+{
+    "_delimiter_": {
+        "disabled": true
+    },
+    "sentParcels": {
+        "dynamicLogicVisible": {
+            "conditionGroup": [
+                {
+                    "type": "has",
+                    "attribute": "typeOfLocation",
+                    "value": "Pickup"
+                }
+            ]
+        },
+        "style": "default",
+        "dynamicLogicStyled": null,
+        "sticked": false,
+        "index": 0
+    },
+    "deliveredParcels": {
+        "dynamicLogicVisible": {
+            "conditionGroup": [
+                {
+                    "type": "or",
+                    "value": [
+                        {
+                            "type": "has",
+                            "attribute": "typeOfLocation",
+                            "value": "Delivery"
+                        },
+                        {
+                            "type": "has",
+                            "attribute": "typeOfLocation",
+                            "value": "Pickup Point"
+                        }
+                    ]
+                }
+            ]
+        },
+        "style": "default",
+        "dynamicLogicStyled": null,
+        "sticked": false,
+        "index": 1
+    }
+}

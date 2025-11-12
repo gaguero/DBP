@@ -1,0 +1,39 @@
+{
+    "fields": {
+        "contact": "Contact person",
+        "instructions": "Instructions",
+        "typeOfLocation": "Type of location",
+        "address": "Address",
+        "addressStreet": "Address Street",
+        "addressCity": "Address City",
+        "addressState": "Address State",
+        "addressCountry": "Address Country",
+        "addressPostalCode": "Address Postal Code",
+        "addressMap": "Address Map",
+        "status": "Status",
+        "number": "Number",
+        "account": "Account",
+        "sentParcels": "Sent Parcels",
+        "deliveredParcels": "Delivered Parcels"
+    },
+    "links": {
+        "contact": "Contact person",
+        "account": "Account",
+        "sentParcels": "Sent Parcels",
+        "deliveredParcels": "Delivered Parcels"
+    },
+    "labels": {
+        "Create DubasLocation": "Create Parcel Location"
+    },
+    "options": {
+        "typeOfLocation": {
+            "Pickup": "Pickup",
+            "Delivery": "Delivery",
+            "Pickup Point": "Pickup Point"
+        },
+        "status": {
+            "Available": "Available",
+            "Unavailable": "Unavailable"
+        }
+    }
+}

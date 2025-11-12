@@ -1,4 +1,5 @@
 // Tipos compartidos para workflows
+import type { WorkflowExecutionStatus } from './executions';
 
 export interface WorkflowNode {
   id: string;
@@ -39,14 +40,21 @@ export interface Workflow {
 export interface WorkflowExecution {
   id: string;
   workflowId: string;
+  workflowName?: string;
+  integrationAccountId?: string;
   targetEntityType: string;
   targetEntityId: string;
-  status: 'scheduled' | 'running' | 'completed' | 'failed' | 'cancelled';
-  currentNodeId?: string;
-  scheduledAt?: string;
-  startedAt?: string;
-  completedAt?: string;
-  errorMessage?: string;
+  status: WorkflowExecutionStatus;
+  currentNodeId?: string | null;
+  inputData?: Record<string, unknown> | null;
+  outputData?: Record<string, unknown> | null;
+  errorMessage?: string | null;
+  scheduledAt?: string | null;
+  startedAt?: string | null;
+  completedAt?: string | null;
+  retryCount?: number;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface IntegrationAccount {

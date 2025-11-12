@@ -1,0 +1,63 @@
+{
+    "fields": {
+        "name": "Parcel number",
+        "weight": "Weight",
+        "parcelType": "Parcel type",
+        "deliveryAddress": "Delivery address",
+        "deliveryAddressStreet": "Delivery address Street",
+        "deliveryAddressCity": "Delivery address City",
+        "deliveryAddressState": "Delivery address State",
+        "deliveryAddressCountry": "Delivery address Country",
+        "deliveryAddressPostalCode": "Delivery address Postal Code",
+        "deliveryAddressMap": "Delivery address Map",
+        "pickupAddress": "Pickup address",
+        "pickupAddressStreet": "Pickup address Street",
+        "pickupAddressCity": "Pickup address City",
+        "pickupAddressState": "Pickup address State",
+        "pickupAddressCountry": "Pickup address Country",
+        "pickupAddressPostalCode": "Pickup address Postal Code",
+        "pickupAddressMap": "Pickup address Map",
+        "dubasParcelStatuses": "Parcel Statuses",
+        "height": "Height",
+        "lenght": "Lenght",
+        "width": "Width",
+        "senderContact": "Sender contact",
+        "recipientContact": "Contact",
+        "sender": "Sender",
+        "recipient": "Recipient",
+        "pickupLocation": "Pickup Location",
+        "parcelStatuses": "Parcel Statuses",
+        "deliveryLocation": "Delivery Location",
+        "description": "Description of content",
+        "deliveryInstructions": "Delivery instructions",
+        "pickupInstructions": "Pickup instructions",
+        "price": "Price",
+        "priceCurrency": "Price (Currency)",
+        "priceConverted": "Price (Converted)",
+        "packages": "Packages",
+        "referenceNumber": "Reference number"
+    },
+    "links": {
+        "dubasParcelStatuses": "Parcel Statuses",
+        "senderContact": "Sender contact",
+        "recipientContact": "Contact",
+        "sender": "Sender",
+        "recipient": "Recipient",
+        "pickupLocation": "Pickup Location",
+        "parcelStatuses": "Parcel Statuses",
+        "deliveryLocation": "Delivery Location",
+        "packages": "Packages"
+    },
+    "labels": {
+        "Create DubasParcel": "Create Parcel"
+    },
+    "tooltips": {
+        "parcelType": "Delivery - Delivery to Recipient Address,\nPickup - Delivery to Pickup point"
+    },
+    "options": {
+        "parcelType": {
+            "Pickup": "Delivery to Pickup Point",
+            "Delivery": "Delivery to Recipient Address"
+        }
+    }
+}

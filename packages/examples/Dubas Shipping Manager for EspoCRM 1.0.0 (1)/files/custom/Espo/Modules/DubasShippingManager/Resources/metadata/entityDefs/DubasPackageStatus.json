@@ -1,0 +1,117 @@
+{
+    "fields": {
+        "name": {
+            "type": "enum",
+            "options": [
+                "New",
+                "Package accepted",
+                "Collected",
+                "In transit",
+                "Arrived at destination",
+                "Out for delivery",
+                "Ready to Pickup",
+                "Delivered",
+                "Unsuccessful delivery attempt",
+                "Returned to sender"
+            ],
+            "style": {
+                "New": null,
+                "Package accepted": null,
+                "Collected": null,
+                "In transit": "info",
+                "Arrived at destination": null,
+                "Out for delivery": "info",
+                "Ready to Pickup": "info",
+                "Delivered": "success",
+                "Unsuccessful delivery attempt": "danger",
+                "Returned to sender": "danger"
+            },
+            "default": "New",
+            "isCustom": false
+        },
+        "description": {
+            "type": "text"
+        },
+        "createdAt": {
+            "type": "datetime",
+            "readOnly": true
+        },
+        "modifiedAt": {
+            "type": "datetime",
+            "readOnly": true
+        },
+        "createdBy": {
+            "type": "link",
+            "readOnly": true,
+            "view": "views/fields/user"
+        },
+        "modifiedBy": {
+            "type": "link",
+            "readOnly": true,
+            "view": "views/fields/user"
+        },
+        "assignedUser": {
+            "type": "link",
+            "required": true,
+            "view": "views/fields/assigned-user"
+        },
+        "teams": {
+            "type": "linkMultiple",
+            "view": "views/fields/teams"
+        },
+        "packages": {
+            "type": "linkMultiple",
+            "layoutDetailDisabled": false,
+            "layoutMassUpdateDisabled": false,
+            "importDisabled": false,
+            "noLoad": false,
+            "isCustom": true
+        }
+    },
+    "links": {
+        "createdBy": {
+            "type": "belongsTo",
+            "entity": "User"
+        },
+        "modifiedBy": {
+            "type": "belongsTo",
+            "entity": "User"
+        },
+        "assignedUser": {
+            "type": "belongsTo",
+            "entity": "User"
+        },
+        "teams": {
+            "type": "hasMany",
+            "entity": "Team",
+            "relationName": "EntityTeam",
+            "layoutRelationshipsDisabled": true
+        },
+        "packages": {
+            "type": "hasMany",
+            "relationName": "packageStatuses",
+            "foreign": "packageStatuses",
+            "entity": "DubasPackage",
+            "audited": false,
+            "isCustom": true
+        }
+    },
+    "collection": {
+        "orderBy": "createdAt",
+        "order": "desc"
+    },
+    "indexes": {
+        "name": {
+            "columns": [
+                "name",
+                "deleted"
+            ]
+        },
+        "assignedUser": {
+            "columns": [
+                "assignedUserId",
+                "deleted"
+            ]
+        }
+    }
+}

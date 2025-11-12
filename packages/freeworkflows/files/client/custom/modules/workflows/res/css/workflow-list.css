@@ -1,0 +1,70 @@
+/**
+ * Workflow Statistics CSS
+ */
+
+.statistics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 15px;
+    background: #f9fafb;
+    border-radius: 6px;
+    border: 1px solid #e5e7eb;
+}
+
+.stat-value {
+    font-size: 24px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 5px;
+}
+
+.stat-success .stat-value {
+    color: #10b981;
+}
+
+.stat-error .stat-value {
+    color: #ef4444;
+}
+
+.stat-info .stat-value {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.workflow-status {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.workflow-status.status-draft {
+    background: #f3f4f6;
+    color: #6b7280;
+}
+
+.workflow-status.status-active {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.workflow-status.status-inactive {
+    background: #fee2e2;
+    color: #991b1b;
+}
+

@@ -1,89 +1,61 @@
 # Estado de Implementación - Workflows Application
 
-**Fecha:** 11 de Noviembre 2025  
-**Fase Actual:** Fase 0 - Configuración Inicial ✅
+**Fecha:** 12 de Noviembre 2025  
+**Fase Actual:** Fase 1 - MVP (en progreso)
 
-## ✅ Completado
+## ✅ Completado (Fase 0 + avances Fase 1)
 
-### Estructura del Proyecto
-- ✅ Carpeta `apps/workflows/` creada con subdirectorios:
-  - `api/` - Backend API (Express + TypeScript)
-  - `workers/` - Workers BullMQ
-  - `ui/` - Frontend React + React Flow
-  - `shared/` - Tipos TypeScript compartidos
+- ✅ Carpeta `apps/workflows/` con subdirectorios `api/`, `workers/`, `ui/` y `shared/`
+- ✅ Configuración base (`package.json`, `tsconfig.json`, `.gitignore`, `.env.example`, Dockerfiles, `docker-compose.yml`, `railway.json`)
+- ✅ Documentación inicial (`README.md`, `SETUP.md`, `RAILWAY.md`, README por servicio)
+- ✅ Migración SQL `001_initial_schema.sql` con tablas de usuarios, integraciones, workflows y ejecuciones
+- ✅ API Express con health check, conexión a PostgreSQL y rutas:
+  - `/auth` (registro/login)
+  - `/integrations` (CRUD + prueba de conexión)
+  - `/workflows` (CRUD básico con validación)
+- ✅ Workers BullMQ configurados (colas `workflow-execute`, `workflow-schedule`, `workflow-webhooks`)
+- ✅ Ejecución manual: endpoint `POST /workflows/:id/execute` con validación, persistencia y encolado BullMQ
+- ✅ Worker `workflow-execute` ejecuta nodos trigger/action/condition básicos, registra logs y actualiza estado de ejecuciones
+- ✅ Cliente EspoCRM centralizado (lectura/actualización/envío de email) compartido entre API y workers
+- ✅ Monitoreo básico: endpoints `/executions` y `/executions/:id/logs` con paginación y logs detallados
+- ✅ UI React (Vite + Tailwind) con autenticación, layout protegido y editor visual en React Flow (CRUD completo y panel de propiedades)
+- ✅ Dashboard de ejecuciones en UI con filtros, paginación y detalle de logs
+- ✅ Worker extendido con nodos `delay`, `split`, `code` (placeholder seguro) y política de reintentos con reprogramación diferida
+- ✅ Scripts y documentación de pruebas (`apps/workflows/TESTING.md`, `test-endpoints.sh`, `test-endpoints.ps1`)
 
-### Configuración Base
-- ✅ `package.json` para cada subproyecto
-- ✅ `tsconfig.json` configurado
-- ✅ `.gitignore` para cada proyecto
-- ✅ `.env.example` con variables necesarias
-- ✅ `Dockerfile` para cada servicio
-- ✅ `docker-compose.yml` para desarrollo local
-- ✅ `railway.json` para despliegue en Railway
+## 🔄 En Progreso (Fase 1)
 
-### Documentación
-- ✅ `README.md` principal
-- ✅ `SETUP.md` con instrucciones de setup
-- ✅ `RAILWAY.md` con guía de despliegue
-- ✅ README individual en cada subproyecto
+- UI: mejoras UX (validaciones avanzadas, undo/redo, plantillas de nodos)
+- Integración en tiempo real con EspoCRM (webhooks y triggers automáticos)
+- Ensayos end-to-end en Railway (API + workers + UI) con documentación de resultados
 
-### Código Base
-- ✅ API: Servidor Express básico con health check y conexión a PostgreSQL
-- ✅ Workers: Workers BullMQ básicos para 3 colas principales
-- ✅ UI: App React básica con Tailwind CSS
-- ✅ Shared: Tipos TypeScript básicos para workflows
+## 🧪 Pruebas
 
-### Base de Datos
-- ✅ Migración SQL inicial (`001_initial_schema.sql`) con todas las tablas:
-  - `users`
-  - `integration_accounts`
-  - `workflows`
-  - `workflow_versions`
-  - `workflow_executions`
-  - `workflow_logs`
-  - `workflow_schedules`
-  - `webhook_events`
-  - `audit_events`
+- Guía y scripts documentados en `apps/workflows/TESTING.md`
+- Última ejecución (12/11/2025): scripts corrieron en Windows; falló health check porque la API local no estaba levantada (se requiere URL de Railway para repetir)
 
-## ⏳ Próximos Pasos (Fase 1 - MVP)
+## ⏭️ Próximos Pasos Prioritarios
 
-1. **Instalar dependencias:**
-   ```bash
-   pnpm install
-   ```
+1. Validar editor React Flow con casos reales (ramas múltiples, delays encadenados) y añadir controles de validación visual.
+2. Documentar y ejecutar pruebas end-to-end en Railway (API + workers + Redis + PostgreSQL + UI).
+3. Implementar ingestión automática vía webhooks de EspoCRM y refresco en tiempo real de ejecuciones.
+4. Preparar guía de despliegue/UI para usuarios finales y plan de onboarding.
 
-2. **Configurar base de datos:**
-   - Crear base de datos PostgreSQL
-   - Ejecutar migración: `psql $DATABASE_URL -f api/migrations/001_initial_schema.sql`
+## 📋 Checklist Railway (estado 12/11/2025)
 
-3. **Implementar módulos básicos:**
-   - Autenticación (login/register)
-   - CRUD de integraciones EspoCRM
-   - CRUD básico de workflows (sin editor visual aún)
-   - Endpoint de prueba de conexión EspoCRM
-
-4. **Probar localmente:**
-   - Iniciar servicios con `docker-compose up` o manualmente
-   - Verificar health checks
-
-5. **Desplegar en Railway:**
-   - Crear servicios según `RAILWAY.md`
-   - Configurar variables de entorno
-   - Ejecutar migraciones
-
-## 📋 Checklist para Railway
-
-- [ ] Crear servicio PostgreSQL (addon)
-- [ ] Crear servicio Redis (addon)
-- [ ] Crear servicio API (root: `apps/workflows/api`)
-- [ ] Crear servicio Workers (root: `apps/workflows/workers`)
-- [ ] Crear servicio UI (root: `apps/workflows/ui`)
-- [ ] Configurar variable group con secrets compartidos
-- [ ] Ejecutar migración SQL en PostgreSQL
-- [ ] Verificar health checks de cada servicio
+- [x] Servicio API (root `apps/workflows/api`) desplegado
+- [x] Servicio Workers (root `apps/workflows/workers`) desplegado
+- [x] Servicio UI (root `apps/workflows/ui`) desplegado
+- [x] Redis configurado (BullMQ)
+- [x] PostgreSQL configurado
+- [ ] Variable group unificado para compartir secretos
+- [ ] Migraciones verificadas en entorno productivo
+- [ ] Health checks automatizados para API y workers
 
 ## 🔗 Referencias
 
 - Plan maestro: `../../docs/workflows-external-app-plan.md`
 - Roadmap del proyecto: `../../PROJECT-ROADMAP.md`
+- Registro de avance: `./PROGRESS.md`
+- Guía de pruebas: `./TESTING.md`
 

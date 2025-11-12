@@ -5,6 +5,23 @@ import type {
   UpdateWorkflowRequest,
   WorkflowDefinition,
 } from '../types/workflows.js';
+import {
+  getWorkflowExecuteQueue,
+  type ExecuteWorkflowInput,
+  type ExecuteWorkflowResponsePayload,
+} from '@dbp/workflows-shared';
+
+const workflowExecuteQueue = getWorkflowExecuteQueue();
+
+export class WorkflowExecutionError extends Error {
+  statusCode: number;
+
+  constructor(message: string, statusCode = 400) {
+    super(message);
+    this.name = 'WorkflowExecutionError';
+    this.statusCode = statusCode;
+  }
+}
 
 // Basic validation for workflow definition
 function validateWorkflowDefinition(definition: WorkflowDefinition): void {
@@ -230,5 +247,113 @@ export async function deleteWorkflow(id: string): Promise<boolean> {
   );
 
   return result.rows.length > 0;
+}
+
+export async function executeWorkflow(
+  workflowId: string,
+  data: ExecuteWorkflowInput,
+  userId: string
+): Promise<ExecuteWorkflowResponsePayload> {
+  const client = await pool.connect();
+  let executionId: string | null = null;
+
+  try {
+    await client.query('BEGIN');
+
+    const workflowResult = await client.query(
+      `SELECT id, status, entity_type, trigger_type
+       FROM workflows
+       WHERE id = $1`,
+      [workflowId]
+    );
+
+    if (workflowResult.rows.length === 0) {
+      throw new WorkflowExecutionError('Workflow not found', 404);
+    }
+
+    const workflowRow = workflowResult.rows[0];
+
+    if (workflowRow.status !== 'active') {
+      throw new WorkflowExecutionError('Workflow must be active to execute');
+    }
+
+    const integrationResult = await client.query(
+      `SELECT id, active
+       FROM integration_accounts
+       WHERE id = $1`,
+      [data.integrationAccountId]
+    );
+
+    if (integrationResult.rows.length === 0) {
+      throw new WorkflowExecutionError('Integration account not found', 404);
+    }
+
+    const integrationRow = integrationResult.rows[0];
+
+    if (!integrationRow.active) {
+      throw new WorkflowExecutionError('Integration account is inactive');
+    }
+
+    const executionResult = await client.query(
+      `INSERT INTO workflow_executions (
+        workflow_id,
+        integration_account_id,
+        target_entity_type,
+        target_entity_id,
+        status,
+        current_node_id,
+        input_data,
+        scheduled_at,
+        created_at,
+        updated_at
+      )
+      VALUES ($1, $2, $3, $4, 'scheduled', NULL, $5, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+      RETURNING id`,
+      [
+        workflowId,
+        data.integrationAccountId,
+        data.targetEntityType,
+        data.targetEntityId,
+        data.inputData ? JSON.stringify(data.inputData) : null,
+      ]
+    );
+
+    executionId = executionResult.rows[0].id;
+
+    await client.query('COMMIT');
+  } catch (error) {
+    await client.query('ROLLBACK');
+
+    if (error instanceof WorkflowExecutionError) {
+      throw error;
+    }
+
+    throw new WorkflowExecutionError(
+      error instanceof Error ? error.message : 'Failed to execute workflow',
+      500
+    );
+  } finally {
+    client.release();
+  }
+
+  if (!executionId) {
+    throw new WorkflowExecutionError('Failed to create workflow execution', 500);
+  }
+
+  await workflowExecuteQueue.add('run-workflow', {
+    executionId,
+    workflowId,
+    integrationAccountId: data.integrationAccountId,
+    targetEntityType: data.targetEntityType,
+    targetEntityId: data.targetEntityId,
+    initiatedBy: userId,
+    inputData: data.inputData ?? null,
+  });
+
+  return {
+    executionId,
+    status: 'scheduled',
+    message: 'Workflow execution scheduled',
+  };
 }
 

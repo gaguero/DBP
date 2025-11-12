@@ -1,0 +1,14 @@
+{
+    "name": "Dubas Custom Formulas",
+    "description": "Extension let you use custom formulas. Support available through email contact@devcrm.it.",
+    "author": "DUBAS S.C. - contact@dubas.pro",
+    "php": [
+        ">=7.3"
+    ],
+    "acceptableVersions": [
+        ">=6.1.0"
+    ],
+    "version": "0.0.2",
+    "skipBackup": true,
+    "releaseDate": "2021-09-03"
+}

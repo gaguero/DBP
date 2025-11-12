@@ -1,0 +1,84 @@
+[
+    {
+        "rows": [
+            [
+                {
+                    "name": "parcelType"
+                },
+                {
+                    "name": "price"
+                }
+            ],
+            [
+                {
+                    "name": "description"
+                },
+                {
+                    "name": "referenceNumber"
+                }
+            ]
+        ],
+        "dynamicLogicVisible": null,
+        "style": "default",
+        "hidden": false,
+        "customLabel": "📦 Parcel"
+    },
+    {
+        "rows": [
+            [
+                {
+                    "name": "sender"
+                },
+                {
+                    "name": "pickupLocation"
+                }
+            ],
+            [
+                {
+                    "name": "senderContact"
+                },
+                {
+                    "name": "pickupAddress"
+                }
+            ],
+            [
+                {
+                    "name": "pickupInstructions"
+                }
+            ]
+        ],
+        "dynamicLogicVisible": null,
+        "style": "default",
+        "hidden": false,
+        "customLabel": "🛻 Pickup information"
+    },
+    {
+        "rows": [
+            [
+                {
+                    "name": "recipient"
+                },
+                {
+                    "name": "deliveryLocation"
+                }
+            ],
+            [
+                {
+                    "name": "recipientContact"
+                },
+                {
+                    "name": "deliveryAddress"
+                }
+            ],
+            [
+                {
+                    "name": "deliveryInstructions"
+                }
+            ]
+        ],
+        "dynamicLogicVisible": null,
+        "style": "default",
+        "hidden": false,
+        "customLabel": "🚚 Delivery"
+    }
+]

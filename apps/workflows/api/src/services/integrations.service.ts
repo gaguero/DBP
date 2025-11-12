@@ -1,6 +1,6 @@
 import { pool } from '../utils/db.js';
-import { encrypt, decrypt } from '../utils/encryption.js';
 import axios, { type AxiosError } from 'axios';
+import { encrypt, decrypt } from '@dbp/workflows-shared';
 import type {
   IntegrationAccount,
   CreateIntegrationRequest,

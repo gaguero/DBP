@@ -1,0 +1,17 @@
+{
+    "controller": "controllers/record",
+    "boolFilterList": [
+        "onlyMy"
+    ],
+    "iconClass": "fas fa-angle-double-right",
+    "dynamicLogic": {
+        "options": {
+            "status": [
+                {
+                    "optionList": [],
+                    "conditionGroup": null
+                }
+            ]
+        }
+    }
+}

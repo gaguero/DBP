@@ -1,0 +1,17 @@
+[
+    {
+        "name": ":assignedUser"
+    },
+    {
+        "name": "teams"
+    },
+    {
+        "name": "name"
+    },
+    {
+        "name": "pickupDate"
+    },
+    {
+        "name": "deliveryDate"
+    }
+]

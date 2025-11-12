@@ -76,7 +76,7 @@ pnpm dev
 
 4. **Workers Service:**
    - Nuevo servicio desde GitHub
-   - Root directory: `apps/workflows/workers`
+   - Root directory: ` apps/workflows/workers`
    - Build command: `pnpm install && pnpm build`
    - Start command: `node dist/index.js`
 

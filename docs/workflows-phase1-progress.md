@@ -1,5 +1,7 @@
 # Fase 1 - Setup y Preparación: Progreso
 
+> **Nota (12/11/2025):** Este registro corresponde al enfoque anterior (extensión nativa en EspoCRM). Para la aplicación externa actual de workflows consulta `docs/workflows-external-app-plan.md`, `apps/workflows/STATUS.md` y `apps/workflows/PROGRESS.md`.
+
 **Fecha:** Noviembre 9, 2025  
 **Estado:** ✅ COMPLETADA
 

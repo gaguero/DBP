@@ -2,6 +2,14 @@
 
 ## Current State (November 6, 2025)
 
+### Update 2025-11-13 – Workflows Externa (MVP UI + motor)
+- EspoCRM permanecerá estable; la automatización se mueve a una app externa (`apps/workflows`) con servicios `api`, `workers`, `ui`, `shared`.
+- Fase 1 (MVP) avanza: autenticación, CRUD, ejecución manual, logs y editor React Flow en UI; dashboard de ejecuciones listo.
+- Worker soporta nodos `delay` (reprogramación BullMQ), `split`, `code` (placeholder), reintentos con backoff y logging detallado.
+- Railway: servicios API/Workers/UI desplegados; Redis/PostgreSQL configurados. Documentación en `apps/workflows/STATUS.md` y `apps/workflows/PROGRESS.md`.
+- Pruebas documentadas en `apps/workflows/TESTING.md` (API + UI manual) con pasos para React Flow y dashboard.
+- Referencia técnica actualizada: `docs/workflows-external-app-plan.md` (Fase 1) y memorias `system_patterns.md`/`tech_context.md`.
+
 ### Production Environment
 - **Hosting:** Railway (https://railway.app)
 - **Domain:** TBD (currently using Railway subdomain)

@@ -1,0 +1,50 @@
+{
+    "fields": {
+        "name": "Numer dostawy",
+        "weight": "Waga",
+        "parcelType": "Rodzaj dostawy",
+        "deliveryAddress": "Adres dostawy",
+        "pickupAddress": "Adres odbioru",
+        "dubasParcelStatuses": "Statusy dostaw",
+        "height": "Wysokość",
+        "lenght": "Długość",
+        "width": "Szerokość",
+        "senderContact": "Osoba kontaktowa nadawcy",
+        "recipientContact": "Osoba kontaktowa odbiorcy",
+        "sender": "Nadawca",
+        "recipient": "Odbiorca",
+        "pickupLocation": "Lokalizacja odbioru",
+        "parcelStatuses": "Statusy dostawy",
+        "deliveryLocation": "Lokalizacja dostawy",
+        "description": "Opis",
+        "deliveryInstructions": "Istrukcje dostawy",
+        "pickupInstructions": "Instrukcje odbioru",
+        "price": "Cena",
+        "priceCurrency": "Price (Currency)",
+        "priceConverted": "Price (Converted)",
+        "packages": "Paczki",
+        "referenceNumber": "Numer referencyjny"
+    },
+    "links": {
+        "senderContact": "Osoba kontaktowa nadawcy",
+        "recipientContact": "Osoba kontaktowa odbiorcy",
+        "sender": "Nadawca",
+        "recipient": "Odbiorca",
+        "pickupLocation": "Lokalizacja odbioru",
+        "parcelStatuses": "Statusy dostaw",
+        "deliveryLocation": "Lokalizacja dostawy",
+        "packages": "Paczki"
+    },
+    "labels": {
+        "Create DubasParcel": "Utwórz dostawę"
+    },
+    "tooltips": {
+        "parcelType": "Delivery - Delivery to Recipient Address,\nPickup - Delivery to Pickup point"
+    },
+    "options": {
+        "parcelType": {
+            "Pickup": "Dostawa do punktu odbioru",
+            "Delivery": "Dostawa bezpośrednio do odbiorcy"
+        }
+    }
+}

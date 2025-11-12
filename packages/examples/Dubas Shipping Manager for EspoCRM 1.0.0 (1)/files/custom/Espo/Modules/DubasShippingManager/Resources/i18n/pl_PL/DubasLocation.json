@@ -1,0 +1,33 @@
+{
+    "fields": {
+        "contact": "Osoba kontaktowa",
+        "instructions": "Instrukcje",
+        "typeOfLocation": "Typ lokalizacji",
+        "address": "Adres",
+        "status": "Status",
+        "number": "Numer lokalizacji",
+        "account": "Klient",
+        "sentParcels": "Wysłane dostawy",
+        "deliveredParcels": "Otrzymane dostawy"
+    },
+    "links": {
+        "contact": "Osoba kontaktowa",
+        "account": "Klient",
+        "sentParcels": "Wysłane dostawy",
+        "deliveredParcels": "Otrzymane dostawy"
+    },
+    "labels": {
+        "Create DubasLocation": "Utwórz Lokalizację"
+    },
+    "options": {
+        "typeOfLocation": {
+            "Pickup": "Adres odbioru",
+            "Delivery": "Adres dostawy",
+            "Pickup Point": "Punkt odbioru przesyłek"
+        },
+        "status": {
+            "Available": "Dostępna",
+            "Unavailable": "Niedostępna"
+        }
+    }
+}

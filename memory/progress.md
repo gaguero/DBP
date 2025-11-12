@@ -2,6 +2,30 @@
 
 Chronological snapshot of decisions, experiments, and outcomes. Add a new entry whenever meaningful progress occurs.
 
+## 2025-11-12 (tarde)
+- **Focus**: Aplicación externa de workflows – ejecución manual y monitoreo.
+- **Actions**:
+  - Implementado endpoint `POST /workflows/:id/execute`, persistencia y encolado BullMQ utilizando utilidades compartidas.
+  - Actualizado paquete `@dbp/workflows-shared` (colas, cliente EspoCRM, cifrado) y worker `workflow-execute` para procesar nodos trigger/action/condition con logs detallados.
+  - Añadidos endpoints `/executions` y `/executions/:id/logs` con paginación y documentación de pruebas (curl + script actualizado).
+  - Refrescados `STATUS.md`, `PROGRESS.md`, `TESTING.md` y memoria activa para reflejar el avance.
+- **Results / Follow-ups**:
+  - UI React Flow debe consumir nuevos endpoints y mostrar ejecuciones/logs.
+  - Pendiente soportar nodos avanzados (`delay`, `split`, `code`) y reintentos en el worker.
+  - Revisar configuración de `pnpm-workspace` para incluir `apps/workflows/{api,workers,shared}` en builds desde la raíz.
+
+## 2025-11-12
+- **Focus**: Aplicación externa de workflows – Fase 1 (MVP) arranque.
+- **Actions**:
+  - Estructurado `apps/workflows` con API/Workers/UI operativos en Railway.
+  - Implementado autenticación JWT, CRUD de integraciones (cifrado AES) y CRUD de workflows con validaciones.
+  - Creado documentación de pruebas (`apps/workflows/TESTING.md`) y scripts (`test-endpoints.sh`, `test-endpoints.ps1`).
+  - Registrado estado en `apps/workflows/STATUS.md` y `apps/workflows/PROGRESS.md`; actualizado plan maestro y memoria técnica.
+- **Results / Follow-ups**:
+  - Lista para implementar ejecución manual de workflows (endpoint + worker); pendiente `EspoClient` centralizado.
+  - Railway requiere repetir pruebas con URL pública; scripts listos.
+  - Próximos pasos documentados para siguiente agente (ver `PROGRESS.md`).
+
 ## 2025-11-06 (Evening)
 - **Focus**: Custom Workflow System for EspoCRM - Complete Research & Specification
 - **Actions**: 

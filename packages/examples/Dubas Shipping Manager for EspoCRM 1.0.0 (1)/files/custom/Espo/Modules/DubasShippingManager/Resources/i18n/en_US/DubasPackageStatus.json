@@ -1,0 +1,29 @@
+{
+    "fields": {
+        "dubasPackage": "Package",
+        "packages": "Packages",
+        "name": "Status"
+    },
+    "links": {
+        "dubasPackage": "Package",
+        "packages": "Packages"
+    },
+    "labels": {
+        "Create DubasPackageStatus": "Create Package Status"
+    },
+    "options": {
+        "name": {
+            "New": "New",
+            "Package accepted": "Package accepted",
+            "Collected": "Collected",
+            "Shipped": "Shipped",
+            "In transit": "In transit",
+            "Arrived at destination": "Arrived at destination",
+            "Out for delivery": "Out for delivery",
+            "Ready to Pickup": "Ready to Pickup",
+            "Delivered": "Delivered",
+            "Unsuccessful delivery attempt": "Unsuccessful delivery attempt",
+            "Returned to sender": "Returned to sender"
+        }
+    }
+}

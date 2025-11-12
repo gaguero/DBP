@@ -6,7 +6,10 @@ import {
   getWorkflowById,
   updateWorkflow,
   deleteWorkflow,
+  executeWorkflow,
+  WorkflowExecutionError,
 } from '../services/workflows.service.js';
+import { ExecuteWorkflowSchema } from '@dbp/workflows-shared';
 import { authenticate, requireRole, type AuthRequest } from '../middleware/auth.js';
 
 const router: Router = Router();
@@ -139,6 +142,27 @@ router.delete('/:id', requireRole('admin'), async (req: AuthRequest, res) => {
   } catch (error) {
     res.status(500).json({
       error: error instanceof Error ? error.message : 'Failed to delete workflow',
+    });
+  }
+});
+
+// Execute workflow manually (requires editor or admin role)
+router.post('/:id/execute', requireRole('editor', 'admin'), async (req: AuthRequest, res) => {
+  try {
+    const data = ExecuteWorkflowSchema.parse(req.body);
+    const result = await executeWorkflow(req.params.id, data, req.user!.userId);
+    res.status(202).json(result);
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      res.status(400).json({ error: 'Validation error', details: error.errors });
+      return;
+    }
+    if (error instanceof WorkflowExecutionError) {
+      res.status(error.statusCode).json({ error: error.message });
+      return;
+    }
+    res.status(500).json({
+      error: error instanceof Error ? error.message : 'Failed to execute workflow',
     });
   }
 });

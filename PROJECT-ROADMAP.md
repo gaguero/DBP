@@ -70,6 +70,7 @@ project-root/
 - **Goals:** Build templates, components, CMS collections, y conectar EspoCRM + Chatwoot + GA4 + aplicación externa de workflows.
 - **Inputs needed:** Approved designs, structured content, integration credentials, workflow definitions.
 - **Outputs:** Functional site, synchronized lead flows, multilingual chat widget, analytics dashboards, n8n automation flows, production EspoCRM service on Railway (PostgreSQL + cron automation), workflows API desplegado.
+- **Estado 12/11/2025:** Monorepo `apps/workflows` operativo (API/UI/workers); CRUD de workflows e integraciones disponible. Pendiente motor de ejecución manual (ver `apps/workflows/STATUS.md`).
 
 ### Stage 6 – QA, Performance & Compliance
 - **Goals:** Validate functionality, responsive behavior, accessibility, SEO, performance benchmarks.

@@ -1,0 +1,15 @@
+{
+  "name": "FreeWorkflows",
+  "version": "1.0.0",
+  "description": "Free and open-source workflow automation system for EspoCRM with graphical interface (React Flow). Create powerful workflows with triggers, conditions, and actions without coding.",
+  "author": "Dolphin Blue Paradise",
+  "releaseDate": "2025-01-27",
+  "revision": 1,
+  "acceptableVersions": [
+    ">=9.2.0"
+  ],
+  "php": [
+    ">=8.1.0"
+  ],
+  "skipBackup": true
+}

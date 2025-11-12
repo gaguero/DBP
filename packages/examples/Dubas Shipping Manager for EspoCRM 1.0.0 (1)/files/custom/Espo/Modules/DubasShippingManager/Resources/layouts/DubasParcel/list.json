@@ -1,0 +1,21 @@
+[
+    {
+        "name": "name",
+        "link": true
+    },
+    {
+        "name": "sender"
+    },
+    {
+        "name": "pickupAddress"
+    },
+    {
+        "name": "recipient"
+    },
+    {
+        "name": "deliveryLocation"
+    },
+    {
+        "name": "price"
+    }
+]

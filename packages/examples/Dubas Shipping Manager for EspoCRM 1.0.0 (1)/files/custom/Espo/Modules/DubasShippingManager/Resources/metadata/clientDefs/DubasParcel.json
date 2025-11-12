@@ -1,0 +1,42 @@
+{
+    "controller": "controllers/record",
+    "boolFilterList": [
+        "onlyMy"
+    ],
+    "iconClass": "fas fa-truck",
+    "dynamicLogic": {
+        "fields": {
+            "deliveryAddress": {
+                "readOnly": {
+                    "conditionGroup": [
+                        {
+                            "type": "equals",
+                            "attribute": "parcelType",
+                            "value": "Pickup"
+                        }
+                    ]
+                }
+            },
+            "deliveryDate": {
+                "visible": {
+                    "conditionGroup": [
+                        {
+                            "type": "isNotEmpty",
+                            "attribute": "deliveryDate"
+                        }
+                    ]
+                }
+            },
+            "pickupDate": {
+                "visible": {
+                    "conditionGroup": [
+                        {
+                            "type": "isNotEmpty",
+                            "attribute": "pickupDate"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
