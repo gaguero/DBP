@@ -34,7 +34,7 @@ const updateIntegrationSchema = z.object({
 router.use(authenticate);
 
 // List all integrations
-router.get('/', async (req: AuthRequest, res) => {
+router.get('/', async (_req: AuthRequest, res) => {
   try {
     const integrations = await getIntegrations();
     res.json(integrations);

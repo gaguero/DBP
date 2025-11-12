@@ -10,7 +10,7 @@ import type {
 
 export async function createIntegration(
   data: CreateIntegrationRequest,
-  userId: string
+  _userId: string
 ): Promise<IntegrationAccount> {
   // Encrypt API key
   const encryptedApiKey = encrypt(data.apiKey);
