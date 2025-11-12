@@ -1,4 +1,4 @@
-import jwt, { type SignOptions } from 'jsonwebtoken';
+import jwt from 'jsonwebtoken';
 import type { JWTPayload } from '../types/auth.js';
 
 const JWT_SECRET = process.env.JWT_SECRET || 'change-me-in-production';
@@ -11,11 +11,9 @@ export function generateToken(payload: Omit<JWTPayload, 'iat' | 'exp'>): string 
     role: payload.role,
   };
   
-  const options: SignOptions = {
+  return jwt.sign(tokenPayload, JWT_SECRET, {
     expiresIn: JWT_EXPIRES_IN,
-  };
-  
-  return jwt.sign(tokenPayload, JWT_SECRET, options);
+  } as jwt.SignOptions);
 }
 
 export function verifyToken(token: string): JWTPayload {
