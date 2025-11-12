@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { PageHero } from "@/components/page-hero";
 import { Card } from "@/components/card";
 
 export const metadata: Metadata = {
@@ -25,15 +24,36 @@ async function getPosts() {
 
 export default async function StoriesPage() {
   const posts = await getPosts();
+  const description = "Peek behind the scenes of resort life, sustainability milestones, and guest adventures.";
 
   return (
+    <div className="space-y-0 pb-0 pt-0">
+      {/* Title Section */}
+      <section className="section !py-6 bg-white">
+        <div className="container max-w-4xl">
+          <h1 className="font-sans text-xl md:text-2xl text-black mb-4 text-center uppercase" style={{ fontWeight: 100 }}>
+            STORIES FROM DOLPHIN BAY
+          </h1>
+          <div className="flex items-center justify-center gap-3">
+            <div className="h-px w-8 bg-black"></div>
+            <span className="italic lowercase text-sm md:text-base font-serif text-black">Journal</span>
+            <div className="h-px w-8 bg-black"></div>
+          </div>
+        </div>
+      </section>
+
+      {/* Hero Image */}
+      <section className="relative w-full h-[50vh] min-h-[400px] max-h-[600px]">
+        <Image
+          src="/images/rooms-view.jpg"
+          alt="Stories from Dolphin Bay"
+          fill
+          className="object-cover"
+          priority
+        />
+      </section>
+
     <div className="space-y-24 pb-24">
-      <PageHero
-        title="Stories from Dolphin Bay"
-        kicker="Journal"
-        description="Peek behind the scenes of resort life, sustainability milestones, and guest adventures."
-        image="/images/rooms-view.jpg"
-      />
 
       <section className="section">
         <div className="container grid gap-8 md:grid-cols-3">
@@ -73,6 +93,7 @@ export default async function StoriesPage() {
           )}
         </div>
       </section>
+    </div>
     </div>
   );
 }

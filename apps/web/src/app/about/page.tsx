@@ -99,27 +99,36 @@ const partners = [
 ];
 
 export default function AboutPage() {
+  const description = "Learn about our mission, team, and sustainability practices. Discover the story behind Panama's premier eco-luxury resort.";
+  
   return (
+    <div className="space-y-0 pb-0 pt-0">
+      {/* Title Section */}
+      <section className="section !py-6 bg-white">
+        <div className="container max-w-4xl">
+          <h1 className="font-sans text-xl md:text-2xl text-black mb-4 text-center uppercase" style={{ fontWeight: 100 }}>
+            OUR STORY
+          </h1>
+          <div className="flex items-center justify-center gap-3">
+            <div className="h-px w-8 bg-black"></div>
+            <span className="italic lowercase text-sm md:text-base font-serif text-black">About Us</span>
+            <div className="h-px w-8 bg-black"></div>
+          </div>
+        </div>
+      </section>
+
+      {/* Hero Image */}
+      <section className="relative w-full h-[50vh] min-h-[400px] max-h-[600px] bg-black">
+      </section>
+
     <div className="space-y-12 pb-24 pt-12">
       {/* Our Story */}
       <section className="section !py-8">
         <div className="container max-w-4xl">
           <div className="prose prose-lg mx-auto">
-            <h2 className="font-display text-4xl text-[var(--color-navy)] mb-6 uppercase font-light">OUR STORY</h2>
             <p className="text-lg text-[var(--color-text-primary)] mb-6">
               Dolphin Blue Paradise is a 100% off-the-grid luxury eco-resort located on Isla San Cristobal in Dolphin Bay, just 20-30 minutes by boat from the main town in Bocas Del Toro. This hilly island features plantations, farms, and the indigenous villages of Bocastorito and Aldana, home to the Ngäbe-Buglé. The island&apos;s biodiversity includes a primary rainforest, and the bay hosts about 80 bottlenose dolphins living year-round in Dolphin Bay. Its natural beauty makes it a top tour destination in Panama.
             </p>
-            
-            {/* Vista aérea de la isla/bahía */}
-            <div className="relative w-full h-96 mb-8 rounded-lg overflow-hidden">
-              <Image
-                src="/images/about/island-aerial-view.jpg"
-                alt="Sunset over Dolphin Bay with overwater structures at Isla San Cristobal"
-                fill
-                className="object-cover"
-                priority
-              />
-            </div>
 
             <p className="text-lg text-[var(--color-text-primary)] mb-6">
               Dolphin Blue Paradise was born from a vision to create a luxury resort that doesn&apos;t compromise on environmental 
@@ -286,6 +295,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+    </div>
     </div>
   );
 }

@@ -3,7 +3,6 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Button } from "@/components/button";
 import { Card } from "@/components/card";
-import { PageHero } from "@/components/page-hero";
 import { activities } from "@/content/data";
 
 type ExperienceParams = {
@@ -37,22 +36,33 @@ export default function ExperienceDetailPage({ params }: ExperienceParams) {
   }
 
   return (
-    <div className="space-y-24 pb-24">
-      <PageHero
-        title={activity.name}
-        kicker="Experience"
-        description={activity.summary}
-        image={activity.image}
-      />
-
-      {/* Summary Paragraph */}
-      <section className="section">
+    <div className="space-y-0 pb-0 pt-0">
+      {/* Title Section */}
+      <section className="section !py-6 bg-white">
         <div className="container max-w-4xl">
-          <p className="text-lg text-[var(--color-text-primary)] leading-relaxed">
-            {activity.summary}
-          </p>
+          <h1 className="font-sans text-xl md:text-2xl text-black mb-4 text-center uppercase" style={{ fontWeight: 100 }}>
+            {activity.name.toUpperCase()}
+          </h1>
+          <div className="flex items-center justify-center gap-3">
+            <div className="h-px w-8 bg-black"></div>
+            <span className="italic lowercase text-sm md:text-base font-serif text-black">Experience</span>
+            <div className="h-px w-8 bg-black"></div>
+          </div>
         </div>
       </section>
+
+      {/* Hero Image */}
+      <section className="relative w-full h-[50vh] min-h-[400px] max-h-[600px]">
+        <Image
+          src={activity.image || "/images/hero-bay.jpg"}
+          alt={activity.name}
+          fill
+          className="object-cover"
+          priority
+        />
+      </section>
+
+    <div className="space-y-24 pb-24">
 
       {/* Logistics and Highlights */}
       <section className="section">
@@ -157,6 +167,7 @@ export default function ExperienceDetailPage({ params }: ExperienceParams) {
           </div>
         </div>
       </section>
+    </div>
     </div>
   );
 }

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/components/page-hero";
 import { Button } from "@/components/button";
 import { Card } from "@/components/card";
 
@@ -17,14 +16,29 @@ const impactMetrics = {
 };
 
 export default function SustainabilityPage() {
+  const description = "Every stay supports conservation work and community partnerships in Dolphin Bay";
+  
   return (
+    <div className="space-y-0 pb-0 pt-0">
+      {/* Title Section */}
+      <section className="section !py-6 bg-white">
+        <div className="container max-w-4xl">
+          <h1 className="font-sans text-xl md:text-2xl text-black mb-4 text-center uppercase" style={{ fontWeight: 100 }}>
+            OUR IMPACT
+          </h1>
+          <div className="flex items-center justify-center gap-3">
+            <div className="h-px w-8 bg-black"></div>
+            <span className="italic lowercase text-sm md:text-base font-serif text-black">Sustainability</span>
+            <div className="h-px w-8 bg-black"></div>
+          </div>
+        </div>
+      </section>
+
+      {/* Hero Image */}
+      <section className="relative w-full h-[50vh] min-h-[400px] max-h-[600px] bg-black">
+      </section>
+
     <div className="space-y-24 pb-24">
-      <PageHero
-        title="Our Impact"
-        kicker="Sustainability"
-        description="Every stay supports conservation work and community partnerships in Dolphin Bay"
-        image="/images/dining-overwater.jpg"
-      />
 
       {/* Off-Grid Infrastructure */}
       <section className="section">
@@ -297,6 +311,7 @@ export default function SustainabilityPage() {
           </Button>
         </div>
       </section>
+    </div>
     </div>
   );
 }

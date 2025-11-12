@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/components/page-hero";
 import { Card } from "@/components/card";
 import { Button } from "@/components/button";
 import { BookingWidgetPlaceholder } from "@/components/booking-widget-placeholder";
@@ -37,14 +36,29 @@ const packingList = [
 ];
 
 export default function ContactPage() {
+  const description = "Connect with our concierge team via WhatsApp, email, or book directly. We're here to help plan your perfect escape.";
+  
   return (
+    <div className="space-y-0 pb-0 pt-0">
+      {/* Title Section */}
+      <section className="section !py-6 bg-white">
+        <div className="container max-w-4xl">
+          <h1 className="font-sans text-xl md:text-2xl text-black mb-4 text-center uppercase" style={{ fontWeight: 100 }}>
+            CONTACT & RESERVATIONS
+          </h1>
+          <div className="flex items-center justify-center gap-3">
+            <div className="h-px w-8 bg-black"></div>
+            <span className="italic lowercase text-sm md:text-base font-serif text-black">Plan Your Stay</span>
+            <div className="h-px w-8 bg-black"></div>
+          </div>
+        </div>
+      </section>
+
+      {/* Hero Image */}
+      <section className="relative w-full h-[50vh] min-h-[400px] max-h-[600px] bg-black">
+      </section>
+
     <div className="space-y-24 pb-24">
-      <PageHero
-        title="Contact & Reservations"
-        kicker="Plan Your Stay"
-        description="Connect with our concierge team via WhatsApp, email, or book directly. We&apos;re here to help plan your perfect escape."
-        image="/images/rooms-view.jpg"
-      />
 
       {/* Multi-Channel Contact */}
       <section className="section">
@@ -255,6 +269,7 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+    </div>
     </div>
   );
 }

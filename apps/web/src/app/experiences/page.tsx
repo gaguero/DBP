@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/components/page-hero";
-import { Button } from "@/components/button";
 import Image from "next/image";
+import { Button } from "@/components/button";
 import { activities } from "@/content/data";
 
 export const metadata: Metadata = {
@@ -11,14 +10,29 @@ export const metadata: Metadata = {
 };
 
 export default function ExperiencesPage() {
+  const description = "From dolphin encounters to rainforest hikes, immerse yourself in Panama's incredible biodiversity";
+  
   return (
+    <div className="space-y-0 pb-0 pt-0">
+      {/* Title Section */}
+      <section className="section !py-6 bg-white">
+        <div className="container max-w-4xl">
+          <h1 className="font-sans text-lg md:text-xl lg:text-2xl text-black mb-4 text-center uppercase whitespace-nowrap" style={{ fontWeight: 100 }}>
+            DISCOVER OUR CURATED ECO-ADVENTURES
+          </h1>
+          <div className="flex items-center justify-center gap-3">
+            <div className="h-px flex-1 max-w-[120px] bg-black"></div>
+            <span className="italic lowercase text-sm md:text-base font-serif text-black whitespace-nowrap">Experiences</span>
+            <div className="h-px flex-1 max-w-[120px] bg-black"></div>
+          </div>
+        </div>
+      </section>
+
+      {/* Hero Image */}
+      <section className="relative w-full h-[50vh] min-h-[400px] max-h-[600px] bg-black">
+      </section>
+
     <div className="space-y-24 pb-24">
-      <PageHero
-        title="Discover Our Curated Eco-Adventures"
-        kicker="Experiences"
-        description="From dolphin encounters to rainforest hikes, immerse yourself in Panama&apos;s incredible biodiversity"
-        image="/images/hero-bay.jpg"
-      />
 
       {/* Activities Grid */}
       <section className="section">
@@ -86,6 +100,7 @@ export default function ExperiencesPage() {
           </div>
         </div>
       </section>
+    </div>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/components/page-hero";
+import Image from "next/image";
 import { Card } from "@/components/card";
 
 const intro =
@@ -41,13 +41,33 @@ export const metadata: Metadata = {
 
 export default function GalleryPage() {
   return (
+    <div className="space-y-0 pb-0 pt-0">
+      {/* Title Section */}
+      <section className="section !py-6 bg-white">
+        <div className="container max-w-4xl">
+          <h1 className="font-sans text-xl md:text-2xl text-black mb-4 text-center uppercase" style={{ fontWeight: 100 }}>
+            FACILITIES & GROUNDS
+          </h1>
+          <div className="flex items-center justify-center gap-3">
+            <div className="h-px w-8 bg-black"></div>
+            <span className="italic lowercase text-sm md:text-base font-serif text-black">Gallery</span>
+            <div className="h-px w-8 bg-black"></div>
+          </div>
+        </div>
+      </section>
+
+      {/* Hero Image */}
+      <section className="relative w-full h-[50vh] min-h-[400px] max-h-[600px]">
+        <Image
+          src="/images/rooms-view.jpg"
+          alt="Facilities and grounds gallery"
+          fill
+          className="object-cover"
+          priority
+        />
+      </section>
+
     <div className="space-y-24 pb-24">
-      <PageHero
-        title="Facilities & Grounds"
-        kicker="Gallery"
-        description={intro}
-        image="/images/rooms-view.jpg"
-      />
 
       <section className="section">
         <div className="container grid gap-6 md:grid-cols-2">
@@ -70,6 +90,7 @@ export default function GalleryPage() {
           </ul>
         </div>
       </section>
+    </div>
     </div>
   );
 }
