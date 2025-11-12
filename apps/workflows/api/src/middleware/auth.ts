@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { verifyToken } from '../utils/jwt.js';
-import type { JWTPayload } from '../../../shared/src/types.js';
+import type { JWTPayload } from '../types/auth.js';
 
 export interface AuthRequest extends Request {
   user?: JWTPayload;

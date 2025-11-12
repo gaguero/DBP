@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
 import { pool } from '../utils/db.js';
 import { generateToken, getExpiresInSeconds } from '../utils/jwt.js';
-import type { User, RegisterRequest, LoginRequest, AuthResponse } from '../../../shared/src/types.js';
+import type { User, RegisterRequest, LoginRequest, AuthResponse } from '../types/auth.js';
 
 const SALT_ROUNDS = 10;
 

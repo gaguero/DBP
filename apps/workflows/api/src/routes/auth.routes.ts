@@ -1,9 +1,9 @@
-import { Router } from 'express';
+import { Router, type Request, type Response } from 'express';
 import { z } from 'zod';
 import { registerUser, loginUser } from '../services/auth.service.js';
 import { authenticate, type AuthRequest } from '../middleware/auth.js';
 
-const router = Router();
+const router: Router = Router();
 
 // Validation schemas
 const registerSchema = z.object({
