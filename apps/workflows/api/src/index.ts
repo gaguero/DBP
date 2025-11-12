@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import { pool } from './utils/db.js';
 import authRoutes from './routes/auth.routes.js';
+import integrationsRoutes from './routes/integrations.routes.js';
 
 dotenv.config();
 
@@ -54,6 +55,9 @@ app.get('/api/v1', (_req: Request, res: Response) => {
 
 // Auth routes
 app.use('/api/v1/auth', authRoutes);
+
+// Integrations routes
+app.use('/api/v1/integrations', integrationsRoutes);
 
 // Start server
 app.listen(PORT, () => {
