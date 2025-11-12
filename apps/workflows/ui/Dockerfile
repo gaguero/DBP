@@ -2,23 +2,17 @@ FROM node:18-alpine AS builder
 
 WORKDIR /app
 
-# Copy workspace manifests
+# Copy workspace manifests and source
 COPY pnpm-workspace.yaml package.json pnpm-lock.yaml* ./
+COPY . .
 
-# Install pnpm
+# Install pnpm and dependencies
 RUN npm install -g pnpm@8.15.5
-
-# Copy workspace packages needed for install
-COPY apps/workflows/ui ./apps/workflows/ui
-COPY apps/workflows/shared ./apps/workflows/shared
-COPY apps/workflows/api ./apps/workflows/api
-
-# Install dependencies scoped to UI
 RUN pnpm install
 
-# Build
-WORKDIR /app/apps/workflows/ui
-RUN pnpm build
+# Build shared utilities and UI
+RUN pnpm --filter @dbp/workflows-shared build
+RUN pnpm --filter @dbp/workflows-ui build
 
 # Verify build output
 RUN ls -la /app/dist || (echo "ERROR: dist directory not found" && exit 1)

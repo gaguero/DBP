@@ -2,43 +2,27 @@ FROM node:18-alpine AS builder
 
 WORKDIR /app
 
-# Copy workspace manifests
+# Copy workspace manifests and source
 COPY pnpm-workspace.yaml package.json pnpm-lock.yaml* ./
+COPY . .
 
-# Install pnpm
+# Install pnpm and dependencies
 RUN npm install -g pnpm@8.15.5
-
-# Copy workspace packages needed for install
-COPY apps/workflows/api ./apps/workflows/api
-COPY apps/workflows/shared ./apps/workflows/shared
-
-# Install dependencies (workspace aware)
 RUN pnpm install
 
-# Build API
-WORKDIR /app/apps/workflows/api
-RUN pnpm build
+# Build shared utilities and API
+RUN pnpm --filter @dbp/workflows-shared build
+RUN pnpm --filter @dbp/workflows-api build
 
 # Production image
 FROM node:18-alpine
 
-WORKDIR /app
+WORKDIR /app/apps/workflows/api
 
-# Copy workspace manifests
-COPY pnpm-workspace.yaml package.json pnpm-lock.yaml* ./
-
-# Install pnpm
-RUN npm install -g pnpm@8.15.5
-
-# Copy workspace packages for production install
-COPY apps/workflows/api ./apps/workflows/api
-COPY apps/workflows/shared ./apps/workflows/shared
-
-# Install production dependencies only
-RUN pnpm install --filter @dbp/workflows-api --prod
-
-# Copy built files
-COPY --from=builder /app/apps/workflows/api/dist ./dist
+# Copy built application, shared package, and node modules
+COPY --from=builder /app/apps/workflows/api ./ 
+COPY --from=builder /app/apps/workflows/shared /app/apps/workflows/shared
+COPY --from=builder /app/node_modules /app/node_modules
 
 EXPOSE 3000
 

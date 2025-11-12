@@ -1,0 +1,16 @@
+.git
+.gitignore
+node_modules
+.pnpm-store
+.pnpm-state
+dist
+coverage
+.turbo
+.cache
+**/node_modules
+**/dist
+**/coverage
+**/.DS_Store
+**/Thumbs.db
+
+
