@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Button } from "@/components/button";
 import { activities } from "@/content/data";
+import { ExperiencesGridLayout } from "@/components/experiences/experiences-grid-layout";
+import { ExperiencesSplitLayout } from "@/components/experiences/experiences-split-layout";
+import { ExperiencesMasonryLayout } from "@/components/experiences/experiences-masonry-layout";
 
 export const metadata: Metadata = {
   title: "Dolphin Bay Experiences",
@@ -9,9 +12,18 @@ export const metadata: Metadata = {
     "Personalized eco-adventures and tours in Bocas del Toro. From dolphin encounters to rainforest hikes, discover Panama&apos;s incredible biodiversity.",
 };
 
+// Layout style can be changed here: "grid" | "split" | "masonry"
+const LAYOUT_STYLE: "grid" | "split" | "masonry" = "grid";
+
+// Activities to exclude from the experiences page (shown in free activities section)
+const EXCLUDED_SLUGS = ["snorkeling", "stand-up-paddle", "kayak"];
+
 export default function ExperiencesPage() {
-  const description = "From dolphin encounters to rainforest hikes, immerse yourself in Panama's incredible biodiversity";
-  
+  // Filter out free activities and sort alphabetically by name
+  const paidActivities = activities
+    .filter((activity) => !EXCLUDED_SLUGS.includes(activity.slug))
+    .sort((a, b) => a.name.localeCompare(b.name));
+
   return (
     <div className="space-y-0 pb-0 pt-0">
       {/* Title Section */}
@@ -30,77 +42,92 @@ export default function ExperiencesPage() {
 
       {/* Hero Image */}
       <section className="relative w-full h-[50vh] min-h-[400px] max-h-[600px] bg-black">
+        <Image
+          src="/images/experiences/dbp2.avif"
+          alt="Dolphin Bay Paradise Experiences"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
       </section>
 
-    <div className="space-y-24 pb-24">
-
-      {/* Activities Grid */}
-      <section className="section">
-        <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {activities.map((activity) => (
-              <div
-                key={activity.slug}
-                className="group relative overflow-hidden rounded border border-black/10 bg-white hover:shadow-xl transition-all duration-300"
-              >
-                <div className="relative h-48 overflow-hidden">
-                  <Image
-                    src={activity.image || "/images/hero-bay.jpg"}
-                    alt={activity.name}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <h3 className="font-display text-xl text-white mb-1 uppercase font-light">{activity.name.toUpperCase()}</h3>
-                    <div className="flex items-center gap-3 text-sm text-white/90">
-                      <span>{activity.duration}</span>
-                      {"difficulty" in activity && typeof (activity as Record<string, unknown>).difficulty === "string" && (
-                        <>
-                          <span>•</span>
-                          <span>{(activity as Record<string, unknown>).difficulty as string}</span>
-                        </>
-                      )}
-                    </div>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <p className="text-sm text-[var(--color-text-muted)] mb-4 line-clamp-3">{activity.summary}</p>
-                  <Button href={`/experiences/${activity.slug}`} variant="primary" className="w-full">
-                    Learn More
-                  </Button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="section bg-[var(--color-sand)]">
-        <div className="container max-w-4xl text-center">
-          <h2 className="font-display text-4xl text-[var(--color-navy)] mb-6 uppercase font-light">
-            REQUEST CUSTOM ITINERARY
-          </h2>
-          <p className="text-lg text-[var(--color-text-primary)] mb-8">
-            Share your travel dates, group size, and interests so our concierge can tailor experiences for your stay. 
-            We arrange transportation, bilingual guides, refreshments, and any add-ons.
+      {/* Free Activities Section */}
+      <section className="section !py-6 bg-[var(--color-sand)]">
+        <div className="container max-w-4xl">
+          <p className="text-lg mb-4 text-center uppercase font-semibold text-[var(--color-navy)]">
+            FREE ACTIVITIES INCLUDED IN YOUR STAY
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Button href="/contact" variant="primary" className="text-lg px-8 py-4">
-              Contact Concierge
-            </Button>
-            <Button
-              href="https://wa.me/50763460605"
-              variant="secondary"
-              className="text-lg px-8 py-4"
-            >
-              WhatsApp Us
-            </Button>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="text-center">
+              <p className="text-sm mb-0.5 uppercase font-light text-[var(--color-navy)]">
+                Snorkeling
+              </p>
+              <p className="text-sm text-[var(--color-text-muted)]">
+                Free from swim platform
+              </p>
+            </div>
+            <div className="text-center">
+              <p className="text-sm mb-0.5 uppercase font-light text-[var(--color-navy)]">
+                Kayaking
+              </p>
+              <p className="text-sm text-[var(--color-text-muted)]">
+                Explore at your own pace
+              </p>
+            </div>
+            <div className="text-center">
+              <p className="text-sm mb-0.5 uppercase font-light text-[var(--color-navy)]">
+                Stand Up Paddle
+              </p>
+              <p className="text-sm text-[var(--color-text-muted)]">
+                Paddle through calm waters
+              </p>
+            </div>
           </div>
         </div>
       </section>
-    </div>
+
+      <div className="space-y-24 pb-24">
+        {/* Activities Section - Layout Style 1: Grid Cards */}
+        {LAYOUT_STYLE === "grid" && (
+          <ExperiencesGridLayout activities={paidActivities} />
+        )}
+
+        {/* Activities Section - Layout Style 2: Split Screen Alternating */}
+        {LAYOUT_STYLE === "split" && (
+          <ExperiencesSplitLayout activities={paidActivities} />
+        )}
+
+        {/* Activities Section - Layout Style 3: Masonry/Staggered Grid */}
+        {LAYOUT_STYLE === "masonry" && (
+          <ExperiencesMasonryLayout activities={paidActivities} />
+        )}
+
+        {/* CTA Section */}
+        <section className="section bg-[var(--color-sand)]">
+          <div className="container max-w-4xl text-center">
+            <h2 className="font-display text-4xl text-[var(--color-navy)] mb-6 uppercase font-light">
+              REQUEST CUSTOM ITINERARY
+            </h2>
+            <p className="text-lg text-[var(--color-text-primary)] mb-8">
+              Share your travel dates, group size, and interests so our concierge can tailor experiences for your stay. 
+              We arrange transportation, bilingual guides, refreshments, and any add-ons.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Button href="/contact" variant="primary" className="text-lg px-8 py-4">
+                Contact Concierge
+              </Button>
+              <Button
+                href="https://wa.me/50763460605"
+                variant="secondary"
+                className="text-lg px-8 py-4"
+              >
+                WhatsApp Us
+              </Button>
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
   );
 }
