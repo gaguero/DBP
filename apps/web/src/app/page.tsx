@@ -11,14 +11,10 @@ export default function Home() {
       <NewsletterPopup />
       <section className="home-hero">
         <div className="home-hero__container">
-          <div className="home-hero__image-wrapper">
-            <Image
-              src={stockPhotos.heroOcean}
-              alt="Serene sunset view of Dolphin Bay with calm waters and tropical landscape"
-              fill
-              priority
-              className="object-cover"
-            />
+          <div className="home-hero__image-wrapper bg-gray-200 flex items-center justify-center">
+            <p className="text-xs text-gray-500 text-center px-4 italic">
+              Visual needed: Hero image - Serene sunset view of Dolphin Bay with calm waters and tropical landscape
+            </p>
           </div>
           <div className="home-hero__content">
             <div className="home-hero__card">

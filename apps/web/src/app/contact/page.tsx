@@ -60,8 +60,8 @@ export default function ContactPage() {
       {/* Hero Image */}
       <section className="relative w-full h-[50vh] min-h-[400px] max-h-[600px] bg-black">
         <Image
-          src={stockPhotos.heroBay}
-          alt="Dolphin Blue Paradise - Contact and Reservations"
+          src="/images/contact/contact-hero-wooden-pier-twilight-dolphin-bay.jpeg"
+          alt="Contact Dolphin Blue Paradise - wooden pier extending into calm waters at twilight, Dolphin Bay, Bocas del Toro"
           fill
           className="object-cover"
           priority

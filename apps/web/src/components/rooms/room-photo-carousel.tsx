@@ -2,15 +2,11 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { stockPhotos } from "@/lib/stock-photos";
 
 export function RoomPhotoCarousel() {
-  const galleryImages = [
-    stockPhotos.roomView,
-    stockPhotos.overwater,
-    stockPhotos.heroBay,
-    stockPhotos.roomInterior,
-    stockPhotos.location,
+  // TODO: Replace with actual room photos
+  const galleryImages: string[] = [
+    // Visual needed: Room gallery images - luxury resort rooms, overwater cabanas, room interiors, ocean views
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -22,6 +18,19 @@ export function RoomPhotoCarousel() {
   const prev = () => {
     setCurrentIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
   };
+
+  // Show placeholder if no images
+  if (galleryImages.length === 0) {
+    return (
+      <div className="relative max-w-4xl mx-auto">
+        <div className="relative h-96 md:h-[500px] rounded-lg overflow-hidden bg-gray-200 flex items-center justify-center">
+          <p className="text-xs text-gray-500 text-center px-4 italic">
+            Visual needed: Room gallery images - luxury resort rooms, overwater cabanas, room interiors, ocean views
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="relative max-w-4xl mx-auto">

@@ -41,8 +41,8 @@ export default function SustainabilityPage() {
       {/* Hero Image */}
       <section className="relative w-full h-[50vh] min-h-[400px] max-h-[600px] bg-black">
         <Image
-          src={stockPhotos.sustainability}
-          alt="Dolphin Bay Paradise - Sustainable Eco-Resort"
+          src="/images/impact/impact-hero-multicultural-community-partnership-diverse-team-dolphin-bay.jpeg"
+          alt="Multicultural community partnership at Dolphin Blue Paradise, Bocas del Toro - diverse team of staff, Ngäbe-Buglé community members, and guests working together for sustainable tourism and conservation"
           fill
           className="object-cover"
           priority
@@ -65,8 +65,8 @@ export default function SustainabilityPage() {
           <div className="grid md:grid-cols-2 gap-8 items-center mb-8">
             <div className="relative w-full h-[400px] rounded-lg overflow-hidden shadow-lg">
               <Image
-                src={stockPhotos.conservation}
-                alt="Conserving Our Environment at Dolphin Blue Paradise"
+                src="/images/impact/conserving-environment-nature-trail-guided-walk-tropical-rainforest-dolphin-bay.jpeg"
+                alt="Conserving our environment - guided nature walk through tropical rainforest at Dolphin Blue Paradise, Bocas del Toro - guests exploring protected primary rainforest on nature trail"
                 fill
                 className="object-cover"
               />
@@ -91,8 +91,8 @@ export default function SustainabilityPage() {
             </div>
             <div className="relative w-full h-[400px] rounded-lg overflow-hidden shadow-lg order-1 md:order-2">
               <Image
-                src={stockPhotos.heroParadise}
-                alt="Start Your Sustainable Adventure at Dolphin Blue Paradise"
+                src="/images/impact/start-adventure-sustainable-travel-dolphin-bay.jpeg"
+                alt="Start your sustainable adventure at Dolphin Blue Paradise, Bocas del Toro - eco-luxury travel experience"
                 fill
                 className="object-cover"
               />
@@ -101,13 +101,10 @@ export default function SustainabilityPage() {
 
           {/* Our Steps Toward Reducing Our Footprint */}
           <div className="mb-8">
-            <div className="relative w-full h-[400px] rounded-lg overflow-hidden shadow-lg mb-4">
-              <Image
-                src={stockPhotos.footprint}
-                alt="Our Steps Toward Reducing Our Footprint"
-                fill
-                className="object-cover"
-              />
+            <div className="relative w-full h-[400px] rounded-lg overflow-hidden shadow-lg mb-4 bg-gray-200 flex items-center justify-center">
+              <p className="text-xs text-gray-500 text-center px-4 italic">
+                Visual needed: Reducing Our Footprint - Overview of sustainable infrastructure (solar panels, water systems, composting), eco-friendly resort operations, or guests/staff engaging in sustainable practices
+              </p>
             </div>
             <p className="text-lg text-[var(--color-text-primary)] text-center max-w-3xl mx-auto">
               Our eco-resort is 100% off the grid, powered by solar energy and sustainable practices.
@@ -123,13 +120,10 @@ export default function SustainabilityPage() {
           
           {/* Solar System - Full Width Split */}
           <div className="grid md:grid-cols-2 gap-8 mb-8 items-center">
-            <div className="relative w-full h-[350px] rounded-xl overflow-hidden shadow-xl">
-              <Image
-                src={stockPhotos.solarPanels}
-                alt="Solar panels at Dolphin Blue Paradise"
-                fill
-                className="object-cover"
-              />
+            <div className="relative w-full h-[350px] rounded-xl overflow-hidden shadow-xl bg-gray-200 flex items-center justify-center">
+              <p className="text-xs text-gray-500 text-center px-4 italic">
+                Visual needed: Solar System - Solar panels on resort rooftops or ground-mounted array, 10kW solar installation, renewable energy infrastructure at Dolphin Blue Paradise
+              </p>
             </div>
             <Card className="p-8 bg-white">
               <div className="mb-4">
@@ -179,13 +173,10 @@ export default function SustainabilityPage() {
               </ul>
               </CollapsibleSection>
             </Card>
-            <div className="relative w-full h-[350px] rounded-xl overflow-hidden shadow-xl order-1 md:order-2">
-              <Image
-                src={stockPhotos.rainwater}
-                alt="Rainwater collection system at Dolphin Blue Paradise"
-                fill
-                className="object-cover"
-              />
+            <div className="relative w-full h-[350px] rounded-xl overflow-hidden shadow-xl bg-gray-200 flex items-center justify-center order-1 md:order-2">
+              <p className="text-xs text-gray-500 text-center px-4 italic">
+                Visual needed: Water Systems - 15,000L rainwater collection tanks, water filtration/purification equipment, greywater recycling system, or water storage infrastructure
+              </p>
             </div>
           </div>
         </div>
@@ -202,8 +193,8 @@ export default function SustainabilityPage() {
               <div className="grid md:grid-cols-2 gap-0">
                 <div className="relative w-full h-[400px] md:h-auto min-h-[400px]">
                   <Image
-                    src={stockPhotos.garden}
-                    alt="Garden produce at Dolphin Blue Paradise"
+                    src="/images/impact/farm-to-table-tropical-fruits-mangosteen-banana-custard-apple-wooden-bowl.jpeg"
+                    alt="Farm-to-table tropical fruits from 5-acre garden at Dolphin Blue Paradise - mangosteen, banana, custard apple, and more, Bocas del Toro"
                     fill
                     className="object-cover"
                   />
@@ -250,13 +241,10 @@ export default function SustainabilityPage() {
           <div className="grid md:grid-cols-2 gap-8">
             {/* Composting Card */}
             <Card className="p-8 bg-[var(--color-sand)]/30">
-              <div className="relative w-full h-[250px] mb-6 rounded-xl overflow-hidden shadow-lg">
-                <Image
-                  src={stockPhotos.compost}
-                  alt="Compost system at Dolphin Blue Paradise"
-                  fill
-                  className="object-cover"
-                />
+              <div className="relative w-full h-[250px] mb-6 rounded-xl overflow-hidden shadow-lg bg-gray-200 flex items-center justify-center">
+                <p className="text-xs text-gray-500 text-center px-4 italic">
+                  Visual needed: Composting & Waste Reduction - Kitchen scraps being added to compost bins, active compost pile with organic matter, staff managing compost system, or finished compost being spread in garden
+                </p>
               </div>
               <div className="mb-4">
                 <div className="text-5xl font-bold text-[var(--color-ocean)] mb-2">{impactMetrics.compostWaste}</div>
@@ -282,13 +270,10 @@ export default function SustainabilityPage() {
 
             {/* Reusable Materials - Highlighted */}
             <Card className="p-8 bg-gradient-to-br from-[var(--color-forest)]/10 to-[var(--color-ocean)]/10 border-2 border-[var(--color-forest)] shadow-lg">
-              <div className="relative w-full h-[250px] mb-6 rounded-xl overflow-hidden bg-[var(--color-sand)] ring-2 ring-[var(--color-forest)]/20">
-                <Image
-                  src={stockPhotos.reusable}
-                  alt="Reusable materials at Dolphin Blue Paradise"
-                  fill
-                  className="object-cover"
-                />
+              <div className="relative w-full h-[250px] mb-6 rounded-xl overflow-hidden bg-[var(--color-sand)] ring-2 ring-[var(--color-forest)]/20 flex items-center justify-center">
+                <p className="text-xs text-gray-500 text-center px-4 italic">
+                  Visual needed: Reusable Materials - Refillable shampoo/soap dispensers in bathroom, metal silverware and reusable straws on dining table, eco-friendly amenity bottles, or zero-plastic bathroom setup
+                </p>
               </div>
               <div className="flex items-center gap-2 mb-3">
                 <div className="w-1 h-8 bg-[var(--color-forest)] rounded-full"></div>
@@ -334,25 +319,19 @@ export default function SustainabilityPage() {
               </ul>
               </CollapsibleSection>
             </Card>
-            <div className="relative w-full h-[350px] rounded-xl overflow-hidden shadow-xl">
-              <Image
-                src={stockPhotos.community || stockPhotos.heroParadise}
-                alt="Ngäbe-Buglé community collaboration at Dolphin Blue Paradise"
-                fill
-                className="object-cover"
-              />
+            <div className="relative w-full h-[350px] rounded-xl overflow-hidden shadow-xl bg-gray-200 flex items-center justify-center">
+              <p className="text-xs text-gray-500 text-center px-4 italic">
+                Visual needed: Ngäbe-Buglé community collaboration - Indigenous community members working with resort staff, cultural workshops, cacao farming, or community partnership activities
+              </p>
             </div>
           </div>
 
           {/* Healthcare & Support - Reversed Split */}
           <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div className="relative w-full h-[350px] rounded-xl overflow-hidden shadow-xl order-2 md:order-1">
-              <Image
-                src={stockPhotos.community || stockPhotos.heroParadise}
-                alt="Community support and healthcare at Dolphin Blue Paradise"
-                fill
-                className="object-cover"
-              />
+            <div className="relative w-full h-[350px] rounded-xl overflow-hidden shadow-xl bg-gray-200 flex items-center justify-center order-2 md:order-1">
+              <p className="text-xs text-gray-500 text-center px-4 italic">
+                Visual needed: Healthcare & Support - Floating Doctors medical mission, healthcare workers with patients, community health outreach, or medical volunteers at work
+              </p>
             </div>
             <Card className="p-8 bg-white order-1 md:order-2">
               <h3 className="font-display text-3xl text-[var(--color-navy)] mb-4 uppercase font-light">HEALTHCARE & SUPPORT</h3>
@@ -409,8 +388,8 @@ export default function SustainabilityPage() {
               <div className="grid md:grid-cols-2 gap-0">
                 <div className="relative w-full h-[400px] md:h-auto min-h-[400px]">
                   <Image
-                    src={stockPhotos.dolphin || stockPhotos.heroBay}
-                    alt="Dolphin monitoring in Dolphin Bay"
+                    src="/images/impact/dolphin-monitoring-bottlenose-dolphins-breaching-dolphin-bay-conservation.jpeg"
+                    alt="Dolphin monitoring in Dolphin Bay - two bottlenose dolphins breaching the water surface at Dolphin Blue Paradise, Bocas del Toro - marine conservation and wildlife protection"
                     fill
                     className="object-cover"
                   />
@@ -447,8 +426,8 @@ export default function SustainabilityPage() {
             <Card className="p-8 bg-[var(--color-sand)]/30">
               <div className="relative w-full h-[250px] mb-6 rounded-xl overflow-hidden shadow-lg">
                 <Image
-                  src={stockPhotos.location || stockPhotos.heroParadise}
-                  alt="Reforestation and habitat protection at Dolphin Blue Paradise"
+                  src="/images/impact/biodiversity-woodpecker-wildlife-conservation-primary-rainforest.jpeg"
+                  alt="Reforestation and habitat protection - woodpecker in primary rainforest habitat at Dolphin Blue Paradise, Bocas del Toro - wildlife conservation and biodiversity protection in protected forest areas"
                   fill
                   className="object-cover"
                 />
@@ -477,13 +456,10 @@ export default function SustainabilityPage() {
 
             {/* Natural Pest Control */}
             <Card className="p-8 bg-white">
-              <div className="relative w-full h-[250px] mb-6 rounded-xl overflow-hidden shadow-lg">
-                <Image
-                  src={stockPhotos.mosquitoNet}
-                  alt="Natural pest control at Dolphin Blue Paradise"
-                  fill
-                  className="object-cover"
-                />
+              <div className="relative w-full h-[250px] mb-6 rounded-xl overflow-hidden shadow-lg bg-gray-200 flex items-center justify-center">
+                <p className="text-xs text-gray-500 text-center px-4 italic">
+                  Visual needed: Natural Pest Control - Mosquito net draped over bed in room, essential oil bottles/sprays for pest control, natural repellent application, or eco-friendly pest management setup
+                </p>
               </div>
               <h4 className="font-display text-2xl text-[var(--color-navy)] mb-3 uppercase font-light">NATURAL PEST CONTROL</h4>
               <p className="text-[var(--color-text-primary)]">
