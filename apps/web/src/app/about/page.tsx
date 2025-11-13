@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Button } from "@/components/button";
+import { stockPhotos } from "@/lib/stock-photos";
 
 export const metadata: Metadata = {
   title: "About Dolphin Blue Paradise",
@@ -12,28 +13,28 @@ const teamMembers = [
   {
     name: "Yuh Schabacker-Koppel",
     role: "Managing Director",
-    image: "/images/about/team-yuh-schabacker-koppel-managing-director.jpg",
+    image: stockPhotos.teamMember1,
     bio: "Owner and creator of the Dolphin Blue Paradise concept. A passionate entrepreneur dedicated to innovation and creating meaningful change, Yuh curates farm-to-table experiences and trains locals in sustainable cooking, nutritional wellness, and regenerative food systems.",
     quote: "We believe that eco tourism can be luxurious without compromising on main comforts. Every aspect of our operation reflects our commitment to sustainability, community, and exceptional hospitality.",
   },
   {
     name: "Oscar Santos",
     role: "Operations & Guest Experience",
-    image: "/images/about/team-oscar-santos-operations-guest-experience.jpg",
+    image: stockPhotos.teamMember2,
     bio: "Oscar came to us in 2024 and started as a trainee. He is working in all departments from helping with bookkeeping to tours and has quickly demonstrated his talent for fine cuisine. Guests love Oscar's big smile and helpful soul. Oscar is responsible for our popular medium hike from Dolphin Bay to San Cristobal, a 3 hour hike crossing 2 rivers, which he did himself every day through high school.",
     quote: "I'm learning something new every day here. Whether it's in the kitchen, on a tour, or helping guests, I love being part of the Dolphin Blue Paradise family.",
   },
   {
     name: "Marcus Schabacker, MD, PhD",
     role: "Activities Manager",
-    image: "/images/about/team-marcus-schabacker-activities-manager.jpg",
+    image: stockPhotos.teamMember3,
     bio: "Responsible for boat & fishing tours. An avid deep sea fisher who has fished oceans around the world, Marcus has a sound understanding for sustainable fishing and boat safety. He is an Auxiliary US Coast Guard and volunteers for Floating Doctors providing essential health care to indigenous communities.",
     quote: "Being able to fish year round in Bocas Del Toro without freezing is one of the great perks of living here. We practice sustainable fishing and ensure every guest experience is both safe and memorable.",
   },
   {
     name: "Roque Small",
     role: "Head Gardener, Naturalist (Nature Expert)",
-    image: "/images/about/team-roque-small-head-gardener-naturalist.jpg",
+    image: stockPhotos.teamMember4,
     bio: "Roque has worked at Dolphin Blue Paradise for 24 years and was responsible for creating the hiking paths on the southern part of Isla San Cristobal. Roque is a living encyclopedia of all the animals and plants in the archipelago. Taking a hiking tour with Roque through our primary rainforest is an unforgettable nature experience.",
     quote: "The rainforest has so many stories to tell. Every plant, every animal has a purpose. I love sharing this knowledge with our guests and showing them the beauty of our island.",
   },

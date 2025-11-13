@@ -70,6 +70,12 @@ export const stockPhotos = {
   islandAerial: getStockPhoto("aerial-view-tropical-island", 1920, 768, "1416879595882-3373a0480b5b"),
   location: getStockPhoto("tropical-location-map-panama", 1920, 1080, "1559827260-dc66d52bef19"),
   
+  // Team Members - Using direct Unsplash URLs for reliability
+  teamMember1: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&auto=format&q=80",
+  teamMember2: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&auto=format&q=80",
+  teamMember3: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&auto=format&q=80",
+  teamMember4: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&auto=format&q=80",
+  
   // Default/Placeholder
   default: getStockPhoto("tropical-paradise", 1920, 1080, "1506905925346-21bda4d32df4"),
 } as const;
