@@ -118,7 +118,7 @@ export default function DiningPage() {
       {/* Locally Sourced Organic Ingredients - Asymmetric Layout */}
       <section className="section bg-[var(--color-sand)]">
         <div className="container max-w-7xl">
-          <h3 className="font-display text-4xl text-[var(--color-navy)] mb-8 md:mb-12 text-center uppercase font-light">LOCALLY SOURCED ORGANIC INGREDIENTS</h3>
+          <h3 className="font-display text-3xl md:text-4xl text-[var(--color-navy)] mb-6 md:mb-12 text-center uppercase font-light px-4">LOCALLY SOURCED ORGANIC INGREDIENTS</h3>
           
           {/* Asymmetric Layout: Large image (2/3) + Two stacked images (1/3) */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
@@ -196,7 +196,7 @@ export default function DiningPage() {
       {/* Menus & Schedule */}
       <section className="section bg-[var(--color-sand)]">
         <div className="container">
-          <h2 className="font-display text-4xl text-[var(--color-navy)] mb-8 text-center uppercase font-light">MENUS & SCHEDULE</h2>
+          <h2 className="font-display text-3xl md:text-4xl text-[var(--color-navy)] mb-6 md:mb-8 text-center uppercase font-light px-4">MENUS & SCHEDULE</h2>
           
           {/* VISUAL SUGGESTION: Beautifully plated dishes representing each meal - breakfast spread, lunch dish, dinner presentation, cocktails */}
           <div className="grid gap-6 md:grid-cols-2 max-w-4xl mx-auto mb-8">
@@ -205,7 +205,7 @@ export default function DiningPage() {
                 <div className="flex items-start justify-between mb-3">
                   <h3 className="font-display text-2xl text-[var(--color-navy)] uppercase font-light">{item.meal.toUpperCase()}</h3>
                   {item.time && (
-                    <span className="text-sm font-semibold text-[var(--color-gold)] uppercase tracking-wider whitespace-nowrap ml-4">
+                    <span className="text-xs sm:text-sm font-semibold text-[var(--color-gold)] uppercase tracking-wider ml-2 sm:ml-4">
                       {item.time}
                     </span>
                   )}

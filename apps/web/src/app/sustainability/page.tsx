@@ -27,12 +27,12 @@ export default function SustainabilityPage() {
       {/* Title Section */}
       <section className="section page-title-section bg-white">
         <div className="container max-w-4xl">
-          <h1 className="font-sans text-lg md:text-xl lg:text-2xl text-black mb-4 text-center uppercase whitespace-nowrap" style={{ fontWeight: 100 }}>
+          <h1 className="font-sans text-lg md:text-xl lg:text-2xl text-black mb-4 text-center uppercase" style={{ fontWeight: 100 }}>
             SUSTAINABILITY
           </h1>
           <div className="flex items-center justify-center gap-3">
             <div className="h-px flex-1 max-w-[120px] bg-black"></div>
-            <span className="italic lowercase text-sm md:text-base font-serif text-black whitespace-nowrap">Eco Practices</span>
+            <span className="italic lowercase text-sm md:text-base font-serif text-black">Eco Practices</span>
             <div className="h-px flex-1 max-w-[120px] bg-black"></div>
           </div>
         </div>
@@ -81,15 +81,15 @@ export default function SustainabilityPage() {
           </div>
 
           {/* Start Your Adventure */}
-          <div className="grid md:grid-cols-2 gap-8 items-center mb-8">
-            <div className="order-2 md:order-1">
-              <h3 className="font-display text-3xl text-[var(--color-navy)] mb-4 uppercase font-light">START YOUR ADVENTURE</h3>
-              <p className="text-lg text-[var(--color-text-primary)] leading-relaxed">
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center mb-8">
+            <div className="order-2 md:order-1 px-4 md:px-0">
+              <h3 className="font-display text-2xl md:text-3xl text-[var(--color-navy)] mb-4 uppercase font-light">START YOUR ADVENTURE</h3>
+              <p className="text-base md:text-lg text-[var(--color-text-primary)] leading-relaxed">
                 We operate on green and sustainable energy to preserve our planet. As we adopt an eco-responsible attitude 
                 we are always looking for ways to improve.
               </p>
             </div>
-            <div className="relative w-full h-[400px] rounded-lg overflow-hidden shadow-lg order-1 md:order-2">
+            <div className="relative w-full h-[300px] md:h-[400px] rounded-lg overflow-hidden shadow-lg order-1 md:order-2">
               <Image
                 src="/images/impact/start-adventure-sustainable-travel-dolphin-bay.jpeg"
                 alt="Start your sustainable adventure at Dolphin Blue Paradise, Bocas del Toro - eco-luxury travel experience"
@@ -100,15 +100,15 @@ export default function SustainabilityPage() {
           </div>
 
           {/* Our Steps Toward Reducing Our Footprint */}
-          <div className="mb-8">
-            <div className="relative w-full h-[400px] rounded-lg overflow-hidden shadow-lg mb-4">
+          <div className="mb-8 px-4 md:px-0">
+            <div className="relative w-full h-[300px] md:h-[400px] rounded-lg overflow-hidden shadow-lg mb-4">
               <img
                 src={stockPhotos.footprint}
                 alt="Our Steps Toward Reducing Our Footprint - sustainable infrastructure and eco-friendly practices at Dolphin Blue Paradise"
                 className="absolute inset-0 w-full h-full object-cover"
               />
             </div>
-            <p className="text-lg text-[var(--color-text-primary)] text-center max-w-3xl mx-auto">
+            <p className="text-base md:text-lg text-[var(--color-text-primary)] text-center max-w-3xl mx-auto">
               Our eco-resort is 100% off the grid, powered by solar energy and sustainable practices.
             </p>
           </div>
@@ -118,11 +118,11 @@ export default function SustainabilityPage() {
       {/* Off-Grid Infrastructure */}
       <section className="section bg-[var(--color-sand)]/30">
         <div className="container max-w-6xl">
-          <h2 className="font-display text-4xl text-[var(--color-navy)] mb-8 text-center uppercase font-light">OFF-GRID INFRASTRUCTURE</h2>
+          <h2 className="font-display text-3xl md:text-4xl text-[var(--color-navy)] mb-6 md:mb-8 text-center uppercase font-light px-4">OFF-GRID INFRASTRUCTURE</h2>
           
           {/* Solar System - Full Width Split */}
-          <div className="grid md:grid-cols-2 gap-8 mb-8 items-center">
-            <div className="relative w-full h-[350px] rounded-xl overflow-hidden shadow-xl bg-black">
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8 mb-8 items-center">
+            <div className="relative w-full h-[250px] md:h-[350px] rounded-xl overflow-hidden shadow-xl bg-black">
               <img
                 src={stockPhotos.solarPanels}
                 alt="Solar panels on resort rooftops - 10kW solar installation and renewable energy infrastructure at Dolphin Blue Paradise, Bocas del Toro"
@@ -155,13 +155,13 @@ export default function SustainabilityPage() {
 
           {/* Water Systems - Reversed Split */}
           <div className="grid md:grid-cols-2 gap-8 items-center">
-            <Card className="p-8 bg-white order-2 md:order-1">
+            <Card className="p-6 md:p-8 bg-white order-2 md:order-1">
               <div className="mb-4">
-                <div className="text-6xl font-bold text-[var(--color-ocean)] mb-2">{impactMetrics.waterStorage}</div>
+                <div className="text-5xl md:text-6xl font-bold text-[var(--color-ocean)] mb-2">{impactMetrics.waterStorage}</div>
                 <div className="text-sm font-semibold text-[var(--color-navy)] uppercase tracking-wider mb-4">Water Storage Capacity</div>
             </div>
-              <h3 className="font-display text-3xl text-[var(--color-navy)] mb-4 uppercase font-light">WATER SYSTEMS</h3>
-              <p className="text-lg text-[var(--color-text-primary)] mb-4 leading-relaxed">
+              <h3 className="font-display text-2xl md:text-3xl text-[var(--color-navy)] mb-4 uppercase font-light">WATER SYSTEMS</h3>
+              <p className="text-base md:text-lg text-[var(--color-text-primary)] mb-4 leading-relaxed">
                 Closed-loop rainwater collection and purification provide all drinking water and daily use throughout the resort.
               </p>
               <CollapsibleSection>
@@ -177,7 +177,7 @@ export default function SustainabilityPage() {
               </ul>
               </CollapsibleSection>
             </Card>
-            <div className="relative w-full h-[350px] rounded-xl overflow-hidden shadow-xl bg-black order-1 md:order-2">
+            <div className="relative w-full h-[250px] md:h-[350px] rounded-xl overflow-hidden shadow-xl bg-black order-1 md:order-2">
               <img
                 src={stockPhotos.rainwater}
                 alt="15,000L rainwater collection tanks and water filtration system at Dolphin Blue Paradise, Bocas del Toro - sustainable water infrastructure"
@@ -191,7 +191,7 @@ export default function SustainabilityPage() {
       {/* Sustainable Food Cycle */}
       <section className="section bg-white">
         <div className="container max-w-6xl">
-          <h2 className="font-display text-4xl text-[var(--color-navy)] mb-8 text-center uppercase font-light">SUSTAINABLE FOOD CYCLE</h2>
+          <h2 className="font-display text-3xl md:text-4xl text-[var(--color-navy)] mb-6 md:mb-8 text-center uppercase font-light px-4">SUSTAINABLE FOOD CYCLE</h2>
           
           {/* Farm-to-Table - Large Featured Card */}
           <div className="mb-8">
@@ -244,7 +244,7 @@ export default function SustainabilityPage() {
           </div>
 
           {/* Composting & Reusable Materials - Side by Side */}
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8">
             {/* Composting Card */}
             <Card className="p-8 bg-[var(--color-sand)]/30">
               <div className="relative w-full h-[250px] mb-6 rounded-xl overflow-hidden shadow-lg bg-black">
@@ -277,8 +277,8 @@ export default function SustainabilityPage() {
             </Card>
 
             {/* Reusable Materials - Highlighted */}
-            <Card className="p-8 bg-gradient-to-br from-[var(--color-forest)]/10 to-[var(--color-ocean)]/10 border-2 border-[var(--color-forest)] shadow-lg">
-              <div className="relative w-full h-[250px] mb-6 rounded-xl overflow-hidden bg-black ring-2 ring-[var(--color-forest)]/20">
+            <Card className="p-6 md:p-8 bg-gradient-to-br from-[var(--color-forest)]/10 to-[var(--color-ocean)]/10 border-2 border-[var(--color-forest)] shadow-lg">
+              <div className="relative w-full h-[200px] md:h-[250px] mb-6 rounded-xl overflow-hidden bg-black ring-2 ring-[var(--color-forest)]/20">
                 <img
                   src={stockPhotos.reusable}
                   alt="Reusable materials at Dolphin Blue Paradise - refillable dispensers, metal silverware, reusable straws, eco-friendly amenities, zero-plastic setup, Bocas del Toro"
@@ -287,9 +287,9 @@ export default function SustainabilityPage() {
               </div>
               <div className="flex items-center gap-2 mb-3">
                 <div className="w-1 h-8 bg-[var(--color-forest)] rounded-full"></div>
-                <h4 className="font-display text-2xl text-[var(--color-forest)] uppercase font-semibold">REUSABLE MATERIALS</h4>
+                <h4 className="font-display text-xl md:text-2xl text-[var(--color-forest)] uppercase font-semibold">REUSABLE MATERIALS</h4>
               </div>
-              <p className="text-[var(--color-text-primary)] text-lg font-medium leading-relaxed mb-3">
+              <p className="text-sm md:text-base lg:text-lg text-[var(--color-text-primary)] font-medium leading-relaxed mb-3">
                 We use reusable shampoos, soaps, body lotions, metal silverware, and straws to eliminate plastic usage.
               </p>
               <p className="text-sm text-[var(--color-text-muted)] italic pt-3 border-t border-[var(--color-forest)]/20">
@@ -303,10 +303,10 @@ export default function SustainabilityPage() {
       {/* Community Programs */}
       <section className="section bg-[var(--color-sand)]/30">
         <div className="container max-w-6xl">
-          <h2 className="font-display text-4xl text-[var(--color-navy)] mb-8 text-center uppercase font-light">COMMUNITY PROGRAMS</h2>
+          <h2 className="font-display text-3xl md:text-4xl text-[var(--color-navy)] mb-6 md:mb-8 text-center uppercase font-light px-4">COMMUNITY PROGRAMS</h2>
           
           {/* Ngäbe-Buglé - Split Layout */}
-          <div className="grid md:grid-cols-2 gap-8 mb-8 items-center">
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8 mb-8 items-center">
             <Card className="p-8 bg-white">
               <h3 className="font-display text-3xl text-[var(--color-navy)] mb-4 uppercase font-light">NGÄBE-BUGLÉ COLLABORATION</h3>
               <p className="text-lg text-[var(--color-text-primary)] mb-4 leading-relaxed">
@@ -329,7 +329,7 @@ export default function SustainabilityPage() {
               </ul>
               </CollapsibleSection>
             </Card>
-            <div className="relative w-full h-[350px] rounded-xl overflow-hidden shadow-xl bg-black">
+            <div className="relative w-full h-[250px] md:h-[350px] rounded-xl overflow-hidden shadow-xl bg-black">
               <img
                 src={stockPhotos.community}
                 alt="Ngäbe-Buglé community collaboration at Dolphin Blue Paradise - indigenous community members working with resort staff, cultural workshops, cacao farming, community partnerships, Bocas del Toro"
@@ -339,17 +339,17 @@ export default function SustainabilityPage() {
           </div>
 
           {/* Healthcare & Support - Reversed Split */}
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div className="relative w-full h-[350px] rounded-xl overflow-hidden shadow-xl bg-black order-2 md:order-1">
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center">
+            <div className="relative w-full h-[250px] md:h-[350px] rounded-xl overflow-hidden shadow-xl bg-black order-2 md:order-1">
               <img
                 src={stockPhotos.healthcare}
                 alt="Healthcare and support at Dolphin Blue Paradise - Floating Doctors medical mission, healthcare workers with patients, community health outreach, medical volunteers, Bocas del Toro"
                 className="absolute inset-0 w-full h-full object-cover"
               />
             </div>
-            <Card className="p-8 bg-white order-1 md:order-2">
-              <h3 className="font-display text-3xl text-[var(--color-navy)] mb-4 uppercase font-light">HEALTHCARE & SUPPORT</h3>
-              <p className="text-lg text-[var(--color-text-primary)] mb-4 leading-relaxed">
+            <Card className="p-6 md:p-8 bg-white order-1 md:order-2">
+              <h3 className="font-display text-2xl md:text-3xl text-[var(--color-navy)] mb-4 uppercase font-light">HEALTHCARE & SUPPORT</h3>
+              <p className="text-base md:text-lg text-[var(--color-text-primary)] mb-4 leading-relaxed">
                 We partner with <strong>Floating Doctors</strong> to provide healthcare to underserved indigenous communities. Many guests use our resort as a base while volunteering.
               </p>
               <div className="pt-4 border-t border-[var(--color-sand)] mb-4">
@@ -394,7 +394,7 @@ export default function SustainabilityPage() {
       {/* Biodiversity Protection */}
       <section className="section bg-white">
         <div className="container max-w-6xl">
-          <h2 className="font-display text-4xl text-[var(--color-navy)] mb-8 text-center uppercase font-light">BIODIVERSITY PROTECTION</h2>
+          <h2 className="font-display text-3xl md:text-4xl text-[var(--color-navy)] mb-6 md:mb-8 text-center uppercase font-light px-4">BIODIVERSITY PROTECTION</h2>
           
           {/* Dolphin Monitoring - Full Width Featured */}
           <div className="mb-8">
@@ -435,10 +435,10 @@ export default function SustainabilityPage() {
           </div>
 
           {/* Reforestation & Pest Control - Side by Side */}
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8">
             {/* Reforestation Card */}
-            <Card className="p-8 bg-[var(--color-sand)]/30">
-              <div className="relative w-full h-[250px] mb-6 rounded-xl overflow-hidden shadow-lg">
+            <Card className="p-6 md:p-8 bg-[var(--color-sand)]/30">
+              <div className="relative w-full h-[200px] md:h-[250px] mb-6 rounded-xl overflow-hidden shadow-lg">
                 <Image
                   src="/images/impact/biodiversity-woodpecker-wildlife-conservation-primary-rainforest.jpeg"
                   alt="Reforestation and habitat protection - woodpecker in primary rainforest habitat at Dolphin Blue Paradise, Bocas del Toro - wildlife conservation and biodiversity protection in protected forest areas"
@@ -446,8 +446,8 @@ export default function SustainabilityPage() {
                   className="object-cover"
                 />
             </div>
-              <h3 className="font-display text-2xl text-[var(--color-navy)] mb-4 uppercase font-light">REFORESTATION & HABITAT PROTECTION</h3>
-              <p className="text-[var(--color-text-primary)] mb-4">
+              <h3 className="font-display text-xl md:text-2xl text-[var(--color-navy)] mb-4 uppercase font-light">REFORESTATION & HABITAT PROTECTION</h3>
+              <p className="text-sm md:text-base text-[var(--color-text-primary)] mb-4">
                 We protect and restore primary rainforest on our property, creating wildlife corridors and maintaining the biodiversity that makes Dolphin Bay special.
               </p>
               <CollapsibleSection>
@@ -469,16 +469,16 @@ export default function SustainabilityPage() {
             </Card>
 
             {/* Natural Pest Control */}
-            <Card className="p-8 bg-white">
-              <div className="relative w-full h-[250px] mb-6 rounded-xl overflow-hidden shadow-lg bg-black">
+            <Card className="p-6 md:p-8 bg-white">
+              <div className="relative w-full h-[200px] md:h-[250px] mb-6 rounded-xl overflow-hidden shadow-lg bg-black">
                 <img
                   src={stockPhotos.mosquitoNet}
                   alt="Natural pest control at Dolphin Blue Paradise - mosquito net over bed, essential oils for pest control, eco-friendly pest management, Bocas del Toro"
                   className="absolute inset-0 w-full h-full object-cover"
                 />
               </div>
-              <h4 className="font-display text-2xl text-[var(--color-navy)] mb-3 uppercase font-light">NATURAL PEST CONTROL</h4>
-              <p className="text-[var(--color-text-primary)]">
+              <h4 className="font-display text-xl md:text-2xl text-[var(--color-navy)] mb-3 uppercase font-light">NATURAL PEST CONTROL</h4>
+              <p className="text-sm md:text-base text-[var(--color-text-primary)]">
                 We utilize essential oils for pest control, avoiding harsh chemicals. We recommend using repellent, closing windows at dusk, and using the mosquito nets provided in your rooms.
               </p>
             </Card>
@@ -489,8 +489,8 @@ export default function SustainabilityPage() {
       {/* Impact Metrics */}
       <section className="section bg-[var(--color-sand)]/30">
         <div className="container max-w-6xl">
-          <h2 className="font-display text-4xl text-[var(--color-navy)] mb-4 text-center uppercase font-light">IMPACT METRICS</h2>
-          <p className="text-center text-lg text-[var(--color-text-muted)] mb-10 max-w-2xl mx-auto">
+          <h2 className="font-display text-3xl md:text-4xl text-[var(--color-navy)] mb-4 text-center uppercase font-light px-4">IMPACT METRICS</h2>
+          <p className="text-center text-base md:text-lg text-[var(--color-text-muted)] mb-8 md:mb-10 max-w-2xl mx-auto px-4">
             Each stay supports <strong className="text-[var(--color-navy)]">{impactMetrics.conservationHours} hours</strong> of conservation work, 
             community partnerships, and sustainable practices that protect Dolphin Bay for future generations.
           </p>

@@ -60,12 +60,12 @@ export default function RoomsPage() {
         return (
           <section 
                 key={room.slug}
-            className={`h-[50vh] min-h-[500px] flex items-center ${isEven ? 'bg-white' : 'bg-[var(--color-sand)]'}`}
+            className={`min-h-[500px] md:h-[50vh] flex flex-col md:flex-row items-stretch ${isEven ? 'bg-white' : 'bg-[var(--color-sand)]'}`}
             style={{ paddingBlock: 0 }}
           >
-            <div className="w-full mx-auto h-full relative flex" style={{ maxWidth: 'calc(1180px + (100vw - 1180px) / 2)' }}>
+            <div className="w-full mx-auto h-full relative flex flex-col md:flex-row" style={{ maxWidth: 'calc(1180px + (100vw - 1180px) / 2)' }}>
               {/* Image Carousel - Left Side (50%) */}
-              <div className={`flex-0 flex-[0_0_50%] h-full relative ${!isEven ? 'order-2' : 'order-1'}`}>
+              <div className={`flex-1 md:flex-[0_0_50%] h-[400px] md:h-full relative ${!isEven ? 'md:order-2' : 'md:order-1'}`}>
                 <RoomImageCarousel 
                   images={room.images || [room.heroImage || "/images/rooms-view.jpg"]} 
                     alt={room.name}
@@ -73,7 +73,7 @@ export default function RoomsPage() {
                 </div>
 
               {/* Content - Right Side (50%) */}
-              <div className={`flex-1 h-full flex flex-col justify-between bg-[var(--color-cloud)] overflow-y-auto ${!isEven ? 'order-1' : 'order-2'}`} style={{ paddingTop: 'clamp(1.5rem, 4vw, 2.5rem)', paddingBottom: 'clamp(1.5rem, 4vw, 2.5rem)', paddingLeft: 'clamp(1rem, 3vw, 2rem)', paddingRight: 'clamp(1rem, 3vw, 2rem)' }}>
+              <div className={`flex-1 md:flex-1 h-auto md:h-full flex flex-col justify-between bg-[var(--color-cloud)] overflow-y-auto ${!isEven ? 'md:order-1' : 'md:order-2'}`} style={{ paddingTop: 'clamp(1.5rem, 4vw, 2.5rem)', paddingBottom: 'clamp(1.5rem, 4vw, 2.5rem)', paddingLeft: 'clamp(1rem, 3vw, 2rem)', paddingRight: 'clamp(1rem, 3vw, 2rem)' }}>
                 <div>
                   <h2 className="font-display text-2xl md:text-3xl lg:text-4xl text-[var(--color-navy)] uppercase font-light" style={{ marginBottom: '0.75rem' }}>
                     {room.name}
@@ -100,7 +100,7 @@ export default function RoomsPage() {
                 
                 {/* Book Your Room CTA */}
                 <div className="mt-auto pt-6">
-                  <Button href="/contact" variant="primary" className="inline-block w-auto whitespace-nowrap" style={{ padding: '1rem 2.5rem', fontSize: '1rem', marginTop: 0, marginBottom: 0 }}>
+                  <Button href="/contact" variant="primary" className="inline-block w-full sm:w-auto text-center" style={{ padding: '1rem 2.5rem', fontSize: '1rem', marginTop: 0, marginBottom: 0 }}>
                     Book Your Room
                   </Button>
                 </div>

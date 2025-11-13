@@ -137,6 +137,16 @@ export default function AboutPage() {
               Dolphin Blue Paradise is a 100% off-the-grid luxury eco-resort located on Isla San Cristobal in Dolphin Bay, just 20-30 minutes by boat from the main town in Bocas Del Toro. This hilly island features plantations, farms, and the indigenous villages of Bocastorito and Aldana, home to the Ngäbe-Buglé. The island&apos;s biodiversity includes a primary rainforest, and the bay hosts about 80 bottlenose dolphins living year-round in Dolphin Bay. Its natural beauty makes it a top tour destination in Panama.
             </p>
 
+            {/* First image - Solar panels (mobile only, intercalated) */}
+            <div className="relative w-full h-64 rounded-lg overflow-hidden mb-6 md:hidden">
+              <Image
+                src="/images/about/solar-panels-green-energy-eco-resort.jpg"
+                alt="Solar panels at Dolphin Blue Paradise providing 100% renewable green energy for off-grid eco-resort in Bocas del Toro"
+                fill
+                className="object-cover"
+              />
+            </div>
+
             <p className="text-lg text-[var(--color-text-primary)] mb-6">
               Dolphin Blue Paradise was born from a vision to create a luxury resort that doesn&apos;t compromise on environmental 
               responsibility or community impact. We acquired the property on June 15, 2022, and have been developing it into a premier 
@@ -145,8 +155,18 @@ export default function AboutPage() {
               Our resort operates on green energy, uses eco-friendly materials, and sources local produce for a luxurious, environmentally responsible stay.
             </p>
 
-            {/* Grid de 3 imágenes: solar, comida, jardín */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+            {/* Second image - Farm to table (mobile only, intercalated) */}
+            <div className="relative w-full h-64 rounded-lg overflow-hidden mb-6 md:hidden">
+              <Image
+                src="/images/about/farm-to-table-dining-fresh-local-ingredients.jpg"
+                alt="Farm-to-table dining at Blå Bar Restaurant with fresh local ingredients from tropical garden and Dolphin Bay"
+                fill
+                className="object-cover"
+              />
+            </div>
+
+            {/* Grid de 3 imágenes: solar, comida, jardín (desktop only) */}
+            <div className="hidden md:grid grid-cols-3 gap-4 mb-8">
               <div className="relative w-full h-64 rounded-lg overflow-hidden">
                 <Image
                   src="/images/about/solar-panels-green-energy-eco-resort.jpg"
@@ -181,8 +201,18 @@ export default function AboutPage() {
               responsible, regenerative travel.
             </p>
 
-            {/* Imagen de comunidad/biodiversidad */}
-            <div className="relative w-full h-96 mb-8 rounded-lg overflow-hidden">
+            {/* Third image - Garden (mobile only, intercalated) */}
+            <div className="relative w-full h-64 rounded-lg overflow-hidden mb-6 md:hidden">
+              <Image
+                src="/images/about/tropical-garden-fresh-produce-organic-vegetables.jpg"
+                alt="5-acre tropical garden at Dolphin Blue Paradise with fresh organic produce, exotic fruits, and vegetables"
+                fill
+                className="object-cover"
+              />
+            </div>
+
+            {/* Final image - Community/Biodiversity */}
+            <div className="relative w-full h-64 md:h-96 rounded-lg overflow-hidden mb-8">
               <Image
                 src="/images/about/ngabe-bugle-community-partnership-biodiversity.jpg"
                 alt="Ngäbe-Buglé indigenous community partnership and biodiversity conservation at Dolphin Blue Paradise, Bocas del Toro"
@@ -197,13 +227,13 @@ export default function AboutPage() {
       {/* Our Team */}
       <section className="section bg-[var(--color-sand)]">
         <div className="container">
-          <h2 className="font-display text-4xl text-[var(--color-navy)] mb-12 text-center uppercase font-light">OUR TEAM</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <h2 className="font-display text-3xl md:text-4xl text-[var(--color-navy)] mb-8 md:mb-12 text-center uppercase font-light px-4">OUR TEAM</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             {teamMembers.map((member, idx) => (
-              <div key={idx} className="bg-white p-6 rounded shadow-sm">
+              <div key={idx} className="bg-white p-4 md:p-6 rounded shadow-sm">
                 <div className="flex flex-col items-center mb-6">
-                  <div className="relative w-32 h-32 rounded-full overflow-hidden bg-[var(--color-ocean)] mb-4 ring-4 ring-white shadow-lg">
-                    <div className="absolute inset-0 w-full h-full flex items-center justify-center text-white text-3xl font-bold bg-[var(--color-ocean)] z-0">
+                  <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden bg-[var(--color-ocean)] mb-4 ring-4 ring-white shadow-lg">
+                    <div className="absolute inset-0 w-full h-full flex items-center justify-center text-white text-2xl md:text-3xl font-bold bg-[var(--color-ocean)] z-0">
                       {member.name.split(' ').map(n => n[0]).join('')}
                     </div>
                     {member.image && (
@@ -216,10 +246,10 @@ export default function AboutPage() {
                       />
                     )}
                   </div>
-                  <h3 className="font-display text-2xl text-[var(--color-navy)] mb-2 text-center uppercase font-light">{member.name.toUpperCase()}</h3>
-                  <p className="text-sm uppercase tracking-wider text-[var(--color-gold)] mb-4 text-center">{member.role}</p>
+                  <h3 className="font-display text-xl md:text-2xl text-[var(--color-navy)] mb-2 text-center uppercase font-light px-2">{member.name.toUpperCase()}</h3>
+                  <p className="text-xs md:text-sm uppercase tracking-wider text-[var(--color-gold)] mb-4 text-center">{member.role}</p>
                 </div>
-                <p className="text-[var(--color-text-primary)] mb-4 text-sm">{member.bio}</p>
+                <p className="text-sm md:text-base text-[var(--color-text-primary)] mb-4 leading-relaxed">{member.bio}</p>
               </div>
             ))}
           </div>
@@ -229,7 +259,7 @@ export default function AboutPage() {
       {/* Press & Recognition */}
       <section className="section">
         <div className="container">
-          <h2 className="font-display text-4xl text-[var(--color-navy)] mb-12 text-center uppercase font-light">PRESS & RECOGNITION</h2>
+          <h2 className="font-display text-3xl md:text-4xl text-[var(--color-navy)] mb-8 md:mb-12 text-center uppercase font-light px-4">PRESS & RECOGNITION</h2>
           <div className="flex flex-wrap justify-center items-center gap-8">
             {pressLogos.map((press, idx) => (
               <div key={idx} className="flex flex-col items-center justify-center p-4">
@@ -259,15 +289,15 @@ export default function AboutPage() {
       {/* Our Promise */}
       <section className="section bg-[var(--color-sand)]">
         <div className="container">
-          <h2 className="font-display text-4xl text-[var(--color-navy)] mb-12 text-center uppercase font-light">OUR PROMISE TO YOU</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <h2 className="font-display text-3xl md:text-4xl text-[var(--color-navy)] mb-8 md:mb-12 text-center uppercase font-light px-4">OUR PROMISE TO YOU</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {promisePillars.map((pillar, idx) => (
-              <div key={idx} className="text-center">
-                <div className="w-16 h-16 rounded-full bg-[var(--color-ocean)] mx-auto mb-4 flex items-center justify-center text-white">
+              <div key={idx} className="text-center px-4">
+                <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-[var(--color-ocean)] mx-auto mb-4 flex items-center justify-center text-white">
                   {pillar.icon}
                 </div>
-                <h3 className="font-display text-2xl text-[var(--color-navy)] mb-4 uppercase font-light">{pillar.title.toUpperCase()}</h3>
-                <p className="text-[var(--color-text-primary)]">{pillar.description}</p>
+                <h3 className="font-display text-xl md:text-2xl text-[var(--color-navy)] mb-4 uppercase font-light">{pillar.title.toUpperCase()}</h3>
+                <p className="text-sm md:text-base text-[var(--color-text-primary)] leading-relaxed">{pillar.description}</p>
               </div>
             ))}
           </div>

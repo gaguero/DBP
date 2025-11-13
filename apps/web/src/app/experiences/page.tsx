@@ -31,12 +31,12 @@ export default function ExperiencesPage() {
       {/* Title Section */}
       <section className="section page-title-section bg-white">
         <div className="container max-w-4xl">
-          <h1 className="font-sans text-lg md:text-xl lg:text-2xl text-black mb-4 text-center uppercase whitespace-nowrap" style={{ fontWeight: 100 }}>
+          <h1 className="font-sans text-lg md:text-xl lg:text-2xl text-black mb-4 text-center uppercase px-4" style={{ fontWeight: 100 }}>
             DISCOVER OUR CURATED ECO-ADVENTURES
           </h1>
           <div className="flex items-center justify-center gap-3">
             <div className="h-px flex-1 max-w-[120px] bg-black"></div>
-            <span className="italic lowercase text-sm md:text-base font-serif text-black whitespace-nowrap">Experiences</span>
+            <span className="italic lowercase text-sm md:text-base font-serif text-black">Experiences</span>
             <div className="h-px flex-1 max-w-[120px] bg-black"></div>
           </div>
         </div>
@@ -108,11 +108,11 @@ export default function ExperiencesPage() {
 
         {/* CTA Section */}
         <section className="section bg-[var(--color-sand)]">
-          <div className="container max-w-4xl text-center">
-            <h2 className="font-display text-4xl text-[var(--color-navy)] mb-6 uppercase font-light">
+          <div className="container max-w-4xl text-center px-4">
+            <h2 className="font-display text-3xl md:text-4xl text-[var(--color-navy)] mb-4 md:mb-6 uppercase font-light">
               REQUEST CUSTOM ITINERARY
             </h2>
-            <p className="text-lg text-[var(--color-text-primary)] mb-8">
+            <p className="text-base md:text-lg text-[var(--color-text-primary)] mb-6 md:mb-8">
               Share your travel dates, group size, and interests so our concierge can tailor experiences for your stay. 
               We arrange transportation, bilingual guides, refreshments, and any add-ons.
             </p>

@@ -92,8 +92,8 @@ export default function ContactPage() {
             {/* Quick Contact Methods */}
             <div className="space-y-6">
               <div>
-                <h3 className="font-display text-2xl text-[var(--color-navy)] mb-4 uppercase">QUICK CONTACT OPTIONS</h3>
-                <p className="text-sm text-[var(--color-text-muted)] mb-6">
+                <h3 className="font-display text-xl md:text-2xl text-[var(--color-navy)] mb-4 uppercase px-4 lg:px-0">QUICK CONTACT OPTIONS</h3>
+                <p className="text-xs md:text-sm text-[var(--color-text-muted)] mb-6 px-4 lg:px-0">
                   For instant questions or immediate assistance, reach out via these channels.
                 </p>
               </div>
@@ -200,7 +200,7 @@ export default function ContactPage() {
       {/* Getting Here - Travel Logistics */}
       <section className="section bg-[var(--color-sand)]">
         <div className="container max-w-4xl">
-          <h2 className="font-display text-4xl text-[var(--color-navy)] mb-8 text-center uppercase">GETTING HERE</h2>
+          <h2 className="font-display text-3xl md:text-4xl text-[var(--color-navy)] mb-6 md:mb-8 text-center uppercase px-4">GETTING HERE</h2>
           
           {/* Introduction */}
           <div className="mb-12 text-center">
