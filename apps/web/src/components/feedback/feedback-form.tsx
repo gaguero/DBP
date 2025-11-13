@@ -88,6 +88,12 @@ export function FeedbackForm() {
     setSubmitting(true);
     setError(null);
 
+    if (!activeForm) {
+      setError("No hay formulario activo");
+      setSubmitting(false);
+      return;
+    }
+
     try {
       if (activeForm.mode === "create") {
         if (!state.firstName.trim() || !state.lastName.trim() || !state.comment.trim()) {

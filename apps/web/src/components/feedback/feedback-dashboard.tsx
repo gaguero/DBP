@@ -24,7 +24,7 @@ export function FeedbackDashboard() {
   const [selectedPage, setSelectedPage] = useState<string>("all");
   const [selectedStatus, setSelectedStatus] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState("");
-  const [allComments, setAllComments] = useState<Array<PageComment & { pageId: string }>>>([]);
+  const [allComments, setAllComments] = useState<Array<PageComment & { pageId: string }>>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {

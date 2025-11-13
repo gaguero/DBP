@@ -24,10 +24,10 @@ const updateCommentSchema = z.object({
 });
 
 type Params = {
-  params: {
+  params: Promise<{
     pageId: string;
     commentId: string;
-  };
+  }>;
 };
 
 function featureDisabledResponse() {
@@ -47,7 +47,7 @@ export async function PATCH(request: Request, { params }: Params) {
   }
 
   const session = await auth();
-  const { pageId, commentId } = params;
+  const { pageId, commentId } = await params;
 
   const comment = await db.pageComment.findUnique({
     where: { id: commentId, pageId },

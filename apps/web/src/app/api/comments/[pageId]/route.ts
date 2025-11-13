@@ -22,9 +22,9 @@ const createCommentSchema = z.object({
 });
 
 type Params = {
-  params: {
+  params: Promise<{
     pageId: string;
-  };
+  }>;
 };
 
 function featureDisabledResponse() {
@@ -36,7 +36,7 @@ export async function GET(_request: Request, { params }: Params) {
     return featureDisabledResponse();
   }
 
-  const { pageId } = params;
+  const { pageId } = await params;
 
   const comments = await db.pageComment.findMany({
     where: { pageId },
@@ -74,7 +74,7 @@ export async function POST(request: Request, { params }: Params) {
   }
 
   const session = await auth();
-  const pageId = params.pageId;
+  const { pageId } = await params;
 
   try {
     const comment = await db.pageComment.create({
