@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { stockPhotos } from "@/lib/stock-photos";
 
 /**
  * Salon Azul Carousel Component
@@ -64,9 +65,21 @@ export function SalonAzulCarousel() {
     setCurrentIndex((prev) => (prev + 1) % salonAzulImages.length);
   };
 
-  // Don't render if no images
+  // Show placeholder if no images
   if (salonAzulImages.length === 0) {
-    return null;
+    return (
+      <div className="relative w-full max-w-4xl mx-auto">
+        <div className="relative w-full h-64 md:h-96 lg:h-[500px] rounded-lg overflow-hidden bg-black">
+          <Image
+            src={stockPhotos.relaxationSpace}
+            alt="Salon Azul relaxation space at Dolphin Blue Paradise, Bocas del Toro - interior views of reading area, meditation space, outdoor workout area with yoga mats"
+            fill
+            className="object-cover"
+            unoptimized
+          />
+        </div>
+      </div>
+    );
   }
 
   return (

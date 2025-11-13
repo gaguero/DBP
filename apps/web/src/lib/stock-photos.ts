@@ -15,12 +15,13 @@ export function getStockPhoto(
   photoId?: string
 ): string {
   if (photoId) {
-    return `${UNSPLASH_SOURCE}/photo-${photoId}?w=${width}&h=${height}&fit=crop&auto=format`;
+    // Use Unsplash CDN with photo ID
+    return `${UNSPLASH_SOURCE}/photo-${photoId}?w=${width}&h=${height}&fit=crop&auto=format&q=80`;
   }
   
-  // Use Unsplash Source API with keywords
-  const searchTerms = keywords.replace(/\s+/g, ",");
-  return `https://source.unsplash.com/featured/${width}x${height}/?${searchTerms}`;
+  // Use Unsplash Source API with keywords (fallback)
+  const searchTerms = keywords.replace(/\s+/g, "-");
+  return `https://source.unsplash.com/${width}x${height}/?${searchTerms}`;
 }
 
 /**
@@ -32,21 +33,22 @@ export const stockPhotos = {
   heroBay: getStockPhoto("tropical-bay-panama", 1920, 1080, "1542838132-92c53300491e"),
   heroParadise: getStockPhoto("tropical-paradise-beach", 1920, 1080, "1416879595882-3373a0480b5b"),
   
-  // Sustainability
-  solarPanels: getStockPhoto("solar-panels-renewable-energy", 800, 600, "1509391366360-2e959784a276"),
-  rainwater: getStockPhoto("rainwater-collection-barrel", 800, 600, "1542838132-92c53300491e"),
+  // Sustainability - Using reliable placeholder service (will replace with actual photos later)
+  solarPanels: "https://picsum.photos/1920/1080?random=10",
+  rainwater: "https://picsum.photos/1920/1080?random=11",
   garden: getStockPhoto("tropical-garden-vegetables", 800, 600, "1416879595882-3373a0480b5b"),
-  compost: getStockPhoto("compost-organic-waste", 800, 600, "1559827260-dc66d52bef19"),
-  reusable: getStockPhoto("reusable-straw-coconut-drink", 800, 600, "1506905925346-21bda4d32df4"),
-  mosquitoNet: getStockPhoto("mosquito-net-bed-tropical", 800, 600, "1509391366360-2e959784a276"),
+  compost: "https://picsum.photos/1920/1080?random=12",
+  reusable: "https://picsum.photos/1920/1080?random=13",
+  mosquitoNet: "https://picsum.photos/1920/1080?random=14",
   sustainability: getStockPhoto("sustainability-eco-resort", 1920, 1080, "1542838132-92c53300491e"),
   conservation: getStockPhoto("conservation-environment-protection", 1920, 1080, "1416879595882-3373a0480b5b"),
-  footprint: getStockPhoto("carbon-footprint-sustainability", 1920, 1080, "1559827260-dc66d52bef19"),
+  footprint: "https://picsum.photos/1920/1080?random=15",
   
   // Rooms & Accommodations
   roomView: getStockPhoto("luxury-resort-room-ocean-view", 1920, 1080, "1506905925346-21bda4d32df4"),
   roomInterior: getStockPhoto("tropical-resort-room-interior", 1920, 1080, "1509391366360-2e959784a276"),
   overwater: getStockPhoto("overwater-bungalow-tropical", 1920, 1080, "1542838132-92c53300491e"),
+  relaxationSpace: getStockPhoto("yoga-meditation-relaxation-space", 1920, 1080, "1416879595882-3373a0480b5b"),
   
   // Dining
   dining: getStockPhoto("tropical-restaurant-dining", 1920, 1080, "1416879595882-3373a0480b5b"),
@@ -60,8 +62,8 @@ export const stockPhotos = {
   hiking: getStockPhoto("jungle-hiking-tropical-forest", 1920, 1080, "1559827260-dc66d52bef19"),
   
   // Community
-  community: getStockPhoto("indigenous-community-panama", 1920, 1080, "1506905925346-21bda4d32df4"),
-  healthcare: getStockPhoto("healthcare-community-medical", 1920, 1080, "1509391366360-2e959784a276"),
+  community: "https://picsum.photos/1920/1080?random=16",
+  healthcare: "https://picsum.photos/1920/1080?random=17",
   education: getStockPhoto("education-children-learning", 1920, 1080, "1542838132-92c53300491e"),
   
   // About

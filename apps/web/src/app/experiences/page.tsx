@@ -43,10 +43,16 @@ export default function ExperiencesPage() {
       </section>
 
       {/* Hero Image */}
-      <section className="relative w-full h-[50vh] min-h-[400px] max-h-[600px] bg-gray-200 flex items-center justify-center">
-        <p className="text-xs text-gray-500 text-center px-4 italic">
-          Visual needed: Experiences page hero - Dolphins, activities, or adventure experiences at Dolphin Bay Paradise
-        </p>
+      <section className="relative w-full h-[50vh] min-h-[400px] max-h-[600px] bg-black">
+        <Image
+          src={stockPhotos.snorkeling}
+          alt="Dolphin Bay Paradise Experiences - snorkeling, kayaking, hiking, and adventure activities in Bocas del Toro, Panama"
+          fill
+          className="object-cover"
+          priority
+          unoptimized
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
       </section>
 
       {/* Free Activities Section */}

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { stockPhotos } from "@/lib/stock-photos";
 
 export function RoomPhotoCarousel() {
   // TODO: Replace with actual room photos
@@ -23,10 +24,14 @@ export function RoomPhotoCarousel() {
   if (galleryImages.length === 0) {
     return (
       <div className="relative max-w-4xl mx-auto">
-        <div className="relative h-96 md:h-[500px] rounded-lg overflow-hidden bg-gray-200 flex items-center justify-center">
-          <p className="text-xs text-gray-500 text-center px-4 italic">
-            Visual needed: Room gallery images - luxury resort rooms, overwater cabanas, room interiors, ocean views
-          </p>
+        <div className="relative h-96 md:h-[500px] rounded-lg overflow-hidden bg-black">
+          <Image
+            src={stockPhotos.roomView}
+            alt="Luxury resort rooms with ocean views at Dolphin Blue Paradise, Bocas del Toro - overwater cabanas and room interiors"
+            fill
+            className="object-cover"
+            unoptimized
+          />
         </div>
       </div>
     );
