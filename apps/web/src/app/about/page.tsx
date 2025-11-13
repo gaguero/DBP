@@ -12,28 +12,28 @@ const teamMembers = [
   {
     name: "Yuh Schabacker-Koppel",
     role: "Managing Director",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&crop=face",
+    image: "/images/about/team-yuh-schabacker-koppel-managing-director.jpg",
     bio: "Owner and creator of the Dolphin Blue Paradise concept. A passionate entrepreneur dedicated to innovation and creating meaningful change, Yuh curates farm-to-table experiences and trains locals in sustainable cooking, nutritional wellness, and regenerative food systems.",
     quote: "We believe that eco tourism can be luxurious without compromising on main comforts. Every aspect of our operation reflects our commitment to sustainability, community, and exceptional hospitality.",
   },
   {
     name: "Oscar Santos",
     role: "Operations & Guest Experience",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
+    image: "/images/about/team-oscar-santos-operations-guest-experience.jpg",
     bio: "Oscar came to us in 2024 and started as a trainee. He is working in all departments from helping with bookkeeping to tours and has quickly demonstrated his talent for fine cuisine. Guests love Oscar's big smile and helpful soul. Oscar is responsible for our popular medium hike from Dolphin Bay to San Cristobal, a 3 hour hike crossing 2 rivers, which he did himself every day through high school.",
     quote: "I'm learning something new every day here. Whether it's in the kitchen, on a tour, or helping guests, I love being part of the Dolphin Blue Paradise family.",
   },
   {
     name: "Marcus Schabacker, MD, PhD",
     role: "Activities Manager",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
+    image: "/images/about/team-marcus-schabacker-activities-manager.jpg",
     bio: "Responsible for boat & fishing tours. An avid deep sea fisher who has fished oceans around the world, Marcus has a sound understanding for sustainable fishing and boat safety. He is an Auxiliary US Coast Guard and volunteers for Floating Doctors providing essential health care to indigenous communities.",
     quote: "Being able to fish year round in Bocas Del Toro without freezing is one of the great perks of living here. We practice sustainable fishing and ensure every guest experience is both safe and memorable.",
   },
   {
     name: "Roque Small",
     role: "Head Gardener, Naturalist (Nature Expert)",
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop&crop=face",
+    image: "/images/about/team-roque-small-head-gardener-naturalist.jpg",
     bio: "Roque has worked at Dolphin Blue Paradise for 24 years and was responsible for creating the hiking paths on the southern part of Isla San Cristobal. Roque is a living encyclopedia of all the animals and plants in the archipelago. Taking a hiking tour with Roque through our primary rainforest is an unforgettable nature experience.",
     quote: "The rainforest has so many stories to tell. Every plant, every animal has a purpose. I love sharing this knowledge with our guests and showing them the beauty of our island.",
   },
@@ -83,17 +83,17 @@ const promisePillars = [
 const partners = [
   { 
     name: "Ngäbe-Buglé Indigenous Communities", 
-    image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=400&h=400&fit=crop",
+    image: "/images/about/partners-ngabe-bugle-indigenous-communities-cacao-coop.jpg",
     description: "We partner with Roque's mother's chocolate-nutmeg co-op on the mainland, procuring cacao and nutmeg directly from indigenous cooperatives. We also sell kra (traditional Ngäbe bags) from the ladies at the coop and bring our coconuts from our garden to the coop so they can make coconut oil from our own coconuts for our guests. We employ and train indigenous staff from villages surrounding us." 
   },
   { 
     name: "Local Farms & Fishers", 
-    image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=400&h=400&fit=crop",
+    image: "/images/about/partners-local-farms-fishers-sustainable-seafood.jpg",
     description: "We grow as much of our produce as possible and work with our garden team to plan menus centered around what is possible to grow in the area. We catch our own seafood and source fresh ingredients from local farms." 
   },
   { 
     name: "Floating Doctors", 
-    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&h=400&fit=crop",
+    image: "/images/about/partners-floating-doctors-healthcare-community.png",
     description: "Our team volunteers with Floating Doctors in our free time, providing essential health care to indigenous communities in Bocas Del Toro." 
   },
 ];
@@ -104,7 +104,7 @@ export default function AboutPage() {
   return (
     <div className="space-y-0 pb-0 pt-0">
       {/* Title Section */}
-      <section className="section !py-6 bg-white">
+      <section className="section page-title-section bg-white">
         <div className="container max-w-4xl">
           <h1 className="font-sans text-xl md:text-2xl text-black mb-4 text-center uppercase" style={{ fontWeight: 100 }}>
             OUR STORY
@@ -119,11 +119,18 @@ export default function AboutPage() {
 
       {/* Hero Image */}
       <section className="relative w-full h-[50vh] min-h-[400px] max-h-[600px] bg-black">
+        <Image
+          src="/images/about/about-hero-aerial-view-isla-san-cristobal.jpg"
+          alt="Aerial view of Dolphin Blue Paradise eco-resort on Isla San Cristobal, Bocas del Toro, Panama - luxury resort nestled between tropical rainforest and Dolphin Bay"
+          fill
+          className="object-cover"
+          priority
+        />
       </section>
 
     <div className="space-y-12 pb-24 pt-12">
       {/* Our Story */}
-      <section className="section !py-8">
+      <section className="section">
         <div className="container max-w-4xl">
           <div className="prose prose-lg mx-auto">
             <p className="text-lg text-[var(--color-text-primary)] mb-6">
@@ -132,7 +139,8 @@ export default function AboutPage() {
 
             <p className="text-lg text-[var(--color-text-primary)] mb-6">
               Dolphin Blue Paradise was born from a vision to create a luxury resort that doesn&apos;t compromise on environmental 
-              responsibility or community impact. We believe that eco tourism can be luxurious without compromising on main comforts. 
+              responsibility or community impact. We acquired the property on June 15, 2022, and have been developing it into a premier 
+              eco-luxury destination. We believe that eco tourism can be luxurious without compromising on main comforts. 
               We provide a fully personalized and memorable stay with farm-to-table meals, customized excursions, and a commitment to sustainability. 
               Our resort operates on green energy, uses eco-friendly materials, and sources local produce for a luxurious, environmentally responsible stay.
             </p>
@@ -141,24 +149,24 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
               <div className="relative w-full h-64 rounded-lg overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=600&fit=crop"
-                  alt="Solar panels providing green energy"
+                  src="/images/about/solar-panels-green-energy-eco-resort.jpg"
+                  alt="Solar panels at Dolphin Blue Paradise providing 100% renewable green energy for off-grid eco-resort in Bocas del Toro"
                   fill
                   className="object-cover"
                 />
               </div>
               <div className="relative w-full h-64 rounded-lg overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=800&h=600&fit=crop"
-                  alt="Farm-to-table dining experience"
+                  src="/images/about/farm-to-table-dining-fresh-local-ingredients.jpg"
+                  alt="Farm-to-table dining at Blå Bar Restaurant with fresh local ingredients from tropical garden and Dolphin Bay"
                   fill
                   className="object-cover"
                 />
               </div>
               <div className="relative w-full h-64 rounded-lg overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&h=600&fit=crop"
-                  alt="Garden and fresh produce"
+                  src="/images/about/tropical-garden-fresh-produce-organic-vegetables.jpg"
+                  alt="5-acre tropical garden at Dolphin Blue Paradise with fresh organic produce, exotic fruits, and vegetables"
                   fill
                   className="object-cover"
                 />
@@ -176,8 +184,8 @@ export default function AboutPage() {
             {/* Imagen de comunidad/biodiversidad */}
             <div className="relative w-full h-96 mb-8 rounded-lg overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1920&h=768&fit=crop"
-                alt="Local Ngäbe-Buglé community and biodiversity"
+                src="/images/about/ngabe-bugle-community-partnership-biodiversity.jpg"
+                alt="Ngäbe-Buglé indigenous community partnership and biodiversity conservation at Dolphin Blue Paradise, Bocas del Toro"
                 fill
                 className="object-cover"
               />
@@ -187,7 +195,7 @@ export default function AboutPage() {
       </section>
 
       {/* Our Team */}
-      <section className="section bg-[var(--color-sand)] !py-8">
+      <section className="section bg-[var(--color-sand)]">
         <div className="container">
           <h2 className="font-display text-4xl text-[var(--color-navy)] mb-12 text-center uppercase font-light">OUR TEAM</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -195,17 +203,17 @@ export default function AboutPage() {
               <div key={idx} className="bg-white p-6 rounded shadow-sm">
                 <div className="flex flex-col items-center mb-6">
                   <div className="relative w-32 h-32 rounded-full overflow-hidden bg-[var(--color-ocean)] mb-4 ring-4 ring-white shadow-lg">
-                    {member.image ? (
+                    <div className="absolute inset-0 w-full h-full flex items-center justify-center text-white text-3xl font-bold bg-[var(--color-ocean)] z-0">
+                      {member.name.split(' ').map(n => n[0]).join('')}
+                    </div>
+                    {member.image && (
                       <Image
                         src={member.image}
-                        alt={member.name}
+                        alt={`${member.name} - ${member.role} at Dolphin Blue Paradise eco-resort, Bocas del Toro`}
                         fill
-                        className="object-cover"
+                        className="object-cover z-10"
+                        unoptimized
                       />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center text-white text-3xl font-bold">
-                        {member.name.split(' ').map(n => n[0]).join('')}
-                      </div>
                     )}
                   </div>
                   <h3 className="font-display text-2xl text-[var(--color-navy)] mb-2 text-center uppercase font-light">{member.name.toUpperCase()}</h3>
@@ -219,7 +227,7 @@ export default function AboutPage() {
       </section>
 
       {/* Press & Recognition */}
-      <section className="section !py-8">
+      <section className="section">
         <div className="container">
           <h2 className="font-display text-4xl text-[var(--color-navy)] mb-12 text-center uppercase font-light">PRESS & RECOGNITION</h2>
           <div className="flex flex-wrap justify-center items-center gap-8">
@@ -249,7 +257,7 @@ export default function AboutPage() {
       </section>
 
       {/* Our Promise */}
-      <section className="section bg-[var(--color-sand)] !py-8">
+      <section className="section bg-[var(--color-sand)]">
         <div className="container">
           <h2 className="font-display text-4xl text-[var(--color-navy)] mb-12 text-center uppercase font-light">OUR PROMISE TO YOU</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -267,7 +275,7 @@ export default function AboutPage() {
       </section>
 
       {/* Our Partners */}
-      <section className="section !py-8">
+      <section className="section">
         <div className="container max-w-4xl">
           <h2 className="font-display text-4xl text-[var(--color-navy)] mb-12 text-center uppercase font-light">OUR PARTNERS</h2>
           <div className="space-y-8">
@@ -276,7 +284,7 @@ export default function AboutPage() {
                 <div className="relative w-full md:w-48 h-48 rounded-lg overflow-hidden flex-shrink-0">
                   <Image
                     src={partner.image}
-                    alt={partner.name}
+                    alt={`${partner.name} partnership with Dolphin Blue Paradise eco-resort, Bocas del Toro, Panama`}
                     fill
                     className="object-cover"
                   />

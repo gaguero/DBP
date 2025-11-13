@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Button } from "@/components/button";
 import { Card } from "@/components/card";
 import { PageNotesEditor } from "@/components/page-notes-editor";
+import { CollapsibleSection } from "@/components/collapsible-section";
 
 export const metadata: Metadata = {
   title: "Farm-to-Table Dining Over the Water | Dolphin Blue Paradise",
@@ -14,10 +15,26 @@ const description =
   "We prepare delicious homemade food sourced locally. Homegrown produce, locally sourced organic ingredients, and European-fusion menus at our over-the-water Blå Bar & Restaurant.";
 
 const schedule = [
-  { meal: "Breakfast", time: "8:00 am to 9:30 am", detail: "" },
-  { meal: "Lunch", time: "12:00 pm to 2:30 pm", detail: "" },
-  { meal: "Dinner", time: "7:00 pm to 9:30 pm", detail: "featuring a set 3-course menu" },
-  { meal: "Blå Bar", time: "", detail: "Offers all-day snacks and delightful cocktails" },
+  { 
+    meal: "Breakfast", 
+    time: "8:00 am to 9:30 am", 
+    detail: "Breakfast for 2 included in the room rate. Always served with fresh tropical fruits, fresh made juice, home baked bread, homemade jams, homemade yogurt with homemade coconut granola, and a different main dish (egg) each day. Filter coffee and tea included." 
+  },
+  { 
+    meal: "Lunch", 
+    time: "12:00 pm to 2:30 pm", 
+    detail: "French-based menu with quiche, flatbreads, homemade pasta, croque madame, croque monsieur, and salads. A la carte menu. We also provide guests with lunch packs if they order in advance." 
+  },
+  { 
+    meal: "Dinner", 
+    time: "7:00 pm to 9:30 pm", 
+    detail: "3-course prix fixe menu in an intimate, tranquil setting. Food is sourced locally when possible. We grow as much of our fruit and vegetables as possible and we catch our fish ourselves. Our staff catches lobster, crabs, conch, and octopus when possible." 
+  },
+  { 
+    meal: "Blå Bar", 
+    time: "Open anytime for hotel guests", 
+    detail: "Blå Bar is open for our guests any time they wish. For outside guests, we are open upon reservation. Hours are flexible. Offers all-day snacks and delightful cocktails." 
+  },
 ];
 
 const testimonial =
@@ -41,11 +58,14 @@ export default function DiningPage() {
       </section>
 
       {/* Hero Image */}
-      {/* VISUAL SUGGESTION: Wide shot of the over-the-water restaurant with turquoise waters below, 
-          showing the dining deck extending over Dolphin Bay. Golden hour lighting preferred. 
-          Alternative: Aerial view of the restaurant structure over the water. */}
-      {/* PLACEHOLDER: Replace with actual image when available */}
       <section className="relative w-full h-[50vh] min-h-[400px] max-h-[600px] bg-black">
+        <Image
+          src="/images/dining/dining-hero-bla-bar-restaurant-over-water-dolphin-bay.avif"
+          alt="Blå Bar & Restaurant over-the-water dining at Dolphin Blue Paradise, Bocas del Toro - farm-to-table restaurant extending over turquoise Dolphin Bay"
+          fill
+          className="object-cover"
+          priority
+        />
       </section>
 
       {/* Overview - Chef Philosophy & Locally Sourced Ingredients */}
@@ -57,24 +77,32 @@ export default function DiningPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* Image Side - Left */}
             <div className="relative w-full h-[400px] md:h-[500px] rounded-lg overflow-hidden bg-black order-2 md:order-1">
-              {/* VISUAL SUGGESTION: Chef in the kitchen preparing a dish, or close-up of hands plating food with fresh ingredients */}
-              {/* PLACEHOLDER: Replace with actual image when available */}
+              <Image
+                src="/images/dining/chef-philosophy-farm-to-table-fresh-ingredients-kitchen.avif"
+                alt="Chef preparing farm-to-table dishes with fresh local ingredients at Blå Bar Restaurant, Dolphin Blue Paradise, Bocas del Toro"
+                fill
+                className="object-cover"
+              />
             </div>
             
             {/* Text Side - Right */}
             <div className="prose prose-lg order-1 md:order-2">
               <p className="text-lg text-[var(--color-text-primary)] mb-6 leading-relaxed">
-                At Dolphin Blue Paradise, our culinary philosophy is rooted in three core principles: <strong>sustainability, 
-                seasonality, and community</strong>. We believe that exceptional dining begins with exceptional ingredients, 
-                which is why we source directly from our tropical gardens, local farms, and indigenous Ngäbe-Buglé communities 
-                throughout Bocas del Toro.
+                I believe in serving fresh, nutritional food for everyone. I create the menu weekly with our gardener, basing the menu 
+                on the week&apos;s harvest so we can use as much as possible from our own garden. I believe in reducing food waste and 
+                we compost as much of our waste as possible.
               </p>
               
               <p className="text-lg text-[var(--color-text-primary)] mb-6 leading-relaxed">
-                Yuh, our owner and creator, brings her passion for haute cuisine to every dish. Having honed her craft as a chef 
-                in a French restaurant in Copenhagen and catering private Japanese business dinners, she understands how food connects 
-                people. Today, she curates farm-to-table experiences that combine European culinary techniques with Panamanian flavors, 
-                creating dishes that honor both tradition and innovation.
+                I like to experiment with new ingredients and techniques and try to cook every produce how the locals cook it. How it 
+                would fit in French cuisine, Asian cuisine, and other nations the ingredient may grow. That way I figure out how best 
+                to incorporate the ingredient in our menu.
+              </p>
+              
+              <p className="text-lg text-[var(--color-text-primary)] mb-6 leading-relaxed">
+                I started working in restaurants at 18 years old to fund my student years. I catered business dinners (Japanese dinners) 
+                through my student years when Japanese food was still not mainstream. Later, I honed my craft as a chef in a French 
+                restaurant in Copenhagen, which taught me how food connects people.
               </p>
               
               <p className="text-lg text-[var(--color-text-primary)] leading-relaxed">
@@ -96,19 +124,31 @@ export default function DiningPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             {/* Large Image - 2/3 width */}
             <div className="relative w-full h-[400px] md:h-[600px] md:col-span-2 rounded-lg overflow-hidden bg-black">
-              {/* VISUAL SUGGESTION: Fresh organic produce from our tropical gardens - wide shot showing abundance */}
-              {/* PLACEHOLDER: Replace with actual image when available */}
+              <Image
+                src="/images/dining/garden-to-table-tropical-produce-fresh-vegetables-fruits.jpg"
+                alt="Fresh organic produce from 5-acre tropical garden at Dolphin Blue Paradise - garden-to-table ingredients for Blå Bar Restaurant, Bocas del Toro"
+                fill
+                className="object-cover"
+              />
             </div>
             
             {/* Two Stacked Images - 1/3 width */}
             <div className="flex flex-col gap-6">
               <div className="relative w-full h-[290px] md:h-[290px] rounded-lg overflow-hidden bg-black">
-                {/* VISUAL SUGGESTION: Local fisherman with fresh catch from Dolphin Bay */}
-                {/* PLACEHOLDER: Replace with actual image when available */}
+                <Image
+                  src="/images/dining/bay-to-plate-sustainable-fishing-fresh-seafood-dolphin-bay.jpg"
+                  alt="Sustainable fishing and fresh seafood from Dolphin Bay - bay-to-plate sourcing for Blå Bar Restaurant at Dolphin Blue Paradise, Bocas del Toro"
+                  fill
+                  className="object-cover"
+                />
               </div>
               <div className="relative w-full h-[290px] md:h-[290px] rounded-lg overflow-hidden bg-black">
-                {/* VISUAL SUGGESTION: Indigenous farmer with cacao from Ngäbe-Buglé communities */}
-                {/* PLACEHOLDER: Replace with actual image when available */}
+                <Image
+                  src="/images/dining/ngabe-bugle-cacao-farmer-community-partnership-chocolate.jpg"
+                  alt="Ngäbe-Buglé community member with fresh cacao pods - community partnership for farm-to-table ingredients at Dolphin Blue Paradise, Bocas del Toro"
+                  fill
+                  className="object-cover"
+                />
               </div>
             </div>
           </div>
@@ -117,15 +157,23 @@ export default function DiningPage() {
           <div className="prose prose-lg mx-auto max-w-4xl mt-8">
             <p className="text-lg text-[var(--color-text-primary)] mb-4 leading-relaxed">
               <strong>Garden-to-Table:</strong> Our 5-acre tropical garden provides fresh herbs, vegetables, and fruits 
-              that change with the seasons. Roque, our head gardener and naturalist, works closely with the kitchen to plan 
-              menus centered around what&apos;s flourishing in the area.
+              that change with the seasons. We grow tomatoes, cucumber, pepper fruits, eggplant, chili, herbs, katuk, pumpkin, 
+              zucchini, ginger, turmeric, vanilla, sometimes kale, lime, coconuts, cacao, mangosteen, mango, pineapple, 16 different 
+              types of bananas, rambutan, aqua manzana, mandarins, star fruit, papaya, yuca, potatoes, and many others on site. 
+              Roque, our head gardener and naturalist, works closely with the kitchen to plan menus centered around what&apos;s 
+              flourishing in the area.
             </p>
             
             <p className="text-lg text-[var(--color-text-primary)] mb-4 leading-relaxed">
               <strong>Bay-to-Plate:</strong> We catch our own seafood daily from Dolphin Bay, ensuring the freshest fish 
-              and shellfish. Marcus, our activities manager and experienced deep-sea fisherman, practices sustainable fishing 
-              methods that protect the marine ecosystem. As our Grill Pit Master, Marcus brings his expertise to every seafood 
-              dish, and his Old Fashioned cocktails are legendary.
+              and shellfish. Our staff catches lobster, crabs, conch, and octopus when possible. Marcus, our activities manager 
+              and experienced deep-sea fisherman, practices sustainable fishing methods that protect the marine ecosystem. As our 
+              Grill Pit Master, Marcus brings his expertise to every seafood dish, and his Old Fashioned cocktails are legendary.
+            </p>
+            
+            <p className="text-lg text-[var(--color-text-primary)] mb-4 leading-relaxed">
+              <strong>Farm Fresh Eggs:</strong> We get eggs from a neighbor&apos;s farm, ensuring the freshest eggs for our 
+              breakfast dishes.
             </p>
             
             <p className="text-lg text-[var(--color-text-primary)] mb-4 leading-relaxed">
@@ -154,25 +202,23 @@ export default function DiningPage() {
           <div className="grid gap-6 md:grid-cols-2 max-w-4xl mx-auto mb-8">
             {schedule.map((item) => (
               <Card key={item.meal} className="p-6">
-                <div className="flex items-start justify-between mb-2">
+                <div className="flex items-start justify-between mb-3">
                   <h3 className="font-display text-2xl text-[var(--color-navy)] uppercase font-light">{item.meal.toUpperCase()}</h3>
                   {item.time && (
-                    <span className="text-sm font-semibold text-[var(--color-gold)] uppercase tracking-wider">
+                    <span className="text-sm font-semibold text-[var(--color-gold)] uppercase tracking-wider whitespace-nowrap ml-4">
                       {item.time}
                     </span>
                   )}
                 </div>
                 {item.detail && (
-                  <p className="text-[var(--color-text-muted)]">{item.detail}</p>
+                  <p className="text-[var(--color-text-muted)] leading-relaxed">{item.detail}</p>
                 )}
               </Card>
             ))}
           </div>
 
-          {/* VISUAL SUGGESTION: Sample menu pages laid out on a table, or a close-up of a beautifully designed menu */}
-          {/* PLACEHOLDER: Replace with actual image when available */}
           <div className="relative w-full max-w-2xl mx-auto h-64 md:h-80 mb-8 rounded-lg overflow-hidden bg-black">
-            {/* Image: Sample menu pages or beautifully designed menu */}
+            {/* Note: Menu image can be added here when available */}
           </div>
 
           <div className="text-center">
@@ -180,19 +226,43 @@ export default function DiningPage() {
               View Sample Menus (PDF) →
             </Button>
             <p className="text-sm text-[var(--color-text-muted)] mt-4 italic">
-              Download our seasonal menus featuring current garden harvests and daily specials. We prioritize food allergy awareness and can accommodate dietary restrictions with 48-hour advance notice.
+              Download our seasonal menus featuring current garden harvests and daily specials. We always vary what we serve based on our own harvest. We prioritize food allergy awareness and can accommodate dietary restrictions with 48-hour advance notice.
             </p>
+            
+            {/* Dietary Accommodations */}
+            <div className="mt-8 max-w-4xl mx-auto">
+              <h3 className="font-display text-2xl text-[var(--color-navy)] mb-4 text-center uppercase font-light">DIETARY ACCOMMODATIONS</h3>
+              <CollapsibleSection>
+                <div className="grid md:grid-cols-3 gap-4 mt-6">
+                  <Card className="p-4 bg-white/50">
+                    <h4 className="font-semibold text-[var(--color-navy)] mb-2">Vegetarian</h4>
+                    <p className="text-sm text-[var(--color-text-muted)]">Yes, most dishes can be made vegetarian.</p>
+                  </Card>
+                  <Card className="p-4 bg-white/50">
+                    <h4 className="font-semibold text-[var(--color-navy)] mb-2">Vegan</h4>
+                    <p className="text-sm text-[var(--color-text-muted)]">We have a number of dishes that are vegan.</p>
+                  </Card>
+                  <Card className="p-4 bg-white/50">
+                    <h4 className="font-semibold text-[var(--color-navy)] mb-2">Gluten-Free</h4>
+                    <p className="text-sm text-[var(--color-text-muted)]">We can cater to gluten-free dietary choices. Being remote, we cannot guarantee 100% gluten-free environment. When a guest notifies us of gluten sensitivities, our chef contacts the guest to find out severity and options. We do bake our own gluten-free breads for guests and are able to accommodate most sensitivities. Guests with Celiac disease should consult with their doctor to determine if our precautions are enough.</p>
+                  </Card>
+                </div>
+              </CollapsibleSection>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Testimonial */}
-      {/* VISUAL SUGGESTION: Guests enjoying dinner at sunset on the over-the-water deck, or a beautifully plated dinner with Dolphin Bay in background */}
-      {/* PLACEHOLDER: Replace with actual image when available */}
       <section className="section">
         <div className="container max-w-3xl">
           <div className="relative w-full h-64 md:h-80 mb-6 rounded-lg overflow-hidden bg-black">
-            {/* Image: Guests enjoying dinner at sunset or beautifully plated dinner with Dolphin Bay in background */}
+            <Image
+              src="/images/dining/testimonial-chef-plating-fresh-dish-kitchen.jpg"
+              alt="Chef carefully plating farm-to-table dish at Blå Bar Restaurant, Dolphin Blue Paradise, Bocas del Toro"
+              fill
+              className="object-cover"
+            />
           </div>
           <Card className="space-y-3 bg-white/80 p-8 text-lg text-[var(--color-navy)] shadow-soft">
             <blockquote className="italic text-xl leading-relaxed">&quot;{testimonial}&quot;</blockquote>
@@ -206,10 +276,13 @@ export default function DiningPage() {
         <div className="container max-w-4xl">
           <h2 className="font-display text-4xl text-[var(--color-navy)] mb-8 text-center uppercase font-light">LOCALS DINING POLICY</h2>
           
-          {/* VISUAL SUGGESTION: Local guests or families enjoying a meal together, or a welcoming scene of the restaurant from the water approach */}
-          {/* PLACEHOLDER: Replace with actual image when available */}
           <div className="relative w-full h-64 md:h-80 mb-8 rounded-lg overflow-hidden bg-black">
-            {/* Image: Local guests or families enjoying a meal, or welcoming scene of restaurant from water approach */}
+            <Image
+              src="/images/dining/locals-welcome-restaurant-exterior-entrance.jpg"
+              alt="Welcoming exterior of Blå Bar & Restaurant - open to locals and hotel guests, Dolphin Blue Paradise, Bocas del Toro"
+              fill
+              className="object-cover"
+            />
           </div>
 
           <div className="prose prose-lg mx-auto">
@@ -220,7 +293,8 @@ export default function DiningPage() {
                 farm-to-table cuisine and stunning Dolphin Bay views.
               </p>
               <p className="text-lg text-[var(--color-text-primary)] mb-4 leading-relaxed">
-                Please contact us in advance, especially if we&apos;re touring with guests or during peak seasons. 
+                Blå Bar is open for our hotel guests any time they wish. For outside guests, we are open upon reservation. 
+                Hours are flexible. Please contact us in advance, especially if we&apos;re touring with guests or during peak seasons. 
                 This helps us prepare for your visit.
               </p>
             </div>
@@ -246,12 +320,15 @@ export default function DiningPage() {
       </section>
 
       {/* CTA Section */}
-      {/* VISUAL SUGGESTION: Sunset view from the restaurant deck, or an inviting wide shot of the restaurant with warm lighting */}
-      {/* PLACEHOLDER: Replace with actual image when available */}
       <section className="section !pt-0 bg-gradient-to-b from-[var(--color-sand)] to-white">
         <div className="container max-w-4xl">
           <div className="relative w-full h-64 md:h-80 mb-8 rounded-lg overflow-hidden bg-black">
-            {/* Image: Sunset view from restaurant deck or inviting wide shot with warm lighting */}
+            <Image
+              src="/images/dining/reserve-table-empty-table-golden-hour-bay-view.jpg"
+              alt="Reserve your table at Blå Bar Restaurant - elegant dining setting with Dolphin Bay view, Dolphin Blue Paradise, Bocas del Toro"
+              fill
+              className="object-cover"
+            />
           </div>
           <div className="text-center">
             <h2 className="font-display text-3xl md:text-4xl text-[var(--color-navy)] mb-6 uppercase font-light">
