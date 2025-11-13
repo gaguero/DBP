@@ -14,6 +14,22 @@ Esta guía te ayudará a probar los endpoints de workflows usando `curl` o herra
    ```
    También puedes ejecutar el workflow `Publish Workflows Shared Package` en GitHub Actions para generar una nueva versión del paquete `@dbp/workflows-shared` antes de los despliegues.
 
+## Build Docker (API / Workers / UI)
+
+Los Dockerfiles de `apps/workflows` ahora copian el workspace completo (`pnpm-workspace.yaml`, `apps/workflows/shared`, etc.) para que `pnpm` resuelva `@dbp/workflows-shared` sin buscar en GitHub Packages. Para construir las imágenes:
+
+1. **Desde la raíz del repositorio**, valida que Docker esté corriendo y ejecuta:
+   ```bash
+   docker build -f apps/workflows/api/Dockerfile -t workflows-api:local .
+   docker build -f apps/workflows/workers/Dockerfile -t workflows-workers:local .
+   docker build -f apps/workflows/ui/Dockerfile -t workflows-ui:local .
+   ```
+2. Cada build usa `pnpm --filter` para instalar solo los paquetes necesarios y empaqueta artefactos productivos (`deploy` en API/Workers y `dist` en UI).
+3. Si Docker se ejecuta en Railway u otro servicio CI/CD, asegúrate de que el contexto de build sea la **raíz del repo** para que el workspace quede disponible.
+4. Solo necesitas definir `NODE_AUTH_TOKEN` si decides consumir `@dbp/workflows-shared` publicado en GitHub Packages; el flujo por defecto usa la copia local.
+
+Guarda los logs de cada build y adjunta evidencias en `apps/workflows/PROGRESS.md` cuando toques producción.
+
 ## Paso 1: Autenticarse
 
 Primero, necesitas obtener un token JWT:

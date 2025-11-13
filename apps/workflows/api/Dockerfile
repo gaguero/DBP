@@ -2,35 +2,36 @@ FROM node:18-alpine AS builder
 
 ARG NODE_AUTH_TOKEN
 
-WORKDIR /app
+WORKDIR /repo
 
-# Copiamos manifiestos locales
+# Copiamos archivos del workspace necesarios para las dependencias locales
+COPY pnpm-workspace.yaml ./
 COPY package.json pnpm-lock.yaml* ./
-RUN test -f pnpm-lock.yaml || touch pnpm-lock.yaml
+COPY apps/workflows/shared ./apps/workflows/shared
+COPY apps/workflows/api ./apps/workflows/api
 
-# Preparamos pnpm y acceso a GitHub Packages
+# Instalamos pnpm
 RUN npm install -g pnpm@8.15.5
+
+# Configuramos acceso opcional a GitHub Packages (por si el paquete se publica)
 RUN npm config set @dbp:registry https://npm.pkg.github.com
 RUN if [ -n "$NODE_AUTH_TOKEN" ]; then npm config set //npm.pkg.github.com/:_authToken "$NODE_AUTH_TOKEN"; fi
 
-# Instalamos dependencias (incluye @dbp/workflows-shared remoto)
-RUN pnpm install
+# Instalamos dependencias usando el workspace completo
+RUN pnpm install --filter @dbp/workflows-shared --filter @dbp/workflows-api
 
-# Copiamos el resto del código
-COPY . .
+# Construimos el paquete API
+RUN pnpm --filter @dbp/workflows-api build
 
-# Compilamos
-RUN pnpm build
-RUN pnpm prune --prod
+# Preparamos artefacto final con dependencias de producción
+RUN pnpm --filter @dbp/workflows-api deploy /app
 
 # Imagen final
 FROM node:18-alpine
 
 WORKDIR /app
 
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/dist ./dist
-COPY package.json ./
+COPY --from=builder /app/ ./
 
 EXPOSE 3000
 
