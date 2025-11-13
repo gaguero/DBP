@@ -5,6 +5,7 @@ import { Card } from "@/components/card";
 import { CollapsibleSection } from "@/components/collapsible-section";
 import { PageNotesEditor } from "@/components/page-notes-editor";
 import { stockPhotos } from "@/lib/stock-photos";
+import { FeedbackRoot } from "@/components/feedback/feedback-root";
 
 export const metadata: Metadata = {
   title: "Sustainability & Our Impact",
@@ -23,7 +24,8 @@ const impactMetrics = {
 
 export default function SustainabilityPage() {
   return (
-    <div className="space-y-0 pb-0 pt-0">
+    <FeedbackRoot pageId="sustainability">
+      <div className="space-y-0 pb-0 pt-0">
       {/* Title Section */}
       <section className="section page-title-section bg-white">
         <div className="container max-w-4xl">
@@ -572,5 +574,6 @@ export default function SustainabilityPage() {
       </section>
     </div>
     </div>
+    </FeedbackRoot>
   );
 }

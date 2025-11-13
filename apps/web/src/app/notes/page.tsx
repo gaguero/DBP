@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Card } from "@/components/card";
 import { FAQNotesEditor } from "@/components/faq-notes-editor";
+import { FeedbackDashboard } from "@/components/feedback/feedback-dashboard";
 import { faqs } from "@/content/data";
 
 export default function NotesPage() {
@@ -33,6 +34,11 @@ export default function NotesPage() {
             This page lists all information that needs to be confirmed and replaced with accurate property-specific details before the site goes live.
           </p>
         </div>
+
+        {/* Feedback Dashboard */}
+        <Card className="p-6 mb-8">
+          <FeedbackDashboard />
+        </Card>
 
         {/* General Notes Section */}
         <Card className="p-6 mb-8">

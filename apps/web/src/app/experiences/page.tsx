@@ -5,8 +5,10 @@ import { activities } from "@/content/data";
 import { ExperiencesGridLayout } from "@/components/experiences/experiences-grid-layout";
 import { ExperiencesSplitLayout } from "@/components/experiences/experiences-split-layout";
 import { ExperiencesMasonryLayout } from "@/components/experiences/experiences-masonry-layout";
-import { PageNotesEditor } from "@/components/page-notes-editor";
 import { stockPhotos } from "@/lib/stock-photos";
+import { FeedbackRoot } from "@/components/feedback/feedback-root";
+import { FeedbackSection } from "@/components/feedback/feedback-section";
+import { PageNotesEditor } from "@/components/page-notes-editor";
 
 export const metadata: Metadata = {
   title: "Dolphin Bay Experiences",
@@ -27,7 +29,8 @@ export default function ExperiencesPage() {
     .sort((a, b) => a.name.localeCompare(b.name));
 
   return (
-    <div className="space-y-0 pb-0 pt-0">
+    <FeedbackRoot pageId="experiences">
+      <div className="space-y-0 pb-0 pt-0">
       {/* Title Section */}
       <section className="section page-title-section bg-white">
         <div className="container max-w-4xl">
@@ -56,12 +59,13 @@ export default function ExperiencesPage() {
       </section>
 
       {/* Free Activities Section */}
-      <section className="section bg-[var(--color-sand)]">
-        <div className="container max-w-4xl">
-          <p className="text-lg mb-4 text-center uppercase font-semibold text-[var(--color-navy)]">
-            FREE ACTIVITIES INCLUDED IN YOUR STAY
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <FeedbackSection id="free-activities" label="Actividades Gratuitas">
+        <section className="section bg-[var(--color-sand)]">
+          <div className="container max-w-4xl">
+            <p className="text-lg mb-4 text-center uppercase font-semibold text-[var(--color-navy)]">
+              FREE ACTIVITIES INCLUDED IN YOUR STAY
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="text-center">
               <p className="text-sm mb-0.5 uppercase font-light text-[var(--color-navy)]">
                 Snorkeling
@@ -89,6 +93,7 @@ export default function ExperiencesPage() {
           </div>
         </div>
       </section>
+      </FeedbackSection>
 
       <div className="space-y-24 pb-24">
         {/* Activities Section - Layout Style 1: Grid Cards */}
@@ -107,11 +112,12 @@ export default function ExperiencesPage() {
         )}
 
         {/* CTA Section */}
-        <section className="section bg-[var(--color-sand)]">
-          <div className="container max-w-4xl text-center px-4">
-            <h2 className="font-display text-3xl md:text-4xl text-[var(--color-navy)] mb-4 md:mb-6 uppercase font-light">
-              REQUEST CUSTOM ITINERARY
-            </h2>
+        <FeedbackSection id="cta-itinerary" label="CTA - Solicitar Itinerario">
+          <section className="section bg-[var(--color-sand)]">
+            <div className="container max-w-4xl text-center px-4">
+              <h2 className="font-display text-3xl md:text-4xl text-[var(--color-navy)] mb-4 md:mb-6 uppercase font-light">
+                REQUEST CUSTOM ITINERARY
+              </h2>
             <p className="text-base md:text-lg text-[var(--color-text-primary)] mb-6 md:mb-8">
               Share your travel dates, group size, and interests so our concierge can tailor experiences for your stay. 
               We arrange transportation, bilingual guides, refreshments, and any add-ons.
@@ -130,6 +136,7 @@ export default function ExperiencesPage() {
             </div>
           </div>
         </section>
+        </FeedbackSection>
 
         <section className="section bg-white">
           <div className="container max-w-4xl">
@@ -138,5 +145,6 @@ export default function ExperiencesPage() {
         </section>
       </div>
     </div>
+    </FeedbackRoot>
   );
 }

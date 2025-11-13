@@ -4,6 +4,7 @@ import { Button } from "@/components/button";
 import { Card } from "@/components/card";
 import { PageNotesEditor } from "@/components/page-notes-editor";
 import { CollapsibleSection } from "@/components/collapsible-section";
+import { FeedbackRoot } from "@/components/feedback/feedback-root";
 
 export const metadata: Metadata = {
   title: "Farm-to-Table Dining Over the Water | Dolphin Blue Paradise",
@@ -42,7 +43,8 @@ const testimonial =
 
 export default function DiningPage() {
   return (
-    <div className="space-y-0 pb-0 pt-0">
+    <FeedbackRoot pageId="dining">
+      <div className="space-y-0 pb-0 pt-0">
       {/* Title Section */}
       <section className="section page-title-section bg-white">
         <div className="container max-w-4xl">
@@ -368,5 +370,6 @@ export default function DiningPage() {
         </div>
       </section>
     </div>
+    </FeedbackRoot>
   );
 }

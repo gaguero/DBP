@@ -53,7 +53,10 @@ importers:
         version: 15.5.3(react-dom@19.1.0)(react@19.1.0)
       next-auth:
         specifier: ^5.0.0-beta.25
-        version: 5.0.0-beta.30(next@15.5.3)(react@19.1.0)
+        version: 5.0.0-beta.30(next@15.5.3)(nodemailer@7.0.10)(react@19.1.0)
+      nodemailer:
+        specifier: ^7.0.10
+        version: 7.0.10
       react:
         specifier: 19.1.0
         version: 19.1.0
@@ -371,7 +374,7 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /@auth/core@0.41.0:
+  /@auth/core@0.41.0(nodemailer@7.0.10):
     resolution: {integrity: sha512-Wd7mHPQ/8zy6Qj7f4T46vg3aoor8fskJm6g2Zyj064oQ3+p0xNZXAV60ww0hY+MbTesfu29kK14Zk5d5JTazXQ==}
     peerDependencies:
       '@simplewebauthn/browser': ^9.0.1
@@ -387,6 +390,7 @@ packages:
     dependencies:
       '@panva/hkdf': 1.2.1
       jose: 6.1.0
+      nodemailer: 7.0.10
       oauth4webapi: 3.8.2
       preact: 10.24.3
       preact-render-to-string: 6.5.11(preact@10.24.3)
@@ -6662,7 +6666,7 @@ packages:
     engines: {node: '>= 0.6'}
     dev: false
 
-  /next-auth@5.0.0-beta.30(next@15.5.3)(react@19.1.0):
+  /next-auth@5.0.0-beta.30(next@15.5.3)(nodemailer@7.0.10)(react@19.1.0):
     resolution: {integrity: sha512-+c51gquM3F6nMVmoAusRJ7RIoY0K4Ts9HCCwyy/BRoe4mp3msZpOzYMyb5LAYc1wSo74PMQkGDcaghIO7W6Xjg==}
     peerDependencies:
       '@simplewebauthn/browser': ^9.0.1
@@ -6678,8 +6682,9 @@ packages:
       nodemailer:
         optional: true
     dependencies:
-      '@auth/core': 0.41.0
+      '@auth/core': 0.41.0(nodemailer@7.0.10)
       next: 15.5.3(react-dom@19.1.0)(react@19.1.0)
+      nodemailer: 7.0.10
       react: 19.1.0
     dev: false
 
@@ -6761,6 +6766,11 @@ packages:
   /node-releases@2.0.27:
     resolution: {integrity: sha512-nmh3lCkYZ3grZvqcCH+fjmQ7X+H0OeZgP40OierEaAptX4XofMh5kwNbWh7lBduUzCcV/8kZ+NDLCwm2iorIlA==}
     dev: true
+
+  /nodemailer@7.0.10:
+    resolution: {integrity: sha512-Us/Se1WtT0ylXgNFfyFSx4LElllVLJXQjWi2Xz17xWw7amDKO2MLtFnVp1WACy7GkVGs+oBlRopVNUzlrGSw1w==}
+    engines: {node: '>=6.0.0'}
+    dev: false
 
   /nopt@5.0.0:
     resolution: {integrity: sha512-Tbj67rffqceeLpcRXrT7vKAN8CwfPeIBgM7E6iBkmKLV7bEMwpGgYLGv0jACUsECaa/vuxP0IjEont6umdMgtQ==}

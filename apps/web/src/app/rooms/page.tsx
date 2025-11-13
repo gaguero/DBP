@@ -8,6 +8,7 @@ import { stockPhotos } from "@/lib/stock-photos";
 import { SwimmingCarousel } from "@/components/rooms/swimming-carousel";
 import { GardenCarousel } from "@/components/rooms/garden-carousel";
 import { SalonAzulCarousel } from "@/components/rooms/salon-azul-carousel";
+import { FeedbackRoot } from "@/components/feedback/feedback-root";
 
 export const metadata: Metadata = {
   title: "Accommodations | Dolphin Blue Paradise, Bocas del Toro",
@@ -17,7 +18,8 @@ export const metadata: Metadata = {
 
 export default function RoomsPage() {
   return (
-    <div className="space-y-0 pb-0 pt-0">
+    <FeedbackRoot pageId="rooms">
+      <div className="space-y-0 pb-0 pt-0">
       {/* Title Section */}
       <section className="section page-title-section bg-white">
         <div className="container max-w-4xl">
@@ -578,5 +580,6 @@ export default function RoomsPage() {
         </div>
       </section>
     </div>
+    </FeedbackRoot>
   );
 }

@@ -11,6 +11,13 @@ const envSchema = z.object({
   NEXTAUTH_SECRET: z.string().min(1).optional(),
   ADMIN_EMAIL: z.string().email().optional(),
   ADMIN_PASSWORD: z.string().min(8).optional(),
+  COMMENTS_FEATURE_ENABLED: z.enum(["true", "false"]).optional(),
+  COMMENTS_NOTIFY_TO: z.string().min(1).optional(),
+  SMTP_HOST: z.string().min(1).optional(),
+  SMTP_PORT: z.string().min(1).optional(),
+  SMTP_SECURITY: z.string().min(1).optional(),
+  SMTP_USER: z.string().email().optional(),
+  SMTP_PASSWORD: z.string().min(1).optional(),
 });
 
 type Env = z.infer<typeof envSchema>;
@@ -26,6 +33,13 @@ const parsed = envSchema.safeParse({
   NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
   ADMIN_EMAIL: process.env.ADMIN_EMAIL,
   ADMIN_PASSWORD: process.env.ADMIN_PASSWORD,
+  COMMENTS_FEATURE_ENABLED: process.env.COMMENTS_FEATURE_ENABLED,
+  COMMENTS_NOTIFY_TO: process.env.COMMENTS_NOTIFY_TO,
+  SMTP_HOST: process.env.SMTP_HOST,
+  SMTP_PORT: process.env.SMTP_PORT,
+  SMTP_SECURITY: process.env.SMTP_SECURITY,
+  SMTP_USER: process.env.SMTP_USER,
+  SMTP_PASSWORD: process.env.SMTP_PASSWORD,
 });
 
 if (!parsed.success) {

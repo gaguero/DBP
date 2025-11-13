@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Card } from "@/components/card";
 import { PageNotesEditor } from "@/components/page-notes-editor";
+import { FeedbackRoot } from "@/components/feedback/feedback-root";
 
 export const metadata: Metadata = {
   title: "Stories & Updates",
@@ -28,7 +29,8 @@ export default async function StoriesPage() {
   const description = "Peek behind the scenes of resort life, sustainability milestones, and guest adventures.";
 
   return (
-    <div className="space-y-0 pb-0 pt-0">
+    <FeedbackRoot pageId="stories">
+      <div className="space-y-0 pb-0 pt-0">
       {/* Title Section */}
       <section className="section page-title-section bg-white">
         <div className="container max-w-4xl">
@@ -102,6 +104,7 @@ export default async function StoriesPage() {
       </section>
     </div>
     </div>
+    </FeedbackRoot>
   );
 }
 

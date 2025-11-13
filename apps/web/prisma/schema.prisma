@@ -56,3 +56,39 @@ model Session {
   @@index([userId])
 }
 
+model PageComment {
+  id              String                 @id @default(cuid())
+  pageId          String
+  elementId       String
+  elementLabel    String?
+  firstName       String
+  lastName        String
+  body            String
+  linkUrl         String?
+  status          String                 @default("pending")
+  createdByUserId String?
+  updatedByUserId String?
+  createdAt       DateTime               @default(now())
+  updatedAt       DateTime               @updatedAt
+  revisions       PageCommentRevision[]
+
+  @@index([pageId])
+  @@index([pageId, elementId])
+  @@index([status])
+}
+
+model PageCommentRevision {
+  id                String   @id @default(cuid())
+  commentId         String
+  previousBody      String
+  previousLinkUrl   String?
+  previousStatus    String?
+  editedByUserId    String?
+  editedByName      String?
+  editedAt          DateTime @default(now())
+  comment           PageComment @relation(fields: [commentId], references: [id], onDelete: Cascade)
+
+  @@index([commentId])
+  @@index([editedAt])
+}
+

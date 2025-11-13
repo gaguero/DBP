@@ -1,36 +1,103 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Dolphin Blue Paradise – Web App
 
-## Getting Started
+Next.js 15 (App Router) project that powers the public website and internal admin tools for Dolphin Blue Paradise.  
+Package manager: **pnpm** (workspace root).
 
-First, run the development server:
+---
+
+## Requisitos
+
+- Node.js 20+
+- pnpm 9+
+- PostgreSQL (Railway en producción)
+
+Variables obligatorias (ver `.env.example` en la raíz del repositorio):
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+DATABASE_URL=postgresql://...
+NEXTAUTH_URL=https://admin.dolphinblueparadise.com
+NEXTAUTH_SECRET=...
+ADMIN_EMAIL=...
+ADMIN_PASSWORD=...
+ESPOCRM_URL=https://crm.dolphinblueparadise.com/api/v1
+ESPOCRM_API_KEY=...
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Comentarios de Stakeholders (Dev Feedback)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Nueva funcionalidad para captar feedback visual sobre el sitio:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Variable | Descripción |
+|----------|-------------|
+| `COMMENTS_FEATURE_ENABLED` | `true` para mostrar la interfaz de comentarios (ocúltala en producción final). |
+| `COMMENTS_NOTIFY_TO` | Lista separada por comas de correos que recibirán notificaciones. |
+| `SMTP_HOST` / `SMTP_PORT` / `SMTP_SECURITY` / `SMTP_USER` / `SMTP_PASSWORD` | Credenciales SMTP para enviar alertas. |
 
-## Learn More
+Endpoints generados:
+- `GET /api/comments/[pageId]`
+- `POST /api/comments/[pageId]`
+- `PATCH /api/comments/[pageId]/[commentId]`
 
-To learn more about Next.js, take a look at the following resources:
+Cada comentario guarda nombre, apellido, estado (`pending`, `in_progress`, `resolved`), enlace opcional y mantiene historial de ediciones.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Modo de uso en el UI**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Activa el feature flag (`COMMENTS_FEATURE_ENABLED=true`).
+2. En la parte inferior derecha verás el botón “Modo comentarios”.
+3. Al activar el modo, cada sección envolta con `FeedbackSection` muestra “Add comment”.
+4. Al guardar o editar un comentario se envía un correo a los destinatarios configurados.
+5. `/notes` incluye un dashboard global con filtros por página/estado.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Scripts principales
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+# Desarrollo
+pnpm dev
+
+# Build de producción
+pnpm build && pnpm start
+
+# Linter
+pnpm lint
+
+# Prisma
+pnpm db:generate
+pnpm db:migrate
+pnpm db:push
+```
+
+Para una migración nueva:
+
+```bash
+cd apps/web
+pnpm prisma migrate dev --name your_migration_name
+```
+
+> Nota: en Railway utiliza `pnpm prisma migrate deploy`.
+
+---
+
+## Estructura relevante
+
+- `apps/web/src/components/feedback/*` – componentes del sistema de comentarios.
+- `apps/web/src/app/*` – páginas públicas (App Router).
+- `apps/web/src/app/api/comments/*` – API para comentarios.
+- `apps/web/prisma/schema.prisma` – modelos `PageComment` y `PageCommentRevision`.
+
+---
+
+## Checklist antes de desplegar
+
+1. Ejecutar `pnpm lint` y `pnpm build`.
+2. Confirmar que la migración de Prisma esté aplicada en Railway.
+3. Verificar variables (`COMMENTS_FEATURE_ENABLED`, SMTP) en Railway.
+4. Revisar `/notes` para ver el dashboard global de feedback.
+
+---
+
+## Soporte
+
+- CRM / Integraciones: ver `apps/workflows`, `apps/espocrm`.
+- Docs de contexto adicional en `docs/` y `memory/`.
