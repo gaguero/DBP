@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Card } from "@/components/card";
-import { PageHero } from "@/components/page-hero";
 import { BlogPostRenderer } from "@/components/blog-post-renderer";
 
 interface StoryParams {
@@ -52,13 +51,33 @@ export default async function StoryDetailPage({ params }: StoryParams) {
   }
 
   return (
+    <div className="space-y-0 pb-0 pt-0">
+      {/* Title Section */}
+      <section className="section page-title-section bg-white">
+        <div className="container max-w-4xl">
+          <h1 className="font-sans text-xl md:text-2xl text-black mb-4 text-center uppercase" style={{ fontWeight: 100 }}>
+            {post.title.toUpperCase()}
+          </h1>
+          <div className="flex items-center justify-center gap-3">
+            <div className="h-px w-8 bg-black"></div>
+            <span className="italic lowercase text-sm md:text-base font-serif text-black">{post.category || "Story"}</span>
+            <div className="h-px w-8 bg-black"></div>
+          </div>
+        </div>
+      </section>
+
+      {/* Hero Image */}
+      <section className="relative w-full h-[50vh] min-h-[400px] max-h-[600px]">
+        <Image
+          src={post.image || post.featuredImage || "/images/rooms-view.jpg"}
+          alt={post.title}
+          fill
+          className="object-cover"
+          priority
+        />
+      </section>
+
     <div className="space-y-24 pb-24">
-      <PageHero
-        title={post.title}
-        kicker={post.category}
-        description={post.excerpt}
-        image={post.image || post.featuredImage || "/images/rooms-view.jpg"}
-      />
 
       <section className="section">
         <div className="container grid gap-12 lg:grid-cols-[1.2fr_0.8fr]">
@@ -107,6 +126,7 @@ export default async function StoryDetailPage({ params }: StoryParams) {
           </aside>
         </div>
       </section>
+    </div>
     </div>
   );
 }

@@ -7,26 +7,24 @@ import { usePathname } from "next/navigation";
 
 const navLinks = [
   { href: "/", label: "Home" },
+  { href: "/about", label: "Our Story" },
   { href: "/rooms", label: "Rooms" },
   { href: "/dining", label: "Dining" },
   { href: "/experiences", label: "Experiences" },
   { href: "/sustainability", label: "Impact" },
-  { href: "/plan-your-journey", label: "Plan" },
-  { href: "/stories", label: "Stories" },
+  { href: "/contact", label: "Contact" },
 ];
 
 function toSpanishPath(pathname: string | null) {
   if (!pathname) return "/es/hogar";
   const mappings: Record<string, string> = {
     "/": "/es/hogar",
+    "/about": "/es/historia",
     "/rooms": "/es/habitaciones",
     "/dining": "/es/restaurante",
     "/experiences": "/es/experiencias",
     "/sustainability": "/es/impacto",
-    "/plan-your-journey": "/es/planifica-tu-viaje",
-    "/stories": "/es/historias",
     "/contact": "/es/contacto",
-    "/gallery": "/es/galeria",
   };
   for (const [key, value] of Object.entries(mappings)) {
     if (pathname === key) return value;
