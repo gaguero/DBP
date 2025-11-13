@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Button } from "@/components/button";
 import { Card } from "@/components/card";
+import { PageNotesEditor } from "@/components/page-notes-editor";
 
 export const metadata: Metadata = {
   title: "Farm-to-Table Dining Over the Water | Dolphin Blue Paradise",
@@ -26,7 +27,7 @@ export default function DiningPage() {
   return (
     <div className="space-y-0 pb-0 pt-0">
       {/* Title Section */}
-      <section className="section !py-6 bg-white">
+      <section className="section page-title-section bg-white">
         <div className="container max-w-4xl">
           <h1 className="font-sans text-xl md:text-2xl text-black mb-4 text-center uppercase" style={{ fontWeight: 100 }}>
             FARM-TO-TABLE DINING
@@ -281,6 +282,12 @@ export default function DiningPage() {
               Remember: 48-hour advance notice required for lunch and dinner reservations
             </p>
           </div>
+        </div>
+      </section>
+
+      <section className="section bg-white">
+        <div className="container max-w-4xl">
+          <PageNotesEditor pageId="dining" />
         </div>
       </section>
     </div>

@@ -5,6 +5,8 @@ import { activities } from "@/content/data";
 import { ExperiencesGridLayout } from "@/components/experiences/experiences-grid-layout";
 import { ExperiencesSplitLayout } from "@/components/experiences/experiences-split-layout";
 import { ExperiencesMasonryLayout } from "@/components/experiences/experiences-masonry-layout";
+import { PageNotesEditor } from "@/components/page-notes-editor";
+import { stockPhotos } from "@/lib/stock-photos";
 
 export const metadata: Metadata = {
   title: "Dolphin Bay Experiences",
@@ -27,7 +29,7 @@ export default function ExperiencesPage() {
   return (
     <div className="space-y-0 pb-0 pt-0">
       {/* Title Section */}
-      <section className="section !py-6 bg-white">
+      <section className="section page-title-section bg-white">
         <div className="container max-w-4xl">
           <h1 className="font-sans text-lg md:text-xl lg:text-2xl text-black mb-4 text-center uppercase whitespace-nowrap" style={{ fontWeight: 100 }}>
             DISCOVER OUR CURATED ECO-ADVENTURES
@@ -43,7 +45,7 @@ export default function ExperiencesPage() {
       {/* Hero Image */}
       <section className="relative w-full h-[50vh] min-h-[400px] max-h-[600px] bg-black">
         <Image
-          src="/images/experiences/dbp2.avif"
+          src={stockPhotos.dolphin}
           alt="Dolphin Bay Paradise Experiences"
           fill
           className="object-cover"
@@ -53,7 +55,7 @@ export default function ExperiencesPage() {
       </section>
 
       {/* Free Activities Section */}
-      <section className="section !py-6 bg-[var(--color-sand)]">
+      <section className="section bg-[var(--color-sand)]">
         <div className="container max-w-4xl">
           <p className="text-lg mb-4 text-center uppercase font-semibold text-[var(--color-navy)]">
             FREE ACTIVITIES INCLUDED IN YOUR STAY
@@ -125,6 +127,12 @@ export default function ExperiencesPage() {
                 WhatsApp Us
               </Button>
             </div>
+          </div>
+        </section>
+
+        <section className="section bg-white">
+          <div className="container max-w-4xl">
+            <PageNotesEditor pageId="experiences" />
           </div>
         </section>
       </div>

@@ -2,6 +2,8 @@ import Image from "next/image";
 import { BookingWidgetPlaceholder } from "@/components/booking-widget-placeholder";
 import { Button } from "@/components/button";
 import { NewsletterPopup } from "@/components/newsletter-popup";
+import { PageNotesEditor } from "@/components/page-notes-editor";
+import { stockPhotos } from "@/lib/stock-photos";
 
 export default function Home() {
   return (
@@ -11,7 +13,7 @@ export default function Home() {
         <div className="home-hero__container">
           <div className="home-hero__image-wrapper">
             <Image
-              src="/images/Hero_sea.png"
+              src={stockPhotos.heroOcean}
               alt="Serene sunset view of Dolphin Bay with calm waters and tropical landscape"
               fill
               priority
@@ -313,9 +315,17 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="home-container">
-        <BookingWidgetPlaceholder />
-      </div>
+      <section className="home-section home-booking-section">
+        <div className="home-container">
+          <BookingWidgetPlaceholder />
+        </div>
+      </section>
+
+      <section className="home-section bg-white">
+        <div className="home-container max-w-4xl">
+          <PageNotesEditor pageId="home" />
+        </div>
+      </section>
       
       <script
         dangerouslySetInnerHTML={{

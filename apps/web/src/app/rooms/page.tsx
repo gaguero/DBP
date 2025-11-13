@@ -3,6 +3,8 @@ import Image from "next/image";
 import { Button } from "@/components/button";
 import { rooms } from "@/content/data";
 import { RoomImageCarousel } from "@/components/rooms/room-image-carousel";
+import { PageNotesEditor } from "@/components/page-notes-editor";
+import { stockPhotos } from "@/lib/stock-photos";
 
 export const metadata: Metadata = {
   title: "Accommodations | Dolphin Blue Paradise, Bocas del Toro",
@@ -14,7 +16,7 @@ export default function RoomsPage() {
   return (
     <div className="space-y-0 pb-0 pt-0">
       {/* Title Section */}
-      <section className="section !py-6 bg-white">
+      <section className="section page-title-section bg-white">
         <div className="container max-w-4xl">
           <h1 className="font-sans text-xl md:text-2xl text-black mb-4 text-center uppercase" style={{ fontWeight: 100 }}>
             CABANAS & ROOMS
@@ -28,22 +30,29 @@ export default function RoomsPage() {
       </section>
 
       {/* Hero Image */}
-      <section className="relative w-full h-[50vh] min-h-[400px] max-h-[600px]">
-        <Image
-          src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1920&q=80"
-          alt="Sea view cabanas and rooms"
-          fill
-          className="object-cover"
-          priority
-        />
+      <section className="relative w-full h-[50vh] min-h-[400px] max-h-[600px] bg-black">
       </section>
 
       {/* Intro Paragraph */}
-      <section className="section !py-12 bg-[var(--color-sand)]">
+      <section className="section bg-[var(--color-sand)]">
         <div className="container max-w-4xl">
           <div className="text-center">
             <p className="text-lg text-[var(--color-text-primary)] mb-0 leading-relaxed max-w-3xl mx-auto">
               All rooms include a private bathroom, free Wi-Fi, breakfast, sea view, electricity & ceiling fan, and a private terrace or balcony.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* What We Offer Section */}
+      <section className="section bg-white">
+        <div className="container max-w-4xl">
+          <h2 className="font-display text-2xl md:text-3xl mb-8 text-center uppercase font-light text-[var(--color-navy)]">
+            WHAT WE OFFER
+          </h2>
+          <div className="prose prose-lg max-w-none text-center">
+            <p className="text-base md:text-lg text-[var(--color-text-primary)] leading-relaxed mb-6">
+              Each room features a private balcony or patio to relax and take in views of the jungle or sea. We provide lounge chairs for sunbathing, a swim platform for swimming and snorkeling, and opportunities to observe starfish, sea urchins, and other marine life directly beneath the restaurant or swim platform.
             </p>
           </div>
         </div>
@@ -105,8 +114,56 @@ export default function RoomsPage() {
         );
       })}
 
+      {/* Swimming & Sunbathing Section */}
+      <section className="section bg-[var(--color-sand)]">
+        <div className="container max-w-4xl">
+          <h2 className="font-display text-2xl md:text-3xl mb-6 text-center uppercase font-light text-[var(--color-navy)]">
+            SWIMMING & SUNBATHING
+          </h2>
+          <div className="prose prose-lg max-w-none text-center">
+            <p className="text-base md:text-lg text-[var(--color-text-primary)] leading-relaxed">
+              Whether you prefer to relax on the swim platform, sunbathe on a sunbed, or unwind in a hammock, Dolphin Blue Paradise has it all!
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Tropical Garden Section */}
+      <section className="section bg-white">
+        <div className="container max-w-4xl">
+          <h2 className="font-display text-2xl md:text-3xl mb-6 text-center uppercase font-light text-[var(--color-navy)]">
+            TROPICAL GARDEN
+          </h2>
+          <div className="prose prose-lg max-w-none">
+            <p className="text-base md:text-lg text-[var(--color-text-primary)] leading-relaxed mb-4">
+              We invite all our guests to explore our beautiful tropical garden, lovingly maintained by our head gardener and nature expert, Roque, and his team. Our dinner and breakfast menus feature tropical fruits from our garden, including mango, banana, pineapple, lime, passion fruit, rambutan (lychee), starfruit, guava, mangosteen, water apple, custard fruit, soursop, mandarins, coconut, guava, plantains, and more.
+            </p>
+            <p className="text-base md:text-lg text-[var(--color-text-primary)] leading-relaxed mb-4">
+              In addition to fruits, our tropical garden boasts a variety of tropical flowers such as hibiscus, rare orchids, bird of paradise, lobster claws, frangipani, jasmine, and more.
+            </p>
+            <p className="text-base md:text-lg text-[var(--color-text-primary)] leading-relaxed">
+              As you stroll through the garden, you&apos;ll also notice we grow our own herbs and vegetables, including ginger, turmeric, lettuce, spinach, cilantro, lemongrass, tomatoes, peppers, and many others—all served farm-to-table in our restaurant.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Salon Azul Section */}
+      <section className="section bg-[var(--color-sand)]">
+        <div className="container max-w-4xl">
+          <h2 className="font-display text-2xl md:text-3xl mb-6 text-center uppercase font-light text-[var(--color-navy)]">
+            SALON AZUL
+          </h2>
+          <div className="prose prose-lg max-w-none text-center">
+            <p className="text-base md:text-lg text-[var(--color-text-primary)] leading-relaxed mb-4">
+              The newly renovated Salon Azul is a serene space where guests can relax, read, meditate, play board games, or practice yoga on a rainy day. The patio outside Salon Azul offers a small outdoor workout area equipped with weights, dumbbells, a fitness ball, and yoga mats for guests to enjoy.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Amenities Section */}
-      <section className="section !py-8 bg-[var(--color-cloud)]">
+      <section className="section bg-[var(--color-cloud)]">
         <div className="container">
           <h2 className="font-display text-2xl mb-8 text-center uppercase font-light">
             AMENITIES
@@ -309,7 +366,7 @@ export default function RoomsPage() {
 
 
       {/* Availability & Rates */}
-      <section className="section !py-8 bg-[var(--color-sand)]">
+      <section className="section bg-[var(--color-sand)]">
         <div className="container max-w-4xl">
           <h2 className="font-display text-4xl text-[var(--color-navy)] mb-8 text-center uppercase font-light">
                     AVAILABILITY & RATES
@@ -342,7 +399,7 @@ export default function RoomsPage() {
       </section>
 
       {/* Special Offers & Packages */}
-      <section className="section !py-8 bg-white">
+      <section className="section bg-white">
         <div className="container">
           <div className="text-center mb-12">
             <h2 className="font-display text-4xl text-[var(--color-navy)] mb-4 uppercase font-light">
@@ -357,7 +414,7 @@ export default function RoomsPage() {
             <div className="bg-white rounded overflow-hidden border border-black/10 hover:shadow-xl transition-shadow">
               <div className="relative h-48 overflow-hidden">
                 <Image
-                  src="/images/rooms-view.jpg"
+                  src={stockPhotos.roomView}
                   alt="Romantic Escape Package"
                   fill
                   className="object-cover"
@@ -399,7 +456,7 @@ export default function RoomsPage() {
             <div className="bg-white rounded overflow-hidden border border-black/10 hover:shadow-xl transition-shadow">
               <div className="relative h-48 overflow-hidden">
                 <Image
-                  src="/images/hero-bay.jpg"
+                  src={stockPhotos.heroBay}
                   alt="Adventure Package"
                   fill
                   className="object-cover"
@@ -441,7 +498,7 @@ export default function RoomsPage() {
             <div className="bg-white rounded overflow-hidden border border-black/10 hover:shadow-xl transition-shadow">
               <div className="relative h-48 overflow-hidden">
                 <Image
-                  src="/images/dining-overwater.jpg"
+                  src={stockPhotos.overwater}
                   alt="Private Island Buyout"
                   fill
                   className="object-cover"
@@ -483,7 +540,7 @@ export default function RoomsPage() {
       </section>
 
       {/* Final CTA Banner */}
-      <section className="section !py-12 bg-gradient-to-r from-[var(--color-ocean)] to-[var(--color-forest)] text-white">
+      <section className="section bg-gradient-to-r from-[var(--color-ocean)] to-[var(--color-forest)] text-white">
         <div className="container text-center">
           <h2 className="font-display text-4xl md:text-5xl mb-6 uppercase font-light">
             FIND YOUR PLACE BETWEEN THE JUNGLE AND THE SEA
@@ -494,6 +551,12 @@ export default function RoomsPage() {
           <Button href="/contact" variant="secondary" className="bg-white text-[var(--color-ocean)] border-white hover:bg-white/90">
             Book Your Eco-Luxury Stay
           </Button>
+        </div>
+      </section>
+
+      <section className="section bg-white">
+        <div className="container max-w-4xl">
+          <PageNotesEditor pageId="rooms" />
         </div>
       </section>
     </div>
