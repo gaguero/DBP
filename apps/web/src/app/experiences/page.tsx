@@ -28,9 +28,8 @@ export default function ExperiencesPage() {
     .filter((activity) => !EXCLUDED_SLUGS.includes(activity.slug))
     .sort((a, b) => a.name.localeCompare(b.name));
 
-  return (
-    <FeedbackRoot pageId="experiences">
-      <div className="space-y-0 pb-0 pt-0">
+  const pageContent = (
+    <div className="space-y-0 pb-0 pt-0">
       {/* Title Section */}
       <section className="section page-title-section bg-white">
         <div className="container max-w-4xl">
@@ -66,31 +65,31 @@ export default function ExperiencesPage() {
               FREE ACTIVITIES INCLUDED IN YOUR STAY
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="text-center">
-              <p className="text-sm mb-0.5 uppercase font-light text-[var(--color-navy)]">
-                Snorkeling
-              </p>
-              <p className="text-sm text-[var(--color-text-muted)]">
-                Free from swim platform
-              </p>
+              <div className="text-center">
+                <p className="text-sm mb-0.5 uppercase font-light text-[var(--color-navy)]">
+                  Snorkeling
+                </p>
+                <p className="text-sm text-[var(--color-text-muted)]">
+                  Free from swim platform
+                </p>
+              </div>
+              <div className="text-center">
+                <p className="text-sm mb-0.5 uppercase font-light text-[var(--color-navy)]">
+                  Kayaking
+                </p>
+                <p className="text-sm text-[var(--color-text-muted)]">
+                  Explore at your own pace
+                </p>
+              </div>
+              <div className="text-center">
+                <p className="text-sm mb-0.5 uppercase font-light text-[var(--color-navy)]">
+                  Stand Up Paddle
+                </p>
+                <p className="text-sm text-[var(--color-text-muted)]">
+                  Paddle through calm waters
+                </p>
+              </div>
             </div>
-            <div className="text-center">
-              <p className="text-sm mb-0.5 uppercase font-light text-[var(--color-navy)]">
-                Kayaking
-              </p>
-              <p className="text-sm text-[var(--color-text-muted)]">
-                Explore at your own pace
-              </p>
-            </div>
-            <div className="text-center">
-              <p className="text-sm mb-0.5 uppercase font-light text-[var(--color-navy)]">
-                Stand Up Paddle
-              </p>
-              <p className="text-sm text-[var(--color-text-muted)]">
-                Paddle through calm waters
-              </p>
-            </div>
-          </div>
         </div>
       </section>
       </FeedbackSection>
@@ -118,24 +117,24 @@ export default function ExperiencesPage() {
               <h2 className="font-display text-3xl md:text-4xl text-[var(--color-navy)] mb-4 md:mb-6 uppercase font-light">
                 REQUEST CUSTOM ITINERARY
               </h2>
-            <p className="text-base md:text-lg text-[var(--color-text-primary)] mb-6 md:mb-8">
-              Share your travel dates, group size, and interests so our concierge can tailor experiences for your stay. 
-              We arrange transportation, bilingual guides, refreshments, and any add-ons.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Button href="/contact" variant="primary" className="text-lg px-8 py-4">
-                Contact Concierge
-              </Button>
-              <Button
-                href="https://wa.me/50763460605"
-                variant="secondary"
-                className="text-lg px-8 py-4"
-              >
-                WhatsApp Us
-              </Button>
+              <p className="text-base md:text-lg text-[var(--color-text-primary)] mb-6 md:mb-8">
+                Share your travel dates, group size, and interests so our concierge can tailor experiences for your stay. 
+                We arrange transportation, bilingual guides, refreshments, and any add-ons.
+              </p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <Button href="/contact" variant="primary" className="text-lg px-8 py-4">
+                  Contact Concierge
+                </Button>
+                <Button
+                  href="https://wa.me/50763460605"
+                  variant="secondary"
+                  className="text-lg px-8 py-4"
+                >
+                  WhatsApp Us
+                </Button>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
         </FeedbackSection>
 
         <section className="section bg-white">
@@ -145,6 +144,7 @@ export default function ExperiencesPage() {
         </section>
       </div>
     </div>
-    </FeedbackRoot>
   );
+
+  return <FeedbackRoot pageId="experiences">{pageContent}</FeedbackRoot>;
 }

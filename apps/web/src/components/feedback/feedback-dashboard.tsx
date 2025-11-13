@@ -2,7 +2,7 @@
 
 import { useMemo, useState, useEffect } from "react";
 
-import { PageComment } from "@/components/feedback/types";
+import type { PageComment } from "@/components/feedback/types";
 
 const PAGES = ["home", "dining", "rooms", "experiences", "sustainability", "stories"];
 
