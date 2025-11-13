@@ -7,6 +7,12 @@ Esta guía te ayudará a probar los endpoints de workflows usando `curl` o herra
 1. **API corriendo**: Asegúrate de que el servicio API esté desplegado y accesible
 2. **Base de datos**: Las migraciones deben estar ejecutadas
 3. **Usuario creado**: Necesitas tener un usuario registrado
+4. **Acceso a dependencias privadas**: Para compilar o ejecutar los servicios (`api`, `workers`, `ui`) fuera del monorepo, exporta un token de acceso a GitHub Packages:
+   ```bash
+   export NODE_AUTH_TOKEN="ghp_..."
+   npm config set @dbp:registry https://npm.pkg.github.com
+   ```
+   También puedes ejecutar el workflow `Publish Workflows Shared Package` en GitHub Actions para generar una nueva versión del paquete `@dbp/workflows-shared` antes de los despliegues.
 
 ## Paso 1: Autenticarse
 

@@ -8,7 +8,7 @@ function App(): JSX.Element {
         <p className="text-gray-600 mb-8">
           Aplicación externa para gestión de workflows
         </p>
-
+        
         <div className="bg-white rounded-lg shadow p-6">
           <h2 className="text-xl font-semibold mb-4">Estado</h2>
           <p className="text-gray-700">

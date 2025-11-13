@@ -159,7 +159,7 @@ importers:
   apps/workflows/api:
     dependencies:
       '@dbp/workflows-shared':
-        specifier: workspace:*
+        specifier: ^0.1.0
         version: link:../shared
       axios:
         specifier: ^1.6.2
@@ -251,7 +251,7 @@ importers:
   apps/workflows/ui:
     dependencies:
       '@dbp/workflows-shared':
-        specifier: workspace:*
+        specifier: ^0.1.0
         version: link:../shared
       '@tanstack/react-query':
         specifier: ^5.14.2
@@ -321,7 +321,7 @@ importers:
   apps/workflows/workers:
     dependencies:
       '@dbp/workflows-shared':
-        specifier: workspace:*
+        specifier: ^0.1.0
         version: link:../shared
       axios:
         specifier: ^1.6.2

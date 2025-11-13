@@ -22,6 +22,7 @@
 - ✅ Dashboard de ejecuciones en UI con filtros, paginación y detalle de logs
 - ✅ Worker extendido con nodos `delay`, `split`, `code` (placeholder seguro) y política de reintentos con reprogramación diferida
 - ✅ Scripts y documentación de pruebas (`apps/workflows/TESTING.md`, `test-endpoints.sh`, `test-endpoints.ps1`)
+- ✅ Preparación del paquete `@dbp/workflows-shared` para publicación externa (GitHub Packages + flujo CI)
 
 ## 🔄 En Progreso (Fase 1)
 

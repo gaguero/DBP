@@ -1,18 +1,26 @@
 FROM node:18-alpine AS builder
 
+ARG NODE_AUTH_TOKEN
+
 WORKDIR /app
 
-# Copy workspace manifests and source
-COPY pnpm-workspace.yaml package.json pnpm-lock.yaml* ./
-COPY . .
+# Copiamos manifiestos
+COPY package.json pnpm-lock.yaml* ./
+RUN test -f pnpm-lock.yaml || touch pnpm-lock.yaml
 
-# Install pnpm and dependencies
+# Configuramos pnpm y registro
 RUN npm install -g pnpm@8.15.5
+RUN npm config set @dbp:registry https://npm.pkg.github.com
+RUN if [ -n "$NODE_AUTH_TOKEN" ]; then npm config set //npm.pkg.github.com/:_authToken "$NODE_AUTH_TOKEN"; fi
+
+# Instalamos dependencias
 RUN pnpm install
 
-# Build shared utilities and UI
-RUN pnpm --filter @dbp/workflows-shared build
-RUN pnpm --filter @dbp/workflows-ui build
+# Copiamos el resto del código
+COPY . .
+
+# Build
+RUN pnpm build
 
 # Verify build output
 RUN ls -la /app/dist || (echo "ERROR: dist directory not found" && exit 1)
@@ -23,7 +31,7 @@ RUN echo "Build verification: $(find /app/dist -type f | wc -l) files generated"
 FROM nginx:alpine
 
 # Copy built files
-COPY --from=builder /app/apps/workflows/ui/dist /usr/share/nginx/html
+COPY --from=builder /app/dist /usr/share/nginx/html
 
 # Copy nginx config
 COPY nginx.conf /etc/nginx/conf.d/default.conf

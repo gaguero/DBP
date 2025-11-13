@@ -1,30 +1,36 @@
 FROM node:18-alpine AS builder
 
+ARG NODE_AUTH_TOKEN
+
 WORKDIR /app
 
-# Copy workspace manifests and source
-COPY pnpm-workspace.yaml package.json pnpm-lock.yaml* ./
-COPY . .
+# Copiamos manifiestos
+COPY package.json pnpm-lock.yaml* ./
+RUN test -f pnpm-lock.yaml || touch pnpm-lock.yaml
 
-# Install pnpm and dependencies
+# Configuramos pnpm y registro
 RUN npm install -g pnpm@8.15.5
+RUN npm config set @dbp:registry https://npm.pkg.github.com
+RUN if [ -n "$NODE_AUTH_TOKEN" ]; then npm config set //npm.pkg.github.com/:_authToken "$NODE_AUTH_TOKEN"; fi
+
+# Instalamos dependencias
 RUN pnpm install
 
-# Build shared utilities, API types, and workers
-RUN pnpm --filter @dbp/workflows-shared build
-RUN pnpm --filter @dbp/workflows-api build
-RUN pnpm --filter @dbp/workflows-workers build
+# Copiamos código fuente
+COPY . .
 
-# Production image
+# Compilamos
+RUN pnpm build
+RUN pnpm prune --prod
+
+# Imagen final
 FROM node:18-alpine
 
-WORKDIR /app/apps/workflows/workers
+WORKDIR /app
 
-# Copy built application, shared package, and node modules
-COPY --from=builder /app/apps/workflows/workers ./ 
-COPY --from=builder /app/apps/workflows/shared /app/apps/workflows/shared
-COPY --from=builder /app/apps/workflows/api /app/apps/workflows/api
-COPY --from=builder /app/node_modules /app/node_modules
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/dist ./dist
+COPY package.json ./
 
 CMD ["node", "dist/index.js"]
 

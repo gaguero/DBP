@@ -5,7 +5,7 @@
 -### External Workflows App (2025-11-12)
 - **Backend API:** Node.js 20 + Express, TypeScript, JWT (`jsonwebtoken`), bcrypt, Zod, Axios para EspoCRM.
 - **Workers:** BullMQ + ioredis, colas `workflow-execute`, `workflow-schedule`, `workflow-webhooks`.
-- **Shared:** Paquete `@dbp/workflows-shared` con tipos, colas BullMQ, cliente EspoCRM, cifrado AES-256-GCM y helpers de ejecución.
+- **Shared:** Paquete `@dbp/workflows-shared` (publicado en GitHub Packages) con tipos, colas BullMQ, cliente EspoCRM, cifrado AES-256-GCM y helpers de ejecución.
 - **Frontend:** React 18, Vite, Tailwind CSS, editor React Flow, React Query, Zustand, React Router.
 - **Infraestructura:** Railway (servicios separados por subcarpeta), Dockerfiles ajustados para build en contexto local, pnpm como package manager.
 - **Base de datos:** PostgreSQL (migración `001_initial_schema.sql`) y cifrado AES-256-GCM para API keys.
@@ -13,7 +13,7 @@
 - **Estado:** CRUD + ejecución manual + logs disponibles; UI React Flow funcional (crear/editar/guardar workflows) y dashboard de ejecuciones (filtros + logs). Pendiente webhooks y pruebas E2E en Railway.
 - **Backend API:** Node.js 20 + Express, TypeScript, JWT (`jsonwebtoken`), bcrypt, Zod, Axios para EspoCRM.
 - **Workers:** BullMQ + ioredis, colas `workflow-execute`, `workflow-schedule`, `workflow-webhooks`.
-- **Shared:** Paquete `@dbp/workflows-shared` con tipos, colas BullMQ, cliente EspoCRM, cifrado AES-256-GCM y esquemas de validación.
+- **Shared:** Paquete `@dbp/workflows-shared` (GitHub Packages) con tipos, colas BullMQ, cliente EspoCRM, cifrado AES-256-GCM y esquemas de validación.
 - **Frontend:** React 18, Vite, Tailwind CSS, futuro editor con React Flow.
 - **Infraestructura:** Railway (servicios separados por subcarpeta), Dockerfiles ajustados para build en contexto local, pnpm como package manager.
 - **Base de datos:** PostgreSQL (migración `001_initial_schema.sql`) y cifrado AES-256-GCM para API keys.

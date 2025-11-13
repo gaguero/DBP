@@ -1,0 +1,51 @@
+name: Publish Workflows Shared Package
+
+on:
+  push:
+    branches:
+      - gerson
+    paths:
+      - "apps/workflows/shared/**"
+      - ".github/workflows/publish-workflows-shared.yml"
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Versión semántica (ej. 0.1.1)"
+        required: true
+
+jobs:
+  publish:
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          registry-url: "https://npm.pkg.github.com"
+          scope: "@dbp"
+
+      - name: Install dependencies
+        run: pnpm install
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build shared package
+        run: pnpm --filter @dbp/workflows-shared build
+
+      - name: Set version (manual trigger only)
+        if: ${{ github.event_name == 'workflow_dispatch' }}
+        run: pnpm --filter @dbp/workflows-shared version ${{ github.event.inputs.version }}
+
+      - name: Publish shared package
+        run: pnpm publish --filter @dbp/workflows-shared --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
+
