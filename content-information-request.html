@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Information Request - Dolphin Blue Paradise</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #2c3e50;
+            background: #f5f7fa;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #E8F4F8 0%, #D5E9F2 100%);
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-size: 42px;
+            color: #1D3557;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            font-size: 18px;
+            color: #3D7A94;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .intro {
+            background: #FFF9E6;
+            border-left: 5px solid #F59E0B;
+            padding: 25px;
+            margin-bottom: 40px;
+            border-radius: 5px;
+        }
+        
+        .intro h2 {
+            color: #B45309;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+        
+        .intro p {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        h2 {
+            font-size: 32px;
+            color: #1D3557;
+            font-weight: 700;
+            margin-top: 50px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 4px solid #5A9FBD;
+        }
+        
+        h3 {
+            font-size: 24px;
+            color: #3D7A94;
+            font-weight: 600;
+            margin-top: 35px;
+            margin-bottom: 20px;
+        }
+        
+        h4 {
+            font-size: 20px;
+            color: #5A9FBD;
+            font-weight: 600;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        
+        .section {
+            background: #F9FAFB;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            border: 1px solid #E5E7EB;
+        }
+        
+        .section h3 {
+            margin-top: 0;
+            color: #1D3557;
+        }
+        
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+        
+        li {
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+        
+        .info-item {
+            background: #ffffff;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid #5A9FBD;
+            border-radius: 4px;
+        }
+        
+        .info-item strong {
+            color: #1D3557;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 17px;
+        }
+        
+        .info-item p {
+            color: #4B5563;
+            margin-bottom: 5px;
+        }
+        
+        .required {
+            color: #DC2626;
+            font-weight: 600;
+        }
+        
+        .optional {
+            color: #059669;
+            font-weight: 600;
+        }
+        
+        .note {
+            background: #EFF6FF;
+            border-left: 4px solid #3B82F6;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            font-style: italic;
+        }
+        
+        .checkbox-list {
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .checkbox-list li {
+            padding: 10px;
+            background: #ffffff;
+            margin-bottom: 8px;
+            border-radius: 4px;
+            border: 1px solid #E5E7EB;
+        }
+        
+        .checkbox-list li:before {
+            content: "☐ ";
+            color: #5A9FBD;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .priority-high {
+            background: #FEF2F2;
+            border-left-color: #DC2626;
+        }
+        
+        .priority-medium {
+            background: #FFFBEB;
+            border-left-color: #F59E0B;
+        }
+        
+        .priority-low {
+            background: #F0FDF4;
+            border-left-color: #10B981;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Content Information Request</h1>
+            <p>Complete Information Checklist for Dolphin Blue Paradise Website Development</p>
+            <p style="margin-top: 15px; font-size: 16px; color: #6B7280;">Please provide all requested information to ensure accurate and compelling website copy</p>
+        </div>
+        
+        <div class="intro">
+            <h2>📋 How to Use This Document</h2>
+            <p><strong>Purpose:</strong> This document lists all specific information needed from the hotel and owners to develop the complete website copy.</p>
+            <p><strong>Instructions:</strong> Please fill in all sections with as much detail as possible. The more specific information you provide, the better we can craft compelling, accurate content.</p>
+            <p><strong>Priority Levels:</strong> Items marked as <span class="required">REQUIRED</span> are essential for launch. <span class="optional">OPTIONAL</span> items enhance the site but can be added later.</p>
+        </div>
+
+        <!-- HOME PAGE -->
+        <h2>1. HOME PAGE</h2>
+        
+        <div class="section priority-high">
+            <h3>Hero Section</h3>
+            <div class="info-item">
+                <strong>Main Headline (H1) <span class="required">REQUIRED</span></strong>
+                <p>Current: "Luxury Eco-Resort Between the Jungle & the Sea — Bocas del Toro, Panama"</p>
+                <p>Do you want to modify this? If yes, provide your preferred headline:</p>
+                <textarea style="width: 100%; min-height: 60px; padding: 10px; border: 1px solid #E5E7EB; border-radius: 4px; font-family: inherit;" placeholder="Enter your preferred headline here..."></textarea>
+            </div>
+            
+            <div class="info-item">
+                <strong>Subheading <span class="required">REQUIRED</span></strong>
+                <p>Current: "A personalized, sustainable escape designed for your values."</p>
+                <p>Provide your preferred subheading or tagline:</p>
+                <textarea style="width: 100%; min-height: 60px; padding: 10px; border: 1px solid #E5E7EB; border-radius: 4px; font-family: inherit;" placeholder="Enter your subheading here..."></textarea>
+            </div>
+            
+            <div class="info-item">
+                <strong>Hero Images <span class="required">REQUIRED</span></strong>
+                <p>Please provide 3-5 high-resolution hero images (minimum 1920x1080px):</p>
+                <ul>
+                    <li>Primary hero image (best view of resort/cabanas)</li>
+                    <li>Jungle view</li>
+                    <li>Sea/ocean view</li>
+                    <li>Dolphin Bay view</li>
+                    <li>Sunset/sunrise view</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section priority-high">
+            <h3>About Preview Section</h3>
+            <div class="info-item">
+                <strong>Short Introduction Paragraph <span class="required">REQUIRED</span></strong>
+                <p>2-3 sentences introducing the founders' vision and what makes Dolphin Blue Paradise unique. Please provide:</p>
+                <textarea style="width: 100%; min-height: 100px; padding: 10px; border: 1px solid #E5E7EB; border-radius: 4px; font-family: inherit;" placeholder="Enter your introduction paragraph here..."></textarea>
+            </div>
+        </div>
+        
+        <div class="section priority-high">
+            <h3>Accommodations Preview</h3>
+            <div class="info-item">
+                <strong>Room Type Highlights <span class="required">REQUIRED</span></strong>
+                <p>For each of the 4 room types, provide:</p>
+                <ul>
+                    <li>Room name</li>
+                    <li>Starting rate (per night)</li>
+                    <li>3-4 key features (e.g., "Sea view balcony", "Plunge pool", "King bed")</li>
+                    <li>Best photo (1 per room type)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section priority-high">
+            <h3>Experiences Carousel</h3>
+            <div class="info-item">
+                <strong>Featured Experiences <span class="required">REQUIRED</span></strong>
+                <p>List 5-7 key experiences to feature in the homepage carousel. For each, provide:</p>
+                <ul>
+                    <li>Experience name</li>
+                    <li>1-sentence description</li>
+                    <li>Best photo (1 per experience)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section priority-high">
+            <h3>Blå Bar & Restaurant Feature</h3>
+            <div class="info-item">
+                <strong>Restaurant Name <span class="required">REQUIRED</span></strong>
+                <p>Confirm: Is it "Blå Bar & Restaurant" or a different name?</p>
+                <input type="text" style="width: 100%; padding: 10px; border: 1px solid #E5E7EB; border-radius: 4px; font-family: inherit;" placeholder="Enter restaurant name...">
+            </div>
+            
+            <div class="info-item">
+                <strong>Chef Information <span class="required">REQUIRED</span></strong>
+                <p>Chef's full name:</p>
+                <input type="text" style="width: 100%; padding: 10px; border: 1px solid #E5E7EB; border-radius: 4px; font-family: inherit;" placeholder="Enter chef's name...">
+                <p style="margin-top: 10px;">Chef's quote for the featured section:</p>
+                <textarea style="width: 100%; min-height: 80px; padding: 10px; border: 1px solid #E5E7EB; border-radius: 4px; font-family: inherit;" placeholder="Enter chef's quote..."></textarea>
+            </div>
+            
+            <div class="info-item">
+                <strong>Dining Statistics <span class="required">REQUIRED</span></strong>
+                <p>Please provide accurate percentages/numbers:</p>
+                <ul>
+                    <li>Percentage of locally sourced ingredients: _____%</li>
+                    <li>Number of organic farm partners: _____</li>
+                    <li>Number of meals served daily: _____</li>
+                </ul>
+            </div>
+            
+            <div class="info-item">
+                <strong>Dining Photos <span class="required">REQUIRED</span></strong>
+                <p>Please provide 4 high-quality photos:</p>
+                <ul>
+                    <li>Fresh seafood display from local fishermen</li>
+                    <li>Chef preparing dishes in open kitchen</li>
+                    <li>Signature cocktails at sunset bar</li>
+                    <li>Candlelit dinner on the dock</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section priority-high">
+            <h3>Sustainability Highlight</h3>
+            <div class="info-item">
+                <strong>Sustainability Statistics <span class="required">REQUIRED</span></strong>
+                <p>Please provide exact numbers for the stats block:</p>
+                <ul>
+                    <li>Solar power percentage/capacity: _____</li>
+                    <li>Local produce percentage: _____%</li>
+                    <li>Indigenous partnership start year: _____</li>
+                    <li>Any other key sustainability metrics: _____</li>
+                </ul>
+            </div>
+            
+            <div class="info-item">
+                <strong>Sustainability Brief Paragraph <span class="required">REQUIRED</span></strong>
+                <p>2-3 sentences about your environmental & community impact:</p>
+                <textarea style="width: 100%; min-height: 100px; padding: 10px; border: 1px solid #E5E7EB; border-radius: 4px; font-family: inherit;" placeholder="Enter sustainability paragraph here..."></textarea>
+            </div>
+        </div>
+        
+        <div class="section priority-medium">
+            <h3>Guest Testimonials</h3>
+            <div class="info-item">
+                <strong>Testimonials <span class="optional">OPTIONAL (but recommended)</span></strong>
+                <p>Please provide 5-8 testimonials with:</p>
+                <ul>
+                    <li>Guest name (first name + last initial, e.g., "Sarah M.")</li>
+                    <li>Guest photo (if available)</li>
+                    <li>Full testimonial text</li>
+                    <li>Rating (out of 5 stars)</li>
+                    <li>Source (Google, Booking.com, TripAdvisor, etc.)</li>
+                    <li>Date of stay (month/year)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- OUR STORY PAGE -->
+        <h2>2. OUR STORY PAGE</h2>
+        
+        <div class="section priority-high">
+            <h3>Founders' Story</h3>
+            <div class="info-item">
+                <strong>Founder Names <span class="required">REQUIRED</span></strong>
+                <p>Full names of all founders/owners:</p>
+                <textarea style="width: 100%; min-height: 60px; padding: 10px; border: 1px solid #E5E7EB; border-radius: 4px; font-family: inherit;" placeholder="Enter founder names..."></textarea>
+            </div>
+            
+            <div class="info-item">
+                <strong>Founding Story <span class="required">REQUIRED</span></strong>
+                <p>Please provide a detailed story (300-500 words) covering:</p>
+                <ul>
+                    <li>What inspired you to create Dolphin Blue Paradise?</li>
+                    <li>When did you start/buy the property?</li>
+                    <li>What was your vision?</li>
+                    <li>What challenges did you overcome?</li>
+                    <li>What makes this place special to you?</li>
+                </ul>
+                <textarea style="width: 100%; min-height: 200px; padding: 10px; border: 1px solid #E5E7EB; border-radius: 4px; font-family: inherit;" placeholder="Enter your founding story here..."></textarea>
+            </div>
+            
+            <div class="info-item">
+                <strong>Sustainable Mission Statement <span class="required">REQUIRED</span></strong>
+                <p>Your mission statement regarding sustainability and eco-tourism (2-3 paragraphs):</p>
+                <textarea style="width: 100%; min-height: 150px; padding: 10px; border: 1px solid #E5E7EB; border-radius: 4px; font-family: inherit;" placeholder="Enter your mission statement here..."></textarea>
+            </div>
+            
+            <div class="info-item">
+                <strong>Founder Photos <span class="optional">OPTIONAL</span></strong>
+                <p>Professional photos of founders (if available):</p>
+                <ul>
+                    <li>Individual photos</li>
+                    <li>Group photo together</li>
+                    <li>Photos with the property/team</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section priority-high">
+            <h3>Our Team</h3>
+            <div class="info-item">
+                <strong>Team Member Information <span class="required">REQUIRED</span></strong>
+                <p>For each key team member, please provide:</p>
+                <ul>
+                    <li><strong>Managing Director:</strong>
+                        <ul>
+                            <li>Full name</li>
+                            <li>Photo</li>
+                            <li>Brief bio (2-3 sentences)</li>
+                            <li>Personal quote about the resort</li>
+                        </ul>
+                    </li>
+                    <li><strong>Head Chef:</strong>
+                        <ul>
+                            <li>Full name</li>
+                            <li>Photo</li>
+                            <li>Brief bio (culinary background, experience)</li>
+                            <li>Personal quote about the food/philosophy</li>
+                        </ul>
+                    </li>
+                    <li><strong>Activities Manager:</strong>
+                        <ul>
+                            <li>Full name</li>
+                            <li>Photo</li>
+                            <li>Brief bio</li>
+                            <li>Personal quote about experiences</li>
+                        </ul>
+                    </li>
+                    <li><strong>Sustainability Lead:</strong>
+                        <ul>
+                            <li>Full name</li>
+                            <li>Photo</li>
+                            <li>Brief bio</li>
+                            <li>Personal quote about sustainability</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Note:</strong> If you have additional key team members, please include their information as well.</p>
+            </div>
+        </div>
+        
+        <div class="section priority-medium">
+            <h3>Press & Recognition</h3>
+            <div class="info-item">
+                <strong>Awards & Recognition <span class="optional">OPTIONAL</span></strong>
+                <p>Please list all awards, certifications, and press mentions:</p>
+                <ul>
+                    <li>Award names and years received</li>
+                    <li>Certifications (eco-certifications, etc.)</li>
+                    <li>Press features (magazines, websites, blogs)</li>
+                    <li>Logo files for awards/certifications</li>
+                </ul>
+            </div>
+            
+            <div class="info-item">
+                <strong>Partnership Logos <span class="optional">OPTIONAL</span></strong>
+                <p>If you have partnerships with:</p>
+                <ul>
+                    <li>Virtuoso</li>
+                    <li>Condé Nast</li>
+                    <li>Booking.com Traveller Review Award</li>
+                    <li>Other travel organizations</li>
+                </ul>
+                <p>Please provide logo files and partnership details.</p>
+            </div>
+        </div>
+        
+        <div class="section priority-high">
+            <h3>Our Promise to You</h3>
+            <div class="info-item">
+                <strong>Three Pillars <span class="required">REQUIRED</span></strong>
+                <p>Please provide detailed descriptions for each pillar:</p>
+                <ul>
+                    <li><strong>1. Personalization:</strong> How do you personalize the guest experience?</li>
+                    <li><strong>2. Sustainability:</strong> How does sustainability enhance the guest experience?</li>
+                    <li><strong>3. Comfort:</strong> What makes your accommodations comfortable and luxurious?</li>
+                </ul>
+                <textarea style="width: 100%; min-height: 200px; padding: 10px; border: 1px solid #E5E7EB; border-radius: 4px; font-family: inherit;" placeholder="Enter descriptions for each pillar..."></textarea>
+            </div>
+        </div>
+        
+        <div class="section priority-medium">
+            <h3>Our Partners</h3>
+            <div class="info-item">
+                <strong>Partnership Information <span class="optional">OPTIONAL</span></strong>
+                <p>Please provide information about:</p>
+                <ul>
+                    <li>NGO partnerships (names, what you do together)</li>
+                    <li>Local farm partners (names, what they provide)</li>
+                    <li>Indigenous cooperatives (names, collaboration details)</li>
+                    <li>Other community partners</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ACCOMMODATIONS PAGE -->
+        <h2>3. ACCOMMODATIONS PAGE</h2>
+        
+        <div class="section priority-high">
+            <h3>Room Types</h3>
+            <div class="info-item">
+                <strong>Room Type 1: Premium Deluxe Sea View Cabana <span class="required">REQUIRED</span></strong>
+                <p>Please provide:</p>
+                <ul>
+                    <li>Detailed description (200-300 words)</li>
+                    <li>Room size (square meters/feet)</li>
+                    <li>Bed configuration (king, queen, etc.)</li>
+                    <li>Maximum occupancy</li>
+                    <li>Key features/amenities (list all)</li>
+                    <li>Starting rate (per night)</li>
+                    <li>8-12 high-quality photos</li>
+                    <li>360° tour link (if available)</li>
+                </ul>
+            </div>
+            
+            <div class="info-item">
+                <strong>Room Type 2: Sea View Cabana <span class="required">REQUIRED</span></strong>
+                <p>Please provide:</p>
+                <ul>
+                    <li>Detailed description (200-300 words)</li>
+                    <li>Room size (square meters/feet)</li>
+                    <li>Bed configuration</li>
+                    <li>Maximum occupancy</li>
+                    <li>Key features/amenities (list all)</li>
+                    <li>Starting rate (per night)</li>
+                    <li>8-12 high-quality photos</li>
+                    <li>360° tour link (if available)</li>
+                </ul>
+            </div>
+            
+            <div class="info-item">
+                <strong>Room Type 3: Dolphin View Room <span class="required">REQUIRED</span></strong>
+                <p>Please provide:</p>
+                <ul>
+                    <li>Detailed description (200-300 words)</li>
+                    <li>Room size (square meters/feet)</li>
+                    <li>Bed configuration</li>
+                    <li>Maximum occupancy</li>
+                    <li>Key features/amenities (list all)</li>
+                    <li>Starting rate (per night)</li>
+                    <li>8-12 high-quality photos</li>
+                    <li>360° tour link (if available)</li>
+                </ul>
+            </div>
+            
+            <div class="info-item">
+                <strong>Room Type 4: Family Jungle Room <span class="required">REQUIRED</span></strong>
+                <p>Please provide:</p>
+                <ul>
+                    <li>Detailed description (200-300 words)</li>
+                    <li>Room size (square meters/feet)</li>
+                    <li>Bed configuration</li>
+                    <li>Maximum occupancy</li>
+                    <li>Key features/amenities (list all)</li>
+                    <li>Starting rate (per night)</li>
+                    <li>8-12 high-quality photos</li>
+                    <li>360° tour link (if available)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section priority-high">
+            <h3>General Accommodation Information</h3>
+            <div class="info-item">
+                <strong>Intro Paragraph <span class="required">REQUIRED</span></strong>
+                <p>2-3 sentences about comfort, views, and sustainability in your accommodations:</p>
+                <textarea style="width: 100%; min-height: 100px; padding: 10px; border: 1px solid #E5E7EB; border-radius: 4px; font-family: inherit;" placeholder="Enter intro paragraph here..."></textarea>
+            </div>
+            
+            <div class="info-item">
+                <strong>Common Amenities <span class="required">REQUIRED</span></strong>
+                <p>List all amenities available in all rooms:</p>
+                <textarea style="width: 100%; min-height: 100px; padding: 10px; border: 1px solid #E5E7EB; border-radius: 4px; font-family: inherit;" placeholder="List all common amenities..."></textarea>
+            </div>
+        </div>
+        
+        <div class="section priority-medium">
+            <h3>Special Offers & Packages</h3>
+            <div class="info-item">
+                <strong>Package 1: Romantic Escape <span class="optional">OPTIONAL</span></strong>
+                <p>Please provide:</p>
+                <ul>
+                    <li>Package description</li>
+                    <li>What's included</li>
+                    <li>Duration (nights)</li>
+                    <li>Price</li>
+                    <li>Best seasons to book</li>
+                    <li>Photos</li>
+                </ul>
+            </div>
+            
+            <div class="info-item">
+                <strong>Package 2: Adventure Package <span class="optional">OPTIONAL</span></strong>
+                <p>Please provide:</p>
+                <ul>
+                    <li>Package description</li>
+                    <li>What's included</li>
+                    <li>Duration (nights)</li>
+                    <li>Price</li>
+                    <li>Best seasons to book</li>
+                    <li>Photos</li>
+                </ul>
+            </div>
+            
+            <div class="info-item">
+                <strong>Package 3: Private Island Buyout <span class="optional">OPTIONAL</span></strong>
+                <p>Please provide:</p>
+                <ul>
+                    <li>Package description</li>
+                    <li>What's included</li>
+                    <li>Minimum number of guests</li>
+                    <li>Price</li>
+                    <li>Best seasons to book</li>
+                    <li>Photos</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section priority-high">
+            <h3>Pricing & Availability</h3>
+            <div class="info-item">
+                <strong>Rate Information <span class="required">REQUIRED</span></strong>
+                <p>Please provide:</p>
+                <ul>
+                    <li>Base rates for each room type (per night)</li>
+                    <li>Seasonal rate variations (if any)</li>
+                    <li>Minimum stay requirements</li>
+                    <li>Additional fees (taxes, service charges, etc.)</li>
+                    <li>What's included in the rate (meals, activities, etc.)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- DINING PAGE -->
+        <h2>4. DINING PAGE</h2>
+        
+        <div class="section priority-high">
+            <h3>Restaurant Overview</h3>
+            <div class="info-item">
+                <strong>Restaurant Name & Concept <span class="required">REQUIRED</span></strong>
+                <p>Official restaurant name:</p>
+                <input type="text" style="width: 100%; padding: 10px; border: 1px solid #E5E7EB; border-radius: 4px; font-family: inherit;" placeholder="Enter restaurant name...">
+                <p style="margin-top: 10px;">Restaurant concept description (2-3 paragraphs):</p>
+                <textarea style="width: 100%; min-height: 150px; padding: 10px; border: 1px solid #E5E7EB; border-radius: 4px; font-family: inherit;" placeholder="Describe the restaurant concept..."></textarea>
+            </div>
+            
+            <div class="info-item">
+                <strong>Chef Philosophy <span class="required">REQUIRED</span></strong>
+                <p>Detailed description of the chef's culinary philosophy and approach (200-300 words):</p>
+                <textarea style="width: 100%; min-height: 200px; padding: 10px; border: 1px solid #E5E7EB; border-radius: 4px; font-family: inherit;" placeholder="Enter chef philosophy..."></textarea>
+            </div>
+            
+            <div class="info-item">
+                <strong>Locally Sourced Ingredients <span class="required">REQUIRED</span></strong>
+                <p>Please provide:</p>
+                <ul>
+                    <li>Percentage of locally sourced ingredients: _____%</li>
+                    <li>List of local suppliers/farms</li>
+                    <li>Types of ingredients sourced locally</li>
+                    <li>Organic certification details (if applicable)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section priority-high">
+            <h3>Menus & Schedule</h3>
+            <div class="info-item">
+                <strong>Breakfast Menu <span class="required">REQUIRED</span></strong>
+                <p>Please provide:</p>
+                <ul>
+                    <li>Menu items with descriptions</li>
+                    <li>Service hours</li>
+                    <li>Included in room rate? (Yes/No)</li>
+                    <li>Menu PDF file (if available)</li>
+                </ul>
+            </div>
+            
+            <div class="info-item">
+                <strong>Lunch Menu <span class="required">REQUIRED</span></strong>
+                <p>Please provide:</p>
+                <ul>
+                    <li>Menu items with descriptions</li>
+                    <li>Service hours</li>
+                    <li>Included in room rate? (Yes/No)</li>
+                    <li>Menu PDF file (if available)</li>
+                </ul>
+            </div>
+            
+            <div class="info-item">
+                <strong>Dinner Menu <span class="required">REQUIRED</span></strong>
+                <p>Please provide:</p>
+                <ul>
+                    <li>Menu items with descriptions</li>
+                    <li>Service hours</li>
+                    <li>Included in room rate? (Yes/No)</li>
+                    <li>Menu PDF file (if available)</li>
+                </ul>
+            </div>
+            
+            <div class="info-item">
+                <strong>Bar & Beverages <span class="required">REQUIRED</span></strong>
+                <p>Please provide:</p>
+                <ul>
+                    <li>Signature cocktails (names and descriptions)</li>
+                    <li>Wine selection (types, regions)</li>
+                    <li>Beer selection</li>
+                    <li>Non-alcoholic options</li>
+                    <li>Bar hours</li>
+                </ul>
+            </div>
+            
+            <div class="info-item">
+                <strong>Dietary Options <span class="required">REQUIRED</span></strong>
+                <p>Please confirm availability of:</p>
+                <ul>
+                    <li>Vegetarian options: Yes/No</li>
+                    <li>Vegan options: Yes/No</li>
+                    <li>Gluten-free options: Yes/No</li>
+                    <li>Other dietary accommodations: _____</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section priority-high">
+            <h3>Dining Policies</h3>
+            <div class="info-item">
+                <strong>Reservations Policy <span class="required">REQUIRED</span></strong>
+                <p>Please provide:</p>
+                <ul>
+                    <li>Reservation requirements for guests</li>
+                    <li>Reservation requirements for non-guests</li>
+                    <li>Advance notice required: _____ hours/days</li>
+                    <li>Reservation methods (WhatsApp, email, phone, etc.)</li>
+                </ul>
+            </div>
+            
+            <div class="info-item">
+                <strong>Dining Photos <span class="required">REQUIRED</span></strong>
+                <p>Please provide 10-15 high-quality photos:</p>
+                <ul>
+                    <li>Restaurant interior/ambiance</li>
+                    <li>Over-the-water dining area</li>
+                    <li>Food presentation shots</li>
+                    <li>Bar area</li>
+                    <li>Sunset dining views</li>
+                    <li>Chef in action</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- EXPERIENCES PAGE -->
+        <h2>5. EXPERIENCES PAGE</h2>
+        
+        <div class="section priority-high">
+            <h3>Experience Details</h3>
+            <p>For EACH of the following experiences, please provide complete information:</p>
+            
+            <div class="info-item">
+                <strong>1. Dolphin Bay Encounter <span class="required">REQUIRED</span></strong>
+                <ul>
+                    <li>Detailed description (200-300 words)</li>
+                    <li>Duration (hours)</li>
+                    <li>Best time of day/year</li>
+                    <li>What's included</li>
+                    <li>Difficulty level (Easy/Moderate/Challenging)</li>
+                    <li>What to bring</li>
+                    <li>Wildlife/species you'll see</li>
+                    <li>Price (if not included in stay)</li>
+                    <li>5-8 photos</li>
+                </ul>
+            </div>
+            
+            <div class="info-item">
+                <strong>2. Rainforest Hike & Wildlife Tour <span class="required">REQUIRED</span></strong>
+                <ul>
+                    <li>Detailed description (200-300 words)</li>
+                    <li>Duration (hours)</li>
+                    <li>Best time of day/year</li>
+                    <li>What's included</li>
+                    <li>Difficulty level</li>
+                    <li>What to bring</li>
+                    <li>Wildlife/species you'll see</li>
+                    <li>Price (if not included in stay)</li>
+                    <li>5-8 photos</li>
+                </ul>
+            </div>
+            
+            <div class="info-item">
+                <strong>3. Chocolate Farm Tour <span class="required">REQUIRED</span></strong>
+                <ul>
+                    <li>Detailed description (200-300 words)</li>
+                    <li>Duration (hours)</li>
+                    <li>Best time of day/year</li>
+                    <li>What's included</li>
+                    <li>Difficulty level</li>
+                    <li>What to bring</li>
+                    <li>Price (if not included in stay)</li>
+                    <li>5-8 photos</li>
+                </ul>
+            </div>
+            
+            <div class="info-item">
+                <strong>4. Snorkeling <span class="required">REQUIRED</span></strong>
+                <ul>
+                    <li>Detailed description (200-300 words)</li>
+                    <li>Duration (hours)</li>
+                    <li>Best time of day/year</li>
+                    <li>What's included (equipment, guide, etc.)</li>
+                    <li>Difficulty level</li>
+                    <li>What to bring</li>
+                    <li>Marine life you'll see</li>
+                    <li>Price (if not included in stay)</li>
+                    <li>5-8 photos</li>
+                </ul>
+            </div>
+            
+            <div class="info-item">
+                <strong>5. Kayak & SUP <span class="required">REQUIRED</span></strong>
+                <ul>
+                    <li>Detailed description (200-300 words)</li>
+                    <li>Duration (hours)</li>
+                    <li>Best time of day/year</li>
+                    <li>What's included (equipment, guide, etc.)</li>
+                    <li>Difficulty level</li>
+                    <li>What to bring</li>
+                    <li>Price (if not included in stay)</li>
+                    <li>5-8 photos</li>
+                </ul>
+            </div>
+            
+            <div class="info-item">
+                <strong>6. Monkey Island Excursion <span class="required">REQUIRED</span></strong>
+                <ul>
+                    <li>Detailed description (200-300 words)</li>
+                    <li>Duration (hours)</li>
+                    <li>Best time of day/year</li>
+                    <li>What's included</li>
+                    <li>Difficulty level</li>
+                    <li>What to bring</li>
+                    <li>Wildlife you'll see</li>
+                    <li>Price (if not included in stay)</li>
+                    <li>5-8 photos</li>
+                </ul>
+            </div>
+            
+            <div class="info-item">
+                <strong>7. Surfing (seasonal) <span class="required">REQUIRED</span></strong>
+                <ul>
+                    <li>Detailed description (200-300 words)</li>
+                    <li>Duration (hours)</li>
+                    <li>Best season/months</li>
+                    <li>What's included (equipment, lessons, etc.)</li>
+                    <li>Difficulty level</li>
+                    <li>What to bring</li>
+                    <li>Price (if not included in stay)</li>
+                    <li>5-8 photos</li>
+                </ul>
+            </div>
+            
+            <div class="info-item">
+                <strong>8. Fishing <span class="required">REQUIRED</span></strong>
+                <ul>
+                    <li>Detailed description (200-300 words)</li>
+                    <li>Duration (hours)</li>
+                    <li>Best time of day/year</li>
+                    <li>What's included (equipment, guide, boat, etc.)</li>
+                    <li>Difficulty level</li>
+                    <li>What to bring</li>
+                    <li>Types of fish you can catch</li>
+                    <li>Price (if not included in stay)</li>
+                    <li>5-8 photos</li>
+                </ul>
+            </div>
+            
+            <div class="info-item">
+                <strong>9. Massages <span class="required">REQUIRED</span></strong>
+                <ul>
+                    <li>Detailed description (200-300 words)</li>
+                    <li>Duration options</li>
+                    <li>Types of massages offered</li>
+                    <li>Location (spa, beach, room, etc.)</li>
+                    <li>Price</li>
+                    <li>Booking requirements</li>
+                    <li>5-8 photos</li>
+                </ul>
+            </div>
+            
+            <div class="info-item">
+                <strong>10. Volunteering in an Indigenous Village <span class="required">REQUIRED</span></strong>
+                <ul>
+                    <li>Detailed description (200-300 words)</li>
+                    <li>Duration (hours/days)</li>
+                    <li>What activities are involved</li>
+                    <li>What's included</li>
+                    <li>Difficulty level</li>
+                    <li>What to bring</li>
+                    <li>Cultural sensitivity guidelines</li>
+                    <li>Price (if applicable)</li>
+                    <li>5-8 photos</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section priority-high">
+            <h3>Experiences Overview</h3>
+            <div class="info-item">
+                <strong>Intro Paragraph <span class="required">REQUIRED</span></strong>
+                <p>2-3 sentences introducing your curated eco-adventures:</p>
+                <textarea style="width: 100%; min-height: 100px; padding: 10px; border: 1px solid #E5E7EB; border-radius: 4px; font-family: inherit;" placeholder="Enter intro paragraph here..."></textarea>
+            </div>
+        </div>
+
+        <!-- SUSTAINABILITY PAGE -->
+        <h2>6. SUSTAINABILITY PAGE</h2>
+        
+        <div class="section priority-high">
+            <h3>Off-Grid Infrastructure</h3>
+            <div class="info-item">
+                <strong>Solar System Details <span class="required">REQUIRED</span></strong>
+                <p>Please provide:</p>
+                <ul>
+                    <li>Solar capacity (kW): _____</li>
+                    <li>Battery storage capacity: _____</li>
+                    <li>Percentage of energy from solar: _____%</li>
+                    <li>Backup system (if any)</li>
+                    <li>Installation date</li>
+                    <li>Photos of solar panels/system</li>
+                </ul>
+            </div>
+            
+            <div class="info-item">
+                <strong>Water Systems <span class="required">REQUIRED</span></strong>
+                <p>Please provide:</p>
+                <ul>
+                    <li>Water source (well, rainwater, etc.)</li>
+                    <li>Water treatment methods</li>
+                    <li>Water conservation measures</li>
+                    <li>Water quality certifications (if any)</li>
+                </ul>
+            </div>
+            
+            <div class="info-item">
+                <strong>Waste Management <span class="required">REQUIRED</span></strong>
+                <p>Please provide:</p>
+                <ul>
+                    <li>Recycling programs</li>
+                    <li>Composting practices</li>
+                    <li>Waste reduction measures</li>
+                    <li>Single-use plastic policy details</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section priority-high">
+            <h3>Sustainable Food Cycle</h3>
+            <div class="info-item">
+                <strong>Farm-to-Table Details <span class="required">REQUIRED</span></strong>
+                <p>Please provide:</p>
+                <ul>
+                    <li>List of local farm partners</li>
+                    <li>Percentage of locally sourced produce: _____%</li>
+                    <li>On-site growing (if any)</li>
+                    <li>Composting program details</li>
+                    <li>Food waste reduction measures</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section priority-high">
+            <h3>Community Programs</h3>
+            <div class="info-item">
+                <strong>Ngäbe-Buglé Collaboration <span class="required">REQUIRED</span></strong>
+                <p>Please provide:</p>
+                <ul>
+                    <li>Partnership start date: _____</li>
+                    <li>Description of collaboration</li>
+                    <li>Programs/projects together</li>
+                    <li>Impact on community</li>
+                    <li>Photos of community work</li>
+                </ul>
+            </div>
+            
+            <div class="info-item">
+                <strong>Youth Programs <span class="optional">OPTIONAL</span></strong>
+                <p>Please provide:</p>
+                <ul>
+                    <li>Description of youth programs</li>
+                    <li>Number of participants</li>
+                    <li>Program outcomes</li>
+                    <li>Photos</li>
+                </ul>
+            </div>
+            
+            <div class="info-item">
+                <strong>Other Community Initiatives <span class="optional">OPTIONAL</span></strong>
+                <p>Please list any other community programs or partnerships:</p>
+                <textarea style="width: 100%; min-height: 100px; padding: 10px; border: 1px solid #E5E7EB; border-radius: 4px; font-family: inherit;" placeholder="List other community initiatives..."></textarea>
+            </div>
+        </div>
+        
+        <div class="section priority-high">
+            <h3>Biodiversity Protection</h3>
+            <div class="info-item">
+                <strong>Dolphin Monitoring <span class="required">REQUIRED</span></strong>
+                <p>Please provide:</p>
+                <ul>
+                    <li>Description of monitoring program</li>
+                    <li>Partnerships with research organizations (if any)</li>
+                    <li>Data collected</li>
+                    <li>Conservation measures implemented</li>
+                </ul>
+            </div>
+            
+            <div class="info-item">
+                <strong>Reforestation <span class="optional">OPTIONAL</span></strong>
+                <p>Please provide:</p>
+                <ul>
+                    <li>Description of reforestation efforts</li>
+                    <li>Number of trees planted</li>
+                    <li>Species planted</li>
+                    <li>Partnerships (if any)</li>
+                    <li>Photos</li>
+                </ul>
+            </div>
+            
+            <div class="info-item">
+                <strong>No Single-Use Plastic Policy <span class="required">REQUIRED</span></strong>
+                <p>Please provide:</p>
+                <ul>
+                    <li>Policy details</li>
+                    <li>Alternatives used</li>
+                    <li>Implementation date</li>
+                </ul>
+            </div>
+            
+            <div class="info-item">
+                <strong>Other Biodiversity Initiatives <span class="optional">OPTIONAL</span></strong>
+                <p>Please list any other biodiversity protection measures:</p>
+                <textarea style="width: 100%; min-height: 100px; padding: 10px; border: 1px solid #E5E7EB; border-radius: 4px; font-family: inherit;" placeholder="List other biodiversity initiatives..."></textarea>
+            </div>
+        </div>
+        
+        <div class="section priority-high">
+            <h3>Impact Metrics</h3>
+            <div class="info-item">
+                <strong>Measurable Impact Data <span class="required">REQUIRED</span></strong>
+                <p>Please provide specific numbers/metrics:</p>
+                <ul>
+                    <li>Hours of conservation work per guest stay: _____</li>
+                    <li>Amount of waste diverted from landfill: _____</li>
+                    <li>CO2 emissions reduced: _____</li>
+                    <li>Local employment created: _____ jobs</li>
+                    <li>Community investment amount: $_____</li>
+                    <li>Any other measurable impacts</li>
+                </ul>
+            </div>
+            
+            <div class="info-item">
+                <strong>Sustainability Report <span class="optional">OPTIONAL</span></strong>
+                <p>If you have a sustainability report (PDF), please provide it for the downloadable section.</p>
+            </div>
+        </div>
+        
+        <div class="section priority-high">
+            <h3>Sustainability Photos</h3>
+            <div class="info-item">
+                <strong>Visual Documentation <span class="required">REQUIRED</span></strong>
+                <p>Please provide 15-20 photos covering:</p>
+                <ul>
+                    <li>Solar panels/system</li>
+                    <li>Water systems</li>
+                    <li>Local farms/partners</li>
+                    <li>Community programs in action</li>
+                    <li>Dolphin monitoring</li>
+                    <li>Reforestation projects</li>
+                    <li>Team members working on sustainability</li>
+                    <li>Wildlife/nature</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- BLOG PAGE -->
+        <h2>7. BLOG PAGE</h2>
+        
+        <div class="section priority-medium">
+            <h3>Blog Content Strategy</h3>
+            <div class="info-item">
+                <strong>Blog Introduction <span class="optional">OPTIONAL</span></strong>
+                <p>Brief intro paragraph for the blog landing page:</p>
+                <textarea style="width: 100%; min-height: 80px; padding: 10px; border: 1px solid #E5E7EB; border-radius: 4px; font-family: inherit;" placeholder="Enter blog intro..."></textarea>
+            </div>
+            
+            <div class="info-item">
+                <strong>Blog Categories <span class="optional">OPTIONAL</span></strong>
+                <p>Confirm or modify these categories:</p>
+                <ul>
+                    <li>Sustainability</li>
+                    <li>Island Life</li>
+                    <li>Travel Tips</li>
+                    <li>Wildlife</li>
+                    <li>Culinary</li>
+                </ul>
+                <p>Do you want to add or change any categories?</p>
+            </div>
+            
+            <div class="note">
+                <strong>Note:</strong> Blog content can be developed over time. For initial launch, we can start with 3-5 foundational posts. Please let us know if you have existing blog content or specific topics you'd like to cover.
+            </div>
+        </div>
+
+        <!-- CONTACT PAGE -->
+        <h2>8. CONTACT / RESERVATIONS PAGE</h2>
+        
+        <div class="section priority-high">
+            <h3>Contact Information</h3>
+            <div class="info-item">
+                <strong>Contact Details <span class="required">REQUIRED</span></strong>
+                <p>Please provide:</p>
+                <ul>
+                    <li>Phone number: _____</li>
+                    <li>WhatsApp number: _____</li>
+                    <li>Email address: _____</li>
+                    <li>Physical address: _____</li>
+                    <li>Business hours (if applicable): _____</li>
+                </ul>
+            </div>
+            
+            <div class="info-item">
+                <strong>Booking System <span class="required">REQUIRED</span></strong>
+                <p>Please provide:</p>
+                <ul>
+                    <li>Cloudbeds account details (for booking widget embed)</li>
+                    <li>Or other booking system information</li>
+                    <li>Direct booking URL (if applicable): _____</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section priority-high">
+            <h3>Location & Map</h3>
+            <div class="info-item">
+                <strong>Location Details <span class="required">REQUIRED</span></strong>
+                <p>Please provide:</p>
+                <ul>
+                    <li>Exact GPS coordinates: _____</li>
+                    <li>Google Maps link: _____</li>
+                    <li>Island name: _____</li>
+                    <li>Nearest town: _____</li>
+                    <li>Province/region: _____</li>
+                    <li>Country: Panama (confirmed)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section priority-high">
+            <h3>Getting Here</h3>
+            <div class="info-item">
+                <strong>Travel Instructions <span class="required">REQUIRED</span></strong>
+                <p>Please provide detailed step-by-step instructions:</p>
+                <ul>
+                    <li><strong>Step 1: International Flight</strong>
+                        <ul>
+                            <li>Airport name and code: _____</li>
+                            <li>Recommended airlines</li>
+                            <li>Flight duration from major cities</li>
+                        </ul>
+                    </li>
+                    <li><strong>Step 2: Regional Flight</strong>
+                        <ul>
+                            <li>Airport name and code: _____</li>
+                            <li>Airlines operating this route</li>
+                            <li>Flight duration: _____</li>
+                            <li>Frequency of flights</li>
+                        </ul>
+                    </li>
+                    <li><strong>Step 3: Water Taxi</strong>
+                        <ul>
+                            <li>Departure point: _____</li>
+                            <li>Duration: _____</li>
+                            <li>Cost: $_____</li>
+                            <li>Schedule/frequency</li>
+                            <li>Booking information</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="info-item">
+                <strong>Travel Factsheet <span class="optional">OPTIONAL</span></strong>
+                <p>If you have a travel factsheet (PDF), please provide it for download.</p>
+            </div>
+            
+            <div class="info-item">
+                <strong>Recommended Packing List <span class="required">REQUIRED</span></strong>
+                <p>Please provide a comprehensive packing list organized by category:</p>
+                <textarea style="width: 100%; min-height: 150px; padding: 10px; border: 1px solid #E5E7EB; border-radius: 4px; font-family: inherit;" placeholder="Enter packing list..."></textarea>
+            </div>
+            
+            <div class="info-item">
+                <strong>Best Travel Times by Season <span class="required">REQUIRED</span></strong>
+                <p>Please provide information for each season:</p>
+                <ul>
+                    <li>Dry season (months): _____</li>
+                    <li>Wet season (months): _____</li>
+                    <li>Best time to visit: _____</li>
+                    <li>Weather conditions by season</li>
+                    <li>What to expect during each season</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section priority-high">
+            <h3>FAQs (Frequently Asked Questions)</h3>
+            <div class="info-item">
+                <strong>Booking FAQs <span class="required">REQUIRED</span></strong>
+                <p>Please provide answers to:</p>
+                <ul>
+                    <li>How far in advance should I book?</li>
+                    <li>What is the deposit requirement?</li>
+                    <li>Do you offer group rates?</li>
+                    <li>What is the minimum stay requirement?</li>
+                    <li>What payment methods do you accept?</li>
+                </ul>
+            </div>
+            
+            <div class="info-item">
+                <strong>Accessibility FAQs <span class="required">REQUIRED</span></strong>
+                <p>Please provide answers to:</p>
+                <ul>
+                    <li>Is the property wheelchair accessible?</li>
+                    <li>What are the mobility considerations?</li>
+                    <li>Are there stairs/steps to access rooms?</li>
+                </ul>
+            </div>
+            
+            <div class="info-item">
+                <strong>Policy FAQs <span class="required">REQUIRED</span></strong>
+                <p>Please provide answers to:</p>
+                <ul>
+                    <li>Are pets allowed?</li>
+                    <li>Are children welcome? Age restrictions?</li>
+                    <li>What is the cancellation policy?</li>
+                    <li>What is the refund policy?</li>
+                    <li>What safety protocols are in place?</li>
+                </ul>
+            </div>
+            
+            <div class="info-item">
+                <strong>Amenities FAQs <span class="required">REQUIRED</span></strong>
+                <p>Please provide answers to:</p>
+                <ul>
+                    <li>What is the Wi-Fi speed/availability?</li>
+                    <li>What type of electricity (voltage, outlets)?</li>
+                    <li>What is the water quality? Is it safe to drink?</li>
+                    <li>Is there air conditioning?</li>
+                    <li>Is there hot water?</li>
+                </ul>
+            </div>
+            
+            <div class="info-item">
+                <strong>Inclusions FAQs <span class="required">REQUIRED</span></strong>
+                <p>Please provide answers to:</p>
+                <ul>
+                    <li>What's included in the room rate?</li>
+                    <li>Are meals included?</li>
+                    <li>Are activities included?</li>
+                    <li>What are the extra fees?</li>
+                    <li>Is there a service charge or gratuity policy?</li>
+                </ul>
+            </div>
+            
+            <div class="info-item">
+                <strong>Additional FAQs <span class="optional">OPTIONAL</span></strong>
+                <p>Please list any other frequently asked questions and answers:</p>
+                <textarea style="width: 100%; min-height: 150px; padding: 10px; border: 1px solid #E5E7EB; border-radius: 4px; font-family: inherit;" placeholder="Enter additional FAQs..."></textarea>
+            </div>
+        </div>
+
+        <!-- GENERAL INFORMATION -->
+        <h2>9. GENERAL INFORMATION</h2>
+        
+        <div class="section priority-high">
+            <h3>Branding & Visual Assets</h3>
+            <div class="info-item">
+                <strong>Logo Files <span class="required">REQUIRED</span></strong>
+                <p>Please provide:</p>
+                <ul>
+                    <li>Main logo (high-resolution, PNG with transparent background)</li>
+                    <li>Logo variations (horizontal, vertical, icon-only)</li>
+                    <li>Logo files in different formats (PNG, SVG, PDF)</li>
+                </ul>
+            </div>
+            
+            <div class="info-item">
+                <strong>Brand Colors <span class="required">REQUIRED</span></strong>
+                <p>Please provide your brand color palette (hex codes):</p>
+                <ul>
+                    <li>Primary color: _____</li>
+                    <li>Secondary color: _____</li>
+                    <li>Accent color: _____</li>
+                    <li>Text color: _____</li>
+                    <li>Background color: _____</li>
+                </ul>
+            </div>
+            
+            <div class="info-item">
+                <strong>Typography <span class="optional">OPTIONAL</span></strong>
+                <p>If you have preferred fonts, please specify:</p>
+                <ul>
+                    <li>Heading font: _____</li>
+                    <li>Body font: _____</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section priority-high">
+            <h3>Social Media</h3>
+            <div class="info-item">
+                <strong>Social Media Accounts <span class="optional">OPTIONAL</span></strong>
+                <p>Please provide links to:</p>
+                <ul>
+                    <li>Instagram: _____</li>
+                    <li>Facebook: _____</li>
+                    <li>Twitter/X: _____</li>
+                    <li>YouTube: _____</li>
+                    <li>TikTok: _____</li>
+                    <li>Other platforms: _____</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section priority-high">
+            <h3>Legal & Business Information</h3>
+            <div class="info-item">
+                <strong>Business Details <span class="required">REQUIRED</span></strong>
+                <p>Please provide:</p>
+                <ul>
+                    <li>Legal business name: _____</li>
+                    <li>Tax ID/Business registration number: _____</li>
+                    <li>Business registration country: _____</li>
+                </ul>
+            </div>
+            
+            <div class="info-item">
+                <strong>Terms & Conditions <span class="required">REQUIRED</span></strong>
+                <p>Please provide your terms and conditions document (or we can draft based on your policies).</p>
+            </div>
+            
+            <div class="info-item">
+                <strong>Privacy Policy <span class="required">REQUIRED</span></strong>
+                <p>Please provide your privacy policy document (or we can draft based on your data practices).</p>
+            </div>
+        </div>
+        
+        <div class="section priority-medium">
+            <h3>Additional Content</h3>
+            <div class="info-item">
+                <strong>Video Content <span class="optional">OPTIONAL</span></strong>
+                <p>If you have video content, please provide:</p>
+                <ul>
+                    <li>Property tour video</li>
+                    <li>Experience videos</li>
+                    <li>Testimonial videos</li>
+                    <li>YouTube/Vimeo links</li>
+                </ul>
+            </div>
+            
+            <div class="info-item">
+                <strong>Press Kit <span class="optional">OPTIONAL</span></strong>
+                <p>If you have a press kit, please provide it for media inquiries section.</p>
+            </div>
+        </div>
+
+        <!-- SUBMISSION INSTRUCTIONS -->
+        <div class="section" style="background: #EFF6FF; border: 2px solid #3B82F6; margin-top: 50px;">
+            <h3 style="color: #1E40AF;">📤 Submission Instructions</h3>
+            <div class="info-item" style="background: #ffffff;">
+                <strong>How to Submit Your Information</strong>
+                <p>Please provide all information in one of the following formats:</p>
+                <ul>
+                    <li><strong>Option 1:</strong> Fill out this HTML file and return it</li>
+                    <li><strong>Option 2:</strong> Create a Word document or PDF with all information organized by section</li>
+                    <li><strong>Option 3:</strong> Provide information via email/WhatsApp in organized sections</li>
+                    <li><strong>Option 4:</strong> Schedule a meeting to go through each section together</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>For Photos & Files:</strong></p>
+                <ul>
+                    <li>Upload to Google Drive, Dropbox, or similar cloud storage</li>
+                    <li>Share the link with us</li>
+                    <li>Or send via email (if file sizes allow)</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Priority:</strong></p>
+                <ul>
+                    <li><span class="required">REQUIRED</span> items are essential for website launch</li>
+                    <li><span class="optional">OPTIONAL</span> items can be added later but enhance the site</li>
+                    <li>We recommend completing all required items before starting development</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div style="text-align: center; padding: 40px 0; margin-top: 60px; border-top: 2px solid #E5E7EB; color: #6B7280;">
+            <p><strong>Dolphin Blue Paradise</strong> - Content Information Request</p>
+            <p style="font-size: 14px; margin-top: 10px;">Thank you for providing this information. It will help us create compelling, accurate website copy that truly represents your unique property.</p>
+        </div>
+    </div>
+</body>
+</html>
+

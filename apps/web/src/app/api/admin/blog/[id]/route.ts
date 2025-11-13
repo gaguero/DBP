@@ -2,8 +2,11 @@ import { NextRequest, NextResponse } from "next/server";
 import { requireAuth } from "@/lib/auth-utils";
 import { db } from "@/lib/db";
 import { blogPostSchema } from "@/lib/validations/blog";
-import { Prisma } from "@prisma/client";
 import { ZodError } from "zod";
+import { Prisma } from "@prisma/client";
+
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
 
 export async function GET(
   request: NextRequest,
@@ -61,7 +64,7 @@ export async function PUT(
         readingTime: validated.readingTime,
         locale: validated.locale,
         published: validated.published,
-        contentBlocks: validated.contentBlocks as unknown as Prisma.InputJsonValue,
+        contentBlocks: JSON.parse(JSON.stringify(validated.contentBlocks)) as Prisma.InputJsonValue,
       },
     });
 

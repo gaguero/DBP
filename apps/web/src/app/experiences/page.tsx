@@ -1,106 +1,142 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/components/page-hero";
-import { Card } from "@/components/card";
-
-const introParagraphs = [
-  "Choose from curated adventures that celebrate Dolphin Bay: observe resident dolphins, snorkel warm Caribbean reefs, and explore secluded beaches throughout Bocas del Toro.",
-  "We organize every detail-from transport and equipment to expert guides-so your time can focus on discovery, relaxation, and community connection.",
-];
-
-const experiences = [
-  {
-    title: "Dolphin Bay",
-    description: "Experience the beauty of resident bottlenose dolphins and the calm of Dolphin Bay." ,
-  },
-  {
-    title: "Snorkeling",
-    description: "Slip into crystal water directly from our swim platform or join guided reef excursions.",
-  },
-  {
-    title: "Excursions & Tours",
-    description: "Board our boat to discover beaches, mangroves, and island communities across Bocas del Toro.",
-  },
-  {
-    title: "Water Ski & Wakeboard",
-    description: "Add a thrill to your itinerary with waterski, wakeboard, or tubing sessions in the bay.",
-  },
-  {
-    title: "Chocolate Farm Tour",
-    description:
-      "Visit an indigenous Ngabe cacao farm or our neighboring chocolatiers to learn traditional and Belgian-style techniques.",
-  },
-  {
-    title: "Stand Up Paddle",
-    description: "Enjoy complimentary SUP boards whenever you want to explore the bay at your own pace.",
-  },
-  {
-    title: "Surfing",
-    description:
-      "From November to April, ride world-ranked breaks in Bocas del Toro. We coordinate transport and surf packages.",
-  },
-  {
-    title: "Kayak",
-    description: "Take a free kayak to glide through calm inlets and mangroves surrounding the property.",
-  },
-  {
-    title: "Monkey Island",
-    description:
-      "Meet rescued monkeys on a private island sanctuary and learn about their rehabilitation journey.",
-  },
-  {
-    title: "Fishing",
-    description:
-      "Fish year-round for snapper, jack, wahoo, kingfish, or tuna with half-day and full-day charters.",
-  },
-  {
-    title: "Massages",
-    description: "Restore balance with relaxing or therapeutic treatments arranged on-site by local therapists.",
-  },
-];
-
-const contactParagraph =
-  "Message us via WhatsApp at +507 6346 0605 or contact@dolphinblueparadise.com to customize any excursion or build a multi-day itinerary.";
+import Image from "next/image";
+import { Button } from "@/components/button";
+import { activities } from "@/content/data";
+import { ExperiencesGridLayout } from "@/components/experiences/experiences-grid-layout";
+import { ExperiencesSplitLayout } from "@/components/experiences/experiences-split-layout";
+import { ExperiencesMasonryLayout } from "@/components/experiences/experiences-masonry-layout";
+import { PageNotesEditor } from "@/components/page-notes-editor";
+import { stockPhotos } from "@/lib/stock-photos";
 
 export const metadata: Metadata = {
-  title: "Experiences & Excursions",
+  title: "Dolphin Bay Experiences",
   description:
-    "Discover curated adventures at Dolphin Blue Paradise-from dolphin encounters to rainforest hikes and wellness rituals.",
+    "Personalized eco-adventures and tours in Bocas del Toro. From dolphin encounters to rainforest hikes, discover Panama&apos;s incredible biodiversity.",
 };
 
+// Layout style can be changed here: "grid" | "split" | "masonry"
+const LAYOUT_STYLE: "grid" | "split" | "masonry" = "grid";
+
+// Activities to exclude from the experiences page (shown in free activities section)
+const EXCLUDED_SLUGS = ["snorkeling", "stand-up-paddle", "kayak"];
+
 export default function ExperiencesPage() {
+  // Filter out free activities and sort alphabetically by name
+  const paidActivities = activities
+    .filter((activity) => !EXCLUDED_SLUGS.includes(activity.slug))
+    .sort((a, b) => a.name.localeCompare(b.name));
+
   return (
-    <div className="space-y-24 pb-24">
-      <PageHero
-        title="Short & Half-Day Tours"
-        kicker="Experiences"
-        description="Explore Dolphin Bay by water, rainforest trails, and cultural encounters."
-        image="/images/hero-bay.jpg"
-      />
-
-      <section className="section">
-        <div className="container space-y-5 text-lg text-[var(--color-text-primary)]">
-          {introParagraphs.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
+    <div className="space-y-0 pb-0 pt-0">
+      {/* Title Section */}
+      <section className="section page-title-section bg-white">
+        <div className="container max-w-4xl">
+          <h1 className="font-sans text-lg md:text-xl lg:text-2xl text-black mb-4 text-center uppercase px-4" style={{ fontWeight: 100 }}>
+            DISCOVER OUR CURATED ECO-ADVENTURES
+          </h1>
+          <div className="flex items-center justify-center gap-3">
+            <div className="h-px flex-1 max-w-[120px] bg-black"></div>
+            <span className="italic lowercase text-sm md:text-base font-serif text-black">Experiences</span>
+            <div className="h-px flex-1 max-w-[120px] bg-black"></div>
+          </div>
         </div>
       </section>
 
+      {/* Hero Image */}
+      <section className="relative w-full h-[50vh] min-h-[400px] max-h-[600px] bg-black">
+        <Image
+          src={stockPhotos.snorkeling}
+          alt="Dolphin Bay Paradise Experiences - snorkeling, kayaking, hiking, and adventure activities in Bocas del Toro, Panama"
+          fill
+          className="object-cover"
+          priority
+          unoptimized
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+      </section>
+
+      {/* Free Activities Section */}
       <section className="section bg-[var(--color-sand)]">
-        <div className="container grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {experiences.map((experience) => (
-            <Card key={experience.title} className="space-y-2 p-6">
-              <h3 className="font-display text-xl text-[var(--color-navy)]">{experience.title}</h3>
-              <p className="text-sm text-muted">{experience.description}</p>
-            </Card>
-          ))}
+        <div className="container max-w-4xl">
+          <p className="text-lg mb-4 text-center uppercase font-semibold text-[var(--color-navy)]">
+            FREE ACTIVITIES INCLUDED IN YOUR STAY
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="text-center">
+              <p className="text-sm mb-0.5 uppercase font-light text-[var(--color-navy)]">
+                Snorkeling
+              </p>
+              <p className="text-sm text-[var(--color-text-muted)]">
+                Free from swim platform
+              </p>
+            </div>
+            <div className="text-center">
+              <p className="text-sm mb-0.5 uppercase font-light text-[var(--color-navy)]">
+                Kayaking
+              </p>
+              <p className="text-sm text-[var(--color-text-muted)]">
+                Explore at your own pace
+              </p>
+            </div>
+            <div className="text-center">
+              <p className="text-sm mb-0.5 uppercase font-light text-[var(--color-navy)]">
+                Stand Up Paddle
+              </p>
+              <p className="text-sm text-[var(--color-text-muted)]">
+                Paddle through calm waters
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="section">
-        <div className="container text-sm text-muted">
-          <p>{contactParagraph}</p>
-        </div>
-      </section>
+      <div className="space-y-24 pb-24">
+        {/* Activities Section - Layout Style 1: Grid Cards */}
+        {LAYOUT_STYLE === "grid" && (
+          <ExperiencesGridLayout activities={paidActivities} />
+        )}
+
+        {/* Activities Section - Layout Style 2: Split Screen Alternating */}
+        {LAYOUT_STYLE === "split" && (
+          <ExperiencesSplitLayout activities={paidActivities} />
+        )}
+
+        {/* Activities Section - Layout Style 3: Masonry/Staggered Grid */}
+        {LAYOUT_STYLE === "masonry" && (
+          <ExperiencesMasonryLayout activities={paidActivities} />
+        )}
+
+        {/* CTA Section */}
+        <section className="section bg-[var(--color-sand)]">
+          <div className="container max-w-4xl text-center px-4">
+            <h2 className="font-display text-3xl md:text-4xl text-[var(--color-navy)] mb-4 md:mb-6 uppercase font-light">
+              REQUEST CUSTOM ITINERARY
+            </h2>
+            <p className="text-base md:text-lg text-[var(--color-text-primary)] mb-6 md:mb-8">
+              Share your travel dates, group size, and interests so our concierge can tailor experiences for your stay. 
+              We arrange transportation, bilingual guides, refreshments, and any add-ons.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Button href="/contact" variant="primary" className="text-lg px-8 py-4">
+                Contact Concierge
+              </Button>
+              <Button
+                href="https://wa.me/50763460605"
+                variant="secondary"
+                className="text-lg px-8 py-4"
+              >
+                WhatsApp Us
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        <section className="section bg-white">
+          <div className="container max-w-4xl">
+            <PageNotesEditor pageId="experiences" />
+          </div>
+        </section>
+      </div>
     </div>
   );
 }

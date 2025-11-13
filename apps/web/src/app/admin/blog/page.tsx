@@ -63,7 +63,7 @@ export default async function BlogListPage() {
                 </td>
               </tr>
             ) : (
-              posts.map((post) => (
+              posts.map((post: typeof posts[0]) => (
                 <tr key={post.id}>
                   <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900">
                     {post.title}
