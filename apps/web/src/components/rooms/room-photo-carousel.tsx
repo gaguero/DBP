@@ -2,14 +2,15 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { stockPhotos } from "@/lib/stock-photos";
 
 export function RoomPhotoCarousel() {
   const galleryImages = [
-    "/images/rooms-view.jpg",
-    "/images/dining-overwater.jpg",
-    "/images/hero-bay.jpg",
-    "/images/rooms-original.jpg",
-    "/images/dolphin-bay-location.jpg",
+    stockPhotos.roomView,
+    stockPhotos.overwater,
+    stockPhotos.heroBay,
+    stockPhotos.roomInterior,
+    stockPhotos.location,
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);

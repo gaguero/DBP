@@ -156,7 +156,11 @@ export default function HogarPage() {
         </div>
       </section>
 
-      <BookingWidgetPlaceholder />
+      <section className="home-section home-booking-section">
+        <div className="home-container">
+          <BookingWidgetPlaceholder />
+        </div>
+      </section>
     </div>
   );
 }

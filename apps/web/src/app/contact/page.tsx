@@ -472,7 +472,6 @@ export default function ContactPage() {
               </p>
             </div>
           </Card>
-          </div>
         </div>
       </section>
 

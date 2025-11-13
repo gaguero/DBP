@@ -5,6 +5,9 @@ import { rooms } from "@/content/data";
 import { RoomImageCarousel } from "@/components/rooms/room-image-carousel";
 import { PageNotesEditor } from "@/components/page-notes-editor";
 import { stockPhotos } from "@/lib/stock-photos";
+import { SwimmingCarousel } from "@/components/rooms/swimming-carousel";
+import { GardenCarousel } from "@/components/rooms/garden-carousel";
+import { SalonAzulCarousel } from "@/components/rooms/salon-azul-carousel";
 
 export const metadata: Metadata = {
   title: "Accommodations | Dolphin Blue Paradise, Bocas del Toro",
@@ -31,6 +34,13 @@ export default function RoomsPage() {
 
       {/* Hero Image */}
       <section className="relative w-full h-[50vh] min-h-[400px] max-h-[600px] bg-black">
+        <Image
+          src="/images/rooms/rooms-hero-sunset-gazebo-hammocks-dolphin-bay.avif"
+          alt="Sunset view of overwater gazebo with hammocks at Dolphin Blue Paradise, Bocas del Toro - guests relaxing in hammocks enjoying the golden hour over Dolphin Bay"
+          fill
+          className="object-cover"
+          priority
+        />
       </section>
 
       {/* Intro Paragraph */}
@@ -38,21 +48,7 @@ export default function RoomsPage() {
         <div className="container max-w-4xl">
           <div className="text-center">
             <p className="text-lg text-[var(--color-text-primary)] mb-0 leading-relaxed max-w-3xl mx-auto">
-              All rooms include a private bathroom, free Wi-Fi, breakfast, sea view, electricity & ceiling fan, and a private terrace or balcony.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* What We Offer Section */}
-      <section className="section bg-white">
-        <div className="container max-w-4xl">
-          <h2 className="font-display text-2xl md:text-3xl mb-8 text-center uppercase font-light text-[var(--color-navy)]">
-            WHAT WE OFFER
-          </h2>
-          <div className="prose prose-lg max-w-none text-center">
-            <p className="text-base md:text-lg text-[var(--color-text-primary)] leading-relaxed mb-6">
-              Each room features a private balcony or patio to relax and take in views of the jungle or sea. We provide lounge chairs for sunbathing, a swim platform for swimming and snorkeling, and opportunities to observe starfish, sea urchins, and other marine life directly beneath the restaurant or swim platform.
+              All rooms include a private bathroom, free Wi-Fi, breakfast, sea view, electricity & ceiling fan, and a private terrace or balcony. Each room features a private balcony or patio to relax and take in views of the jungle or sea.
             </p>
           </div>
         </div>
@@ -120,9 +116,18 @@ export default function RoomsPage() {
           <h2 className="font-display text-2xl md:text-3xl mb-6 text-center uppercase font-light text-[var(--color-navy)]">
             SWIMMING & SUNBATHING
           </h2>
+          
+          {/* Image Carousel */}
+          <div className="mb-8">
+            <SwimmingCarousel />
+          </div>
+          
           <div className="prose prose-lg max-w-none text-center">
-            <p className="text-base md:text-lg text-[var(--color-text-primary)] leading-relaxed">
+            <p className="text-base md:text-lg text-[var(--color-text-primary)] leading-relaxed mb-4">
               Whether you prefer to relax on the swim platform, sunbathe on a sunbed, or unwind in a hammock, Dolphin Blue Paradise has it all!
+            </p>
+            <p className="text-base md:text-lg text-[var(--color-text-primary)] leading-relaxed">
+              We provide lounge chairs for sunbathing and a swim platform for swimming and snorkeling. You can observe starfish, sea urchins, and other marine life directly beneath the restaurant or swim platform.
             </p>
           </div>
         </div>
@@ -134,6 +139,12 @@ export default function RoomsPage() {
           <h2 className="font-display text-2xl md:text-3xl mb-6 text-center uppercase font-light text-[var(--color-navy)]">
             TROPICAL GARDEN
           </h2>
+          
+          {/* Image Carousel */}
+          <div className="mb-8">
+            <GardenCarousel />
+          </div>
+          
           <div className="prose prose-lg max-w-none">
             <p className="text-base md:text-lg text-[var(--color-text-primary)] leading-relaxed mb-4">
               We invite all our guests to explore our beautiful tropical garden, lovingly maintained by our head gardener and nature expert, Roque, and his team. Our dinner and breakfast menus feature tropical fruits from our garden, including mango, banana, pineapple, lime, passion fruit, rambutan (lychee), starfruit, guava, mangosteen, water apple, custard fruit, soursop, mandarins, coconut, guava, plantains, and more.
@@ -154,6 +165,13 @@ export default function RoomsPage() {
           <h2 className="font-display text-2xl md:text-3xl mb-6 text-center uppercase font-light text-[var(--color-navy)]">
             SALON AZUL
           </h2>
+          
+          {/* Image Carousel */}
+          {/* TODO: Confirm photos to use for Salon Azul carousel - see salon-azul-carousel.tsx for details */}
+          <div className="mb-8">
+            <SalonAzulCarousel />
+          </div>
+          
           <div className="prose prose-lg max-w-none text-center">
             <p className="text-base md:text-lg text-[var(--color-text-primary)] leading-relaxed mb-4">
               The newly renovated Salon Azul is a serene space where guests can relax, read, meditate, play board games, or practice yoga on a rainy day. The patio outside Salon Azul offers a small outdoor workout area equipped with weights, dumbbells, a fitness ball, and yoga mats for guests to enjoy.
@@ -414,8 +432,8 @@ export default function RoomsPage() {
             <div className="bg-white rounded overflow-hidden border border-black/10 hover:shadow-xl transition-shadow">
               <div className="relative h-48 overflow-hidden">
                 <Image
-                  src={stockPhotos.roomView}
-                  alt="Romantic Escape Package"
+                  src="/images/packages/romantic-escape-premium-deluxe-cabana-terrace-sunset.jpeg"
+                  alt="Premium Deluxe Cabana terrace at sunset - Romantic Escape package at Dolphin Blue Paradise, Bocas del Toro"
                   fill
                   className="object-cover"
                 />
@@ -456,8 +474,8 @@ export default function RoomsPage() {
             <div className="bg-white rounded overflow-hidden border border-black/10 hover:shadow-xl transition-shadow">
               <div className="relative h-48 overflow-hidden">
                 <Image
-                  src={stockPhotos.heroBay}
-                  alt="Adventure Package"
+                  src="/images/packages/adventure-package-snorkeling-kayaking-dolphin-bay.jpeg"
+                  alt="Snorkeling and kayaking in Dolphin Bay - Adventure Package at Dolphin Blue Paradise, Bocas del Toro"
                   fill
                   className="object-cover"
                 />
@@ -498,8 +516,8 @@ export default function RoomsPage() {
             <div className="bg-white rounded overflow-hidden border border-black/10 hover:shadow-xl transition-shadow">
               <div className="relative h-48 overflow-hidden">
                 <Image
-                  src={stockPhotos.overwater}
-                  alt="Private Island Buyout"
+                  src="/images/packages/private-island-buyout-aerial-view-entire-resort.jpeg"
+                  alt="Aerial view of entire Dolphin Blue Paradise resort - Private Island Buyout package, Bocas del Toro"
                   fill
                   className="object-cover"
                 />

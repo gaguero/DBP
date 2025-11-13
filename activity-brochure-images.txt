@@ -1,0 +1,63 @@
+Images extracted from: https://www.dolphinblueparadise.com/activity-brochure
+
+=== MAIN CONTENT IMAGES ===
+
+1. Logo/Icon Images (Social Media Icons):
+   - https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png
+   - https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png
+   - https://static.wixstatic.com/media/143869_dea432087cd34a09a7928213fc38fe9e~mv2.png
+
+2. Activity/Tour Images (JPG - appears to be tour/activity photos):
+   - https://static.wixstatic.com/media/9a75c5_4e03394946524d37bea766f4a792f6ba~mv2.jpg
+   - https://static.wixstatic.com/media/9a75c5_6c0fa5c789d14f7a9075f79b988d6312~mv2.jpg
+   - https://static.wixstatic.com/media/9a75c5_706de4cad7ae44ec9a02303f61b0fd7e~mv2.jpg
+
+3. Background/Hero Image (Large):
+   - https://static.wixstatic.com/media/ecace5_c4253b960dc24f6496e0628485c2af77~mv2.jpg
+
+4. Logo/Branding:
+   - https://static.wixstatic.com/media/143869_53ad7605926e4f70b7344bbff9c1f165~mv2.png
+   - https://static.wixstatic.com/media/9a75c5_4b728ff5528c4c6b893add72d3654d95~mv2.png
+   - https://static.wixstatic.com/media/9a75c5_a30720575a334ba1a348f7ee0be8a742~mv2.webp (ROJO-150-X-150.webp)
+
+=== ALL IMAGE URLS (with size variants) ===
+
+Social Media Icons:
+https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png/v1/fill/w_27,h_27,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/01c3aff52f2a4dffa526d7a9843d46ea.png
+https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png/v1/fill/w_54,h_54,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/01c3aff52f2a4dffa526d7a9843d46ea.png
+
+https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png/v1/fill/w_27,h_27,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/0fdef751204647a3bbd7eaa2827ed4f9.png
+https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png/v1/fill/w_54,h_54,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/0fdef751204647a3bbd7eaa2827ed4f9.png
+
+https://static.wixstatic.com/media/143869_dea432087cd34a09a7928213fc38fe9e~mv2.png/v1/fill/w_27,h_27,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/143869_dea432087cd34a09a7928213fc38fe9e~mv2.png
+https://static.wixstatic.com/media/143869_dea432087cd34a09a7928213fc38fe9e~mv2.png/v1/fill/w_54,h_54,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/143869_dea432087cd34a09a7928213fc38fe9e~mv2.png
+
+Logo/Branding:
+https://static.wixstatic.com/media/143869_53ad7605926e4f70b7344bbff9c1f165~mv2.png/v1/fill/w_32,h_32,lg_1,usm_0.66_1.00_0.01/143869_53ad7605926e4f70b7344bbff9c1f165~mv2.png
+https://static.wixstatic.com/media/143869_53ad7605926e4f70b7344bbff9c1f165~mv2.png/v1/fill/w_180,h_180,lg_1,usm_0.66_1.00_0.01/143869_53ad7605926e4f70b7344bbff9c1f165~mv2.png
+https://static.wixstatic.com/media/143869_53ad7605926e4f70b7344bbff9c1f165~mv2.png/v1/fill/w_192,h_192,lg_1,usm_0.66_1.00_0.01/143869_53ad7605926e4f70b7344bbff9c1f165~mv2.png
+
+https://static.wixstatic.com/media/9a75c5_4b728ff5528c4c6b893add72d3654d95~mv2.png/v1/fill/w_126,h_68,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/9a75c5_4b728ff5528c4c6b893add72d3654d95~mv2.png
+https://static.wixstatic.com/media/9a75c5_4b728ff5528c4c6b893add72d3654d95~mv2.png/v1/fill/w_252,h_136,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/9a75c5_4b728ff5528c4c6b893add72d3654d95~mv2.png
+
+Activity/Tour Photos:
+https://static.wixstatic.com/media/9a75c5_4e03394946524d37bea766f4a792f6ba~mv2.jpg/v1/fill/w_147,h_190,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/9a75c5_4e03394946524d37bea766f4a792f6ba~mv2.jpg
+https://static.wixstatic.com/media/9a75c5_6c0fa5c789d14f7a9075f79b988d6312~mv2.jpg/v1/fill/w_147,h_190,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/9a75c5_6c0fa5c789d14f7a9075f79b988d6312~mv2.jpg
+https://static.wixstatic.com/media/9a75c5_706de4cad7ae44ec9a02303f61b0fd7e~mv2.jpg/v1/fill/w_147,h_190,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/9a75c5_706de4cad7ae44ec9a02303f61b0fd7e~mv2.jpg
+
+ROJO Logo:
+https://static.wixstatic.com/media/9a75c5_a30720575a334ba1a348f7ee0be8a742~mv2.webp/v1/fill/w_67,h_69,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/ROJO-150-X-150.webp
+https://static.wixstatic.com/media/9a75c5_a30720575a334ba1a348f7ee0be8a742~mv2.webp/v1/fill/w_134,h_138,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/ROJO-150-X-150.webp
+
+Background/Hero Image (Large):
+https://static.wixstatic.com/media/ecace5_c4253b960dc24f6496e0628485c2af77~mv2.jpg/v1/fit/w_2500,h_1330,al_c/ecace5_c4253b960dc24f6496e0628485c2af77~mv2.jpg
+
+=== NOTES ===
+- All images are hosted on Wix's CDN (static.wixstatic.com)
+- Most images have multiple size variants available
+- The activity/tour images (JPG files) appear to be the main content images for the brochure
+- The large background image (ecace5_c4253b960dc24f6496e0628485c2af77) is 2500x1330px
+- To get original/higher quality versions, you may need to access the base URLs without size parameters
+
+
+

@@ -10,12 +10,13 @@
     ],
     description:
       "Our signature sea view cabana pairs contemporary comfort with locally crafted finishes. Wake to the sounds of the bay, enjoy sunrise coffee on your terrace, and let our concierge tailor each day of your stay.",
-    heroImage: "/images/rooms-view.jpg",
+    heroImage: "/images/rooms/premium-deluxe-sea-view-cabana-front-entrance-sea-view.avif",
     images: [
-      "/images/rooms-view.jpg",
-      "/images/dining-overwater.jpg",
-      "/images/hero-bay.jpg",
-      "/images/rooms-original.jpg",
+      "/images/rooms/premium-deluxe-sea-view-cabana-front-entrance-sea-view.avif",
+      "/images/rooms/premium-deluxe-sea-view-cabana-angle-exterior-terrace-dolphin-bay.avif",
+      "/images/rooms/premium-deluxe-sea-view-cabana-angled-view-terrace-ocean.avif",
+      "/images/rooms/premium-deluxe-sea-view-cabana-bathroom-modern-design.avif",
+      "/images/rooms/premium-deluxe-sea-view-cabana-shower-bathroom-luxury.avif",
     ],
   },
   {
@@ -29,12 +30,12 @@
     ],
     description:
       "Cozy cabanas designed for effortless indoor-outdoor living. Perfect for couples seeking easy access to our swim platform and curated island adventures.",
-    heroImage: "/images/rooms-view.jpg",
+    heroImage: "/images/rooms/sea-view-cabana-front-entrance-ocean-view.avif",
     images: [
-      "/images/rooms-view.jpg",
-      "/images/dining-overwater.jpg",
-      "/images/hero-bay.jpg",
-      "/images/rooms-original.jpg",
+      "/images/rooms/sea-view-cabana-front-entrance-ocean-view.avif",
+      "/images/rooms/sea-view-cabana-side-exterior-view.avif",
+      "/images/rooms/sea-view-cabana-door-interior-view.avif",
+      "/images/rooms/sea-view-cabana-bathroom-modern-design.avif",
     ],
   },
   {
@@ -49,12 +50,16 @@
     ],
     description:
       "Watch pods of dolphins travel the bay from the privacy of your terrace. Ideal for guests blending work and wanderlust.",
-    heroImage: "/images/rooms-view.jpg",
+    heroImage: "/images/rooms/dolphin-view-room-front-entrance-sea-view.avif",
     images: [
-      "/images/rooms-view.jpg",
-      "/images/dining-overwater.jpg",
-      "/images/hero-bay.jpg",
-      "/images/rooms-original.jpg",
+      "/images/rooms/dolphin-view-room-front-entrance-sea-view.avif",
+      "/images/rooms/dolphin-view-room-front-side-exterior.avif",
+      "/images/rooms/dolphin-view-room-bed-king-size-ocean-view.avif",
+      "/images/rooms/dolphin-view-room-sea-view-from-bed.avif",
+      "/images/rooms/dolphin-view-room-desk-chair-work-space.avif",
+      "/images/rooms/dolphin-view-room-private-terrace-dolphin-bay.avif",
+      "/images/rooms/dolphin-view-room-sea-view-from-terrace.avif",
+      "/images/rooms/dolphin-view-room-private-bathroom.avif",
     ],
   },
   {
@@ -69,12 +74,18 @@
     ],
     description:
       "Spacious family sanctuary bordered by rainforest canopy. Perfect for longer stays, wellness retreats, and multi-generational escapes.",
-    heroImage: "/images/rooms-view.jpg",
+    heroImage: "/images/rooms/family-jungle-room-front-entrance.avif",
     images: [
-      "/images/rooms-view.jpg",
-      "/images/dining-overwater.jpg",
-      "/images/hero-bay.jpg",
-      "/images/rooms-original.jpg",
+      "/images/rooms/family-jungle-room-front-entrance.avif",
+      "/images/rooms/family-jungle-room-main-bed-king-size.avif",
+      "/images/rooms/family-jungle-room-single-bed-twin.avif",
+      "/images/rooms/family-jungle-room-both-beds-spacious.avif",
+      "/images/rooms/family-jungle-room-single-bed-bathroom-view.avif",
+      "/images/rooms/family-jungle-room-bathroom-modern.avif",
+      "/images/rooms/family-jungle-room-bathtub-luxury.avif",
+      "/images/rooms/family-jungle-room-sea-view-terrace.avif",
+      "/images/rooms/family-jungle-room-hammock-terrace.avif",
+      "/images/rooms/family-jungle-room-outdoor-seating-terrace.avif",
     ],
   },
 ];
@@ -1258,26 +1269,129 @@ export const travelRoutes = [
   },
 ];
 
+/**
+ * FAQ Data
+ * 
+ * ⚠️ IMPORTANT NOTE FOR YUH:
+ * The FAQ answers below are placeholders. Please replace each answer with actual information
+ * about your property. Each FAQ has a note indicating what specific information needs to be confirmed.
+ */
 export const faqs = [
+  // Booking FAQs
   {
-    question: "What is included in my stay?",
-    answer:
-      "Breakfast, Wi-Fi, purified rainwater, curated amenities, and concierge support for excursions are all included. Transfers from Bocas Town are complimentary for stays of four nights or more.",
+    question: "How do I book and what are the payment terms?",
+    answerItems: [
+      "Booking methods (widget, WhatsApp, email, phone)",
+      "Deposit percentage required",
+      "When balance is due",
+      "Accepted payment methods (credit cards, bank transfer, cash, etc.)",
+      "Recommended booking timeline for peak season",
+      "Whether last-minute bookings are accepted",
+    ],
+    notes: "", // Yuh: Add your comments or thoughts here
   },
   {
-    question: "How do I confirm a booking?",
-    answer:
-      "Use the embedded booking widget or contact our concierge via WhatsApp/email. A 30% deposit secures your reservation; the balance is due upon arrival.",
+    question: "What is the minimum stay and do you offer group rates?",
+    answerItems: [
+      "Minimum stay requirement (nights)",
+      "Number of nights required for complimentary transfers",
+      "Extended stay discount thresholds",
+      "Group size that qualifies for special rates",
+      "What group benefits are included (concierge coordination, etc.)",
+    ],
+    notes: "", // Yuh: Add your comments or thoughts here
+  },
+  // Accessibility FAQs
+  {
+    question: "Is the property accessible for guests with mobility limitations?",
+    answerItems: [
+      "Actual number of steps per cabana/room type",
+      "Pathway conditions (natural, paved, etc.)",
+      "Whether wheelchair accessibility is available anywhere on property",
+      "What accommodations can be made for guests with mobility considerations",
+      "Whether you can accommodate specific needs with advance notice",
+    ],
+    notes: "", // Yuh: Add your comments or thoughts here
+  },
+  // Policy FAQs
+  {
+    question: "What are your policies on pets, children, and safety?",
+    answerItems: [
+      "Pet policy (allowed/not allowed, service animals policy)",
+      "Children policy (age restrictions, free stay age if applicable)",
+      "Safety protocols in place (24/7 staff, first aid, emergency systems)",
+      "Safety briefings provided (water activities, etc.)",
+      "Any age restrictions for activities",
+    ],
+    notes: "", // Yuh: Add your comments or thoughts here
   },
   {
-    question: "Can you accommodate dietary needs?",
-    answer:
-      "Absolutely. Our culinary team prepares vegan, gluten-free, and allergy-friendly menus when notified 48 hours in advance.",
+    question: "What is your cancellation and refund policy?",
+    answerItems: [
+      "Cancellation timeline tiers (e.g., 30+ days, 14-30 days, within 14 days)",
+      "Refund percentages for each tier",
+      "Processing fees if any",
+      "Credit toward future stays policy",
+      "Weather-related disruption policy",
+      "Refund processing time",
+      "Travel insurance recommendation",
+    ],
+    notes: "", // Yuh: Add your comments or thoughts here
   },
+  // Amenities FAQs
   {
-    question: "Is there Wi-Fi and cell coverage?",
-    answer:
-      "High-speed Wi-Fi is available across the property. Cellular coverage is intermittent; we recommend enabling Wi-Fi calling.",
+    question: "What about Wi-Fi, electricity, and water?",
+    answerItems: [
+      "Wi-Fi type (satellite, etc.) and actual speeds/capabilities (can it handle video calls?)",
+      "Electricity system (solar percentage, battery backup, generator backup)",
+      "Outlet voltage (110V, 220V, both?)",
+      "Water system details (rainwater collection, purification process, safety standards)",
+      "Cellular coverage availability",
+      "Wi-Fi calling recommendation",
+    ],
+    notes: "", // Yuh: Add your comments or thoughts here
+  },
+  // Inclusions FAQs
+  {
+    question: "What is included in my stay and what are extra fees?",
+    answerItems: [
+      "Breakfast for 2 is included in the room rate (served 8:00 am to 9:30 am)",
+      "Free Wi-Fi available property-wide",
+      "Purified rainwater provided in all rooms",
+      "Complimentary arrival and departure transfers from Bocas Town or airport for guests staying 4+ nights",
+      "Free activities: Snorkeling from swim platform, kayaking, stand-up paddleboarding",
+      "Concierge service for planning your stay",
+      "What costs extra: Lunch, dinner, alcoholic beverages, excursions, transfers for stays less than 4 nights, spa services",
+      "Lunch is a la carte menu (12:00 pm to 2:30 pm). Lunch packs available if ordered in advance",
+      "Dinner is a 3-course prix fixe menu (7:00 pm to 9:30 pm)",
+      "Blå Bar offers all-day snacks and cocktails",
+    ],
+    notes: "", // Yuh: Add your comments or thoughts here
+  },
+  // Dining FAQs
+  {
+    question: "What are the meal times and what is included?",
+    answerItems: [
+      "Breakfast: 8:00 am to 9:30 am - Breakfast for 2 included in the room rate. Always served with fresh tropical fruits, fresh made juice, home baked bread, homemade jams, homemade yogurt with homemade coconut granola, and a different main dish (egg) each day. Filter coffee and tea included.",
+      "Lunch: 12:00 pm to 2:30 pm - French-based menu with quiche, flatbreads, homemade pasta, croque madame, croque monsieur, and salads. A la carte menu. We also provide guests with lunch packs if they order in advance.",
+      "Dinner: 7:00 pm to 9:30 pm - 3-course prix fixe menu in an intimate, tranquil setting. Food is sourced locally when possible. We grow as much of our fruit and vegetables as possible and we catch our fish ourselves. Our staff catches lobster, crabs, conch, and octopus when possible.",
+      "Blå Bar: Open anytime for hotel guests. For outside guests, we are open upon reservation. Hours are flexible. Offers all-day snacks and delightful cocktails.",
+      "We always vary what we serve based on our own harvest. Menus are created weekly with our gardener, basing the menu on the week's harvest.",
+    ],
+    notes: "", // Yuh: Add your comments or thoughts here
+  },
+  // General FAQs
+  {
+    question: "Can you accommodate dietary restrictions?",
+    answerItems: [
+      "Yes, most dishes can be made vegetarian.",
+      "We have a number of dishes that are vegan.",
+      "We can cater to gluten-free dietary choices. Being remote, we cannot guarantee 100% gluten-free environment. When a guest notifies us of gluten sensitivities, our chef contacts the guest to find out severity and options.",
+      "We do bake our own gluten-free breads for guests and are able to accommodate most sensitivities.",
+      "Guests with Celiac disease should consult with their doctor to determine if our precautions are enough.",
+      "48-hour advance notice required for dietary accommodations.",
+    ],
+    notes: "", // Yuh: Add your comments or thoughts here
   },
 ];
 

@@ -43,7 +43,7 @@ export default function GalleryPage() {
   return (
     <div className="space-y-0 pb-0 pt-0">
       {/* Title Section */}
-      <section className="section !py-6 bg-white">
+      <section className="section page-title-section bg-white">
         <div className="container max-w-4xl">
           <h1 className="font-sans text-xl md:text-2xl text-black mb-4 text-center uppercase" style={{ fontWeight: 100 }}>
             FACILITIES & GROUNDS

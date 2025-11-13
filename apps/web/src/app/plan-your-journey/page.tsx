@@ -59,7 +59,7 @@ export default function PlanYourJourneyPage() {
   return (
     <div className="space-y-0 pb-0 pt-0">
       {/* Title Section */}
-      <section className="section !py-6 bg-white">
+      <section className="section page-title-section bg-white">
         <div className="container max-w-4xl">
           <h1 className="font-sans text-xl md:text-2xl text-black mb-4 text-center uppercase" style={{ fontWeight: 100 }}>
             GETTING HERE
@@ -172,7 +172,14 @@ export default function PlanYourJourneyPage() {
             {faqs.map((faq, idx) => (
               <Card key={idx} className="p-6">
                 <h3 className="font-display text-xl text-[var(--color-navy)] mb-3">{faq.question}</h3>
-                <p className="text-[var(--color-text-muted)] leading-relaxed">{faq.answer}</p>
+                <ul className="space-y-2 text-[var(--color-text-muted)]">
+                  {faq.answerItems?.map((item, itemIdx) => (
+                    <li key={itemIdx} className="flex items-start gap-2">
+                      <span className="text-[var(--color-gold)] mt-1">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </Card>
             ))}
           </div>

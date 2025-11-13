@@ -218,16 +218,28 @@ export default function SustainabilityPage() {
                     Our 5-acre tropical garden, maintained by head gardener Roque, provides 95% of our produce. We source additional ingredients from local Ngäbe-Buglé farmers and sustainable fishers.
                   </p>
                   <CollapsibleSection>
-                    <ul className="space-y-3 text-[var(--color-text-muted)]">
-                      <li className="flex items-start gap-3">
-                        <span className="text-[var(--color-gold)] mt-1 font-bold">•</span>
-                        <span><strong className="text-[var(--color-navy)]">Ngäbe-Buglé partnerships</strong> - Fair-trade cacao and indigenous crops</span>
-                    </li>
-                      <li className="flex items-start gap-3">
-                        <span className="text-[var(--color-gold)] mt-1 font-bold">•</span>
-                        <span><strong className="text-[var(--color-navy)]">Local fishers</strong> - Sustainable seafood from Dolphin Bay waters</span>
-                    </li>
-                  </ul>
+                    <div className="space-y-4">
+                      <div>
+                        <h4 className="font-semibold text-[var(--color-navy)] mb-2">What We Grow On Site:</h4>
+                        <p className="text-sm text-[var(--color-text-muted)] mb-2">
+                          We grow tomatoes, cucumber, pepper fruits, eggplant, chili, herbs, katuk, pumpkin, zucchini, ginger, turmeric, vanilla, sometimes kale, lime, coconuts, cacao, mangosteen, mango, pineapple, 16 different types of bananas, rambutan, aqua manzana, mandarins, star fruit, papaya, yuca, potatoes, and many others on site.
+                        </p>
+                      </div>
+                      <ul className="space-y-3 text-[var(--color-text-muted)]">
+                        <li className="flex items-start gap-3">
+                          <span className="text-[var(--color-gold)] mt-1 font-bold">•</span>
+                          <span><strong className="text-[var(--color-navy)]">Ngäbe-Buglé partnerships</strong> - Fair-trade cacao and indigenous crops</span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <span className="text-[var(--color-gold)] mt-1 font-bold">•</span>
+                          <span><strong className="text-[var(--color-navy)]">Local fishers</strong> - Sustainable seafood from Dolphin Bay waters</span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <span className="text-[var(--color-gold)] mt-1 font-bold">•</span>
+                          <span><strong className="text-[var(--color-navy)]">Neighbor&apos;s farm</strong> - Fresh eggs for our breakfast dishes</span>
+                        </li>
+                      </ul>
+                    </div>
                   </CollapsibleSection>
                 </div>
               </div>
@@ -356,7 +368,7 @@ export default function SustainabilityPage() {
                   Visit Floating Doctors →
                 </Button>
               </div>
-              <CollapsibleSection title="Donations & Education">
+              <CollapsibleSection>
                 <div className="space-y-4">
                   <div>
                     <h4 className="font-display text-lg text-[var(--color-navy)] mb-3 uppercase font-light">DONATIONS NEEDED</h4>
