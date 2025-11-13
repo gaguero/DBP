@@ -29,7 +29,7 @@ import Image from "next/image";
  * - salon-azul-outdoor-workout-area-weights.avif
  * - salon-azul-yoga-meditation-space.avif
  */
-const salonAzulImages = [
+const salonAzulImages: Array<{ src: string; alt: string }> = [
   // TODO: Add Salon Azul images here when photos are confirmed
   // Example structure:
   // {
