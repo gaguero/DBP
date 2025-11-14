@@ -13,7 +13,14 @@ SELECT
     FROM information_schema.tables
     WHERE table_schema = 'public'
       AND table_name = 'PageCommentRevision'
-  ) AS "hasRevisions";
+  ) AS "hasRevisions",
+  EXISTS (
+    SELECT 1
+    FROM information_schema.columns
+    WHERE table_schema = 'public'
+      AND table_name = 'PageCommentRevision'
+      AND column_name = 'statusNote'
+  ) AS "hasStatusNote";
 `;
 
 const BOOTSTRAP_QUERIES: readonly string[] = [
@@ -86,10 +93,10 @@ export function ensureCommentTables(prisma: PrismaClient) {
 
 async function bootstrap(prisma: PrismaClient) {
   const result = (await prisma.$queryRawUnsafe<
-    Array<{ hasComments: boolean; hasRevisions: boolean }>
+    Array<{ hasComments: boolean; hasRevisions: boolean; hasStatusNote: boolean }>
   >(CHECK_TABLES_SQL))?.[0];
 
-  if (result?.hasComments && result?.hasRevisions) {
+  if (result?.hasComments && result?.hasRevisions && result?.hasStatusNote) {
     return;
   }
 

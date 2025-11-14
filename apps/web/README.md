@@ -40,6 +40,8 @@ Endpoints generados:
 
 Cada comentario guarda nombre, apellido, estado (`pending`, `in_progress`, `resolved`, `rejected`), enlace opcional y mantiene historial de ediciones junto con notas obligatorias cada vez que cambia el estado.
 
+> El backend ejecuta automáticamente `ensureCommentTables` al inicializar APIs de comentarios. Este bootstrap crea las tablas, índices y la columna `statusNote` si aún no existen (útil en Railway cuando las migraciones no se han corrido).
+
 **Modo de uso en el UI**
 
 1. Activa el feature flag (`COMMENTS_FEATURE_ENABLED=true`).
