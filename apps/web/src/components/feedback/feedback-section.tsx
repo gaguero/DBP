@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 
 import { useOptionalFeedbackContext } from "@/components/feedback/feedback-context";
@@ -15,7 +15,15 @@ type FeedbackSectionProps = PropsWithChildren<{
 const HIGHLIGHT_CLASSES =
   "relative outline outline-2 outline-blue-500 ring-2 ring-blue-400/60 transition-all duration-200";
 
-export function FeedbackSection({ id, label, className, children }: FeedbackSectionProps) {
+export function FeedbackSection(props: FeedbackSectionProps) {
+  return (
+    <Suspense fallback={<FeedbackSectionFallback {...props} />}>
+      <FeedbackSectionContent {...props} />
+    </Suspense>
+  );
+}
+
+function FeedbackSectionContent({ id, label, className, children }: FeedbackSectionProps) {
   const context = useOptionalFeedbackContext();
   const searchParams = useSearchParams();
   const highlightTarget = searchParams?.get("highlight");
@@ -55,6 +63,14 @@ export function FeedbackSection({ id, label, className, children }: FeedbackSect
           + Add comment
         </button>
       )}
+      {children}
+    </div>
+  );
+}
+
+function FeedbackSectionFallback({ id, label, className, children }: FeedbackSectionProps) {
+  return (
+    <div data-feedback-id={id} data-feedback-label={label} className={className}>
       {children}
     </div>
   );
