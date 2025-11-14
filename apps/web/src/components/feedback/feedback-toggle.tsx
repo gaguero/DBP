@@ -20,7 +20,7 @@ export function FeedbackToggle() {
         selectionMode ? "bg-blue-700 text-white" : "bg-white text-blue-700",
       )}
     >
-      {selectionMode ? "Salir de selección" : "Modo comentarios"}
+      {selectionMode ? "Exit selection mode" : "Feedback mode"}
     </button>
   );
 }

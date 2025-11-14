@@ -7,14 +7,14 @@ import type { PageComment } from "@/components/feedback/types";
 const PAGES = ["home", "dining", "rooms", "experiences", "sustainability", "stories"];
 
 const STATUS_OPTIONS = [
-  { value: "all", label: "Todos" },
-  { value: "pending", label: "Pendiente" },
-  { value: "in_progress", label: "En progreso" },
-  { value: "resolved", label: "Resuelto" },
+  { value: "all", label: "All" },
+  { value: "pending", label: "Pending" },
+  { value: "in_progress", label: "In progress" },
+  { value: "resolved", label: "Resolved" },
 ];
 
 function formatDate(value: string) {
-  return new Date(value).toLocaleString("es-PA", {
+  return new Date(value).toLocaleString("en-US", {
     dateStyle: "short",
     timeStyle: "short",
   });
@@ -87,7 +87,7 @@ export function FeedbackDashboard() {
   if (isLoading) {
     return (
       <div className="rounded-xl border border-blue-100 bg-white p-6 shadow-lg">
-        <p className="text-center text-blue-700">Cargando comentarios...</p>
+        <p className="text-center text-blue-700">Loading comments...</p>
       </div>
     );
   }
@@ -95,19 +95,19 @@ export function FeedbackDashboard() {
   return (
     <div className="space-y-6">
       <div className="rounded-xl border border-blue-100 bg-white p-6 shadow-lg">
-        <h2 className="mb-4 text-xl font-semibold text-blue-900">Dashboard de Comentarios</h2>
+        <h2 className="mb-4 text-xl font-semibold text-blue-900">Comments dashboard</h2>
 
         <div className="mb-6 grid grid-cols-2 gap-4 md:grid-cols-4">
           <div className="rounded-lg border border-yellow-200 bg-yellow-50 p-3">
-            <p className="text-xs font-semibold text-yellow-800">Pendientes</p>
+            <p className="text-xs font-semibold text-yellow-800">Pending</p>
             <p className="text-2xl font-bold text-yellow-900">{stats.pending}</p>
           </div>
           <div className="rounded-lg border border-blue-200 bg-blue-50 p-3">
-            <p className="text-xs font-semibold text-blue-800">En progreso</p>
+            <p className="text-xs font-semibold text-blue-800">In progress</p>
             <p className="text-2xl font-bold text-blue-900">{stats.inProgress}</p>
           </div>
           <div className="rounded-lg border border-green-200 bg-green-50 p-3">
-            <p className="text-xs font-semibold text-green-800">Resueltos</p>
+            <p className="text-xs font-semibold text-green-800">Resolved</p>
             <p className="text-2xl font-bold text-green-900">{stats.resolved}</p>
           </div>
           <div className="rounded-lg border border-gray-200 bg-gray-50 p-3">
@@ -118,13 +118,13 @@ export function FeedbackDashboard() {
 
         <div className="mb-4 flex flex-wrap gap-4">
           <div className="flex-1 min-w-[200px]">
-            <label className="mb-1 block text-xs font-semibold text-blue-800">Página</label>
+            <label className="mb-1 block text-xs font-semibold text-blue-800">Page</label>
             <select
               value={selectedPage}
               onChange={(e) => setSelectedPage(e.target.value)}
               className="w-full rounded border border-blue-200 px-3 py-2 text-sm"
             >
-              <option value="all">Todas las páginas</option>
+              <option value="all">All pages</option>
               {PAGES.map((page) => (
                 <option key={page} value={page}>
                   {page}
@@ -134,7 +134,7 @@ export function FeedbackDashboard() {
           </div>
 
           <div className="flex-1 min-w-[200px]">
-            <label className="mb-1 block text-xs font-semibold text-blue-800">Estado</label>
+            <label className="mb-1 block text-xs font-semibold text-blue-800">Status</label>
             <select
               value={selectedStatus}
               onChange={(e) => setSelectedStatus(e.target.value)}
@@ -149,12 +149,12 @@ export function FeedbackDashboard() {
           </div>
 
           <div className="flex-1 min-w-[200px]">
-            <label className="mb-1 block text-xs font-semibold text-blue-800">Buscar</label>
+            <label className="mb-1 block text-xs font-semibold text-blue-800">Find</label>
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Buscar en comentarios..."
+              placeholder="Search within comments..."
               className="w-full rounded border border-blue-200 px-3 py-2 text-sm"
             />
           </div>
@@ -164,7 +164,7 @@ export function FeedbackDashboard() {
       <div className="space-y-4">
         {filtered.length === 0 ? (
           <div className="rounded-lg border border-blue-100 bg-blue-50 p-6 text-center text-blue-700">
-            No hay comentarios que coincidan con los filtros seleccionados.
+            No comments match the selected filters.
           </div>
         ) : (
           filtered.map((comment) => (
@@ -199,7 +199,10 @@ export function FeedbackDashboard() {
               <p className="mb-2 whitespace-pre-wrap text-sm text-gray-700">{comment.body}</p>
               {comment.linkUrl && (
                 <p className="mb-2 text-xs text-blue-700">
-                  Enlace: <a href={comment.linkUrl} className="underline">{comment.linkUrl}</a>
+                  Link:{" "}
+                  <a href={comment.linkUrl} className="underline">
+                    {comment.linkUrl}
+                  </a>
                 </p>
               )}
             </div>

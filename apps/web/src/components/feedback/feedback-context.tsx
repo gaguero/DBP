@@ -1,9 +1,14 @@
 "use client";
 
-import { createContext, useContext, useMemo, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
 import { usePageComments } from "@/components/feedback/use-page-comments";
 import { CreateCommentInput, PageComment, UpdateCommentInput } from "@/components/feedback/types";
+
+type FeedbackUserProfile = {
+  firstName: string;
+  lastName: string;
+};
 
 type ActiveFormState =
   | {
@@ -32,15 +37,47 @@ type FeedbackContextValue = {
   createComment: (input: CreateCommentInput) => Promise<PageComment | null>;
   updateComment: (input: UpdateCommentInput) => Promise<PageComment | null>;
   refresh: () => Promise<void>;
+  userProfile: FeedbackUserProfile | null;
+  profileReady: boolean;
+  saveUserProfile: (profile: FeedbackUserProfile) => void;
 };
 
 const FeedbackContext = createContext<FeedbackContextValue | null>(null);
 
+const PROFILE_STORAGE_KEY = "dbp-feedback-profile";
+
 export function FeedbackProvider({ pageId, children }: { pageId: string; children: React.ReactNode }) {
   const [selectionMode, setSelectionMode] = useState(false);
   const [activeForm, setActiveForm] = useState<ActiveFormState>(null);
+  const [userProfile, setUserProfile] = useState<FeedbackUserProfile | null>(null);
+  const [profileReady, setProfileReady] = useState(false);
   const { comments, isLoading, error, featureAvailable, refresh, createComment, updateComment } =
     usePageComments(pageId);
+
+  useEffect(() => {
+    try {
+      const stored = window.localStorage.getItem(PROFILE_STORAGE_KEY);
+      if (stored) {
+        const parsed = JSON.parse(stored) as FeedbackUserProfile;
+        if (parsed.firstName && parsed.lastName) {
+          setUserProfile(parsed);
+        }
+      }
+    } catch (err) {
+      console.warn("Unable to read stored feedback profile", err);
+    } finally {
+      setProfileReady(true);
+    }
+  }, []);
+
+  function persistProfile(profile: FeedbackUserProfile) {
+    setUserProfile(profile);
+    try {
+      window.localStorage.setItem(PROFILE_STORAGE_KEY, JSON.stringify(profile));
+    } catch (err) {
+      console.warn("Unable to persist feedback profile", err);
+    }
+  }
 
   const contextValue = useMemo<FeedbackContextValue>(() => {
     return {
@@ -82,8 +119,24 @@ export function FeedbackProvider({ pageId, children }: { pageId: string; childre
         }
       },
       refresh,
+      userProfile,
+      profileReady,
+      saveUserProfile: persistProfile,
     };
-  }, [activeForm, comments, createComment, error, featureAvailable, isLoading, pageId, refresh, selectionMode, updateComment]);
+  }, [
+    activeForm,
+    comments,
+    createComment,
+    error,
+    featureAvailable,
+    isLoading,
+    pageId,
+    refresh,
+    selectionMode,
+    updateComment,
+    userProfile,
+    profileReady,
+  ]);
 
   return <FeedbackContext.Provider value={contextValue}>{children}</FeedbackContext.Provider>;
 }

@@ -30,7 +30,7 @@ function groupByElement(comments: PageComment[]) {
 }
 
 function formatDate(value: string) {
-  return new Date(value).toLocaleString("es-PA", {
+  return new Date(value).toLocaleString("en-US", {
     dateStyle: "short",
     timeStyle: "short",
   });
@@ -50,23 +50,23 @@ export function FeedbackPanel() {
     <aside className="mt-6 rounded-xl border border-blue-100 bg-white/90 shadow-lg">
       <div className="flex items-center justify-between border-b border-blue-100 bg-blue-50 px-4 py-3">
         <div>
-          <h2 className="text-sm font-semibold text-blue-900">Stakeholder Feedback · {pageId}</h2>
-          <p className="text-xs text-blue-700">Responde y resuelve los comentarios antes del lanzamiento.</p>
+          <h2 className="text-sm font-semibold text-blue-900">Stakeholder feedback · {pageId}</h2>
+          <p className="text-xs text-blue-700">Work through comments together before launch.</p>
         </div>
         <button
           type="button"
-          onClick={() => openCreateForm(`${pageId}-general`, "Notas generales")}
+          onClick={() => openCreateForm(`${pageId}-general`, "General notes")}
           className="rounded bg-blue-600 px-3 py-2 text-xs font-semibold text-white shadow hover:bg-blue-700"
         >
-          + Comentario rápido
+          + Quick comment
         </button>
       </div>
 
       <div className="max-h-[28rem] space-y-4 overflow-y-auto p-4 text-sm">
-        {isLoading && <p className="text-blue-700">Cargando comentarios...</p>}
+        {isLoading && <p className="text-blue-700">Loading comments...</p>}
         {error && <p className="text-red-600">{error}</p>}
         {!isLoading && !error && groups.length === 0 && (
-          <p className="text-blue-700">Aún no hay comentarios. Activa el modo selección y añade el primero.</p>
+          <p className="text-blue-700">No comments yet. Enable selection mode and add the first note.</p>
         )}
 
         {groups.map(([elementId, group]) => (
@@ -76,14 +76,14 @@ export function FeedbackPanel() {
                 <p className="text-xs font-semibold uppercase text-blue-900">
                   {group.label ?? elementId}
                 </p>
-                <p className="text-[11px] text-blue-600">{group.comments.length} comentario(s)</p>
+                <p className="text-[11px] text-blue-600">{group.comments.length} comment(s)</p>
               </div>
               <button
                 type="button"
                 className="rounded bg-blue-100 px-2 py-1 text-[11px] font-semibold text-blue-700 hover:bg-blue-200"
                 onClick={() => openCreateForm(elementId, group.label ?? elementId)}
               >
-                + Añadir
+                + Add
               </button>
             </div>
 
@@ -108,7 +108,10 @@ export function FeedbackPanel() {
                   <p className="whitespace-pre-wrap text-blue-900">{comment.body}</p>
                   {comment.linkUrl && (
                     <p className="mt-2 text-xs text-blue-700">
-                      Enlace: <a className="underline" href={comment.linkUrl}>{comment.linkUrl}</a>
+                      Link:{" "}
+                      <a className="underline" href={comment.linkUrl}>
+                        {comment.linkUrl}
+                      </a>
                     </p>
                   )}
 
@@ -118,7 +121,7 @@ export function FeedbackPanel() {
                       className="rounded bg-blue-600 px-3 py-1 text-xs font-semibold text-white hover:bg-blue-700"
                       onClick={() => openEditForm(comment)}
                     >
-                      Editar
+                      Edit
                     </button>
                   </div>
 

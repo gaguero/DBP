@@ -6,11 +6,38 @@ import { auth } from "@/lib/auth";
 import { isCommentsFeatureEnabled } from "@/lib/feature-flags";
 import { sendCommentNotification } from "@/lib/mailer";
 
+function isValidUrl(value: string) {
+  try {
+    const parsed = new URL(value);
+    return Boolean(parsed);
+  } catch {
+    return false;
+  }
+}
+
 const linkSchema = z
-  .string()
-  .url({ message: "Debe ser un URL válido" })
-  .optional()
-  .or(z.literal("").transform(() => undefined));
+  .union([z.string(), z.null(), z.undefined()])
+  .transform((value) => {
+    if (value === undefined) {
+      return undefined;
+    }
+    if (value === null) {
+      return null;
+    }
+    const trimmed = value.trim();
+    return trimmed.length ? trimmed : null;
+  })
+  .superRefine((value, ctx) => {
+    if (!value) {
+      return;
+    }
+    if (!isValidUrl(value)) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Must be a valid URL",
+      });
+    }
+  });
 
 const createCommentSchema = z.object({
   elementId: z.string().min(1),

@@ -6,11 +6,38 @@ import { auth } from "@/lib/auth";
 import { isCommentsFeatureEnabled } from "@/lib/feature-flags";
 import { sendCommentNotification } from "@/lib/mailer";
 
+function isValidUrl(value: string) {
+  try {
+    const parsed = new URL(value);
+    return Boolean(parsed);
+  } catch {
+    return false;
+  }
+}
+
 const linkSchema = z
-  .string()
-  .url({ message: "Debe ser un URL válido" })
-  .optional()
-  .or(z.literal("").transform(() => undefined));
+  .union([z.string(), z.null(), z.undefined()])
+  .transform((value) => {
+    if (value === undefined) {
+      return undefined;
+    }
+    if (value === null) {
+      return null;
+    }
+    const trimmed = value.trim();
+    return trimmed.length ? trimmed : null;
+  })
+  .superRefine((value, ctx) => {
+    if (!value) {
+      return;
+    }
+    if (!isValidUrl(value)) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Must be a valid URL",
+      });
+    }
+  });
 
 const updateCommentSchema = z.object({
   firstName: z.string().min(1).optional(),
@@ -65,7 +92,7 @@ export async function PATCH(request: Request, { params }: Params) {
   if (!editorName) {
     return NextResponse.json(
       {
-        message: "Se requiere nombre y apellido de quien edita cuando no hay sesión",
+        message: "Editor first and last name are required when no authenticated user is present.",
       },
       { status: 400 },
     );
@@ -81,10 +108,7 @@ export async function PATCH(request: Request, { params }: Params) {
     parsed.data.status !== undefined;
 
   if (!hasAnyFieldUpdate) {
-    return NextResponse.json(
-      { message: "No hay cambios para actualizar" },
-      { status: 400 },
-    );
+    return NextResponse.json({ message: "No changes were provided." }, { status: 400 });
   }
 
   if (parsed.data.firstName) updateData.firstName = parsed.data.firstName;
@@ -98,33 +122,26 @@ export async function PATCH(request: Request, { params }: Params) {
 
   const changes: string[] = [];
   if (parsed.data.body && parsed.data.body !== comment.body) {
-    changes.push("- Texto del comentario editado");
+    changes.push("- Comment text updated");
   }
   if (parsed.data.status && parsed.data.status !== comment.status) {
-    changes.push(`- Estado: ${comment.status} → ${parsed.data.status}`);
+    changes.push(`- Status: ${comment.status} → ${parsed.data.status}`);
   }
   if (parsed.data.linkUrl !== undefined && parsed.data.linkUrl !== comment.linkUrl) {
-    changes.push(
-      `- Enlace: ${comment.linkUrl ?? "(sin enlace)"} → ${parsed.data.linkUrl || "(sin enlace)"}`,
-    );
+    changes.push(`- Link: ${comment.linkUrl ?? "(none)"} → ${parsed.data.linkUrl || "(none)"}`);
   }
   if (parsed.data.firstName && parsed.data.firstName !== comment.firstName) {
-    changes.push(`- Nombre: ${comment.firstName} → ${parsed.data.firstName}`);
+    changes.push(`- First name: ${comment.firstName} → ${parsed.data.firstName}`);
   }
   if (parsed.data.lastName && parsed.data.lastName !== comment.lastName) {
-    changes.push(`- Apellido: ${comment.lastName} → ${parsed.data.lastName}`);
+    changes.push(`- Last name: ${comment.lastName} → ${parsed.data.lastName}`);
   }
   if (parsed.data.elementLabel && parsed.data.elementLabel !== comment.elementLabel) {
-    changes.push(
-      `- Etiqueta de sección: ${comment.elementLabel ?? "(sin etiqueta)"} → ${parsed.data.elementLabel}`,
-    );
+    changes.push(`- Section label: ${comment.elementLabel ?? "(none)"} → ${parsed.data.elementLabel}`);
   }
 
   if (!changes.length) {
-    return NextResponse.json(
-      { message: "No hay cambios para registrar" },
-      { status: 400 },
-    );
+    return NextResponse.json({ message: "No changes were detected." }, { status: 400 });
   }
 
   const historySummary = changes.join("\n");

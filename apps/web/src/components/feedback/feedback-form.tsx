@@ -3,12 +3,12 @@
 import { useEffect, useMemo, useState } from "react";
 
 import { useFeedbackContext } from "@/components/feedback/feedback-context";
-import { PageComment, UpdateCommentInput } from "@/components/feedback/types";
+import { UpdateCommentInput } from "@/components/feedback/types";
 
 const STATUS_OPTIONS = [
-  { value: "pending", label: "Pendiente" },
-  { value: "in_progress", label: "En progreso" },
-  { value: "resolved", label: "Resuelto" },
+  { value: "pending", label: "Pending" },
+  { value: "in_progress", label: "In progress" },
+  { value: "resolved", label: "Resolved" },
 ];
 
 type FormState = {
@@ -22,17 +22,23 @@ type FormState = {
   editorLastName: string;
 };
 
-function buildInitialState(activeForm: ReturnType<typeof useFeedbackContext>["activeForm"]): FormState {
+function buildInitialState(
+  activeForm: ReturnType<typeof useFeedbackContext>["activeForm"],
+  userProfile: ReturnType<typeof useFeedbackContext>["userProfile"],
+): FormState {
+  const profileFirstName = userProfile?.firstName ?? "";
+  const profileLastName = userProfile?.lastName ?? "";
+
   if (!activeForm) {
     return {
-      firstName: "",
-      lastName: "",
+      firstName: profileFirstName,
+      lastName: profileLastName,
       comment: "",
       linkUrl: "",
       status: "pending",
       elementLabel: "",
-      editorFirstName: "",
-      editorLastName: "",
+      editorFirstName: profileFirstName,
+      editorLastName: profileLastName,
     };
   }
 
@@ -45,38 +51,38 @@ function buildInitialState(activeForm: ReturnType<typeof useFeedbackContext>["ac
       linkUrl: comment.linkUrl ?? "",
       status: comment.status,
       elementLabel: comment.elementLabel ?? "",
-      editorFirstName: "",
-      editorLastName: "",
+      editorFirstName: profileFirstName,
+      editorLastName: profileLastName,
     };
   }
 
   return {
-    firstName: "",
-    lastName: "",
+    firstName: profileFirstName,
+    lastName: profileLastName,
     comment: "",
     linkUrl: "",
     status: "pending",
     elementLabel: activeForm.elementLabel ?? "",
-    editorFirstName: "",
-    editorLastName: "",
+    editorFirstName: profileFirstName,
+    editorLastName: profileLastName,
   };
 }
 
 export function FeedbackForm() {
-  const { activeForm, closeForm, createComment, updateComment } = useFeedbackContext();
-  const [state, setState] = useState<FormState>(() => buildInitialState(activeForm));
+  const { activeForm, closeForm, createComment, updateComment, userProfile } = useFeedbackContext();
+  const [state, setState] = useState<FormState>(() => buildInitialState(activeForm, userProfile));
   const [isSubmitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    setState(buildInitialState(activeForm));
+    setState(buildInitialState(activeForm, userProfile));
     setError(null);
     setSubmitting(false);
-  }, [activeForm]);
+  }, [activeForm, userProfile]);
 
   const title = useMemo(() => {
     if (!activeForm) return null;
-    return activeForm.mode === "create" ? "Nuevo comentario" : "Editar comentario";
+    return activeForm.mode === "create" ? "New comment" : "Edit comment";
   }, [activeForm]);
 
   if (!activeForm) {
@@ -88,19 +94,15 @@ export function FeedbackForm() {
     setSubmitting(true);
     setError(null);
 
-    if (!activeForm) {
-      setError("No hay formulario activo");
-      setSubmitting(false);
-      return;
-    }
-
     try {
       if (activeForm.mode === "create") {
         if (!state.firstName.trim() || !state.lastName.trim() || !state.comment.trim()) {
-          setError("Nombre, apellido y comentario son obligatorios");
+          setError("First name, last name, and comment are required.");
           setSubmitting(false);
           return;
         }
+
+        const trimmedLink = state.linkUrl.trim();
 
         await createComment({
           elementId: activeForm.elementId,
@@ -108,12 +110,12 @@ export function FeedbackForm() {
           firstName: state.firstName.trim(),
           lastName: state.lastName.trim(),
           body: state.comment.trim(),
-          linkUrl: state.linkUrl.trim() ? state.linkUrl.trim() : null,
+          linkUrl: trimmedLink ? trimmedLink : null,
         });
       } else {
         const comment = activeForm.comment;
         if (!state.comment.trim()) {
-          setError("El comentario no puede estar vacío");
+          setError("The comment cannot be empty.");
           setSubmitting(false);
           return;
         }
@@ -133,8 +135,9 @@ export function FeedbackForm() {
           payload.body = state.comment.trim();
           hasChanges = true;
         }
-        if (state.linkUrl.trim() !== (comment.linkUrl ?? "")) {
-          payload.linkUrl = state.linkUrl.trim() ? state.linkUrl.trim() : null;
+        const trimmedLink = state.linkUrl.trim();
+        if (trimmedLink !== (comment.linkUrl ?? "")) {
+          payload.linkUrl = trimmedLink ? trimmedLink : null;
           hasChanges = true;
         }
         if (state.elementLabel.trim() !== (comment.elementLabel ?? "")) {
@@ -147,7 +150,7 @@ export function FeedbackForm() {
         }
 
         if (!hasChanges) {
-          setError("Realiza al menos un cambio antes de guardar");
+          setError("Make at least one change before saving.");
           setSubmitting(false);
           return;
         }
@@ -156,7 +159,7 @@ export function FeedbackForm() {
         payload.editorLastName = state.editorLastName.trim() || undefined;
 
         if (!payload.editorFirstName || !payload.editorLastName) {
-          setError("Indica nombre y apellido de quien edita");
+          setError("Share who edited the comment (first and last name).");
           setSubmitting(false);
           return;
         }
@@ -165,7 +168,7 @@ export function FeedbackForm() {
       }
     } catch (err) {
       console.error(err);
-      setError(err instanceof Error ? err.message : "Error guardando comentario");
+      setError(err instanceof Error ? err.message : "We could not save the comment. Please try again.");
       setSubmitting(false);
       return;
     }
@@ -177,12 +180,12 @@ export function FeedbackForm() {
     <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/40 px-4">
       <div className="w-full max-w-lg rounded-xl bg-white p-6 shadow-2xl">
         <div className="mb-4 flex items-start justify-between gap-4">
-          <div>
+          <div className="space-y-1 text-xs text-blue-700">
             <h3 className="text-lg font-semibold text-blue-900">{title}</h3>
-            <p className="text-xs text-blue-700">
+            <p>
               {activeForm.mode === "create"
-                ? "Completa los detalles para registrar el feedback del stakeholder."
-                : "Actualiza el comentario y deja constancia de los cambios."}
+                ? "Capture the stakeholder feedback linked to the selected element."
+                : "Update the comment and keep the revision summary complete."}
             </p>
           </div>
           <button
@@ -191,50 +194,50 @@ export function FeedbackForm() {
             className="text-sm font-semibold text-blue-600 hover:text-blue-800"
             disabled={isSubmitting}
           >
-            Cerrar
+            Close
           </button>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4 text-sm">
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="mb-1 block text-xs font-semibold text-blue-800">Nombre *</label>
+              <label className="mb-1 block text-xs font-semibold text-blue-800">First name *</label>
               <input
                 type="text"
                 value={state.firstName}
                 onChange={(event) => setState((prev) => ({ ...prev, firstName: event.target.value }))}
                 className="w-full rounded border border-blue-200 px-3 py-2"
-                placeholder="Nombre del autor" 
+                placeholder="Author first name"
                 required={activeForm.mode === "create"}
               />
             </div>
             <div>
-              <label className="mb-1 block text-xs font-semibold text-blue-800">Apellido *</label>
+              <label className="mb-1 block text-xs font-semibold text-blue-800">Last name *</label>
               <input
                 type="text"
                 value={state.lastName}
                 onChange={(event) => setState((prev) => ({ ...prev, lastName: event.target.value }))}
                 className="w-full rounded border border-blue-200 px-3 py-2"
-                placeholder="Apellido del autor"
+                placeholder="Author last name"
                 required={activeForm.mode === "create"}
               />
             </div>
           </div>
 
           <div>
-            <label className="mb-1 block text-xs font-semibold text-blue-800">Comentario *</label>
+            <label className="mb-1 block text-xs font-semibold text-blue-800">Comment *</label>
             <textarea
               value={state.comment}
               onChange={(event) => setState((prev) => ({ ...prev, comment: event.target.value }))}
               className="w-full rounded border border-blue-200 px-3 py-2"
               rows={5}
               required
-              placeholder="Describe el feedback"
+              placeholder="Share the feedback or requested change"
             />
           </div>
 
           <div>
-            <label className="mb-1 block text-xs font-semibold text-blue-800">Enlace (opcional)</label>
+            <label className="mb-1 block text-xs font-semibold text-blue-800">Link (optional)</label>
             <input
               type="url"
               value={state.linkUrl}
@@ -245,20 +248,20 @@ export function FeedbackForm() {
           </div>
 
           <div>
-            <label className="mb-1 block text-xs font-semibold text-blue-800">Etiqueta visible</label>
+            <label className="mb-1 block text-xs font-semibold text-blue-800">Visible label</label>
             <input
               type="text"
               value={state.elementLabel}
               onChange={(event) => setState((prev) => ({ ...prev, elementLabel: event.target.value }))}
               className="w-full rounded border border-blue-200 px-3 py-2"
-              placeholder="Ej. Sección Hero"
+              placeholder="e.g. Hero section"
             />
           </div>
 
           {activeForm.mode === "edit" && (
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="mb-1 block text-xs font-semibold text-blue-800">Estado</label>
+                <label className="mb-1 block text-xs font-semibold text-blue-800">Status</label>
                 <select
                   value={state.status}
                   onChange={(event) => setState((prev) => ({ ...prev, status: event.target.value }))}
@@ -273,7 +276,7 @@ export function FeedbackForm() {
               </div>
               <div className="space-y-2">
                 <label className="block text-xs font-semibold text-blue-800">
-                  Quién edita (nombre y apellido)
+                  Who is editing (first & last name)
                 </label>
                 <div className="grid grid-cols-2 gap-2">
                   <input
@@ -283,7 +286,7 @@ export function FeedbackForm() {
                       setState((prev) => ({ ...prev, editorFirstName: event.target.value }))
                     }
                     className="w-full rounded border border-blue-200 px-2 py-2"
-                    placeholder="Nombre"
+                    placeholder="First name"
                   />
                   <input
                     type="text"
@@ -292,7 +295,7 @@ export function FeedbackForm() {
                       setState((prev) => ({ ...prev, editorLastName: event.target.value }))
                     }
                     className="w-full rounded border border-blue-200 px-2 py-2"
-                    placeholder="Apellido"
+                    placeholder="Last name"
                   />
                 </div>
               </div>
@@ -308,14 +311,14 @@ export function FeedbackForm() {
               onClick={closeForm}
               disabled={isSubmitting}
             >
-              Cancelar
+              Cancel
             </button>
             <button
               type="submit"
               className="rounded bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 disabled:opacity-60"
               disabled={isSubmitting}
             >
-              {isSubmitting ? "Guardando..." : activeForm.mode === "create" ? "Guardar comentario" : "Actualizar"}
+              {isSubmitting ? "Saving..." : activeForm.mode === "create" ? "Save comment" : "Update"}
             </button>
           </div>
         </form>

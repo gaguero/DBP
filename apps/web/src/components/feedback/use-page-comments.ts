@@ -35,7 +35,7 @@ async function requestJSON<T>(input: RequestInfo, init?: RequestInit) {
 
   if (!response.ok) {
     const message = await response.text();
-    throw new Error(message || "Solicitud fallida");
+    throw new Error(message || "Request failed");
   }
 
   return (await response.json()) as T;
@@ -55,7 +55,12 @@ export function usePageComments(pageId: string) {
         return;
       }
       console.error("Failed to load comments", error);
-      setState({ comments: [], isLoading: false, error: "No se pudieron cargar los comentarios", featureAvailable: true });
+      setState({
+        comments: [],
+        isLoading: false,
+        error: "We could not load the comments. Try refreshing the page.",
+        featureAvailable: true,
+      });
     }
   }, [pageId]);
 
