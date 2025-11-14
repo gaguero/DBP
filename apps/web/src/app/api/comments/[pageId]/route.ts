@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
-import { db } from "@/lib/db";
 import { auth } from "@/lib/auth";
+import { ensureCommentTables } from "@/lib/comments-bootstrap";
+import { db } from "@/lib/db";
 import { isCommentsFeatureEnabled } from "@/lib/feature-flags";
 import { sendCommentNotification } from "@/lib/mailer";
 
@@ -65,6 +66,8 @@ export async function GET(_request: Request, { params }: Params) {
 
   const { pageId } = await params;
 
+  await ensureCommentTables(db);
+
   const comments = await db.pageComment.findMany({
     where: { pageId },
     orderBy: { createdAt: "desc" },
@@ -102,6 +105,8 @@ export async function POST(request: Request, { params }: Params) {
 
   const session = await auth();
   const { pageId } = await params;
+
+  await ensureCommentTables(db);
 
   try {
     const comment = await db.pageComment.create({

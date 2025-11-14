@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
-import { db } from "@/lib/db";
 import { auth } from "@/lib/auth";
+import { ensureCommentTables } from "@/lib/comments-bootstrap";
+import { db } from "@/lib/db";
 import { isCommentsFeatureEnabled } from "@/lib/feature-flags";
 import { sendCommentNotification } from "@/lib/mailer";
 
@@ -75,6 +76,8 @@ export async function PATCH(request: Request, { params }: Params) {
 
   const session = await auth();
   const { pageId, commentId } = await params;
+
+  await ensureCommentTables(db);
 
   const comment = await db.pageComment.findUnique({
     where: { id: commentId, pageId },
