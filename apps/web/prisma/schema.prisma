@@ -83,6 +83,7 @@ model PageCommentRevision {
   previousBody      String
   previousLinkUrl   String?
   previousStatus    String?
+  statusNote        String?
   editedByUserId    String?
   editedByName      String?
   editedAt          DateTime @default(now())
