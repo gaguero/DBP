@@ -38,7 +38,7 @@ Endpoints generados:
 - `POST /api/comments/[pageId]`
 - `PATCH /api/comments/[pageId]/[commentId]`
 
-Cada comentario guarda nombre, apellido, estado (`pending`, `in_progress`, `resolved`), enlace opcional y mantiene historial de ediciones.
+Cada comentario guarda nombre, apellido, estado (`pending`, `in_progress`, `resolved`, `rejected`), enlace opcional y mantiene historial de ediciones junto con notas obligatorias cada vez que cambia el estado.
 
 **Modo de uso en el UI**
 
@@ -46,7 +46,7 @@ Cada comentario guarda nombre, apellido, estado (`pending`, `in_progress`, `reso
 2. En la parte inferior derecha verás el botón “Modo comentarios”.
 3. Al activar el modo, cada sección envolta con `FeedbackSection` muestra “Add comment”.
 4. Al guardar o editar un comentario se envía un correo a los destinatarios configurados.
-5. `/notes` incluye un dashboard global con filtros por página/estado.
+5. `/comments_dashboard` incluye un dashboard global con filtros, vista dividida y control de estados (con notas).
 
 ---
 

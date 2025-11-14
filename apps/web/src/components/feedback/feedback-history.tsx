@@ -32,6 +32,7 @@ export function FeedbackHistory({ revisions }: FeedbackHistoryProps) {
               {formatDate(revision.editedAt)} · {revision.editedByName ?? "Anon"}
             </p>
             {revision.previousStatus && <p className="text-blue-700">Previous status: {revision.previousStatus}</p>}
+            {revision.statusNote && <p className="text-blue-700">Status note: {revision.statusNote}</p>}
             {revision.previousLinkUrl && (
               <p className="text-blue-700">
                 Previous link: <a href={revision.previousLinkUrl}>{revision.previousLinkUrl}</a>

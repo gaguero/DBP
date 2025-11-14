@@ -42,6 +42,7 @@ const BOOTSTRAP_QUERIES: readonly string[] = [
     "previousBody" TEXT NOT NULL,
     "previousLinkUrl" TEXT,
     "previousStatus" TEXT,
+    "statusNote" TEXT,
     "editedByUserId" TEXT,
     "editedByName" TEXT,
     "editedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -70,6 +71,7 @@ const BOOTSTRAP_QUERIES: readonly string[] = [
     END IF;
   END $$;
   `,
+  `ALTER TABLE "PageCommentRevision" ADD COLUMN IF NOT EXISTS "statusNote" TEXT;`,
 ];
 
 let bootstrapPromise: Promise<void> | null = null;

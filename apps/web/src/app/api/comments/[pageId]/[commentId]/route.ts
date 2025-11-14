@@ -46,7 +46,12 @@ const updateCommentSchema = z.object({
   body: z.string().min(1).optional(),
   linkUrl: linkSchema,
   elementLabel: z.string().optional(),
-  status: z.enum(["pending", "in_progress", "resolved"]).optional(),
+  status: z.enum(["pending", "in_progress", "resolved", "rejected"]).optional(),
+  statusNote: z
+    .string()
+    .trim()
+    .min(3, "Status note must be at least 3 characters")
+    .optional(),
   editorFirstName: z.string().min(1).optional(),
   editorLastName: z.string().min(1).optional(),
 });
@@ -119,7 +124,17 @@ export async function PATCH(request: Request, { params }: Params) {
   if (parsed.data.body) updateData.body = parsed.data.body;
   if (parsed.data.linkUrl !== undefined) updateData.linkUrl = parsed.data.linkUrl ?? null;
   if (parsed.data.elementLabel !== undefined) updateData.elementLabel = parsed.data.elementLabel ?? null;
-  if (parsed.data.status) updateData.status = parsed.data.status;
+  const statusChanged = parsed.data.status && parsed.data.status !== comment.status;
+  if (statusChanged) {
+    updateData.status = parsed.data.status;
+  }
+
+  if (parsed.data.statusNote && !statusChanged) {
+    return NextResponse.json(
+      { message: "A status note can only be provided when the status changes." },
+      { status: 400 },
+    );
+  }
 
   updateData.updatedByUserId = session?.user?.id ?? null;
 
@@ -127,7 +142,7 @@ export async function PATCH(request: Request, { params }: Params) {
   if (parsed.data.body && parsed.data.body !== comment.body) {
     changes.push("- Comment text updated");
   }
-  if (parsed.data.status && parsed.data.status !== comment.status) {
+  if (statusChanged) {
     changes.push(`- Status: ${comment.status} → ${parsed.data.status}`);
   }
   if (parsed.data.linkUrl !== undefined && parsed.data.linkUrl !== comment.linkUrl) {
@@ -141,6 +156,10 @@ export async function PATCH(request: Request, { params }: Params) {
   }
   if (parsed.data.elementLabel && parsed.data.elementLabel !== comment.elementLabel) {
     changes.push(`- Section label: ${comment.elementLabel ?? "(none)"} → ${parsed.data.elementLabel}`);
+  }
+
+  if (parsed.data.statusNote && statusChanged) {
+    changes.push(`- Status note: ${parsed.data.statusNote.trim()}`);
   }
 
   if (!changes.length) {
@@ -157,6 +176,7 @@ export async function PATCH(request: Request, { params }: Params) {
           previousBody: comment.body,
           previousLinkUrl: comment.linkUrl,
           previousStatus: comment.status,
+          statusNote: statusChanged ? parsed.data.statusNote?.trim() ?? null : null,
           editedByUserId: session?.user?.id,
           editedByName: editorName,
         },
@@ -191,6 +211,7 @@ export async function PATCH(request: Request, { params }: Params) {
       linkUrl: updated.linkUrl,
       status: updated.status,
       editorName,
+      statusNote: parsed.data.statusNote?.trim(),
       historySummary,
     });
 

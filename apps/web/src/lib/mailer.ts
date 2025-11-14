@@ -10,6 +10,7 @@ export type CommentNotificationPayload = {
   commentBody: string;
   linkUrl?: string | null;
   status: string;
+  statusNote?: string | null;
   editorName?: string;
   historySummary?: string;
 };
@@ -60,6 +61,7 @@ export async function sendCommentNotification(payload: CommentNotificationPayloa
 
   const subjectPrefix = payload.type === "created" ? "Nuevo comentario" : "Comentario actualizado";
   const elementInfo = payload.elementLabel ? `Sección: ${payload.elementLabel}\n` : "";
+  const statusNoteLine = payload.statusNote ? `Nota de estado: ${payload.statusNote}\n` : "";
   const history = payload.historySummary ? `\nHistorial reciente:\n${payload.historySummary}` : "";
   const editorInfo = payload.editorName ? `Editado por: ${payload.editorName}\n` : "";
   const linkLine = payload.linkUrl ? `Enlace: ${payload.linkUrl}\n` : "";
@@ -70,6 +72,7 @@ export async function sendCommentNotification(payload: CommentNotificationPayloa
     `${elementInfo}Estado: ${payload.status}`,
     `Autor del comentario: ${payload.authorFullName}`,
     editorInfo,
+    statusNoteLine,
     linkLine,
     "Comentario:",
     payload.commentBody,

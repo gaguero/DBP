@@ -44,7 +44,7 @@ type FeedbackContextValue = {
 
 const FeedbackContext = createContext<FeedbackContextValue | null>(null);
 
-const PROFILE_STORAGE_KEY = "dbp-feedback-profile";
+export const FEEDBACK_PROFILE_STORAGE_KEY = "dbp-feedback-profile";
 
 export function FeedbackProvider({ pageId, children }: { pageId: string; children: React.ReactNode }) {
   const [selectionMode, setSelectionMode] = useState(false);
@@ -56,7 +56,7 @@ export function FeedbackProvider({ pageId, children }: { pageId: string; childre
 
   useEffect(() => {
     try {
-      const stored = window.localStorage.getItem(PROFILE_STORAGE_KEY);
+      const stored = window.localStorage.getItem(FEEDBACK_PROFILE_STORAGE_KEY);
       if (stored) {
         const parsed = JSON.parse(stored) as FeedbackUserProfile;
         if (parsed.firstName && parsed.lastName) {
@@ -73,7 +73,7 @@ export function FeedbackProvider({ pageId, children }: { pageId: string; childre
   function persistProfile(profile: FeedbackUserProfile) {
     setUserProfile(profile);
     try {
-      window.localStorage.setItem(PROFILE_STORAGE_KEY, JSON.stringify(profile));
+      window.localStorage.setItem(FEEDBACK_PROFILE_STORAGE_KEY, JSON.stringify(profile));
     } catch (err) {
       console.warn("Unable to persist feedback profile", err);
     }

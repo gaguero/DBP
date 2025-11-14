@@ -9,6 +9,7 @@ const STATUS_OPTIONS = [
   { value: "pending", label: "Pending" },
   { value: "in_progress", label: "In progress" },
   { value: "resolved", label: "Resolved" },
+  { value: "rejected", label: "Rejected" },
 ];
 
 type FormState = {
@@ -17,6 +18,7 @@ type FormState = {
   comment: string;
   linkUrl: string;
   status: string;
+  statusNote: string;
   elementLabel: string;
   editorFirstName: string;
   editorLastName: string;
@@ -36,6 +38,7 @@ function buildInitialState(
       comment: "",
       linkUrl: "",
       status: "pending",
+      statusNote: "",
       elementLabel: "",
       editorFirstName: profileFirstName,
       editorLastName: profileLastName,
@@ -50,6 +53,7 @@ function buildInitialState(
       comment: comment.body,
       linkUrl: comment.linkUrl ?? "",
       status: comment.status,
+      statusNote: "",
       elementLabel: comment.elementLabel ?? "",
       editorFirstName: profileFirstName,
       editorLastName: profileLastName,
@@ -62,6 +66,7 @@ function buildInitialState(
     comment: "",
     linkUrl: "",
     status: "pending",
+    statusNote: "",
     elementLabel: activeForm.elementLabel ?? "",
     editorFirstName: profileFirstName,
     editorLastName: profileLastName,
@@ -126,6 +131,7 @@ export function FeedbackForm() {
           return;
         }
 
+        const trimmedStatusNote = state.statusNote.trim();
         const payload: UpdateCommentInput = { commentId: comment.id };
         let hasChanges = false;
 
@@ -151,7 +157,13 @@ export function FeedbackForm() {
           hasChanges = true;
         }
         if (state.status !== comment.status) {
+          if (!trimmedStatusNote) {
+            setError("Add a short note when changing the status.");
+            setSubmitting(false);
+            return;
+          }
           payload.status = state.status as UpdateCommentInput["status"];
+          payload.statusNote = trimmedStatusNote;
           hasChanges = true;
         }
 
@@ -279,6 +291,19 @@ export function FeedbackForm() {
                     </option>
                   ))}
                 </select>
+              </div>
+              <div>
+                <label className="mb-1 block text-xs font-semibold text-blue-800">Status note</label>
+                <textarea
+                  value={state.statusNote}
+                  onChange={(event) => setState((prev) => ({ ...prev, statusNote: event.target.value }))}
+                  className="w-full rounded border border-blue-200 px-2 py-2"
+                  placeholder="Explain why the status changed"
+                  rows={3}
+                />
+                <p className="mt-1 text-[11px] text-blue-600">
+                  Required only when you change the status to keep the history clear.
+                </p>
               </div>
               <div className="space-y-2">
                 <label className="block text-xs font-semibold text-blue-800">
