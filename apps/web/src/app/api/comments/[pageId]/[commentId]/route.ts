@@ -58,12 +58,7 @@ const updateCommentSchema = z.object({
 });
 
 const deleteCommentSchema = z.object({
-  password: z
-    .string({
-      required_error: "Password is required.",
-      invalid_type_error: "Password must be a string.",
-    })
-    .min(1, "Password is required."),
+  password: z.string().min(1, "Password is required."),
 });
 
 type Params = {
