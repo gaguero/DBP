@@ -62,6 +62,7 @@ export function FeedbackDashboard() {
   const [statusForm, setStatusForm] = useState({ status: "pending", note: "" });
   const [statusError, setStatusError] = useState<string | null>(null);
   const [isStatusSubmitting, setIsStatusSubmitting] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   function persistProfile(value: FeedbackProfile) {
     setProfile(value);
@@ -264,6 +265,58 @@ export function FeedbackDashboard() {
     window.open(url, "_blank");
   };
 
+  const handleDeleteComment = async () => {
+    if (!selectedComment) {
+      return;
+    }
+
+    const password = window.prompt(
+      "Type the delete password to remove this comment (this action cannot be undone).",
+    );
+
+    if (!password) {
+      return;
+    }
+
+    const trimmedPassword = password.trim();
+
+    if (!trimmedPassword) {
+      return;
+    }
+
+    if (trimmedPassword !== "deletedbp") {
+      window.alert("Incorrect password.");
+      return;
+    }
+
+    setIsDeleting(true);
+
+    try {
+      const response = await fetch(`/api/comments/${selectedComment.pageId}/${selectedComment.id}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password: trimmedPassword }),
+      });
+
+      const payload = await response.json().catch(() => null);
+
+      if (!response.ok) {
+        window.alert(payload?.message ?? "We could not delete this comment. Try again.");
+        return;
+      }
+
+      const refreshed = await loadComments();
+      const nextSelection = refreshed.find((item) => item.id !== selectedComment.id);
+      setSelectedCommentId(nextSelection?.id ?? refreshed[0]?.id ?? null);
+      window.alert("Comment deleted.");
+    } catch (error) {
+      console.error("Failed to delete comment", error);
+      window.alert("We could not delete this comment. Try again.");
+    } finally {
+      setIsDeleting(false);
+    }
+  };
+
   if (isLoading && allComments.length === 0) {
     return (
       <div className="rounded-xl border border-blue-100 bg-white p-6 shadow-lg">
@@ -352,7 +405,7 @@ export function FeedbackDashboard() {
         </div>
       </section>
 
-      <section className="grid gap-6 lg:grid-cols-[minmax(260px,320px),minmax(0,1fr)] lg:min-h-[65vh]">
+      <section className="grid gap-6 md:grid-cols-[minmax(260px,320px),minmax(0,1fr)] md:min-h-[65vh] lg:grid-cols-[360px,minmax(0,1fr)] xl:grid-cols-[400px,minmax(0,1fr)]">
         <aside className="flex h-full flex-col rounded-2xl border border-blue-100 bg-white p-4 shadow-sm">
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
             <DashboardStat label="Pending" value={stats.pending} tone="yellow" />
@@ -430,6 +483,14 @@ export function FeedbackDashboard() {
                     className="rounded border border-blue-200 px-3 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-50"
                   >
                     Update status
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleDeleteComment}
+                    disabled={isDeleting}
+                    className="rounded border border-red-200 px-3 py-2 text-sm font-semibold text-red-700 hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-60"
+                  >
+                    {isDeleting ? "Deleting..." : "Delete comment"}
                   </button>
                 </div>
               </div>

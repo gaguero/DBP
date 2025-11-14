@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
+import { Prisma } from "@prisma/client";
 
 import { auth } from "@/lib/auth";
 import { ensureCommentTables } from "@/lib/comments-bootstrap";
@@ -54,6 +55,15 @@ const updateCommentSchema = z.object({
     .optional(),
   editorFirstName: z.string().min(1).optional(),
   editorLastName: z.string().min(1).optional(),
+});
+
+const deleteCommentSchema = z.object({
+  password: z
+    .string({
+      required_error: "Password is required.",
+      invalid_type_error: "Password must be a string.",
+    })
+    .min(1, "Password is required."),
 });
 
 type Params = {
@@ -229,5 +239,40 @@ export async function PATCH(request: Request, { params }: Params) {
   } catch (error) {
     console.error("Failed to update page comment", error);
     return NextResponse.json({ message: "Error updating comment" }, { status: 500 });
+  }
+}
+
+export async function DELETE(request: Request, { params }: Params) {
+  if (!isCommentsFeatureEnabled()) {
+    return featureDisabledResponse();
+  }
+
+  const body = await request.json().catch(() => null);
+  const parsed = deleteCommentSchema.safeParse(body);
+
+  if (!parsed.success) {
+    return NextResponse.json({ errors: parsed.error.flatten().fieldErrors }, { status: 400 });
+  }
+
+  if (parsed.data.password !== "deletedbp") {
+    return NextResponse.json({ message: "Invalid password." }, { status: 401 });
+  }
+
+  const { pageId, commentId } = await params;
+
+  await ensureCommentTables(db);
+
+  try {
+    await db.pageComment.delete({
+      where: { id: commentId, pageId },
+    });
+
+    return NextResponse.json({ ok: true });
+  } catch (error) {
+    if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === "P2025") {
+      return NextResponse.json({ message: "Comment not found." }, { status: 404 });
+    }
+    console.error("Failed to delete page comment", error);
+    return NextResponse.json({ message: "Error deleting comment." }, { status: 500 });
   }
 }

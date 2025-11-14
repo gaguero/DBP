@@ -49,6 +49,7 @@ Cada comentario guarda nombre, apellido, estado (`pending`, `in_progress`, `reso
 3. Al activar el modo, cada sección envolta con `FeedbackSection` muestra “Add comment”.
 4. Al guardar o editar un comentario se envía un correo a los destinatarios configurados.
 5. `/comments_dashboard` incluye un dashboard global con filtros, vista dividida y control de estados (con notas).
+6. Desde el dashboard puedes eliminar un comentario ingresando la contraseña `deletedbp` (solo para administradores).
 
 ---
 
