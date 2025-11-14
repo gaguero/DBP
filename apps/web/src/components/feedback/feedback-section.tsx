@@ -2,6 +2,7 @@
 
 import clsx from "clsx";
 import { PropsWithChildren } from "react";
+import { useSearchParams } from "next/navigation";
 
 import { useOptionalFeedbackContext } from "@/components/feedback/feedback-context";
 
@@ -11,12 +12,22 @@ type FeedbackSectionProps = PropsWithChildren<{
   className?: string;
 }>;
 
+const HIGHLIGHT_CLASSES =
+  "relative outline outline-2 outline-blue-500 ring-2 ring-blue-400/60 transition-all duration-200";
+
 export function FeedbackSection({ id, label, className, children }: FeedbackSectionProps) {
   const context = useOptionalFeedbackContext();
+  const searchParams = useSearchParams();
+  const highlightTarget = searchParams?.get("highlight");
+  const shouldHighlight = highlightTarget === id;
 
   if (!context) {
     return (
-      <div data-feedback-id={id} data-feedback-label={label} className={className}>
+      <div
+        data-feedback-id={id}
+        data-feedback-label={label}
+        className={clsx(className, shouldHighlight && HIGHLIGHT_CLASSES)}
+      >
         {children}
       </div>
     );
@@ -28,7 +39,12 @@ export function FeedbackSection({ id, label, className, children }: FeedbackSect
     <div
       data-feedback-id={id}
       data-feedback-label={label}
-      className={clsx(className, selectionMode && "relative group outline outline-1 outline-dashed outline-transparent hover:outline-blue-400/60")}
+      className={clsx(
+        className,
+        selectionMode &&
+          "relative group outline outline-1 outline-dashed outline-transparent hover:outline-blue-400/60",
+        shouldHighlight && HIGHLIGHT_CLASSES,
+      )}
     >
       {selectionMode && (
         <button
@@ -43,3 +59,4 @@ export function FeedbackSection({ id, label, className, children }: FeedbackSect
     </div>
   );
 }
+
